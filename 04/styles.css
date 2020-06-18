@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'Concourse C6 Regular';
+  src: url('/fonts/concourse_c6_regular.woff') format('woff');
+}
+
+:root {
+  --golden-ratio: 1.618;
+  --ratio: var(--golden-ratio);
+  --scale-base: 1;
+  --base-width: 64px;
+  --scale-1: calc(var(--scale-base) * 1);
+  --scale-2: calc(var(--scale-1) * var(--ratio));
+  --scale-3: calc(var(--scale-2) * var(--ratio));
+  --scale-4: calc(var(--scale-3) * var(--ratio));
+  --scale-5: calc(var(--scale-4) * var(--ratio));
+  --scale-6: calc(var(--scale-5) * var(--ratio));
+
+  --rect-1-width: calc(var(--scale-1) * var(--base-width));
+  --rect-2-width: calc(var(--scale-2) * var(--base-width));
+  --rect-3-width: calc(var(--scale-3) * var(--base-width));
+  --rect-4-width: calc(var(--scale-4) * var(--base-width));
+  --rect-5-width: calc(var(--scale-5) * var(--base-width));
+  --rect-6-width: calc(var(--scale-6) * var(--base-width));
+
+  --rect-1-height: calc(0.75 * var(--rect-1-width));
+  --rect-2-height: calc(0.75 * var(--rect-2-width));
+  --rect-3-height: calc(0.75 * var(--rect-3-width));
+  --rect-4-height: calc(0.75 * var(--rect-4-width));
+  --rect-5-height: calc(0.75 * var(--rect-5-width));
+  --rect-6-height: calc(0.75 * var(--rect-6-width));
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+
+  color: white;
+  background: #0e0d0d url('../images/noise.png');
+
+  font-family: 'Concourse C6 Regular', sans-serif;
+}
+
+h1 {
+  margin-block-start: 0.5rem;
+  margin-block-end: 0;
+  font-size: 3rem;
+  text-align: center;
+  text-transform: lowercase;
+
+  filter: blur(2px);
+}
+
+main {
+  margin-block-start: 1em;
+  padding: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: slategray;
+
+  perspective: 2000px;
+}
+
+img {
+  border: 3px solid black;
+  width: 40vw;
+  margin: 1em;
+  transform: rotateY(20deg);
+}
+
+img:nth-of-type(2) {
+  transform: rotateY(20deg);
+}
