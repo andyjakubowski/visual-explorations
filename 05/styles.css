@@ -1,0 +1,174 @@
+@font-face {
+  font-family: 'Concourse C6 Regular';
+  src: url('/fonts/concourse_c6_regular.woff') format('woff');
+}
+
+:root {
+  --golden-ratio: 1.618;
+  --ratio: var(--golden-ratio);
+  --scale-base: 1;
+  --base-width: 64px;
+  --scale-1: calc(var(--scale-base) * 1);
+  --scale-2: calc(var(--scale-1) * var(--ratio));
+  --scale-3: calc(var(--scale-2) * var(--ratio));
+  --scale-4: calc(var(--scale-3) * var(--ratio));
+  --scale-5: calc(var(--scale-4) * var(--ratio));
+  --scale-6: calc(var(--scale-5) * var(--ratio));
+
+  --rect-1-width: calc(var(--scale-1) * var(--base-width));
+  --rect-2-width: calc(var(--scale-2) * var(--base-width));
+  --rect-3-width: calc(var(--scale-3) * var(--base-width));
+  --rect-4-width: calc(var(--scale-4) * var(--base-width));
+  --rect-5-width: calc(var(--scale-5) * var(--base-width));
+  --rect-6-width: calc(var(--scale-6) * var(--base-width));
+
+  --rect-1-height: calc(0.75 * var(--rect-1-width));
+  --rect-2-height: calc(0.75 * var(--rect-2-width));
+  --rect-3-height: calc(0.75 * var(--rect-3-width));
+  --rect-4-height: calc(0.75 * var(--rect-4-width));
+  --rect-5-height: calc(0.75 * var(--rect-5-width));
+  --rect-6-height: calc(0.75 * var(--rect-6-width));
+
+  /* Given parent’s perspective is 500px */
+  --rect-1-translate-z: -2630px;
+  --rect-2-translate-z: -1500px;
+  --rect-3-translate-z: -764px;
+  --rect-4-translate-z: -292px;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+
+  color: white;
+  /* background: #0e0d0d url('../images/noise.png'); */
+
+  font-family: 'Concourse C6 Regular', sans-serif;
+}
+
+h1 {
+  margin-block-start: 0.5rem;
+  margin-block-end: 0;
+  font-size: 3rem;
+  text-align: center;
+  text-transform: lowercase;
+
+  filter: blur(2px);
+}
+
+main {
+  background-image: url('../images/perspective-grid.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.grid-wrapper {
+  /* height: 400px; */
+  display: grid;
+  grid-template-columns: 1fr [content] repeat(16, var(--rect-1-width)) 1fr;
+  grid-template-rows: repeat(16, var(--rect-1-height));
+
+  perspective: 500px;
+  transform-style: preserve-3d;
+}
+
+.grid-frame {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  opacity: 0.2;
+  background-color: greenyellow;
+  transform: translateZ(var(--rect-4-translate-z));
+}
+
+img {
+  --rotation: 0deg;
+  box-sizing: border-box;
+  width: var(--rect-5-width);
+  opacity: 0.8;
+  border: 3px solid black;
+}
+
+img:nth-of-type(1) {
+  grid-column: 13;
+  grid-row: 3;
+  transform: translateZ(var(--rect-4-translate-z)) rotateY(var(--rotation));
+}
+
+img:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 6;
+  transform: translateZ(var(--rect-3-translate-z)) rotateY(var(--rotation));
+}
+
+img:nth-of-type(3) {
+  grid-column: 3;
+  grid-row: 7;
+  transform: translateZ(var(--rect-2-translate-z)) rotateY(var(--rotation));
+}
+
+img:nth-of-type(4) {
+  grid-column: 2;
+  grid-row: 2;
+  transform: translateZ(var(--rect-1-translate-z)) rotateY(var(--rotation));
+}
+
+img:nth-of-type(5) {
+  grid-column: 6;
+  grid-row: 12;
+}
+
+img:nth-of-type(6) {
+  grid-column: 14;
+  grid-row: 11;
+}
+
+img:nth-of-type(7) {
+  grid-column: 3;
+  grid-row: 4;
+}
+
+img:nth-of-type(8) {
+  grid-column: 8;
+  grid-row: 8;
+}
+
+img:nth-of-type(9) {
+  grid-column: 16;
+  grid-row: 1;
+}
+
+img:nth-of-type(10) {
+  grid-column: 11;
+  grid-row: 14;
+}
+
+img:nth-of-type(11) {
+  grid-column: 17;
+  grid-row: 12;
+}
+
+img:nth-of-type(12) {
+  grid-column: 14;
+  grid-row: 14;
+}
+
+img:nth-of-type(13) {
+  grid-column: 3;
+  grid-row: 11;
+}
+
+img:nth-of-type(14) {
+  grid-column: 10;
+  grid-row: 5;
+}
+
+img:nth-of-type(15) {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+img:nth-of-type(16) {
+  grid-column: 7;
+  grid-row: 6;
+}
