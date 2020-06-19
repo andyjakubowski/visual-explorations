@@ -1,0 +1,10 @@
+<svg height="2" viewBox="0 0 240 2" width="240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+<g fill="none" fill-rule="evenodd">
+<path d="m0 0h40v2h-40z" fill="#e50001" shape-rendering="crispEdges"/>
+<path d="m40 0h40v2h-40z" fill="#ff8d01" shape-rendering="crispEdges"/>
+<path d="m80 0h40v2h-40z" fill="#fe0" shape-rendering="crispEdges"/>
+<path d="m120 0h40v2h-40z" fill="#028121" shape-rendering="crispEdges"/>
+<path d="m160 0h40v2h-40z" fill="#004cff" shape-rendering="crispEdges"/>
+<path d="m200 0h40v2h-40z" fill="#750288" shape-rendering="crispEdges"/>
+</g>
+</svg>
