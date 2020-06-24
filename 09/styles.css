@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'Concourse C3';
+  src: url('/fonts/concourse_c3_regular.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Concourse C3';
+  src: url('/fonts/concourse_c3_bold.woff') format('woff');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Concourse C7';
+  src: url('/fonts/concourse_c7_regular.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Concourse T3';
+  src: url('/fonts/concourse_t3_regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Concourse T3';
+  src: url('/fonts/concourse_t3_italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Concourse T3';
+  src: url('/fonts/concourse_t3_bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Concourse T7';
+  src: url('/fonts/concourse_t7_regular.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Concourse T8';
+  src: url('/fonts/concourse_t8_regular.woff') format('woff');
+  font-weight: 400;
+}
+
+:root {
+  font-size: 125%;
+  --ratio: 1.25;
+  --scale-negative-1: calc(var(--scale-1) / var(--ratio));
+  --scale-negative-2: calc(var(--scale-negative-1) / var(--ratio));
+  --scale-1: 1rem;
+  --scale-2: calc(var(--scale-1) * var(--ratio));
+  --scale-3: calc(var(--scale-2) * var(--ratio));
+  --scale-4: calc(var(--scale-3) * var(--ratio));
+  --scale-5: calc(var(--scale-4) * var(--ratio));
+  --scale-6: calc(var(--scale-5) * var(--ratio));
+  --scale-7: calc(var(--scale-6) * var(--ratio));
+
+  --content-padding: 5vw;
+  --max-content-width: 27rem;
+}
+
+body {
+  padding-block-end: 3em;
+  margin: 0;
+
+  background-color: #17171a;
+  color: #dcdce3;
+
+  font-family: 'Concourse T3';
+  line-height: 1.4;
+}
+
+h2 {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+
+  font-size: var(--scale-4);
+  font-family: 'Concourse C3', serif;
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: lowercase;
+}
+
+.berlin__header {
+  text-align: center;
+}
+
+.berlin__picture-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.berlin__picture-list-item {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.berlin__image {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
+}
