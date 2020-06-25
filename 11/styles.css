@@ -1,0 +1,120 @@
+@font-face {
+  font-family: 'Concourse C3';
+  src: url('/fonts/concourse_c3_regular.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Concourse C3';
+  src: url('/fonts/concourse_c3_bold.woff') format('woff');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Concourse C7';
+  src: url('/fonts/concourse_c7_regular.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Concourse T3';
+  src: url('/fonts/concourse_t3_regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Concourse T3';
+  src: url('/fonts/concourse_t3_italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Concourse T3';
+  src: url('/fonts/concourse_t3_bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Concourse T7';
+  src: url('/fonts/concourse_t7_regular.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Concourse T8';
+  src: url('/fonts/concourse_t8_regular.woff') format('woff');
+  font-weight: 400;
+}
+
+:root {
+  font-size: 125%;
+  --ratio: 1.25;
+  --scale-negative-1: calc(var(--scale-1) / var(--ratio));
+  --scale-negative-2: calc(var(--scale-negative-1) / var(--ratio));
+  --scale-1: 1rem;
+  --scale-2: calc(var(--scale-1) * var(--ratio));
+  --scale-3: calc(var(--scale-2) * var(--ratio));
+  --scale-4: calc(var(--scale-3) * var(--ratio));
+  --scale-5: calc(var(--scale-4) * var(--ratio));
+  --scale-6: calc(var(--scale-5) * var(--ratio));
+  --scale-7: calc(var(--scale-6) * var(--ratio));
+
+  --content-padding: 5vw;
+  --max-content-width: 27rem;
+
+  --color-yellow: #dfbb29;
+  --color-body: #dcdce3;
+}
+
+body {
+  margin: 0;
+}
+
+.andy {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: [padding] 5vmin [text] auto [photo] auto [padding] 5vmin;
+  gap: 5vmin;
+}
+
+.andy__text {
+  margin: 0;
+  max-width: 20rem;
+  grid-column: 2 / -3;
+  grid-row: text;
+}
+
+.andy__picture {
+  grid-column: 1 / span 5;
+  grid-row: photo;
+  align-self: end;
+}
+
+.andy__photo {
+  display: block;
+  width: 100%;
+  max-width: 70vmin;
+  height: 50vh;
+  object-fit: cover;
+  object-position: 30%;
+
+  /* box-sizing: border-box; */
+  /* border: 1px solid red; */
+  /* background-color: yellowgreen; */
+
+  filter: grayscale(30%) contrast(100%);
+}
+
+@media screen and (min-width: 48rem) {
+  :root {
+    font-size: 150%;
+  }
+
+  .andy__text {
+    grid-column: 2 / span 3;
+  }
+}
