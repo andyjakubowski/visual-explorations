@@ -8,7 +8,7 @@
   --golden-ratio: 1.618;
 
   --scale-base: 1;
-  --base-width: 4em;
+  --base-width: 160px;
 }
 
 body {
@@ -22,7 +22,7 @@ div {
   margin-inline-end: 1em;
   margin-block-end: 0.5em;
   width: var(--width);
-  height: calc(0.75 * var(--width));
+  height: calc(var(--width) / var(--ratio));
 
   display: inline-block;
 
