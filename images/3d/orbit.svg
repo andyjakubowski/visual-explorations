@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="213px" height="213px" viewBox="0 0 213 213" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>orbit</title>
+    <g id="Inspiration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-58" transform="translate(-605.000000, -509.000000)" fill="#EF603B" fill-rule="nonzero">
+            <path d="M711.5,509 C770.318326,509 818,556.681674 818,615.5 C818,674.318326 770.318326,722 711.5,722 C652.681674,722 605,674.318326 605,615.5 C605,556.681674 652.681674,509 711.5,509 Z M711.5,519 C658.204522,519 615,562.204522 615,615.5 C615,668.795478 658.204522,712 711.5,712 C764.795478,712 808,668.795478 808,615.5 C808,562.204522 764.795478,519 711.5,519 Z" id="orbit"></path>
+        </g>
+    </g>
+</svg>
