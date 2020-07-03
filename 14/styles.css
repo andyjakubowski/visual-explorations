@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #2a2536;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 300px;
+  animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
