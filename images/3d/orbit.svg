@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="213px" height="213px" viewBox="0 0 213 213" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>orbit</title>
+<svg width="214px" height="214px" viewBox="0 0 214 214" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>orbit-orange</title>
     <g id="Inspiration" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard-Copy-58" transform="translate(-605.000000, -509.000000)" fill="#EF603B" fill-rule="nonzero">
-            <path d="M711.5,509 C770.318326,509 818,556.681674 818,615.5 C818,674.318326 770.318326,722 711.5,722 C652.681674,722 605,674.318326 605,615.5 C605,556.681674 652.681674,509 711.5,509 Z M711.5,519 C658.204522,519 615,562.204522 615,615.5 C615,668.795478 658.204522,712 711.5,712 C764.795478,712 808,668.795478 808,615.5 C808,562.204522 764.795478,519 711.5,519 Z" id="orbit"></path>
+        <g id="Artboard-Copy-58" transform="translate(-1217.000000, -235.000000)" fill="#EF603B" fill-rule="nonzero">
+            <path d="M1324,235 C1383.09447,235 1431,282.905532 1431,342 C1431,401.094468 1383.09447,449 1324,449 C1264.90553,449 1217,401.094468 1217,342 C1217,282.905532 1264.90553,235 1324,235 Z M1324,241.037559 C1268.23998,241.037559 1223.03756,286.239983 1223.03756,342 C1223.03756,397.760017 1268.23998,442.962441 1324,442.962441 C1379.76002,442.962441 1424.96244,397.760017 1424.96244,342 C1424.96244,286.239983 1379.76002,241.037559 1324,241.037559 Z" id="orbit-orange"></path>
         </g>
     </g>
 </svg>

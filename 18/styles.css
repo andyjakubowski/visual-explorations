@@ -1,0 +1,78 @@
+:root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #111;
+
+  --planet-radius: 18px;
+  --orbit-radius: 120px;
+  --orbit-size: calc(var(--orbit-radius) * 2);
+  --orbit-rotate-x: 45deg;
+  --orbit-rotate-y: 45deg;
+  --orbit-rotate-x-inverse: -45deg;
+  --orbit-rotate-y-inverse: -45deg;
+}
+
+body {
+  width: 466px;
+  height: 306px;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+  perspective: 40em;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.letter {
+  position: absolute;
+  --width: 221px;
+  --height: 121px;
+  left: 50%;
+  top: 50%;
+  margin-left: calc(var(--width) / -2 * 1.2);
+  margin-top: calc(var(--height) / -2);
+  width: var(--width);
+  height: var(--height);
+}
+
+.orbit {
+  position: absolute;
+  --margin: var(--orbit-radius);
+  left: 50%;
+  top: 50%;
+  margin-left: calc(var(--margin) * -1);
+  margin-top: calc(var(--margin) * -1);
+  width: var(--orbit-size);
+  height: var(--orbit-size);
+  background: center / cover no-repeat url(../images/3d/orbit.svg);
+  transform: rotateY(var(--orbit-rotate-y)) rotateX(var(--orbit-rotate-x));
+  transform-style: preserve-3d;
+}
+
+.planet {
+  position: relative;
+  top: calc(var(--orbit-radius) - var(--planet-radius));
+  left: calc(var(--orbit-radius) - var(--planet-radius));
+  animation: rotate 3s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg) translateX(var(--orbit-radius)) rotateZ(-0deg)
+      rotateX(var(--orbit-rotate-x-inverse))
+      rotateY(var(--orbit-rotate-y-inverse));
+  }
+
+  to {
+    transform: rotateZ(360deg) translateX(var(--orbit-radius)) rotateZ(-360deg)
+      rotateX(var(--orbit-rotate-x-inverse))
+      rotateY(var(--orbit-rotate-y-inverse));
+  }
+}
