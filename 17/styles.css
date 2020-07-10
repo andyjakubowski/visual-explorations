@@ -47,16 +47,6 @@ aside {
   filter: blur(0) brightness(1);
 }
 
-/* p:first-child {
-  animation: blur 5s ease 0s infinite alternate,
-    fade 5s ease 0s infinite alternate;
-}
-
-p:last-child {
-  animation: blur 5s ease 0s infinite alternate-reverse,
-    fade 5s ease 0s infinite alternate-reverse;
-} */
-
 @keyframes blur {
   0%,
   20% {
