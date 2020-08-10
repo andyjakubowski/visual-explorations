@@ -1,0 +1,51 @@
+:root {
+  font-size: 150%;
+
+  background-color: wheat;
+}
+
+body {
+  margin: 0 auto;
+  width: 50vw;
+  perspective: 50em;
+  transform-style: preserve-3d;
+
+  background-color: white;
+}
+
+img {
+  width: 20vw;
+}
+
+div {
+  transform-style: preserve-3d;
+}
+
+.button {
+  width: 200px;
+  height: 60px;
+
+  background-color: thistle;
+
+  transform: rotateY(10deg);
+}
+
+.nested-button {
+  margin-block-start: 3em;
+  width: 200px;
+  height: 160px;
+
+  background-color: tomato;
+
+  transform: rotateY(10deg);
+}
+
+header {
+  transform: rotateY(40deg);
+}
+
+main {
+}
+
+aside {
+}
