@@ -1,0 +1,33 @@
+/* Reset user agent styles */
+body,
+p {
+  margin: 0;
+}
+
+img {
+}
+
+header {
+}
+
+main {
+  height: 400px;
+
+  display: flex;
+  overflow: scroll;
+  scroll-snap-type: x mandatory;
+
+  background-color: deepskyblue;
+}
+
+p {
+  min-width: 295px;
+
+  scroll-snap-align: center;
+
+  background-color: floralwhite;
+}
+
+p:nth-child(odd) {
+  background-color: silver;
+}
