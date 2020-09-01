@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>11 - Full Viewport Image and Text</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section class="andy">
+      <p class="andy__text"
+        >Once you realize you have this one life and how special it is, there’s
+        just no going back.</p
+      >
+      <picture class="andy__picture">
+        <source
+          srcset="../images/andy/andy-beach-landscape.jpeg"
+          media="(min-width: 48rem)"
+        />
+        <img
+          class="andy__photo"
+          src="../images/andy/andy-beach-portrait.jpeg"
+          alt="A photo of Andy"
+        />
+      </picture>
+    </section>
+  </body>
+</html>

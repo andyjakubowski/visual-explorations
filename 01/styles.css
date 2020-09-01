@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'Concourse C7 Regular';
+  src: url('/fonts/concourse_c7_regular.woff') format('woff');
+}
+
+body {
+  margin: 0;
+  padding: 3em;
+
+  background-color: #1e1d1c;
+
+  font-family: 'Concourse C7 Regular', sans-serif;
+}
+
+h1 {
+  margin: 0;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  -webkit-text-orientation: upright;
+  text-transform: lowercase;
+
+  color: white;
+
+  animation: blurry-text 4s infinite;
+}
+
+span {
+  display: block;
+}
+
+/* This effect inspired by https://xanthir.com */
+@keyframes blurry-text {
+  0%,
+  50%,
+  90%,
+  100% {
+    filter: blur(1px);
+  }
+
+  60%,
+  80% {
+    filter: blur(2px);
+  }
+
+  70% {
+    filter: blur(4px);
+  }
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */
