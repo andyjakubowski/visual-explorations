@@ -1,17 +1,15 @@
 :root {
-  --color-yellow: #eedc60;
-  --color-orange: #ea5d39; /* Originally #ef603b, changed to pass AA contrast */
+  --color-orange: #ea5d39;
   --color-black: #0b1316;
   --color-gray: #f2f2f7;
-  --color-purple-dimmed: #37303d;
-  --color-starfield-purple: #261a31;
-  --color-orange-secondary-opacity: 0.5;
+  --color-purple: #261a31;
 }
 
 body {
   margin: 0;
 
-  background-color: var(--color-starfield-purple);
+  color: var(--color-gray);
+  background-color: var(--color-purple);
 
   font-family: sans-serif;
 }
@@ -20,6 +18,7 @@ main {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -27,43 +26,17 @@ main {
   transform-style: flat;
 }
 
-.button__container {
+div {
   box-sizing: border-box;
-  border: 2px solid var(--color-orange);
-  border-radius: 4px;
-  padding: 3px;
-  height: 44px;
+  padding: 32px;
+  height: 96px;
   width: 320px;
+  margin-block-start: 56px;
 
-  transform: rotateX(10deg) rotateY(10deg) translateX(4px);
-}
+  transform: rotateZ(2deg) rotateX(8deg) rotateY(7deg);
 
-.button__label {
-  padding: 0 12px;
-  height: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: var(--color-orange);
   color: var(--color-black);
+  background-color: var(--color-gray);
 
-  font-weight: bold;
-  text-decoration: none;
-  text-transform: uppercase;
-
-  transition: background-color 0.08s;
-}
-
-.button__label:hover {
-  background-color: white;
-
-  text-decoration: none;
-}
-
-@media screen and (max-width: 23.125em) {
-  .button__label {
-    font: var(--font-space-scale-negative-2);
-  }
+  text-align: center;
 }
