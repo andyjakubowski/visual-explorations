@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+}
+
+img {
+  width: 300px;
+  clip-path: url('#myPath');
+}
+
+header {
+}
+
+main {
+}
+
+aside {
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */
