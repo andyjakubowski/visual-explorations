@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+
+  display: flex;
+}
+
+main {
+  flex-grow: 1;
+
+  background-color: seashell;
+
+  display: flex;
+
+  overflow: scroll;
+}
+
+div {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 400px;
+
+  height: 300px;
+
+  background-color: lightblue;
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */
