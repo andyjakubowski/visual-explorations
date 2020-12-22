@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+
+  font-size: 3em;
+}
+
+.parent {
+  --color: red;
+}
+
+.sibling-one {
+  --color: var(--color);
+  color: var(--color);
+}
+
+.sibling-two {
+  color: var(--color);
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */
