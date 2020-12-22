@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "browser-sync": "^2.26.7",
-    "gh-pages": "^3.0.0"
+    "browser-sync": "2.26.13",
+    "gh-pages": "3.1.0"
   },
   "scripts": {
-    "start": "browser-sync start --server -w",
+    "start": "browser-sync '.' -w",
     "deploy": "gh-pages -d '.'"
   }
 }
