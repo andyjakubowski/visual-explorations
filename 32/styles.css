@@ -1,0 +1,33 @@
+:root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: thistle;
+}
+
+body {
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* gap: 16px; */
+  background: white;
+}
+
+div {
+  /* background: white; */
+}
+
+div:nth-of-type(odd) {
+  background: hsla(0, 0%, 0%, 15%);
+}
+
+.spacer {
+  /* flex-grow: 1; */
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */
