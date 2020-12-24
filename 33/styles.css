@@ -1,0 +1,44 @@
+:root {
+  box-sizing: border-box;
+  border: 10px solid black;
+  padding: 16px;
+  min-height: 100vh;
+  background: thistle;
+  display: flex;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+}
+
+span {
+  /* flex: 1; */
+}
+
+section {
+  padding: 16px;
+  border: 1px solid black;
+  background: seashell;
+}
+
+div:nth-of-type(odd) {
+  /* background: seashell; */
+}
+
+body > * {
+}
+
+.h-spacer {
+  width: 100vw;
+  flex: auto;
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */
