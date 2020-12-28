@@ -1,0 +1,71 @@
+* {
+  outline: 1px solid hsla(0, 0%, 50%, 50%);
+}
+
+:root {
+  height: 100vh;
+  background: thistle;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  /* background: white; */
+}
+
+.container {
+  width: 500px;
+  height: 300px;
+  background: white;
+}
+
+.v-stack {
+  min-width: 0;
+  min-height: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  --v-stack-alignment: flex-start;
+  align-items: var(--v-stack-alignment);
+}
+
+.h-stack {
+  min-width: 0;
+  min-height: 0;
+  align-self: stretch;
+  display: flex;
+  justify-content: var(--v-stack-alignment, center);
+  align-items: center;
+}
+
+.v-spacer {
+  flex: 1 10 auto;
+}
+
+.h-spacer {
+  width: 100vw;
+  flex: 1 10 auto;
+}
+
+.view {
+  box-sizing: border-box;
+  flex: none;
+  background: seashell;
+}
+
+.view.a {
+  padding: 12px 16px;
+}
+.view.b {
+  padding: 4px 32px;
+}
+.view.c {
+  padding: 16px 8px;
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */
