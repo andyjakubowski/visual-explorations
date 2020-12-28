@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-  width: 500px;
+  width: 800px;
   height: 300px;
   background: white;
 }
@@ -37,21 +37,24 @@ body {
   display: flex;
   justify-content: var(--v-stack-alignment, center);
   align-items: center;
+  /* flex: var(--flex); */
 }
 
 .v-spacer {
-  flex: 1 10 auto;
+  height: 100vh;
+  flex: 1 100 auto;
 }
 
 .h-spacer {
   width: 100vw;
-  flex: 1 10 auto;
+  flex: 1 100 auto;
 }
 
 .view {
   box-sizing: border-box;
   flex: none;
   background: seashell;
+  opacity: 0.5;
 }
 
 .view.a {
