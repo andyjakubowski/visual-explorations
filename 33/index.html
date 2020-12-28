@@ -1,34 +1,22 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en-us" class='h-stack'>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>33 - Flex container auto width</title>
     <link href="styles.css" rel="stylesheet" />
   </head>
-  <body>
-    <div class="v-stack">
-      <p>lal lalalala</p>
-      <div class="h-stack">
-        <section class='bla'>Bla bla bla</section>
-        <div class='h-stack'>
-          <section>A</section>
-          <div class='h-spacer'></div>
-          <div class="v-stack">
-            <section>B</section>
-            <section>C</section>
-          </div>
-        </div>
-      </div>
-      <div class="h-stack">
-        <section class='bla'>Bla bla bla</section>
-        <div class='h-stack'>
-          <section>A</section>
-          <div class='h-spacer'></div>
-          <section>B</section>
-          <section>C</section>
-        </div>
-      </div>
+  <body class='v-stack'>
+    <div class="view">A</div>
+    <div class="v-spacer"></div>
+    <div class='h-stack'>
+      <div class="view">1</div>
+      <div class="h-spacer"></div>
+      <div class="view">2</div>
+      <div class="h-spacer"></div>
+      <div class="view">3</div>
     </div>
+    <div class="view">B</div>
+    <div class="view">C</div>
   </body>
 </html>
