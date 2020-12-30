@@ -1,0 +1,164 @@
+:root {
+  height: 100vh;
+  background: thistle;
+}
+
+body {
+  margin: 0;
+  padding: 64px;
+  height: 100%;
+}
+
+.view {
+  background: greenyellow;
+  opacity: 0.5;
+}
+
+.container.one {
+  width: 800px;
+  height: 300px;
+  background: white;
+
+  display: grid;
+  grid:
+    'A' 40px
+    'B' 80px
+    'C' 120px /
+    300px;
+  gap: 8px;
+}
+
+.view.one-a {
+  grid-area: C;
+  /* padding: 12px 16px; */
+}
+.view.one-b {
+  grid-area: A;
+  /* padding: 4px 32px; */
+}
+.view.one-c {
+  grid-area: B;
+  /* padding: 16px 8px; */
+}
+
+.container.two {
+  width: 800px;
+  height: 300px;
+  background: white;
+
+  display: grid;
+  grid: auto-flow 80px / 200px;
+  gap: 8px;
+}
+
+.container.three {
+  width: 800px;
+  height: 300px;
+  background: white;
+
+  display: grid;
+  grid: 40px 40px / 300px;
+  grid-auto-rows: 100px;
+  align-items: end;
+  gap: 8px;
+}
+
+.container.four {
+  width: 800px;
+  height: 300px;
+  background: white;
+
+  display: grid;
+  grid: auto-flow min-content / 1fr;
+  gap: 8px;
+}
+
+.view.four-a {
+  padding-block-start: 10px;
+  padding-block-end: 30px;
+}
+
+.container.five {
+  width: 800px;
+  height: 300px;
+  background: white;
+
+  display: grid;
+  grid: auto-flow minmax(min-content, 1fr) / 400px;
+  gap: 8px;
+}
+
+.container.six {
+  width: 800px;
+  height: 300px;
+  background: white;
+
+  display: grid;
+  grid: repeat(auto-fill, 20px) / auto-flow max-content;
+  justify-items: start;
+  gap: 8px;
+}
+
+.container.seven {
+  width: 800px;
+  height: 300px;
+  background: white;
+
+  display: grid;
+  grid: repeat(auto-fit, 40px) / 1fr;
+  justify-items: start;
+  align-items: start;
+  gap: 8px;
+}
+
+.view.seven-c {
+  min-height: 100px;
+  max-height: 140px;
+}
+
+.view.seven-d {
+  min-height: 50px;
+  max-height: 140px;
+}
+
+.container.eight {
+  width: 800px;
+  height: 300px;
+  background: white;
+
+  display: grid;
+  grid:
+    'content-a' min-content
+    'spacer-a' min-content
+    'content-b' min-content
+    'content-c' min-content
+    'content-d' min-content /
+    1fr;
+  gap: 8px;
+}
+
+.view.eight-a {
+  grid-area: content-a;
+}
+
+.view.eight-b {
+  grid-area: content-b;
+}
+
+.view.eight-c {
+  grid-area: content-c;
+}
+
+.view.eight-d {
+  grid-area: content-d;
+}
+/* 
+.spacer-eight {
+  grid-area: spacer-a;
+} */
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */
