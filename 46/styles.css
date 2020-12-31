@@ -14,8 +14,9 @@ body {
 }
 
 .hermione {
-  --stack-item-flex: auto;
-  min-height: 40px;
+  --stack-item-flex: 1 10000 auto;
+  min-width: 50px;
+  min-height: 50px;
   width: 100vw;
   height: 100vh;
   max-width: 100%;
@@ -40,7 +41,7 @@ body {
 }
 
 .stack {
-  --stack-item-flex: none;
+  --stack-item-flex: auto;
   box-sizing: border-box;
   min-width: 0;
   min-height: 0;
@@ -66,7 +67,7 @@ body {
 }
 
 .spacer {
-  flex: 1 1 auto;
+  flex: 1 10000 auto;
 }
 
 .vertical.spacer {
