@@ -76,6 +76,7 @@ body {
 }
 
 .horizontal.spacer {
+  min-width: 0;
   width: 100vw;
   max-width: 100%;
 }
