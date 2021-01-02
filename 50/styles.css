@@ -1,0 +1,44 @@
+:root {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: thistle;
+}
+
+body {
+  margin: 0;
+  width: 300px;
+  height: 300px;
+  background: white;
+}
+
+.depth.stack {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.depth.stack > * {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.view.a {
+  padding: 100px 12px 8px 24px;
+  background: hsla(0, 10%, 50%, 20%);
+}
+
+.view.b {
+  padding: 2px 50px 4px 80px;
+  background: hsla(0, 10%, 50%, 20%);
+}
+
+.view.c {
+  padding: 30px 30px 2px 2px;
+  background: hsla(0, 10%, 50%, 20%);
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */
