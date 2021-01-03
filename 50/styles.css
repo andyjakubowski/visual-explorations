@@ -1,40 +1,41 @@
 :root {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  background: thistle;
+  height: 100vh;
 }
 
 body {
   margin: 0;
-  width: 300px;
-  height: 300px;
+  height: 100%;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
   background: white;
 }
 
 .depth.stack {
   height: 100%;
   display: grid;
-  place-items: center;
+  place-items: var(--z-stack-alignment, center);
 }
 
-.depth.stack > * {
+.depth.view {
   grid-area: 1 / 1 / 2 / 2;
+  background: hsla(0, 10%, 50%, 20%);
 }
 
 .view.a {
   padding: 100px 12px 8px 24px;
-  background: hsla(0, 10%, 50%, 20%);
 }
 
 .view.b {
   padding: 2px 50px 4px 80px;
-  background: hsla(0, 10%, 50%, 20%);
 }
 
 .view.c {
   padding: 30px 30px 2px 2px;
-  background: hsla(0, 10%, 50%, 20%);
 }
 
 /* Positioning */
