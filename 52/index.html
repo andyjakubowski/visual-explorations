@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>52 - ZStack - Hermione Row + Card</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="preview">
+      <div class="vertical-stack">
+        <div
+          class="horizontal-stack"
+          style="
+            gap: 8px;
+            background: white;
+          "
+        >
+          <img
+            class="hermione-row-image"
+            src="hermione_row.png"
+            alt="Drawing of Hermione Granger"
+            style="
+              width: 100px;
+            "
+          >
+          <div
+            class="vertical-stack"
+            style="
+              --v-stack-alignment: flex-start;
+              gap: 4px;
+            "
+          >
+            <div>Hermione Granger</div>
+            <div>Minister for Magic</div>
+          </div>
+          <div class="horizontal spacer"></div>
+          <div>Icon A</div>
+          <div>Icon B</div>
+        </div>
+        <div 
+          class="depth-stack shrinkable"
+          style="--alignment: var(--bottom);"
+        >
+          <img
+            class="depth-view resizable hermione"
+            src="hermione_card.jpg"
+            alt="Drawing of Hermione Granger"
+          >
+          <div
+            class="depth-view vertical-stack"
+            style="
+            padding: 24px;
+            gap: 8px;
+            background: hsla(0, 0%, 100%, 80%);
+            --v-stack-alignment: flex-start;
+            "
+          >
+            <div
+              class="shrinkable horizontal-stack"
+              style="
+              gap: 8px;
+              --h-stack-alignment: flex-start;
+              "
+            >
+              <div class="vertical-stack">
+                <div>Hermione Granger</div>
+                <div>Minister for Magic</div>
+              </div>
+              <div class="horizontal spacer"></div>
+              <div>Icon A</div>
+              <div>Icon B</div>
+            </div>
+            <div>
+              Illustration by <a href="https://fridouw.tumblr.com/">Frida Lundqvist</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
