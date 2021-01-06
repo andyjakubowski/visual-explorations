@@ -54,12 +54,12 @@ body {
 
 .vertical.stack {
   flex-direction: column;
-  justify-content: var(--h-stack-alignment, center);
+  /* justify-content: var(--h-stack-alignment, center); */
   align-items: var(--v-stack-alignment, center);
 }
 
 .horizontal.stack {
-  justify-content: var(--v-stack-alignment, center);
+  /* justify-content: var(--v-stack-alignment, center); */
   align-items: var(--h-stack-alignment, center);
 }
 

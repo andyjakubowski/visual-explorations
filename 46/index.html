@@ -62,7 +62,7 @@
                 height="50"
               >
               <div
-                class="vertical stack"
+                class="shrinkable vertical stack"
                 style="
                 padding: 24px;
                 gap: 8px;
@@ -74,18 +74,19 @@
                 class="shrinkable horizontal stack"
                 style="
                 gap: 8px;
-                --h-stack-alignment: flex-start;
+                --h-stack-alignment: center;
                 "
                 >
                   <div
-                    class="vertical stack"
+                    class="shrinkable vertical stack"
                     style="
-                    
                     /* gap: 4px; */
+                      --v-stack-alignment: flex-end;
                     "
                   >
                     <div>Hermione Granger</div>
-                    <div>Minister for Magic</div>
+                    <div class="vertical spacer"></div>
+                    <div>Minister for Magic and Such</div>
                   </div>
                   <div class="horizontal spacer"></div>
                   <div>Icon A</div>
