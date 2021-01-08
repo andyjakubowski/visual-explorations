@@ -28,19 +28,6 @@ body {
   outline: none;
 }
 
-.snape {
-  --width: 200px;
-  --height: 200px;
-  min-width: var(--width) !important;
-  min-height: var(--height) !important;
-  width: var(--width);
-  height: var(--height);
-  max-width: var(--width) !important;
-  max-height: var(--height) !important;
-  object-fit: cover;
-  object-position: center 20%;
-}
-
 .root-stack {
   height: 100%;
   min-height: 0;
@@ -67,20 +54,18 @@ body {
   flex-direction: column;
 }
 
-.content > * {
+.stack-item {
   width: 100%;
   min-width: min-content;
   max-width: max-content;
 }
 
-.h.spacer,
 .h-resizable {
   width: 100%;
   min-width: 8px;
   max-width: none;
 }
 
-.v.spacer,
 .v-resizable {
   height: 100%;
   min-height: 8px;
@@ -88,19 +73,20 @@ body {
 }
 
 .spacer {
-  --size: 1px;
   flex: 0 100000 auto;
-  /* background: tomato !important; */
-}
-
-.v.spacer {
-  min-width: var(--size);
-}
-
-.h.spacer {
-  min-height: var(--size);
 }
 
 .hide {
   display: none;
+}
+
+.snape {
+  --width: 200px;
+  --height: 200px;
+  min-width: var(--width);
+  width: var(--width);
+  height: var(--height);
+  max-width: var(--width);
+  object-fit: cover;
+  object-position: center 20%;
 }
