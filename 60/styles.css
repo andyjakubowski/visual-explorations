@@ -1,0 +1,116 @@
+* {
+  /* outline: 1px solid hsla(0, 50%, 50%, 50%); */
+  box-sizing: border-box;
+}
+
+:root {
+  /* padding: 100px; */
+  height: 100vh;
+  background: #111;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  background: white;
+
+  display: grid;
+  place-content: center;
+  grid-auto-rows: minmax(0, max-content);
+  grid-auto-columns: minmax(0, max-content);
+}
+
+.depth-stack,
+.vertical-stack,
+.horizontal-stack {
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.depth-stack {
+  --top-leading: start;
+  --top: start center;
+  --top-trailing: start end;
+  --leading: center start;
+  --center: center;
+  --trailing: center end;
+  --bottom-leading: end start;
+  --bottom: end center;
+  --bottom-trailing: end;
+  display: grid;
+  place-content: center;
+  place-items: var(--alignment, var(--center));
+  grid-auto-rows: minmax(0, max-content);
+  grid-auto-columns: minmax(0, max-content);
+}
+
+.depth-view {
+  grid-area: 1 / 1 / 2 / 2;
+  max-width: 100%;
+  max-height: 100%;
+  /* outline: 1px solid hsla(0, 50%, 50%, 50%); */
+  /* background: hsla(0, 10%, 50%, 20%); */
+}
+
+.depth-view.a {
+  padding: 100px 12px 8px 24px;
+}
+
+.depth-view.b {
+  padding: 2px 50px 4px 80px;
+  width: 100vw;
+}
+
+.depth-view.c {
+  padding: 30px 30px 2px 2px;
+}
+
+.resizable {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center 10%;
+}
+
+.vertical-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: var(--h-stack-alignment, center);
+  align-items: var(--v-stack-alignment, center);
+}
+
+.horizontal-stack {
+  display: flex;
+  justify-content: var(--v-stack-alignment, center);
+  align-items: var(--h-stack-alignment, center);
+}
+
+.shrinkable,
+.spacer {
+  flex: 1 100000 auto;
+}
+
+.vertical.spacer {
+  height: 100vh;
+}
+
+.horizontal.spacer {
+  width: 100vw;
+}
+
+.vertical-stack *:not(.spacer):not(.shrinkable),
+.horizontal-stack *:not(.spacer):not(.shrinkable) {
+  flex: 1 1 auto;
+}
+
+.hermione-row-image {
+  min-width: 40px;
+}
