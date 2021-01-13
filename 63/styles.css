@@ -1,0 +1,63 @@
+* {
+  outline: 1px solid hsla(109, 90%, 50%, 20%);
+}
+
+body {
+  margin: 0;
+  padding: 50px;
+}
+
+.stack {
+  display: flex;
+  justify-content: center;
+}
+
+.item-container_content-sized {
+  width: 100%;
+  min-width: auto;
+  max-width: max-content;
+}
+
+.item-container_resizable-horizontally {
+  width: 100%;
+  min-width: 8px;
+  max-width: none;
+}
+
+.item-container_resizable-horizontally-spacer {
+  flex-shrink: 10000;
+  width: 100%;
+  min-width: 8px;
+  max-width: none;
+}
+
+.item-content {
+}
+
+.item-content.one {
+}
+
+.item-content.two {
+  padding: 32px;
+}
+
+.item-content.three {
+  padding: 16px;
+}
+
+.item-content_spacer {
+  max-width: 100%;
+  width: 1000vw;
+}
+
+.item-content_resizable-horizontally-hermione {
+  max-width: 100%;
+  width: 1000vw;
+  /* height: 100px; */
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

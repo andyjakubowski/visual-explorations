@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>63 - Fully intrinsic HStack</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h3>Three content-sized items</h3>
+    <p>
+      This stack has display: flex, which means its outer display is block, 
+      so it fills the width of its enclosing container (body), and the height
+      is calculated automatically to fit the content. <br /><br />
+      Each stack (flex) item is a container with width 100%, and 
+      max-width: max-content. This means every item asks for the same size
+      (width: 100%), which means it has the same flex-basis, which means
+      each item will get the same width. max-width: max-content ensures
+      that if a flex item reaches its max-content size, 
+      it stops shrinking.
+    </p>
+
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <div class="item-content one">
+          The Unlocking Charm (Alohomora)
+        </div>
+      </div>
+      <div class="item-container_content-sized">
+        <div class="item-content two">
+          Bombarda Maxima
+        </div>
+      </div>
+      <div class="item-container_content-sized">
+        <div class="item-content three">
+          Collegiate
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <div class="item-content one">
+          The Unlocking Charm (Alohomora)
+          , also known as the Thief's Friend, was a charm that unlocked objects such as doors or windows.[3][4] It was also able to open doors locked by the Locking Spell (Colloportus), and as such, acted as its counter-charm. The Anti-Alohomora Charm could be used to prevent this charm from working on a locked target.
+        </div>
+      </div>
+      <div class="item-container_content-sized">
+        <div class="item-content two">
+          Bombarda Maxima
+        </div>
+      </div>
+      <div class="item-container_content-sized">
+        <div class="item-content three">
+          Collegiate
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <div class="item-content one">
+          The Unlocking Charm (Alohomora)
+          , also known as the Thief's Friend, was a charm that unlocked objects such as doors or windows.[3][4] It was also able to open doors locked by the Locking Spell (Colloportus), and as such, acted as its counter-charm. The Anti-Alohomora Charm could be used to prevent this charm from working on a locked target.
+        </div>
+      </div>
+      <div class="item-container_content-sized">
+        <div class="item-content two">
+          Bombarda Maxima was the incantation used for the strongest variation of the Exploding Charm. It provoked large, violent explosions capable of demolishing entire walls.[1]
+        </div>
+      </div>
+      <div class="item-container_content-sized">
+        <div class="item-content three">
+          Collegiate
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <div class="item-content one">
+          The Unlocking Charm (Alohomora)
+        </div>
+      </div>
+      <div class="item-container_content-sized">
+        <img class="item-content" src="hermione_card_200_250.jpg" />
+      </div>
+      <div class="item-container_content-sized">
+        <div class="item-content three">
+          Collegiate
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <div class="item-content one">
+          The Unlocking Charm (Alohomora)
+        </div>
+      </div>
+      <div class="item-container_content-sized">
+        <img class="item-content" src="hermione_card.jpg" />
+      </div>
+      <div class="item-container_content-sized">
+        <div class="item-content three">
+          Collegiate
+        </div>
+      </div>
+    </div>
+
+    <div class="stack" style="font-size: 3em;">
+      <div class="item-container_content-sized">
+        <div class="item-content">
+          HarmoniaNecterePassus
+        </div>
+      </div>
+      <div class="item-container_content-sized">
+        <img class="item-content" src="hermione_card.jpg" />
+      </div>
+      <div class="item-container_content-sized">
+        <div class="item-content">
+          HarmoniaNecterePassus
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <img class="item-content" src="hermione_card.jpg" />
+      </div>
+      <div class="item-container_content-sized">
+        <img class="item-content" src="hermione_card.jpg" />
+      </div>
+      <div class="item-container_content-sized">
+        <img class="item-content" src="hermione_card.jpg" />
+      </div>
+    </div>
+
+    <h3>Two content-sized items with a resizable image between them</h3>
+    <p>
+      If a flex item is marked as resizable-horizontally, it also has a width
+      of 100%, but it does not set a max-width, which means this item will
+      be as big as allowed by the flex container. But it sets min-width to 8px
+      so that it can shrink beyond the min-content of its content if needed.
+    </p>
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <div class="item-content one stack">
+          <div class="item-container_content-sized">
+            <div class="item-content one">
+              The Unlocking
+            </div>
+          </div>
+          <div class="item-container_resizable-horizontally">
+            <img class="item-content item-content_resizable-horizontally-hermione" src="hermione_card_200_250.jpg" />
+          </div>
+          <div class="item-container_content-sized">
+            <div class="item-content three">
+              Collegiate
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <div class="item-content one stack">
+          <div class="item-container_content-sized">
+            <div class="item-content one">
+              The Unlocking Charm (Alohomora)
+          , also known as the Thief's Friend, was a charm that unlocked objects such as doors or windows.[3][4] It was also able to open doors locked by the Locking Spell (Colloportus), and as such, acted as its counter-charm. The Anti-Alohomora Charm could be used to prevent this charm from working on a locked target.
+            </div>
+          </div>
+          <div class="item-container_resizable-horizontally">
+            <img class="item-content item-content_resizable-horizontally-hermione" src="hermione_card_200_250.jpg" />
+          </div>
+          <div class="item-container_content-sized">
+            <div class="item-content three">
+              Collegiate
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <div class="item-content one stack">
+          <div class="item-container_content-sized">
+              <img class="item-content" src="hermione_card.jpg" />
+          </div>
+          <div class="item-container_resizable-horizontally">
+            <img class="item-content item-content_resizable-horizontally-hermione" src="hermione_card_200_250.jpg" />
+          </div>
+          <div class="item-container_content-sized">
+              <img class="item-content" src="hermione_card.jpg" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Two content-sized items with a spacer between them</h3>
+    <p>
+      Spacers are resizable items, but they have lower priority when it comes
+      to taking up space. This means that regular content gets the space
+      first, and if it clamps to max-content, then the Spacer gets
+      what’s left. Spacers set a huge width or height on themselves,
+      which causes the topmost stack to expand to fill the available
+      space of its enclosing container. But because each stack item
+      content element has a max-width of 100%, it will never overflow
+      the space given to it by the flex item container.
+    </p>
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <div class="item-content one stack">
+          <div class="item-container_content-sized">
+            <div class="item-content one">
+              The Unlocking
+            </div>
+          </div>
+          <div class="item-container_resizable-horizontally-spacer">
+            <div class="item-content item-content_spacer">
+              
+            </div>
+          </div>
+          <div class="item-container_content-sized">
+            <div class="item-content three">
+              Collegiate
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="item-container_content-sized">
+        <div class="item-content one stack">
+          <div class="item-container_content-sized">
+            <div class="item-content one">
+              The Unlocking
+              , also known as the Thief's Friend, was a charm that unlocked
+              objects such as doors or windows.[3][4] It was also able to open doors locked by the Locking Spell (Colloportus), and as such, acted as its counter-charm. The Anti-Alohomora Charm could be used to prevent this charm from working on a locked target.
+            </div>
+          </div>
+          <div class="item-container_resizable-horizontally-spacer">
+            <div class="item-content item-content_spacer">
+              
+            </div>
+          </div>
+          <div class="item-container_content-sized">
+            <div class="item-content three">
+              The Confundus Charm[5] (Confundo)[1] was a charm which confused and misdirected the target.[1] It worked on living and inanimate things, as long as the target had a mind to be confused.[5] There were varying degrees of confusion that could be caused by the spell, ranging from becoming unaware of the current situation, forgetting important information, or becoming particularly impressionable.[2]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <hr>
+    <div>Hermione Granger illustration by <a href="https://fridouw.tumblr.com/">Frida Lundqvist</a></div>
+  </body>
+</html>
