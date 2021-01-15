@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>65 - SVG sizing with padding and box-sizing</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <h1>SVG sizing rules</h1>
+    <p>
+      1️⃣ if the object (your svg) has explicit width, height, and ratio, use
+      them <br />
+      2️⃣ if the object has only ratio, use auto for both width and height while
+      maintaining the ratio <br />
+      3️⃣ if none of these dimensions is available, use width 300px and height
+      150px when the viewport is larger than 300px, and auto for width and
+      height with a ratio of 2:1 when the viewport is smaller than 300px
+    </p>
+
+    <h3>
+      SVG element with no styling, and only a viewBox="0 0 24 24" attribute
+    </h3>
+    <p>
+      There are no width or height, but there is a ratio. Use a width of auto,
+      which in this case means fill the width of the enclosing container. Then
+      using the calculated width and the ratio inferred from viewBox, calculate
+      the height.
+    </p>
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M14.3890873,6.6109127 C16.295544,8.51736945 16.509834,11.4752038 15.0319571,13.6180149 L19.6923882,18.2781746 L18.2781746,19.6923882 L13.6171816,15.0325317 C11.4744371,16.5097784 8.51712234,16.2952969 6.6109127,14.3890873 C4.4630291,12.2412037 4.4630291,8.75879631 6.6109127,6.6109127 C8.75879631,4.4630291 12.2412037,4.4630291 14.3890873,6.6109127 Z M12.9748737,8.02512627 C11.6080387,6.65829124 9.39196129,6.65829124 8.02512627,8.02512627 C6.65829124,9.39196129 6.65829124,11.6080387 8.02512627,12.9748737 C9.39196129,14.3417088 11.6080387,14.3417088 12.9748737,12.9748737 C14.3417088,11.6080387 14.3417088,9.39196129 12.9748737,8.02512627 Z"
+      ></path>
+    </svg>
+
+    <h3>SVG element with no styling, and no attributes</h3>
+    <p>
+      Width and height are not specified, and there’s no viewBox attribute from
+      which the ratio could be inferred. Rule 3️⃣ will be applied:
+    </p>
+    <blockquote>
+      3️⃣ if none of these dimensions is available, use width 300px and height
+      150px when the viewport is larger than 300px, and auto for width and
+      height with a ratio of 2:1 when the viewport is smaller than 300px
+    </blockquote>
+    <p>
+      The path inside the SVG element is defined using unitless numbers, which
+      seem to map onto pixels. So if the SVG has a width of 300px and a height
+      of 150px. And you have a rect of width "100", then that’s going to be
+      pixels.
+    </p>
+    <svg>
+      <rect width="100" height="50" />
+      >
+    </svg>
+    <svg>
+      <path
+        d="M14.3890873,6.6109127 C16.295544,8.51736945 16.509834,11.4752038 15.0319571,13.6180149 L19.6923882,18.2781746 L18.2781746,19.6923882 L13.6171816,15.0325317 C11.4744371,16.5097784 8.51712234,16.2952969 6.6109127,14.3890873 C4.4630291,12.2412037 4.4630291,8.75879631 6.6109127,6.6109127 C8.75879631,4.4630291 12.2412037,4.4630291 14.3890873,6.6109127 Z M12.9748737,8.02512627 C11.6080387,6.65829124 9.39196129,6.65829124 8.02512627,8.02512627 C6.65829124,9.39196129 6.65829124,11.6080387 8.02512627,12.9748737 C9.39196129,14.3417088 11.6080387,14.3417088 12.9748737,12.9748737 C14.3417088,11.6080387 14.3417088,9.39196129 12.9748737,8.02512627 Z"
+      ></path>
+    </svg>
+
+    <h3>SVG element with an explicit width of 24px</h3>
+    <svg width="24" viewBox="0 0 24 24" style="background: burlywood">
+      <path
+        d="M14.3890873,6.6109127 C16.295544,8.51736945 16.509834,11.4752038 15.0319571,13.6180149 L19.6923882,18.2781746 L18.2781746,19.6923882 L13.6171816,15.0325317 C11.4744371,16.5097784 8.51712234,16.2952969 6.6109127,14.3890873 C4.4630291,12.2412037 4.4630291,8.75879631 6.6109127,6.6109127 C8.75879631,4.4630291 12.2412037,4.4630291 14.3890873,6.6109127 Z M12.9748737,8.02512627 C11.6080387,6.65829124 9.39196129,6.65829124 8.02512627,8.02512627 C6.65829124,9.39196129 6.65829124,11.6080387 8.02512627,12.9748737 C9.39196129,14.3417088 11.6080387,14.3417088 12.9748737,12.9748737 C14.3417088,11.6080387 14.3417088,9.39196129 12.9748737,8.02512627 Z"
+      ></path>
+    </svg>
+
+    <h3>SVG element with an explicit width of 24px and padding of 10px</h3>
+    <svg
+      width="24"
+      viewBox="0 0 24 24"
+      style="background: burlywood; padding: 10px"
+    >
+      <path
+        d="M14.3890873,6.6109127 C16.295544,8.51736945 16.509834,11.4752038 15.0319571,13.6180149 L19.6923882,18.2781746 L18.2781746,19.6923882 L13.6171816,15.0325317 C11.4744371,16.5097784 8.51712234,16.2952969 6.6109127,14.3890873 C4.4630291,12.2412037 4.4630291,8.75879631 6.6109127,6.6109127 C8.75879631,4.4630291 12.2412037,4.4630291 14.3890873,6.6109127 Z M12.9748737,8.02512627 C11.6080387,6.65829124 9.39196129,6.65829124 8.02512627,8.02512627 C6.65829124,9.39196129 6.65829124,11.6080387 8.02512627,12.9748737 C9.39196129,14.3417088 11.6080387,14.3417088 12.9748737,12.9748737 C14.3417088,11.6080387 14.3417088,9.39196129 12.9748737,8.02512627 Z"
+      ></path>
+    </svg>
+
+    <h3>
+      SVG element with an explicit width of 24px and padding of 10px, and
+      box-sizing: border-box
+    </h3>
+    <p>
+      What happens is the padding and border are subtracted from the box size
+      you specified; if that means there’s no room left for content, it
+      disappears
+    </p>
+    <svg
+      width="24"
+      viewBox="0 0 24 24"
+      style="background: burlywood; padding: 10px; box-sizing: border-box"
+    >
+      <path
+        d="M14.3890873,6.6109127 C16.295544,8.51736945 16.509834,11.4752038 15.0319571,13.6180149 L19.6923882,18.2781746 L18.2781746,19.6923882 L13.6171816,15.0325317 C11.4744371,16.5097784 8.51712234,16.2952969 6.6109127,14.3890873 C4.4630291,12.2412037 4.4630291,8.75879631 6.6109127,6.6109127 C8.75879631,4.4630291 12.2412037,4.4630291 14.3890873,6.6109127 Z M12.9748737,8.02512627 C11.6080387,6.65829124 9.39196129,6.65829124 8.02512627,8.02512627 C6.65829124,9.39196129 6.65829124,11.6080387 8.02512627,12.9748737 C9.39196129,14.3417088 11.6080387,14.3417088 12.9748737,12.9748737 C14.3417088,11.6080387 14.3417088,9.39196129 12.9748737,8.02512627 Z"
+      ></path>
+    </svg>
+  </body>
+</html>
