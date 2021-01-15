@@ -61,18 +61,18 @@ body {
 
 .item-content_spacer {
   max-width: 100%;
-  width: 1000vw;
+  width: 100vw;
 }
 
 .item-content_resizable-horizontally {
-  width: 1000vw;
+  width: 100vw;
   max-width: 100%;
   --arbitrary-item-height: 100px;
   height: var(--arbitrary-item-height, max-content);
 }
 
 .item-content_resizable-vertically {
-  height: 1000vh;
+  height: 100vh;
   max-height: 100%;
 
   /* --arbitrary-item-width: 200px; */
