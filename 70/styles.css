@@ -19,7 +19,7 @@ body {
 
 #beep-lines {
   width: 260px;
-  animation: fade 0.5s infinite alternate;
+  animation: beep-lines-fade 0.5s infinite alternate;
 }
 
 @keyframes zoom {
@@ -33,7 +33,7 @@ body {
   }
 }
 
-@keyframes fade {
+@keyframes beep-lines-fade {
   0%,
   20% {
     opacity: 0;
