@@ -1,0 +1,54 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-areas: 'the-one-area';
+  place-content: center;
+  place-items: center;
+}
+
+#beep,
+#beep-lines {
+  grid-area: the-one-area;
+}
+
+#beep {
+  width: 150px;
+  animation: zoom 0.5s infinite alternate;
+}
+
+#beep-lines {
+  width: 260px;
+  animation: fade 0.5s infinite alternate;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(0.8) rotate(-1deg);
+  }
+
+  60%,
+  100% {
+    transform: scale(1) rotate(1deg);
+  }
+}
+
+@keyframes fade {
+  0%,
+  20% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  29%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */
