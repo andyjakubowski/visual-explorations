@@ -3,12 +3,12 @@ body {
 }
 
 div {
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 input[type='checkbox'] {
   appearance: none;
-  border: 1px solid black;
+  border: 10px solid black;
   width: 100px;
   height: 100px;
 }
@@ -18,13 +18,13 @@ input[type='checkbox']:checked {
 }
 
 input[type='checkbox']:hover {
-  background-color: gray;
+  background-color: lightgray;
+}
+
+input[type='checkbox']:active {
+  border: 10px solid red;
 }
 
 input[type='checkbox']:focus {
   background-color: green;
 }
-
-/* input[type='checkbox']:checked:hover {
-  background-color: magenta;
-} */
