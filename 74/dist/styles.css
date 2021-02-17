@@ -1,0 +1,16 @@
+body {
+  margin: 16px;
+}
+
+#box {
+  padding: 8px;
+  border: 3px solid gray;
+}
+
+#box:hover {
+  background-color: sandybrown;
+}
+
+#box:active {
+  border-color: red;
+}
