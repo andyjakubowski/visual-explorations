@@ -31,13 +31,14 @@
 
 #container {
   grid-area: container;
-  --container-width: 250;
-  --container-height: 250;
+  --container-width: 200;
+  --container-height: 150;
   position: relative;
   width: calc(var(--container-width) * 1px);
   height: calc(var(--container-height) * 1px);
   margin: 0;
-  background-color: burlywood;
+  background: linear-gradient(to top, black, rgba(0, 0, 0, 0)),
+    linear-gradient(to right, white, rgba(255, 255, 255, 0)), #2a00ffcc;
   touch-action: none;
   -webkit-user-select: none;
   user-select: none;
