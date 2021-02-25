@@ -2,17 +2,17 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  place-items: center;
+  grid-auto-rows: minmax(40px, auto);
+  place-content: center;
   background-color: #333;
   font-family: sans-serif;
 }
 
 :root::before {
   content: attr(data-coordinates);
-  grid-column: 1 / span 1;
-  grid-row: 1 / span 1;
-  place-self: start center;
+  font-family: monospace;
   color: white;
+  text-align: center;
   padding-top: 8px;
 }
 
@@ -25,8 +25,6 @@
   margin: 0;
   background-color: burlywood;
   touch-action: none;
-  grid-column: 1 / span 1;
-  grid-row: 1 / span 1;
 }
 
 #box {
