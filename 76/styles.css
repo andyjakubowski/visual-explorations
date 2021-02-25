@@ -1,0 +1,51 @@
+:root {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #333;
+  font-family: sans-serif;
+}
+
+:root::before {
+  content: attr(data-coordinates);
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  place-self: start center;
+  color: white;
+  padding-top: 8px;
+}
+
+#container {
+  --container-width: 300;
+  --container-height: 300;
+  position: relative;
+  width: calc(var(--container-width) * 1px);
+  height: calc(var(--container-height) * 1px);
+  margin: 0;
+  background-color: burlywood;
+  touch-action: none;
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+}
+
+#box {
+  --width: 40;
+  --height: 40;
+  --half-width: calc(var(--width) / 2);
+  --half-height: calc(var(--height) / 2);
+  --left: calc((var(--pointer-left, 0) - var(--pointer-offset-left, 0)) * 1px);
+  --top: calc((var(--pointer-top, 0) - var(--pointer-offset-top, 0)) * 1px);
+  --min-left: calc((0 - var(--half-width)) * 1px);
+  --min-top: calc((0 - var(--half-height)) * 1px);
+  --max-left: calc((var(--container-width) - var(--half-width)) * 1px);
+  --max-top: calc((var(--container-height) - var(--half-height)) * 1px);
+  --clamped-left: clamp(var(--min-left), var(--left), var(--max-left));
+  --clamped-top: clamp(var(--min-top), var(--top), var(--max-top));
+  position: absolute;
+  left: var(--clamped-left);
+  top: var(--clamped-top);
+  width: calc(var(--width) * 1px);
+  height: calc(var(--height) * 1px);
+  background-color: black;
+}
