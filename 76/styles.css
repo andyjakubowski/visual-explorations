@@ -2,23 +2,37 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-auto-rows: minmax(40px, auto);
+  grid:
+    'hsv' 16px
+    'hsl' 16px
+    '.' 32px
+    'container';
   place-content: center;
   background-color: #333;
   font-family: sans-serif;
 }
 
-:root::before {
-  content: attr(data-coordinates);
+:root::before,
+:root::after {
   font-family: monospace;
   color: white;
   text-align: center;
-  padding-top: 8px;
+}
+
+:root::before {
+  grid-area: hsv;
+  content: attr(data-hsv);
+}
+
+:root::after {
+  grid-area: hsl;
+  content: attr(data-hsl);
 }
 
 #container {
-  --container-width: 300;
-  --container-height: 300;
+  grid-area: container;
+  --container-width: 250;
+  --container-height: 250;
   position: relative;
   width: calc(var(--container-width) * 1px);
   height: calc(var(--container-height) * 1px);

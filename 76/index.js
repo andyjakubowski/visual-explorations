@@ -2,6 +2,18 @@ const clamp = function clamp(min, val, max) {
   return Math.max(min, Math.min(val, max));
 };
 
+const hsvToHsl = function hsvToHsl({ h, s: sv, v, a = 1.0 }) {
+  const l = v * (1 - sv / 2);
+  let sl;
+  if (l === 0 || l === 1) {
+    sl = 0;
+  } else {
+    sl = (v - l) / Math.min(l, 1 - l);
+  }
+
+  return { h, s: sl, l, a };
+};
+
 const handleVisibilityChange = function handleVisibilityChange(event) {
   if (document.visibilityState === 'hidden') {
     send({ type: 'visibilitychange.hidden' });
@@ -51,11 +63,18 @@ const updateBoxPosition = function updateBoxPosition({
   const containerRect = container.getBoundingClientRect();
   const left = pointerLeftDocument - (containerRect.left + window.scrollX);
   const top = pointerTopDocument - (containerRect.top + window.scrollY);
-  const s = clamp(0, left, containerRect.width) / containerRect.width;
-  const b = 1 - clamp(0, top, containerRect.height) / containerRect.height;
-  document.documentElement.dataset.coordinates = `s: ${s.toFixed(
+  const hsv = {
+    h: 0,
+    s: clamp(0, left, containerRect.width) / containerRect.width,
+    v: 1 - clamp(0, top, containerRect.height) / containerRect.height,
+  };
+  const hsl = hsvToHsl(hsv);
+  document.documentElement.dataset.hsv = `hsv.s: ${hsv.s.toFixed(
     3
-  )}, b: ${b.toFixed(3)}`;
+  )}, hsv.v: ${hsv.v.toFixed(3)}`;
+  document.documentElement.dataset.hsl = `hsl.s: ${hsl.s.toFixed(
+    3
+  )}, hsl.l: ${hsl.l.toFixed(3)}`;
   box.style.setProperty('--pointer-left', left);
   box.style.setProperty('--pointer-top', top);
 };
