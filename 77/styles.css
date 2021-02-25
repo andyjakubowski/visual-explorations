@@ -1,0 +1,66 @@
+:root {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid:
+    'hsv' 16px
+    'hsl' 16px
+    '.' 32px
+    'container';
+  place-content: center;
+  background-color: #333;
+  font-family: sans-serif;
+}
+
+:root::before,
+:root::after {
+  font-family: monospace;
+  color: white;
+  text-align: center;
+}
+
+:root::before {
+  grid-area: hsv;
+  content: attr(data-hsv);
+}
+
+:root::after {
+  grid-area: hsl;
+  content: attr(data-hsl);
+}
+
+#container {
+  grid-area: container;
+  --container-width: 250;
+  --container-height: 250;
+  position: relative;
+  width: calc(var(--container-width) * 1px);
+  height: calc(var(--container-height) * 1px);
+  margin: 0;
+  background-color: burlywood;
+  touch-action: none;
+}
+
+#box {
+  box-sizing: border-box;
+  --width: 10;
+  --height: 10;
+  --half-width: calc(var(--width) / 2);
+  --half-height: calc(var(--height) / 2);
+  --left: calc((var(--pointer-left, 0) - var(--half-width, 0)) * 1px);
+  --top: calc((var(--pointer-top, 0) - var(--half-height, 0)) * 1px);
+  --min-left: calc((0 - var(--half-width)) * 1px);
+  --min-top: calc((0 - var(--half-height)) * 1px);
+  --max-left: calc((var(--container-width) - var(--half-width)) * 1px);
+  --max-top: calc((var(--container-height) - var(--half-height)) * 1px);
+  --clamped-left: clamp(var(--min-left), var(--left), var(--max-left));
+  --clamped-top: clamp(var(--min-top), var(--top), var(--max-top));
+  position: absolute;
+  left: var(--clamped-left);
+  top: var(--clamped-top);
+  width: calc(var(--width) * 1px);
+  height: calc(var(--height) * 1px);
+  border-radius: calc(var(--half-width) * 1px);
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset, 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
