@@ -39,14 +39,16 @@
   margin: 0;
   background-color: burlywood;
   touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #box {
   box-sizing: border-box;
-  --width: 10;
-  --height: 10;
-  --half-width: calc(var(--width) / 2);
-  --half-height: calc(var(--height) / 2);
+  --box-width: 48;
+  --box-height: 48;
+  --half-width: calc(var(--box-width) / 2);
+  --half-height: calc(var(--box-height) / 2);
   --left: calc((var(--pointer-left, 0) - var(--half-width, 0)) * 1px);
   --top: calc((var(--pointer-top, 0) - var(--half-height, 0)) * 1px);
   --min-left: calc((0 - var(--half-width)) * 1px);
@@ -58,9 +60,19 @@
   position: absolute;
   left: var(--clamped-left);
   top: var(--clamped-top);
-  width: calc(var(--width) * 1px);
-  height: calc(var(--height) * 1px);
+  width: calc(var(--box-width) * 1px);
+  height: calc(var(--box-height) * 1px);
   border-radius: calc(var(--half-width) * 1px);
-  border: 2px solid white;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset, 0 0 0 1px rgba(0, 0, 0, 0.05);
+  border: 6px solid white;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05) inset, 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+@media (any-pointer: fine) {
+  #box {
+    --box-width: 10;
+    --box-height: 10;
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset,
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
 }
