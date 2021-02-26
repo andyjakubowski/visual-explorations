@@ -1,4 +1,8 @@
-:root {
+body {
+  margin: 0;
+}
+
+.picker {
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -6,74 +10,107 @@
     'hsv' 16px
     'hsl' 16px
     '.' 32px
-    'container';
+    'saturation'
+    'hue'
+    'alpha'
+    / 320px;
   place-content: center;
+  justify-items: center;
   background-color: #333;
   font-family: sans-serif;
+  --saturation-width: 200;
+  --saturation-height: 150;
 }
 
-:root::before,
-:root::after {
+.picker::before,
+.picker::after {
   font-family: monospace;
   color: white;
   text-align: center;
 }
 
-:root::before {
+.picker::before {
   grid-area: hsv;
   content: attr(data-hsv);
 }
 
-:root::after {
+.picker::after {
   grid-area: hsl;
-  content: attr(data-hsl);
+  content: attr(data-hsla);
 }
 
-#container {
-  grid-area: container;
-  --container-width: 200;
-  --container-height: 150;
+.saturation {
+  grid-area: saturation;
+
   position: relative;
-  width: calc(var(--container-width) * 1px);
-  height: calc(var(--container-height) * 1px);
+  width: calc(var(--saturation-width) * 1px);
+  height: calc(var(--saturation-height) * 1px);
   margin: 0;
   background: linear-gradient(to top, black, rgba(0, 0, 0, 0)),
-    linear-gradient(to right, white, rgba(255, 255, 255, 0)), #2a00ffcc;
+    linear-gradient(to right, white, rgba(255, 255, 255, 0)),
+    hsl(var(--h, 250), 100%, 50%);
   touch-action: none;
   -webkit-user-select: none;
   user-select: none;
 }
 
-#box {
+.saturation__selection-marker {
   box-sizing: border-box;
-  --box-width: 48;
-  --box-height: 48;
-  --half-width: calc(var(--box-width) / 2);
-  --half-height: calc(var(--box-height) / 2);
+  --marker-width: 48;
+  --marker-height: 48;
+  --half-width: calc(var(--marker-width) / 2);
+  --half-height: calc(var(--marker-height) / 2);
   --left: calc((var(--pointer-left, 0) - var(--half-width, 0)) * 1px);
   --top: calc((var(--pointer-top, 0) - var(--half-height, 0)) * 1px);
   --min-left: calc((0 - var(--half-width)) * 1px);
   --min-top: calc((0 - var(--half-height)) * 1px);
-  --max-left: calc((var(--container-width) - var(--half-width)) * 1px);
-  --max-top: calc((var(--container-height) - var(--half-height)) * 1px);
+  --max-left: calc((var(--saturation-width) - var(--half-width)) * 1px);
+  --max-top: calc((var(--saturation-height) - var(--half-height)) * 1px);
   --clamped-left: clamp(var(--min-left), var(--left), var(--max-left));
   --clamped-top: clamp(var(--min-top), var(--top), var(--max-top));
   position: absolute;
   left: var(--clamped-left);
   top: var(--clamped-top);
-  width: calc(var(--box-width) * 1px);
-  height: calc(var(--box-height) * 1px);
+  width: calc(var(--marker-width) * 1px);
+  height: calc(var(--marker-height) * 1px);
   border-radius: calc(var(--half-width) * 1px);
   border: 6px solid white;
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05) inset, 0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
 @media (any-pointer: fine) {
-  #box {
-    --box-width: 10;
-    --box-height: 10;
+  .saturation__selection-marker {
+    --marker-width: 10;
+    --marker-height: 10;
     border: 2px solid white;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset,
       0 0 0 1px rgba(0, 0, 0, 0.05);
   }
+}
+
+.hue {
+  grid-area: hue;
+  --hue-width: calc(var(--saturation-width) * 1px);
+  --hue-height: 48px;
+  width: var(--hue-width);
+  height: var(--hue-height);
+  /* background: linear-gradient(
+    to right,
+    #f00 0%,
+    #ff0 17%,
+    #0f0 33%,
+    #0ff 50%,
+    #00f 67%,
+    #f0f 83%,
+    #f00 100%
+  ); */
+}
+
+.alpha {
+  grid-area: alpha;
+  --alpha-width: calc(var(--saturation-width) * 1px);
+  --alpha-height: 48px;
+  width: var(--alpha-width);
+  height: var(--alpha-height);
+  /* background: linear-gradient(to right, rgba(0, 0, 0, 0), black); */
 }

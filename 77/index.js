@@ -2,7 +2,7 @@ const clamp = function clamp(min, val, max) {
   return Math.max(min, Math.min(val, max));
 };
 
-const hsvToHsl = function hsvToHsl({ h, s: sv, v, a = 1.0 }) {
+const hsvaToHsla = function hsvaToHsla({ h, s: sv, v, a = 1.0 }) {
   const l = v * (1 - sv / 2);
   let sl;
   if (l === 0 || l === 1) {
@@ -12,6 +12,13 @@ const hsvToHsl = function hsvToHsl({ h, s: sv, v, a = 1.0 }) {
   }
 
   return { h, s: sl, l, a };
+};
+
+const hslaToHsva = function hslaToHsva({ h, s: sl, l, a = 1.0 }) {
+  const v = l + sl * Math.min(l, 1 - l);
+  const sv = v === 0 ? 0 : 2 * (1 - l / v);
+
+  return { h, s: sv, v, a };
 };
 
 const handleVisibilityChange = function handleVisibilityChange(event) {
@@ -37,41 +44,42 @@ const removeDraggingListeners = function removeDraggingListeners() {
 };
 
 const addIdleListeners = function addIdleListeners() {
-  container.addEventListener('pointerdown', send);
+  saturationEl.addEventListener('pointerdown', send);
 };
 
 const removeIdleListeners = function removeIdleListeners() {
-  container.addEventListener('pointerdown', send);
+  saturationEl.addEventListener('pointerdown', send);
 };
 
-const updateBoxPosition = function updateBoxPosition({
+const calculateColor = function calculateColor({
   pageX: pointerLeftDocument,
   pageY: pointerTopDocument,
 }) {
-  const containerRect = container.getBoundingClientRect();
-  const left = pointerLeftDocument - (containerRect.left + window.scrollX);
-  const top = pointerTopDocument - (containerRect.top + window.scrollY);
-  const hsv = {
-    h: 0,
-    s: clamp(0, left, containerRect.width) / containerRect.width,
-    v: 1 - clamp(0, top, containerRect.height) / containerRect.height,
+  const saturationRect = saturationEl.getBoundingClientRect();
+  const left = pointerLeftDocument - (saturationRect.left + window.scrollX);
+  const top = pointerTopDocument - (saturationRect.top + window.scrollY);
+  hsva = {
+    h: hsva.h,
+    s: clamp(0, left, saturationRect.width) / saturationRect.width,
+    v: 1 - clamp(0, top, saturationRect.height) / saturationRect.height,
+    a: hsva.a,
   };
-  const hsl = hsvToHsl(hsv);
-  document.documentElement.dataset.hsv = `hsv.s: ${hsv.s.toFixed(
-    3
-  )}, hsv.v: ${hsv.v.toFixed(3)}`;
-  document.documentElement.dataset.hsl = `hsl.s: ${hsl.s.toFixed(
-    3
-  )}, hsl.l: ${hsl.l.toFixed(3)}`;
-  box.style.setProperty('--pointer-left', left);
-  box.style.setProperty('--pointer-top', top);
+  hsla = hsvaToHsla(hsva);
+};
+
+const updateMarkerPosition = function updateMarkerPosition() {
+  const saturationRect = saturationEl.getBoundingClientRect();
+  const left = hsva.s * saturationRect.width;
+  const top = (1 - hsva.v) * saturationRect.height;
+  saturationMarkerEl.style.setProperty('--pointer-left', left);
+  saturationMarkerEl.style.setProperty('--pointer-top', top);
 };
 
 const machine = {
   initial: 'idle',
   states: {
     idle: {
-      entry: [addIdleListeners],
+      entry: [addIdleListeners, outputColorToDOM],
       exit: [removeIdleListeners],
       on: {
         pointerdown: {
@@ -80,7 +88,7 @@ const machine = {
       },
     },
     dragging: {
-      entry: [addDraggingListeners, updateBoxPosition],
+      entry: [addDraggingListeners, calculateColor, outputColorToDOM],
       exit: [removeDraggingListeners],
       on: {
         pointerup: {
@@ -96,7 +104,7 @@ const machine = {
           target: 'idle',
         },
         pointermove: {
-          actions: [updateBoxPosition],
+          actions: [calculateColor, outputColorToDOM],
         },
       },
     },
@@ -126,9 +134,19 @@ function transition(state, event) {
   return machine.states[state]?.on?.[event]?.target || state;
 }
 
+let hsla = {
+  h: 120,
+  s: 0.5,
+  l: 0.5,
+  a: 1.0,
+};
+let hsva = hslaToHsva(hsla);
 let currentState;
-let container;
-let box;
+let pickerEl;
+let saturationEl;
+let saturationMarkerEl;
+let hueSliderEl;
+let alphaSliderEl;
 
 function send(event) {
   const prevState = currentState;
@@ -144,11 +162,55 @@ function send(event) {
   console.log(`${prevState} → ${event.type} → ${currentState}`);
 }
 
+function setElReferences() {
+  pickerEl = document.getElementsByClassName('picker').item(0);
+  saturationEl = pickerEl.getElementsByClassName('saturation').item(0);
+  saturationMarkerEl = saturationEl
+    .getElementsByClassName('saturation__selection-marker')
+    .item(0);
+  hueSliderEl = pickerEl.getElementsByClassName('hue').item(0);
+  alphaSliderEl = pickerEl.getElementsByClassName('alpha').item(0);
+}
+
+function outputColorToCss() {
+  Object.entries(hsla).forEach(([key, value]) => {
+    pickerEl.style.setProperty(`--${key}`, value);
+  });
+}
+
+function outputColorToDataAttribute() {
+  pickerEl.dataset.hsla = `h: ${hsla.h},  s: ${hsla.s.toFixed(
+    3
+  )}, l: ${hsla.l.toFixed(3)}, a: ${hsla.a}`;
+}
+
+function outputColorToDOM() {
+  outputColorToCss();
+  outputColorToDataAttribute();
+  updateMarkerPosition();
+}
+
+function handleHueChange(event) {
+  const { value } = event.target;
+  hsva.h = Number(value);
+  hsla.h = Number(value);
+  outputColorToDOM();
+}
+
+function handleAlphaChange(event) {
+  const { value } = event.target;
+  hsva.a = Number(value);
+  hsla.a = Number(value);
+  outputColorToDOM();
+}
+
 function handleDOMContentLoaded() {
-  container = document.getElementById('container');
-  box = document.getElementById('box');
+  setElReferences();
   currentState = machine.initial;
   callEntryActions(currentState);
+
+  hueSliderEl.addEventListener('input', handleHueChange);
+  alphaSliderEl.addEventListener('input', handleAlphaChange);
 }
 
 if (document.readyState === 'loading') {
