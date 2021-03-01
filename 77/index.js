@@ -48,7 +48,7 @@ const addIdleListeners = function addIdleListeners() {
 };
 
 const removeIdleListeners = function removeIdleListeners() {
-  saturationEl.addEventListener('pointerdown', send);
+  saturationEl.removeEventListener('pointerdown', send);
 };
 
 const calculateColor = function calculateColor({
