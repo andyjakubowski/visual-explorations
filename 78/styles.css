@@ -46,7 +46,7 @@ body {
   text-align: center;
 }
 
-.picker::before {
+/* .picker::before {
   grid-area: hsv;
   content: attr(data-hsv);
 }
@@ -54,7 +54,7 @@ body {
 .picker::after {
   grid-area: hsl;
   content: attr(data-hsla);
-}
+} */
 
 .saturation {
   grid-area: saturation;

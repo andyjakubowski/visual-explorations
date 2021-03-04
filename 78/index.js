@@ -51,10 +51,19 @@ const removeIdleListeners = function removeIdleListeners() {
   saturationEl.removeEventListener('pointerdown', send);
 };
 
-const calculateColor = function calculateColor({
-  pageX: pointerLeftDocument,
-  pageY: pointerTopDocument,
-}) {
+function wait(ms) {
+  var start = new Date().getTime();
+  var end = start;
+  while (end < start + ms) {
+    end = new Date().getTime();
+  }
+}
+
+const calculateColor = function calculateColor(
+  pointerLeftDocument,
+  pointerTopDocument
+) {
+  // wait(10);
   const saturationRect = saturationEl.getBoundingClientRect();
   const left = pointerLeftDocument - (saturationRect.left + window.scrollX);
   const top = pointerTopDocument - (saturationRect.top + window.scrollY);
@@ -74,6 +83,27 @@ const updateMarkerPosition = function updateMarkerPosition(saturationRect) {
   saturationMarkerEl.style.setProperty('--pointer-top', top);
 };
 
+const debouncedUpdateColor = (function makeDebouncedUpdateColor() {
+  let didScheduleAnimationFrame = false;
+
+  return function debouncedUpdateColor({
+    pageX: pointerLeftDocument,
+    pageY: pointerTopDocument,
+  }) {
+    if (!didScheduleAnimationFrame) {
+      console.log('scheduling an animation frame');
+      didScheduleAnimationFrame = true;
+      requestAnimationFrame(() => {
+        calculateColor(pointerLeftDocument, pointerTopDocument);
+        outputColorToDOM();
+        didScheduleAnimationFrame = false;
+      });
+    } else {
+      console.log('already scheduled a frame - bouncing');
+    }
+  };
+})();
+
 const machine = {
   initial: 'idle',
   states: {
@@ -87,7 +117,7 @@ const machine = {
       },
     },
     dragging: {
-      entry: [addDraggingListeners, calculateColor, outputColorToDOM],
+      entry: [addDraggingListeners, debouncedUpdateColor],
       exit: [removeDraggingListeners],
       on: {
         pointerup: {
@@ -103,7 +133,7 @@ const machine = {
           target: 'idle',
         },
         pointermove: {
-          actions: [calculateColor, outputColorToDOM],
+          actions: [debouncedUpdateColor],
         },
       },
     },
@@ -142,12 +172,40 @@ let hsla = {
   a: 1.0,
 };
 let hsva = hslaToHsva(hsla);
+let scheduledAnimationFrame = false;
 let currentState;
 let pickerEl;
 let saturationEl;
 let saturationMarkerEl;
 let hueSliderEl;
 let alphaSliderEl;
+
+// const debounce = function debounce(functionToDebounce) {
+//   let scheduledCallback = null;
+
+//   return function debouncedFunction() {
+//     if (!scheduledCallback) {
+//       functionToDebounce(() => {});
+//     }
+//   };
+// };
+
+// const debouncedRequestAnimationFrame = (function makeDebouncedRequestAnimationFrame() {
+//   let didScheduleAnimationFrame = false;
+
+//   return function debouncedRequestAnimationFrame(callback) {
+//     if (!didScheduleAnimationFrame) {
+// console.log('scheduling an animation frame');
+//       requestAnimationFrame(() => {
+//         didScheduleAnimationFrame = false;
+//         callback();
+//       });
+//       didScheduleAnimationFrame = true;
+//     } else {
+// console.log('already scheduled a frame - bouncing');
+//     }
+//   };
+// })();
 
 function send(event) {
   const prevState = currentState;
@@ -160,7 +218,7 @@ function send(event) {
   }
 
   currentState = nextState;
-  console.log(`${prevState} → ${event.type} → ${currentState}`);
+  // console.log(`${prevState} → ${event.type} → ${currentState}`);
 }
 
 function setElReferences() {
@@ -190,6 +248,14 @@ function outputColorToDOM() {
   outputColorToCss();
   outputColorToDataAttribute();
   updateMarkerPosition(saturationRect);
+}
+
+function updateColor({
+  pageX: pointerLeftDocument,
+  pageY: pointerTopDocument,
+}) {
+  calculateColor(pointerLeftDocument, pointerTopDocument);
+  outputColorToDOM();
 }
 
 function handleHueChange(event) {
