@@ -14,7 +14,7 @@
       }
 
       .element-with-scrollable-overflow {
-        height: 400px;
+        height: 300px;
         overflow: auto;
       }
 
@@ -41,6 +41,13 @@
     </style>
     <script>
       let elWithOverflow;
+      let view0;
+      let view1;
+      let view2;
+      let view3;
+      let view4;
+      let buttonEl;
+      let observer;
 
       function swapNodes(nodeOne, nodeTwo) {
         const nodeOneNextElSibling = nodeOne.nextElementSibling;
@@ -49,12 +56,71 @@
         nodeOneParent.insertBefore(nodeTwo, nodeOneNextElSibling);
       }
 
+      function resetIntersectionState(element) {
+        element.intersectionState = {
+          previous: 'unknown',
+          current: 'unknown',
+        };
+      }
+
+      function intersectionObserverCallback(entries, observer) {
+        const entry = entries.find((entry) =>
+          entry.target.isSameNode(elWithOverflow.firstElementChild)
+        );
+
+        if (!entry) {
+          return;
+        }
+
+        const { target } = entry;
+
+        target.intersectionState = {
+          previous: target.intersectionState.current,
+          current: entry.isIntersecting ? 'intersecting' : 'notIntersecting',
+        };
+
+        const transitionedToNotIntersecting =
+          target.intersectionState.previous === 'intersecting' &&
+          target.intersectionState.current === 'notIntersecting';
+
+        console.log(`target.intersectionState:`, target.intersectionState);
+        console.log(
+          `transitionedToNotIntersecting:`,
+          transitionedToNotIntersecting
+        );
+
+        if (transitionedToNotIntersecting) {
+          const scrollTopBeforeDOMChanges = elWithOverflow.scrollTop;
+          const targetHeight = entry.boundingClientRect.height;
+          const newScrollTop = scrollTopBeforeDOMChanges - targetHeight;
+          resetIntersectionState(target);
+          observer.unobserve(target);
+          elWithOverflow.append(target);
+          elWithOverflow.scrollTo(0, newScrollTop);
+          resetIntersectionState(elWithOverflow.firstElementChild);
+          observer.observe(elWithOverflow.firstElementChild);
+        }
+      }
+
       function handleDOMContentLoaded() {
         elWithOverflow = document.getElementById('el-with-overflow');
+        view0 = document.getElementById('view-0');
+        view1 = document.getElementById('view-1');
+        view2 = document.getElementById('view-2');
+        view3 = document.getElementById('view-3');
+        view4 = document.getElementById('view-4');
+        buttonEl = document.getElementById('button');
 
-        // elWithOverflow.addEventListener('scroll', () => {
-        //   console.log(`elWithOverflow scrollTop: ${elWithOverflow.scrollTop}`);
-        // });
+        observer = new IntersectionObserver(intersectionObserverCallback, {
+          root: elWithOverflow,
+          rootMargin: '0px',
+        });
+        resetIntersectionState(elWithOverflow.firstElementChild);
+        observer.observe(elWithOverflow.firstElementChild);
+
+        buttonEl.hidden = true;
+        buttonEl.textContent = 'Observe firstElementChild';
+        buttonEl.addEventListener('click', () => {});
       }
 
       if (document.readyState === 'loading') {
@@ -66,18 +132,37 @@
   </head>
   <body>
     <div id="el-with-overflow" class="element-with-scrollable-overflow">
-      <div class="view" data-view="View 0" data-content="Content 0"></div>
-      <div class="view" data-view="View 1" data-content="Content 1"></div>
-      <div class="view" data-view="View 2" data-content="Content 2"></div>
-      <div class="view" data-view="View 3" data-content="Content 3"></div>
-      <div class="view" data-view="View 4" data-content="Content 4"></div>
+      <div
+        class="view"
+        id="view-0"
+        data-view="View 0"
+        data-content="Content 0"
+      ></div>
+      <div
+        class="view"
+        id="view-1"
+        data-view="View 1"
+        data-content="Content 1"
+      ></div>
+      <div
+        class="view"
+        id="view-2"
+        data-view="View 2"
+        data-content="Content 2"
+      ></div>
+      <div
+        class="view"
+        id="view-3"
+        data-view="View 3"
+        data-content="Content 3"
+      ></div>
+      <div
+        class="view"
+        id="view-4"
+        data-view="View 4"
+        data-content="Content 4"
+      ></div>
     </div>
+    <button id="button"></button>
   </body>
-  <!-- <body>
-    <div class="view" data-view="View 0" data-content="Content 0"></div>
-    <div class="view" data-view="View 1" data-content="Content 1"></div>
-    <div class="view" data-view="View 2" data-content="Content 2"></div>
-    <div class="view" data-view="View 3" data-content="Content 3"></div>
-    <div class="view" data-view="View 4" data-content="Content 4"></div>
-  </body> -->
 </html>
