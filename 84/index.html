@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>84 - A List With 5,000 Labeled Divs</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      div {
+        height: 100px;
+        box-shadow: inset 0 -1px black;
+      }
+    </style>
+    <script>
+      function handleDOMContentLoaded() {
+        const divs = [...Array(5000)].map((_, i) => {
+          const div = document.createElement('div');
+          div.textContent = `Item ${i}`;
+          return div;
+        });
+        document.body.append(...divs);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+      } else {
+        handleDOMContentLoaded();
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
