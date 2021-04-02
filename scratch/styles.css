@@ -1,3 +1,10 @@
+html {
+  background-color: burlywood;
+}
+
 body {
-  margin: 0;
+  display: flex;
+  width: 500px;
+  height: 100px;
+  background-color: white;
 }
