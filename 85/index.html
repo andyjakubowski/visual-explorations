@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>85 - SVG Rainbow and Pot of Gold</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+    }
+
+    svg {
+      /* width: 500px; */
+      /* height: 300px; */
+      background-color: burlywood;
+    }
+  </style>
+  <body>
+    <!-- <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <rect
+        id="rect"
+        fill="#0000FF"
+        x="50%"
+        y="100%"
+        width="60"
+        height="60"
+        rx="15"
+        transform="translate(-30, -60)"
+      ></rect>
+    </svg> -->
+    <svg
+      class="defs-only"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <symbol id="rainbow">
+        <svg viewBox="0 0 200 100" preserveAspectRatio="none">
+          <linearGradient id="sky-grad" x2="0%" y2="100%">
+            <stop stop-color="lightblue" offset="10%" />
+            <stop stop-color="aliceblue" offset="100%" />
+          </linearGradient>
+          <linearGradient id="cloud-grad" x2="0%" y2="100%">
+            <stop stop-color="white" offset="10%" />
+            <stop stop-color="silver" offset="100%" />
+          </linearGradient>
+          <radialGradient id="rainbow-grad">
+            <stop stop-opacity="0" offset="0%" />
+            <stop stop-color="#F00" stop-opacity="0" offset="39%" />
+            <stop stop-color="#F00" stop-opacity="1" offset="42%" />
+            <stop stop-color="#FF0" offset="65%" />
+            <stop stop-color="#0F0" offset="75%" />
+            <stop stop-color="#0FF" offset="85%" />
+            <stop stop-color="#00F" offset="100%" />
+          </radialGradient>
+          <rect height="100%" width="100%" fill="url(#sky-grad)" />
+          <path
+            id="cloud"
+            fill="url(#cloud-grad)"
+            d="M10,25 
+        C10,20 35,15 35,20 
+        C35,10 55,10 55,15 
+        C60,13 65,20 65,25
+        C65,30 45,40 45,35
+        C45,50 25,40 25,35
+        C20,40 10,35 10,25 Z"
+          />
+          <use
+            xlink:href="#cloud"
+            transform="scale(-1,1.1) translate(-140, -10)"
+          />
+          <use
+            xlink:href="#cloud"
+            transform="scale(1.1,0.9) translate(115, 10)"
+          />
+          <ellipse
+            cx="50%"
+            cy="120%"
+            rx="50%"
+            ry="100%"
+            fill="url(#rainbow-grad)"
+          />
+        </svg>
+        <svg
+          viewBox="4.5 1.5 51 49"
+          preserveAspectRatio="xMidYMax meet"
+          x="60%"
+          width="40%"
+          y="60%"
+          height="40%"
+        >
+          <linearGradient id="coin" x2="50%" y2="40%" spreadMethod="reflect">
+            <stop stop-color="gold" offset="30%" />
+            <stop stop-color="goldenrod" offset="70%" />
+            <stop stop-color="white" offset="82%" />
+            <stop stop-color="gold" offset="92%" />
+            <stop stop-color="darkgoldenrod" offset="100%" />
+          </linearGradient>
+          <radialGradient id="pot" fx="30%" fy="35%">
+            <stop stop-color="white" offset="0%" />
+            <stop stop-color="gold" offset="15%" />
+            <stop stop-color="goldenrod" offset="80%" />
+            <stop stop-color="darkgoldenrod" offset="100%" />
+          </radialGradient>
+          <g fill="url(#coin)" stroke="darkgoldenrod" stroke-width="0.5">
+            <circle r="5" transform="translate(30,7)" />
+            <circle r="5" transform="translate(35,13)" />
+            <circle r="5" transform="translate(22,10)" />
+            <circle r="5" transform="translate(27,9)" />
+            <circle r="5" transform="translate(18,17)" />
+            <circle r="5" transform="translate(42,18)" />
+            <circle r="5" transform="translate(32,19)" />
+            <circle r="5" transform="translate(30,14)" />
+            <circle r="5" transform="translate(25,15)" />
+            <circle r="5" transform="translate(37,19)" />
+            <circle r="5" transform="translate(31,16)" />
+            <circle r="5" transform="translate(20,18)" />
+            <circle r="5" transform="translate(26,21)" />
+          </g>
+          <path
+            fill="url(#pot)"
+            stroke="#751"
+            stroke-width="0.25"
+            d="M30,50 C45,50 55,45 55,35  
+        Q 55,27 50,25 C55,22 53,15 45,20
+        S 23,25 15,20 S5,22 10,25
+        Q 5,27 5,35 C5,45 15,50 30,50Z"
+          />
+        </svg>
+      </symbol>
+    </svg>
+    <figure>
+      <figcaption>100x50</figcaption>
+      <div>
+        <svg width="100" height="50">
+          <use xlink:href="#rainbow" />
+        </svg>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>100% wide, 10em high</figcaption>
+      <div>
+        <svg style="width: 100%; height: 10em">
+          <use xlink:href="#rainbow" />
+        </svg>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>100% wide, 5em high</figcaption>
+      <div>
+        <svg style="width: 100%; height: 5em">
+          <use xlink:href="#rainbow" />
+        </svg>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>100% wide, 20em high</figcaption>
+      <div>
+        <svg style="width: 100%; height: 20em">
+          <use xlink:href="#rainbow" />
+        </svg>
+      </div>
+    </figure>
+  </body>
+</html>

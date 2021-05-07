@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>91 - Multi-Part SVG Shape</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <style>
+    body {
+      margin: 0;
+      background: burlywood;
+    }
+
+    section {
+      writing-mode: vertical-rl;
+      /* width: 100vw; */
+      /* height: 100vh; */
+      display: grid;
+      place-content: center;
+      filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.2));
+    }
+
+    section::after {
+      justify-self: center;
+      content: '';
+      inline-size: 13px;
+      block-size: 8px;
+      background-color: white;
+      --polygon-tb: polygon(0 0, 100% 0, 50% 100%);
+      --polygon-rl: polygon(100% 0, 100% 100%, 0 50%);
+      clip-path: var(--polygon-rl);
+    }
+
+    #tooltip-body {
+      padding-block: 8px;
+      padding-inline: 16px;
+      background-color: white;
+      border-radius: 4px;
+    }
+
+    svg {
+      width: 100px;
+      height: 50px;
+      fill: white;
+    }
+  </style>
+  <body>
+    <h1>Flexbox Tooltip</h1>
+    <section>
+      <div id="tooltip-body">Body</div>
+      <!-- <svg viewBox="0 0 110 80" preserveAspectRatio="none">
+        <polygon points="0 0 110 0 55 80"></polygon>
+      </svg> -->
+    </section>
+    <!-- <svg>
+      <rect width="100%" height="100%"></rect>
+    </svg> -->
+  </body>
+</html>

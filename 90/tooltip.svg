@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="156px" height="48px" viewBox="0 0 156 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>tooltip</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M4,40 C1.790861,40 2.705415e-16,38.209139 0,36 L0,4 C-2.705415e-16,1.790861 1.790861,4.05812251e-16 4,0 L152,0 C154.209139,-4.05812251e-16 156,1.790861 156,4 L156,36 C156,38.209139 154.209139,40 152,40 L84,40 L78.5,48 L73,40 L4,40 Z" id="tooltip" fill="#FFFFFF"></path>
+    </g>
+</svg>
