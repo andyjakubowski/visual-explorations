@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>96 - Flexbox - percentage-sized flex item children</title>
+  </head>
+  <style>
+    :root {
+      border: 1px dashed tomato;
+      background-color: whitesmoke;
+      line-height: 58px;
+      /* display: block flex; */
+    }
+
+    body {
+      margin: 0;
+      display: block flex;
+      background-color: wheat;
+    }
+
+    span {
+      flex-grow: 1;
+      background-color: burlywood;
+    }
+
+    span:nth-child(odd) {
+      background-color: darksalmon;
+    }
+
+    #flex-item {
+      flex-grow: 1;
+    }
+
+    div {
+      border: 1px dashed steelblue;
+    }
+
+    div:nth-child(2) {
+      background-color: tan;
+      height: 50%;
+    }
+  </style>
+  <body>
+    <div id="flex-item">
+      <div>One A</div>
+      <div>One B</div>
+      <div>One C</div>
+    </div>
+    <!-- <span>Two</span>
+    <span>Four</span>
+    <span>Five</span>
+    <span>Six</span>
+    <span>Seven</span>
+    <span>Eight</span>
+    <span>Nine</span>
+    <span>Ten</span> -->
+  </body>
+</html>
