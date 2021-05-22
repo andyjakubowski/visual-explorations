@@ -6,7 +6,7 @@
     <title>101 - Box Model Grid Layout - logical properties</title>
     <style>
       body {
-        font-size: 14px;
+        font-size: 10px;
         text-align: center;
         --color-content: #cf5d1c;
         --color-padding: #c6d093;
@@ -14,13 +14,13 @@
         --color-margin: #f2cea5;
         display: grid;
         grid-template-areas:
-          '. . . margin-top . . .'
-          '. . . border-top . . .'
-          '. . . padding-top . . .'
-          'margin-left border-left padding-left content padding-right border-right margin-right'
-          '. . . padding-bottom . . .'
-          '. . . border-bottom . . .'
-          '. . . margin-bottom . . .';
+          '. . . margin-block-start . . .'
+          '. . . border-block-start . . .'
+          '. . . padding-block-start . . .'
+          'margin-inline-start border-inline-start padding-inline-start content padding-inline-end border-inline-end margin-inline-end'
+          '. . . padding-block-end . . .'
+          '. . . border-block-end . . .'
+          '. . . margin-block-end . . .';
         grid-auto-columns: max-content;
       }
 
@@ -42,147 +42,93 @@
         height: var(--thickness_px);
       }
 
-      .margin-top {
+      .margin-block-start {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        height: var(--thickness_px);
+        block-size: var(--thickness_px);
         background-color: var(--color-margin);
-        grid-area: margin-top;
+        grid-area: margin-block-start;
       }
 
-      .border-top {
+      .border-block-start {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        height: var(--thickness_px);
+        block-size: var(--thickness_px);
         background-color: var(--color-border);
-        grid-area: border-top;
+        grid-area: border-block-start;
       }
 
-      .padding-top {
+      .padding-block-start {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        height: var(--thickness_px);
+        block-size: var(--thickness_px);
         background-color: var(--color-padding);
-        grid-area: padding-top;
+        grid-area: padding-block-start;
       }
 
-      .margin-left {
+      .margin-inline-start {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        width: var(--thickness_px);
+        inline-size: var(--thickness_px);
         background-color: var(--color-margin);
-        grid-area: margin-left;
+        grid-area: margin-inline-start;
       }
 
-      .border-left {
+      .border-inline-start {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        width: var(--thickness_px);
+        inline-size: var(--thickness_px);
         background-color: var(--color-border);
-        grid-area: border-left;
+        grid-area: border-inline-start;
       }
 
-      .padding-left {
+      .padding-inline-start {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        width: var(--thickness_px);
+        inline-size: var(--thickness_px);
         background-color: var(--color-padding);
-        grid-area: padding-left;
+        grid-area: padding-inline-start;
       }
 
-      .padding-right {
+      .padding-inline-end {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        width: var(--thickness_px);
+        inline-size: var(--thickness_px);
         background-color: var(--color-padding);
-        grid-area: padding-right;
+        grid-area: padding-inline-end;
       }
 
-      .border-right {
+      .border-inline-end {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        width: var(--thickness_px);
+        inline-size: var(--thickness_px);
         background-color: var(--color-border);
-        grid-area: border-right;
+        grid-area: border-inline-end;
       }
 
-      .margin-right {
+      .margin-inline-end {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        width: var(--thickness_px);
+        inline-size: var(--thickness_px);
         background-color: var(--color-margin);
-        grid-area: margin-right;
+        grid-area: margin-inline-end;
       }
 
-      .padding-bottom {
+      .padding-block-end {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        height: var(--thickness_px);
+        block-size: var(--thickness_px);
         background-color: var(--color-padding);
-        grid-area: padding-bottom;
+        grid-area: padding-block-end;
       }
 
-      .border-bottom {
+      .border-block-end {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        height: var(--thickness_px);
+        block-size: var(--thickness_px);
         background-color: var(--color-border);
-        grid-area: border-bottom;
+        grid-area: border-block-end;
       }
 
-      .margin-bottom {
+      .margin-block-end {
         --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
-        height: var(--thickness_px);
+        block-size: var(--thickness_px);
         background-color: var(--color-margin);
-        grid-area: margin-bottom;
+        grid-area: margin-block-end;
       }
     </style>
     <script>
       const boxAreas = [
-        {
-          name: 'margin-top',
-          properties: [
-            {
-              name: '--thickness_unitless',
-              value: '50',
-            },
-          ],
-        },
-        {
-          name: 'border-top',
-          properties: [
-            {
-              name: '--thickness_unitless',
-              value: '50',
-            },
-          ],
-        },
-        {
-          name: 'padding-top',
-          properties: [
-            {
-              name: '--thickness_unitless',
-              value: '50',
-            },
-          ],
-        },
-        {
-          name: 'margin-left',
-          properties: [
-            {
-              name: '--thickness_unitless',
-              value: '100',
-            },
-          ],
-        },
-        {
-          name: 'border-left',
-          properties: [
-            {
-              name: '--thickness_unitless',
-              value: '100',
-            },
-          ],
-        },
-        {
-          name: 'padding-left',
-          properties: [
-            {
-              name: '--thickness_unitless',
-              value: '100',
-            },
-          ],
-        },
-        {
+      {
           name: 'content',
           properties: [
             {
@@ -192,6 +138,114 @@
             {
               name: 'height',
               value: '50px',
+            },
+          ],
+        },
+        {
+          name: 'margin-block-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+        {
+          name: 'border-block-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+        {
+          name: 'padding-block-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+        {
+          name: 'margin-inline-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'border-inline-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'padding-inline-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'margin-inline-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'border-inline-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'padding-inline-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'margin-block-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+        {
+          name: 'border-block-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+        {
+          name: 'padding-block-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
             },
           ],
         },
@@ -215,25 +269,25 @@
       };
 
       if (document.readyState === 'loading') {
-        // document.addEventListener('DOMContentLoaded', start);
+        document.addEventListener('DOMContentLoaded', start);
       } else {
-        // start();
+        start();
       }
     </script>
   </head>
   <body>
-    <div class="margin-top">margin-top</div>
-    <div class="border-top">border-top</div>
-    <div class="padding-top">padding-top</div>
-    <div class="margin-left">margin-left</div>
-    <div class="border-left">border-left</div>
-    <div class="padding-left">padding-left</div>
+    <!-- <div class="margin-block-start">margin-block-start</div>
+    <div class="border-block-start">border-block-start</div>
+    <div class="padding-block-start">padding-block-start</div>
+    <div class="margin-inline-start">margin-inline-start</div>
+    <div class="border-inline-start">border-inline-start</div>
+    <div class="padding-inline-start">padding-inline-start</div>
     <div class="content">content</div>
-    <div class="padding-right">padding-right</div>
-    <div class="border-right">border-right</div>
-    <div class="margin-right">margin-right</div>
-    <div class="padding-bottom">padding-bottom</div>
-    <div class="border-bottom">border-bottom</div>
-    <div class="margin-bottom">margin-bottom</div>
+    <div class="padding-inline-end">padding-inline-end</div>
+    <div class="border-inline-end">border-inline-end</div>
+    <div class="margin-inline-end">margin-inline-end</div>
+    <div class="padding-block-end">padding-block-end</div>
+    <div class="border-block-end">border-block-end</div>
+    <div class="margin-block-end">margin-block-end</div> -->
   </body>
 </html>
