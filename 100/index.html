@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>100 - Box Model Grid Layout</title>
+    <link href="styles.css" rel="stylesheet" />
+    <style>
+      body {
+        font-size: 14px;
+        text-align: center;
+        --color-content: #CF5D1C;
+        --color-padding: #C6D093;
+        --color-border: #F8DFA4;
+        --color-margin: #F2CEA5;
+        display: grid;
+        grid-template-areas: 
+          ". . . margin-top . . ."
+          ". . . border-top . . ."
+          ". . . padding-top . . ."
+          "margin-left border-left padding-left content padding-right border-right margin-right"
+          ". . . padding-bottom . . ."
+          ". . . border-bottom . . ."
+          ". . . margin-bottom . . ."
+        ;
+        grid-auto-columns: max-content;
+      }
+
+      .margin-top {
+        height: 50px;
+        background-color: var(--color-margin);
+        grid-area: margin-top;
+      }
+
+      .border-top {
+        height: 50px;
+        background-color: var(--color-border);
+        grid-area: border-top;
+      }
+
+      .padding-top {
+        height: 50px;
+        background-color: var(--color-padding);
+        grid-area: padding-top;
+      }
+
+      .margin-left {
+        width: 100px;
+        background-color: var(--color-margin);
+        grid-area: margin-left;
+      }
+
+      .border-left {
+        width: 100px;
+        background-color: var(--color-border);
+        grid-area: border-left;
+      }
+
+      .padding-left {
+        width: 100px;
+        background-color: var(--color-padding);
+        grid-area: padding-left;
+      }
+
+      .content {
+        width: 100px;
+        height: 50px;
+        background-color: var(--color-content);
+        grid-area: content;
+
+      }
+
+      .padding-right {
+        width: 100px;
+        background-color: var(--color-padding);
+        grid-area: padding-right;
+      }
+
+      .border-right {
+        width: 100px;
+        background-color: var(--color-border);
+        grid-area: border-right;
+      }
+
+      .margin-right {
+        width: 100px;
+        background-color: var(--color-margin);
+        grid-area: margin-right;
+      }
+
+      .padding-bottom {
+        height: 50px;
+        background-color: var(--color-padding);
+        grid-area: padding-bottom;
+      }
+
+      .border-bottom {
+        height: 50px;
+        background-color: var(--color-border);
+        grid-area: border-bottom;
+      }
+
+      .margin-bottom {
+        height: 50px;
+        background-color: var(--color-margin);
+        grid-area: margin-bottom;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="margin-top">margin-top</div>
+    <div class="border-top">border-top</div>
+    <div class="padding-top">padding-top</div>
+    <div class="margin-left">margin-left</div>
+    <div class="border-left">border-left</div>
+    <div class="padding-left">padding-left</div>
+    <div class="content">content</div>
+    <div class="padding-right">padding-right</div>
+    <div class="border-right">border-right</div>
+    <div class="margin-right">margin-right</div>
+    <div class="padding-bottom">padding-bottom</div>
+    <div class="border-bottom">border-bottom</div>
+    <div class="margin-bottom">margin-bottom</div>
+  </body>
+</html>
