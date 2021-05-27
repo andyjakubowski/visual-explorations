@@ -2,13 +2,19 @@ let inputEl;
 
 function start() {
   inputEl = document.getElementById('number-input');
-  inputEl.addEventListener('keydown', (e) => {
+  window.addEventListener('keydown', (e) => {
+    console.log('window');
     const { altKey, ctrlKey, metaKey } = e;
     const modKeyPressedBools = [altKey, ctrlKey, metaKey];
     const isModKeyPressed = modKeyPressedBools.some((isPressed) => isPressed);
     if (isModKeyPressed) {
+      e.stopPropagation();
       return;
     }
+  }, true);
+
+  inputEl.addEventListener('keydown', (e) => {
+    console.log('inputEl');
 
     if (e.shiftKey && e.key === 'ArrowUp') {
       e.preventDefault();
