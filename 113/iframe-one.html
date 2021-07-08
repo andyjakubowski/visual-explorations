@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {
+      box-sizing: border-box;
+      background-color: darkseagreen;
+      border: 1px solid white;
+      /* width: 100vw; */
+      /* height: 100vh; */
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    body {
+      height: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div style='box-sizing: border-box; min-inline-size: 0px; inline-size: 300px; max-inline-size: 1000px; min-block-size: 0px; block-size: 300px; max-block-size: 1000px; background-color: royalblue; grid-area: 1 / 1 / span 1 / span 1; display: flex; writing-mode: horizontal-tb; direction: ltr; flex-flow: column nowrap; place-content: center space-between; align-items: center;'><div class='flex-item' style='min-inline-size: 0px; inline-size: auto; max-inline-size: 1000px; min-block-size: 0px; block-size: auto; max-block-size: 1000px; border: 4px solid white; font: 32px monospace; background-color: tomato; color: white; flex: 0 1 40px; align-self: auto; margin: 0px; padding: 10px;'>A</div><div class='flex-item' style='min-inline-size: 40px; inline-size: auto; max-inline-size: 1000px; min-block-size: 0px; block-size: auto; max-block-size: 1000px; border: 4px solid white; font: 32px monospace; background-color: tomato; color: white; flex: 0 1 40px; align-self: auto; margin: 0px; padding: 10px;'>B</div><div class='flex-item' style='min-inline-size: 0px; inline-size: auto; max-inline-size: 1000px; min-block-size: 0px; block-size: auto; max-block-size: 1000px; border: 4px solid white; font: 32px monospace; background-color: tomato; color: white; flex: 0 1 40px; align-self: auto; margin: 0px; padding: 10px;'>C</div></div>  
+  <script>
+    document.body.prepend(`visual viewport height: ${window.innerHeight}`);
+    document.body.prepend(`visual viewport width: ${window.innerWidth}`);
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>113 - scaled iframe</title>
+  </head>
+  <style>
+    :root {
+      --green: #81f29e;
+      --blue: #81a4f2;
+      --pink: #ee81cb;
+    }
+
+    section {
+      display: flex;
+      border: 3px solid black;
+
+      gap: 16px;
+    }
+
+    .section-one > div {
+      width: 400px;
+      height: 500px;
+    }
+
+    .section-two > div {
+      width: 400px;
+      height: 200px;
+    }
+
+    div:nth-of-type(1) {
+      background-color: var(--green);
+    }
+
+    div:nth-of-type(2) {
+      background-color: var(--blue);
+    }
+
+    div:nth-of-type(3) {
+      background-color: var(--pink);
+    }
+
+    .iframe-one {
+      box-sizing: border-box;
+      /* width: 300px; */
+      /* height: 100%; */
+      /* border: 4px solid darkorange; */
+      border: none;
+      background-color: darksalmon;
+      object-fit: none;
+      object-position: 50px 50px;
+    }
+
+    .piggy-one {
+      width: 200px;
+      height: 300px;
+      object-fit: none;
+      object-position: 25% 25%;
+      background-color: bisque;
+    }
+
+    .piggy-two {
+      object-position: 30px 30px;
+    }
+
+    .piggy-three {
+      background-color: bisque;
+      width: 200px;
+      height: 100px;
+      object-fit: none;
+      object-position: 100% 100%;
+    }
+  </style>
+  <body>
+    <section class="section-one">
+      <div>
+        <iframe
+          class="iframe-one"
+          scrolling="no"
+          src="./iframe-one.html"
+        ></iframe>
+      </div>
+      <div>
+        <img class="piggy-one" src="../images/happy_piggy_alpha_100_100.png" />
+      </div>
+      <div>
+        <img class="piggy-two" src="../images/happy_piggy_alpha_100_100.png" />
+      </div>
+    </section>
+    <section class="section-two">
+      <div>
+        <iframe
+          class="iframe-two"
+          scrolling="no"
+          srcdoc="<div style='box-sizing: border-box; min-inline-size: 0px; inline-size: 300px; max-inline-size: 1000px; min-block-size: 0px; block-size: 300px; max-block-size: 1000px; background-color: royalblue; grid-area: 1 / 1 / span 1 / span 1; display: flex; writing-mode: horizontal-tb; direction: ltr; flex-flow: column nowrap; place-content: center space-between; align-items: center;'><div class='flex-item' style='min-inline-size: 0px; inline-size: auto; max-inline-size: 1000px; min-block-size: 0px; block-size: auto; max-block-size: 1000px; border: 4px solid white; font: 32px monospace; background-color: tomato; color: white; flex: 0 1 40px; align-self: auto; margin: 0px; padding: 10px;'>A</div><div class='flex-item' style='min-inline-size: 40px; inline-size: auto; max-inline-size: 1000px; min-block-size: 0px; block-size: auto; max-block-size: 1000px; border: 4px solid white; font: 32px monospace; background-color: tomato; color: white; flex: 0 1 40px; align-self: auto; margin: 0px; padding: 10px;'>B</div><div class='flex-item' style='min-inline-size: 0px; inline-size: auto; max-inline-size: 1000px; min-block-size: 0px; block-size: auto; max-block-size: 1000px; border: 4px solid white; font: 32px monospace; background-color: tomato; color: white; flex: 0 1 40px; align-self: auto; margin: 0px; padding: 10px;'>C</div></div>"
+        ></iframe>
+      </div>
+      <div>
+        <img
+          class="piggy-three"
+          src="../images/happy_piggy_alpha_300_300_border.png"
+        />
+      </div>
+      <div>
+        <img class="piggy-four" src="../images/happy_piggy_alpha_100_100.png" />
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      112 - pink driver box #2
+    </title>
+  </head>
+  <style>
+    :root {
+      --green: #81F29E;
+      --blue: #81A4F2;
+      --pink: #EE81CB;
+    }
+
+    body {
+      display: flex;
+      border: 3px solid black;
+    }
+
+    div {
+      flex-basis: 100px;
+    }
+
+    div:nth-of-type(1) {
+      background-color: var(--green);
+    }
+
+    div:nth-of-type(2) {
+      background-color: var(--blue);
+    }
+
+    div:nth-of-type(3) {
+      background-color: var(--pink);
+    }
+
+    #driver-div {
+      height: 100%;
+    }
+  </style>
+  <body>
+    <div>Just some limited content</div>
+    <div>Actually I should be the content driver ha ha ha ha!</div>
+    <div id="driver-div">I’m going to be the box that drives the size of the parent, and then all other boxes will take their size from that parent.</div>
+  </body>
+</html>
