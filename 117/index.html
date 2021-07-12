@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>117 - image aspect ratio in Flexbox</title>
+  </head>
+  <style>
+    .green {
+      /* width: 300px; */
+      height: 200px;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      width: min-content;
+    }
+
+    .blue {
+      flex-grow: 1;
+      background-color: royalblue;
+      /* border: 1px solid royalblue; */
+      /* width: min-content; */
+      /* height: 200px; */
+    }
+    
+
+    .yellow {
+      display: flex;
+      flex-direction: column;
+      background-color: burlywood;
+    }
+
+    .img-container {
+      min-height: 0;
+    }
+    
+    img {
+      min-height: 0;
+      /* height: 100%; */
+    }
+  </style>
+  <body class="green">
+    <!-- <div class="blue"></div> -->
+    <!-- <div class="yellow"> -->
+      <!-- <div class="img-container"> -->
+        <img src="https://drive.google.com/uc?export=view&id=1SrFS5yT4nJZgzVgWzFYtyjHLeqsyJLtF"/>
+      <!-- </div> -->
+      <!-- <div class="img-container"> -->
+        <img src="https://drive.google.com/uc?export=view&id=1SrFS5yT4nJZgzVgWzFYtyjHLeqsyJLtF"/>
+      <!-- </div> -->
+      <!-- <div class="img-container"> -->
+        <img src="https://drive.google.com/uc?export=view&id=1SrFS5yT4nJZgzVgWzFYtyjHLeqsyJLtF"/>
+      <!-- </div> -->
+    <!-- </div> -->
+  </body>
+</html>
