@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>123 - Floats and container height</title>
+  </head>
+  <style>
+    :root {
+      background-color: white;
+    }
+
+    .section-one {
+      border: 3px solid black;
+    }
+
+    .paragraph-one {
+      background-color: bisque;
+    }
+
+    .paragraph-two {
+      background-color: cornflowerblue;
+    }
+
+    .paragraph-one__img {
+      float: left;
+    }
+    
+    .paragraph-two__img {
+      float: left;
+    }
+
+    .section-two__paragraph-one-img {
+      float: left;
+    }
+
+    .section-two__paragraph-one-img-two {
+      float: right;
+      position: absolute;
+      top: 0;
+      right: 0;
+      opacity: 0.5;
+    }
+
+  </style>
+  <body>
+    <p>
+      Floats in a nutshell
+      <br />
+Tuesday, 13 July 2021
+<br />
+<pre>
+- floated elements don’t contribute to the height of their auto-sized container, unless that container is a block formatting context root
+- the root element (html) is an example of a block formatting context root
+- that’s why you may have a body element with some text and a floated image, and the body element will have a height that only includes the text, but the root element will include the floated descendant, too
+- these things establish a new block formatting context:
+-- overflow other than visible
+-- display: inline-block
+-- position: absolute
+</pre>
+    </p>
+    <section class="section-two">
+      <h1>Two images, one absolutely positioned</h1>
+      <img class="section-two__paragraph-one-img" src="https://picsum.photos/id/1062/100/200" alt="Doggy">
+      <img class="section-two__paragraph-one-img-two" src="https://picsum.photos/id/1062/100/200" alt="Doggy">
+  </section>
+    <section class="section-one">
+        <h1>Two paragraphs with floated images inside</h1>
+        <p class="paragraph-one">
+          The domestic dog (Canis familiaris or Canis lupus familiaris)[4] is a domesticated descendant of the wolf. The dog derived from an ancient, extinct wolf,[5][6] and the modern grey wolf is the dog's nearest living relative.[7] The dog was the first species to be domesticated,[8][7] by hunter–gatherers over 15,000 years ago,[6] before the development of agriculture.[1]<img class="paragraph-one__img" src="https://picsum.photos/id/1062/100/300" alt="Doggy">Their long association with humans has led dogs to be uniquely adapted to human behavior,[9] leading to a large number of domestic individuals[10] and the ability to thrive on a starch-rich diet that would be inadequate for other canids.[11]
+
+          The dog has been selectively bred over millennia for various behaviors, sensory capabilities, and physical attributes.[12] Dog breeds vary widely in shape, size, and color. They perform many roles for humans, such as hunting, herding, pulling loads, protection, assisting police and the military, companionship, therapy, and aiding disabled people. This influence on human society has given them the sobriquet of "man's best friend."
+        </p>
+        <p class="paragraph-two">
+          The domestic dog (Canis familiaris or Canis lupus familiaris)[4] is a domesticated descendant of the wolf. The dog derived from an ancient, extinct wolf,[5][6] and the modern grey wolf is the dog's nearest living relative.[7] The dog was the first species to be domesticated,[8][7] by hunter–gatherers over 15,000 years ago,[6] before the development of agriculture.[1]<img class="paragraph-two__img" src="https://picsum.photos/100/100" alt="Random image">Their long association with humans has led dogs to be uniquely adapted to human behavior,[9] leading to a large number of domestic individuals[10] and the ability to thrive on a starch-rich diet that would be inadequate for other canids.[11]
+
+          The dog has been selectively bred over millennia for various behaviors, sensory capabilities, and physical attributes.[12] Dog breeds vary widely in shape, size, and color. They perform many roles for humans, such as hunting, herding, pulling loads, protection, assisting police and the military, companionship, therapy, and aiding disabled people. This influence on human society has given them the sobriquet of "man's best friend."
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
