@@ -19,7 +19,25 @@
     }
 
     .paragraph-two {
+      background-color: seagreen;
+    }
+
+    .paragraph-three {
       background-color: cornflowerblue;
+      /* display: block flow-root; */
+      /* display: inline flow-root; */
+
+      display: flow-root;
+      display: inline-block;
+    }
+
+    .paragraph-four {
+      background-color: seashell;
+      /* display: block flow-root; */
+      /* display: inline flow-root; */
+
+      display: flow-root;
+      display: inline-block;
     }
 
     .paragraph-one__img {
@@ -28,6 +46,11 @@
     
     .paragraph-two__img {
       float: left;
+    }
+
+    .paragraph-two__span {
+      float: left;
+      background-color: thistle;
     }
 
     .section-two__paragraph-one-img {
@@ -65,16 +88,21 @@ Tuesday, 13 July 2021
       <img class="section-two__paragraph-one-img-two" src="https://picsum.photos/id/1062/100/200" alt="Doggy">
   </section>
     <section class="section-one">
-        <h1>Two paragraphs with floated images inside</h1>
+        <h1>Some paragraphs with floated images inside</h1>
         <p class="paragraph-one">
           The domestic dog (Canis familiaris or Canis lupus familiaris)[4] is a domesticated descendant of the wolf. The dog derived from an ancient, extinct wolf,[5][6] and the modern grey wolf is the dog's nearest living relative.[7] The dog was the first species to be domesticated,[8][7] by hunter–gatherers over 15,000 years ago,[6] before the development of agriculture.[1]<img class="paragraph-one__img" src="https://picsum.photos/id/1062/100/300" alt="Doggy">Their long association with humans has led dogs to be uniquely adapted to human behavior,[9] leading to a large number of domestic individuals[10] and the ability to thrive on a starch-rich diet that would be inadequate for other canids.[11]
 
           The dog has been selectively bred over millennia for various behaviors, sensory capabilities, and physical attributes.[12] Dog breeds vary widely in shape, size, and color. They perform many roles for humans, such as hunting, herding, pulling loads, protection, assisting police and the military, companionship, therapy, and aiding disabled people. This influence on human society has given them the sobriquet of "man's best friend."
         </p>
         <p class="paragraph-two">
-          The domestic dog (Canis familiaris or Canis lupus familiaris)[4] is a domesticated descendant of the wolf. The dog derived from an ancient, extinct wolf,[5][6] and the modern grey wolf is the dog's nearest living relative.[7] The dog was the first species to be domesticated,[8][7] by hunter–gatherers over 15,000 years ago,[6] before the development of agriculture.[1]<img class="paragraph-two__img" src="https://picsum.photos/100/100" alt="Random image">Their long association with humans has led dogs to be uniquely adapted to human behavior,[9] leading to a large number of domestic individuals[10] and the ability to thrive on a starch-rich diet that would be inadequate for other canids.[11]
-
-          The dog has been selectively bred over millennia for various behaviors, sensory capabilities, and physical attributes.[12] Dog breeds vary widely in shape, size, and color. They perform many roles for humans, such as hunting, herding, pulling loads, protection, assisting police and the military, companionship, therapy, and aiding disabled people. This influence on human society has given them the sobriquet of "man's best friend."
+          The domestic dog
+          <span class="paragraph-two__span">Some text that may or may not wrap. Who knows? Haha this is not easy.</span>
+        </p>
+        <p class="paragraph-four">
+          Short inline-block paragraph. Fits into the line box in spite of the float.
+        </p>
+        <p class="paragraph-three">
+          This paragraph is inline flow-root (inline-block). The dog derived from an ancient, extinct wolf,[5][6] and the modern grey wolf is the dog's nearest living relative.[7] The dog was the first species to be domesticated,[8][7] by hunter–gatherers over 15,000 years ago,[6] before the development of agriculture.[1]<img class="paragraph-one__img" src="https://picsum.photos/id/1062/100/300" alt="Doggy">Their long association with humans has led dogs to be uniquely adapted to human behavior,[9] leading to a large number of domestic individuals[10] and the ability to thrive on a starch-rich diet that would be inadequate for other canids.[11]
         </p>
       </div>
     </section>
