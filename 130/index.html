@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>130 - flex container max-content</title>
+  </head>
+  <style>
+    :root {
+      background-color: white;
+    }
+
+    .flex-container {
+      display: flex;
+      gap: 10px;
+      width: max-content;
+    }
+    
+    .flex-item {
+      background-color: bisque;
+    }
+
+    .flex-item.one {
+      max-width: 50px;
+    }
+
+  </style>
+  <body class="flex-container">
+    <div class="flex-item one">One one one one one</div>
+    <div class="flex-item two">Two two two two two</div>
+    <!-- <div>Three three three three three</div> -->
+  </body>
+</html>
