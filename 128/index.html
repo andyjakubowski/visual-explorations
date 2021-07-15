@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      128 - SO - “the navbar layout has problem in bigger screen sizes”
+    </title>
+  </head>
+  <style>
+    * {
+      font-family: myfont;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-logo {
+      width: 70px;
+      cursor: pointer;
+    }
+    .hamburger-menu {
+      display: flex;
+      margin-right: 20px;
+      cursor: pointer;
+      font-size: 25px;
+      color: #e63946;
+    }
+    nav {
+      padding: 10px;
+
+      background-color: #ffffff;
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(17.5px);
+      -webkit-backdrop-filter: blur(17.5px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .right {
+      display: flex;
+      justify-content: flex-start;
+      margin-right: 30px;
+    }
+    .left {
+      display: flex;
+      justify-content: flex-end;
+      margin-left: 30px;
+    }
+    .culomn {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      cursor: pointer;
+    }
+    .nav-item {
+      list-style: none;
+    }
+    .nav-item a {
+      text-decoration: none;
+      color: #35357a;
+      line-height: 40px;
+    }
+    .nav-item a:hover {
+      color: #e63946;
+    }
+    .btn-login {
+      background-color: #e63946;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    @media screen and (min-width: 646px) {
+      nav {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        padding: 10px;
+      }
+      .navbar {
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .culomn {
+      }
+      .hamburger-menu {
+        display: none;
+        cursor: pointer;
+        font-size: 25px;
+        color: #e63946;
+      }
+      .right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      .left {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 20px;
+      }
+    }
+  </style>
+  <body>
+    <nav class="nav">
+      <section class="row">
+        <div class="right">
+          <img src="logo.png" alt="Logo">
+          <img src="hamburger.png" alt="Menu">
+        </div>
+
+        <div class="left">
+          <img src="cart.png" alt="Shopping cart">
+          <a href="register&login/login.php"
+            ><button class="btn btn-login px-4 ml-5">ورود</button></a
+          >
+        </div>
+      </section>
+
+      <section class="culomn">
+        <ul class="navbar">
+          <li class="nav-item">
+            <a class="nav-link">فارس گردی</a>
+          </li>
+          <li class="nav-item">
+            <a href="gallery.php" class="nav-link">گالری عکس</a>
+          </li>
+          <li class="nav-item">
+            <a href="Vtour.php" class="nav-link">تور مجازی</a>
+          </li>
+          <li class="nav-item">
+            <a href="weblog.php" class="nav-link">وبلاگ</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+  </body>
+</html>
