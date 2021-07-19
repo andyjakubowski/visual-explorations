@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>132 - SO - image goes out from grid and sizing issue</title>
+  </head>
+  <style>
+    body {
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
+    #wrapper {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-areas:
+        'nav'
+        'content'
+        'footer';
+      grid-template-columns: 1fr;
+      grid-template-rows: 64px 1fr 96px;
+    }
+    #nav {
+      grid-area: nav;
+      position: sticky;
+      top: 0;
+      background-color: white;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+    #content {
+      grid-area: content;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(to bottom, transparent 60%, #aad 60%);
+      align-items: center;
+      padding: 32px;
+    }
+
+    #content .wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+    }
+    footer {
+      grid-area: footer;
+    }
+    .image {
+      border: solid 16px #aad;
+      margin: 16px;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #262a58;
+      color: white;
+      font-size: 1.5em;
+      font-family: 'EightOne';
+      border-radius: 10px;
+      border-style: none;
+      cursor: pointer;
+      margin-top: 32px;
+      align-self: center;
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div id="nav">nav</div>
+      <div id="content">
+        <div class="wrapper">
+          <h1>flower</h1>
+          <img
+            class="image"
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.goldpetal.net%2Fmedia%2Fimages%2Fproduct_gallery%2FGerbera_Flower_12.jpg&f=1&nofb=1"
+            alt="Flower"
+          />
+          <button>buy flower</button>
+        </div>
+      </div>
+      <footer>footer</footer>
+    </div>
+  </body>
+</html>
