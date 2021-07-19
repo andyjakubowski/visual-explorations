@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>133 - available space for flex items</title>
+  </head>
+  <style></style>
+  <body>
+    <h1>Flex Layout Algorithm</h1>
+    <p>
+      <strong
+        ><a href="https://drafts.csswg.org/css-flexbox-1/#algo-available"
+          >§ 9.2.</a
+        >
+        Determine the available main and cross space for the flex items.</strong
+      >
+      For each dimension, if that dimension of the flex container’s content box
+      is a
+      <a href="https://drafts.csswg.org/css-flexbox-1/#definite"
+        >definite size</a
+      >, use that; if that dimension of the flex container is being sized under
+      a
+      <a href="https://drafts.csswg.org/css-sizing-3/#min-content-constraint"
+        >min</a
+      >
+      or
+      <a href="https://drafts.csswg.org/css-sizing-3/#max-content-constraint"
+        >max-content constraint</a
+      >, the available space in that dimension is that constraint; otherwise,
+      subtract the flex container’s margin, border, and padding from the space
+      available to the flex container in that dimension and use that value. This
+      might result in an infinite value.
+    </p>
+    <img
+      src="example13.png"
+      alt="Example 13"
+      width="758"
+      style="display: block"
+    />
+    <ul>
+      <li>
+        <a href="https://drafts.csswg.org/css-flexbox-1/#definite"
+          >https://drafts.csswg.org/css-flexbox-1/#definite</a
+        >
+      </li>
+      <li>
+        <a href="https://drafts.csswg.org/css-sizing-3/#definite"
+          >https://drafts.csswg.org/css-sizing-3/#definite</a
+        >
+      </li>
+      <li>
+        <a href="https://drafts.csswg.org/css-sizing-3/#min-content-constraint"
+          >https://drafts.csswg.org/css-sizing-3/#min-content-constraint</a
+        >
+      </li>
+      <li>
+        <a href="https://drafts.csswg.org/css-sizing-3/#max-content-constraint"
+          >https://drafts.csswg.org/css-sizing-3/#max-content-constraint</a
+        >
+      </li>
+      <li>
+        <a href="https://drafts.csswg.org/css-sizing-3/#available"
+          >https://drafts.csswg.org/css-sizing-3/#available</a
+        >
+      </li>
+      <li>
+        <a href="https://www.w3.org/TR/CSS2/visuren.html#floats"
+          >https://www.w3.org/TR/CSS2/visuren.html#floats</a
+        >
+      </li>
+      <li>
+        <a href="https://drafts.csswg.org/css-sizing-3/#valdef-width-auto"
+          >https://drafts.csswg.org/css-sizing-3/#valdef-width-auto</a
+        >
+      </li>
+    </ul>
+    <p>
+      <strong
+        ><a href="https://drafts.csswg.org/css-flexbox-1/#definite-sizes"
+          >§ 9.8. Definite and Indefinite Sizes</a
+        >
+        </strong
+      >
+      Although CSS Sizing [CSS-SIZING-3] defines definite and indefinite lengths, Flexbox has several additional cases where a length can be considered definite:
+      <ol>
+        <li>If a single-line flex container has a definite cross size, the automatic preferred outer cross size of any stretched flex items is the flex container’s inner cross size (clamped to the flex item’s min and max cross size) and is considered definite.</li>
+        <li>If the flex container has a definite main size, a flex item’s post-flexing main size is treated as definite, even though it can rely on the indefinite sizes of any flex items in the same line. </li>
+        <li>Once the cross size of a flex line has been determined, the cross sizes of items in auto-sized flex containers are also considered definite for the purpose of layout; see step 11. </li>
+      </ol>
+      Note: The main size of a fully inflexible item with a definite flex basis is, by definition, definite.
+    </p>
+    <h2>CSS-SIZING</h2>
+    <dl>
+      <dt>definite size</dt>
+      <dd>
+        A size that can be determined without performing layout; that is, a <a href="https://drafts.csswg.org/css-values-4/#length-value">
+        &lt;length&gt;
+        </a>, a measure of text (without consideration of line-wrapping), a size of the <a href="https://drafts.csswg.org/css-display-3/#initial-containing-block">initial containing block</a>, or a <a href="https://drafts.csswg.org/css-values-4/#percentage-value">
+        &lt;percentage&gt;
+        </a> or other formula (such the <a href="https://www.w3.org/TR/CSS2/visudet.html#blockwidth">“stretch-fit” sizing of non-replaced blocks [CSS2]</a>) that is resolved solely against definite sizes.
+
+        Additionally, the size of the <a href="https://drafts.csswg.org/css-display-3/#containing-block">containing block</a> of an absolutely positioned element is always definite with respect to that element.
+      </dd>
+
+      <dt>indefinite size</dt>
+      <dd>A size that is not definite. Indefinite available space is essentially infinite.</dd>
+    </dl>
+    <h3>Formatting contexts in which the flex container can participate</h3>
+    <ul>
+      <li>block formatting context (display: block flex; placed in normal flow)</li>
+      <li>inline formatting context (display: inline flex; placed in normal flow)</li>
+      <li>flex formatting context (display: {block, inline} flex; a flex item regardless of display-outside)</li>
+      <li>grid formatting context (display: {block, inline} flex; a grid item regardless of display-outside)</li>
+    </ul>
+    <section style="--color: burlywood; background-color: var(--color)">I’m a section</section>
+  </body>
+</html>
