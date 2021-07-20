@@ -6,21 +6,12 @@
     <title>Scratch</title>
     <style>
       body {
-        display: flex;
         /* background-color: white; */
       }
 
-      .item-one {
-        flex-basis: content;
-      }
-
-      .item-two {
-        flex-grow: 1;
-        align-self: flex-end;
-      }
-
-      .item-three {
-        flex-grow: 1;
+      .flex-container {
+        display: flex;
+        position: absolute;
       }
 
       div:nth-child(odd) {
@@ -33,8 +24,10 @@
     </style>
   </head>
   <body>
-    <div class="item-one">Item One</div>
-    <div class="item-two">Item Two</div>
-    <div class="item-three">Item Three</div>
+    <main class="flex-container">
+      <div class="flex-item one">Item One</div>
+      <div class="flex-item two">Item Two</div>
+      <div class="flex-item three">Item Three</div>
+    </main>
   </body>
 </html>
