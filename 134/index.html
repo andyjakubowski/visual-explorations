@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      134 - SO - Feedback to achieve four column to column list using flex
+    </title>
+    <!-- https://stackoverflow.com/questions/68434036/feedback-to-achieve-four-column-to-column-list-using-flex-round-2 -->
+  </head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      border: 2px dotted black;
+      display: block;
+    }
+
+    .headline {
+      border: 2px dotted green;
+      text-align: center;
+    }
+
+    ul.flex-list {
+      list-style: none;
+      display: flex;
+      width: calc((160px + 2 * 10px) * 2);
+      flex-wrap: wrap;
+      padding: 0;
+    }
+
+    ul.flex-list img {
+      width: 160px;
+      height: 160px;
+    }
+
+    li.flex-list-item {
+      --number-of-columns: 2;
+      border: 2px dotted blue;
+      text-align: center;
+      padding: 10px;
+      min-width: 0;
+      flex: 1 1 calc(100% / var(--number-of-columns));
+      box-sizing: border-box;
+    }
+
+    a {
+      border: 2px dotted red;
+      display: inline-block;
+      width: 100%;
+    }
+
+    @media screen and (min-width: 991px) {
+      ul.flex-list {
+        width: calc((200px + 2 * 10px) * 4);
+      }
+
+      li.flex-list-item {
+        --number-of-columns: 4;
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="headline">
+        <h2>Best fruit</h2>
+        <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+      </div>
+
+      <ul class="flex-list">
+        <li class="flex-list-item">
+          <img src="https://via.placeholder.com/200" alt="" />
+          <a href="/">Apples</a>
+        </li>
+
+        <li class="flex-list-item">
+          <img src="https://via.placeholder.com/200" alt="" />
+
+          <a href="/">Oranges</a>
+        </li>
+
+        <li class="flex-list-item">
+          <img src="https://via.placeholder.com/200" alt="" />
+
+          <a href="/">Strawberries</a>
+        </li>
+
+        <li class="flex-list-item">
+          <img src="https://via.placeholder.com/200" alt="" />
+
+          <a href="/">Blueberries</a>
+        </li>
+
+        <li class="flex-list-item">
+          <img src="https://via.placeholder.com/200" alt="" />
+
+          <a href="/">Nectarines</a>
+        </li>
+
+        <li class="flex-list-item">
+          <img src="https://via.placeholder.com/200" alt="" />
+
+          <a href="/">Bananas</a>
+        </li>
+
+        <li class="flex-list-item">
+          <img src="https://via.placeholder.com/200" alt="" />
+
+          <a href="/">Rasberries</a>
+        </li>
+
+        <li class="flex-list-item">
+          <img src="https://via.placeholder.com/200" alt="" />
+
+          <a href="/">Blackberries</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
