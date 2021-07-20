@@ -90,6 +90,10 @@
       </ol>
       Note: The main size of a fully inflexible item with a definite flex basis is, by definition, definite.
     </p>
+    <h3><a href="https://drafts.csswg.org/css-sizing-3/#preferred-size-properties">Preferred Size Properties: the ‘width’ and ‘height’ properties</a></h3>
+    <img src="preferred-size-properties.png" alt="Preferred size properties info table" width="638"
+      style="display: block">
+
     <h2>CSS-SIZING</h2>
     <dl>
       <dt>definite size</dt>
@@ -106,12 +110,42 @@
       <dt>indefinite size</dt>
       <dd>A size that is not definite. Indefinite available space is essentially infinite.</dd>
     </dl>
+    <h3>Discussions about definite size</h3>
+    <ul>
+      <li><a href="https://lists.w3.org/Archives/Public/www-style/2016Apr/0043.html">Re: [css-flexbox] rationale for definite size conditions</a></li>
+    </ul>
+    <h3>Examples of definite sizes</h3>
+    <h4>&lt;length&gt; <a href="http://developer.mozilla.org/en-US/docs/Web/CSS/length">MDN</a> <a href="https://drafts.csswg.org/css-values-4/#length-value">Spec</a></h4>
+    <p>Two types of length units: <a href="https://drafts.csswg.org/css-values-4/#relative-length">relative</a> and <a href="https://drafts.csswg.org/css-values-4/#absolute-length">absolute</a>. The <a href="https://drafts.csswg.org/css-cascade-5/#specified-value">specified value</a> of a length is represented by its quantity and its unit. The <a href="https://drafts.csswg.org/css-cascade-5/#computed-value">computed value</a> of a length is the specified length resolved to an absolute length, and its unit is not distinguished: it can be represented by any absolute length unit (but will be serialized using its canonical unit, px).</p>
+    <p>
+      Child elements do not inherit the relative values as specified for their parent; they inherit the computed values.
+    </p>
+    <pre>
+      width: 0;
+      width: 300px;
+      width: 100vw;
+      width: 50%;
+    </pre>
+    <h4>A measure of text (without consideration of line-wrapping)</h4>
     <h3>Formatting contexts in which the flex container can participate</h3>
     <ul>
       <li>block formatting context (display: block flex; placed in normal flow)</li>
       <li>inline formatting context (display: inline flex; placed in normal flow)</li>
       <li>flex formatting context (display: {block, inline} flex; a flex item regardless of display-outside)</li>
       <li>grid formatting context (display: {block, inline} flex; a grid item regardless of display-outside)</li>
+    </ul>
+    <h3>Open questions</h3>
+    <ul>
+      <li>
+        <p>Are min-content, max-content, fit-content(&lt;length-percentage&gt;) definite sizes?</p>
+        <p>This example seems to suggest that determining intrinsic sizes doesn’t require “real” layout. Does that make it a definite size?<br /><a href="https://drafts.csswg.org/css-sizing-3/#cyclic-percentage-contribution">https://drafts.csswg.org/css-sizing-3/#cyclic-percentage-contribution</a></p>
+        <img
+      src="intrinsic-contributions-of-percentage-sized-boxes.png"
+      alt="Intrinsic Contributions of Percentage-Sized Boxes"
+      width="639"
+      style="display: block"
+    />
+      </li>
     </ul>
     <section style="--color: burlywood; background-color: var(--color)">I’m a section</section>
   </body>
