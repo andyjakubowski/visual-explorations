@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>136 - stretch-fit sizing</title>
+    <style>
+      :root {
+        background-color: #334;
+        height: 100vh;
+      }
+
+      body {
+        background-color: burlywood;
+        margin: 50px;
+        height: calc(100% - 100px);
+      }
+
+      main {
+        background-color: white;
+        box-sizing: border-box;
+        width: max-content;
+        height: -webkit-fill-available;
+        height: -moz-available;
+        height: stretch;
+      }
+
+      aside {
+        position: fixed;
+        inset: auto 0 0 auto;
+        width: max-content;
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+    </style>
+  </head>
+  <body>
+    <main>Just some text inside a main tag</main>
+    <aside>
+      <pre>
+stretch-fit sizing — filling the containing block
+Tuesday, 20 July 2021
+https://drafts.csswg.org/css-sizing-4/#stretch-fit-sizing
+https://caniuse.com/mdn-css_properties_width_stretch
+https://github.com/w3c/csswg-drafts/issues/4028
+https://bugs.chromium.org/p/chromium/issues/detail?id=807708
+https://bugzilla.mozilla.org/show_bug.cgi?id=1495868
+
+- supported for width with prefixes as of July 2021
+-moz-available
+-webkit-fill-available
+
+- Firefox doesn’t support height: -moz-available
+- the value using this will be called stretch, as in width: stretch or height: stretch
+      </pre>
+    </aside>
+  </body>
+</html>
