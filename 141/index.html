@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>141 - Transitioning flex properties</title>
+    <style>
+      :root {
+        box-sizing: border-box;
+        height: 100vh;
+        padding: 50px;
+        background-color: burlywood;
+      }
+
+      body {
+        box-sizing: border-box;
+        height: 100%;
+        margin: 0;
+
+        display: flex;
+        display: block flex;
+        background-color: whitesmoke;
+      }
+
+      #flex-item {
+        /* flex: auto; */
+        /* flex: 0 0 max-content; */
+        /* flex: 0 0 max-content; */
+        background-color: white;
+        transition: flex 1s;
+      }
+
+      #flex-item:hover {
+        flex: auto;
+        /* flex: 0 0 min-content; */
+      }
+    </style>
+  </head>
+  <body>
+    <main id="flex-item">Just some text inside the main element</main>
+    <script>
+      const state = 'default';
+      document.addEventListener('click', () => {
+        const flexItem = document.getElementById('flex-item');
+        const compStyle = window.getComputedStyle(flexItem);
+
+        if (compStyle.flexGrow === '1') {
+          flexItem.style.flex = 'initial';
+        } else {
+          flexItem.style.flex = 'auto';
+        }
+      });
+    </script>
+  </body>
+</html>
