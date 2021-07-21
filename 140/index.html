@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>140 - SO unsolved - Transitioning height of a flex container</title>
+    <style>
+
+
+      * {
+        box-sizing: border-box;
+        --color: #390e44;
+  transition: all 200ms linear 1s;
+
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 2px;
+  position: relative;
+  padding: 0;
+  min-height: 100%;
+  margin: 0 500px 0 0;
+  width: 100%;
+  font-family: 'Newsreader', serif;
+  background-color: rgb(224, 224, 224);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+:root {
+  font-size: 16px;
+}
+
+.biography {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+
+  margin: 0 5rem;
+  color: white;
+  background-color: black;
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin: 5rem 0;
+  text-align: left;
+
+}
+
+  .bioinfo {
+    line-height: 1.75rem;
+    letter-spacing: 2px;
+    width: 50%;
+    opacity: 1;
+    animation: fadeIn linear 1s ;
+  }
+
+    .bio {
+
+
+      animation: fadeIn linear 1s ;
+    }
+
+    #biotitle {
+      font-family: "Roboto Mono";
+    }
+
+    #reveal {
+
+      display: none;
+    }
+
+    .readmore {
+      text-decoration: none;
+      color: white;
+      background-color: var(--color);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+@keyframes fadeIn {
+  0% {
+
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+
+    opacity: 1;
+  }
+}
+    </style>
+  </head>
+  <body>
+        <div class="biography" >
+      <div class="bioinfo">
+        <h2>Jack Sparrow</h2>
+        <h4 id="biotitle" >BIOGRAPHY</h4>
+        <p class="bio">Hello! </br> My name is Jack Sparrow. </br>I am a qualified Personal Trainer based in Tortuga.
+          </br>My journey to becoming a personal trainer stems from my early years in ski racing. I competed professionally in ski racing
+          for over 8 years achieving huge success all over the Caraibbean and abroad.</p>
+        <p class="bio" id="reveal">Exercise was a huge part of my skiing regime and working hard on improving my fitness enabled me to create more opportunities to succeed on the slopes. So, naturally, years down the line this has led me to become a qualified Personal Trainer with the notion of helping others realise their potential through consistent exercise. I currently operate a mobile Personal Training service within 10-15 miles from my address in Port Royal.</p>
+        <button onclick="revealMe()" class="readmore" id="readmore">Read More</button>
+      </div>
+    </div>
+    <script>
+      function revealMe() {
+let reveal = document.getElementById("reveal");
+let readMore = document.getElementById("readmore")
+
+  if (reveal.style.display === "none") {
+    reveal.style.display = "block";
+    readMore.innerHTML = "Read Less";
+  } else {
+    reveal.style.display = "none";
+    readMore.innerHTML = "Read More";
+  }
+};
+    </script>
+  </body>
+</html>
