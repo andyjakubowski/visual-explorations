@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background-color: black;
+}
+
+img {
+}
+
+header {
+  background-color: lightgoldenrodyellow;
+}
+
+main {
+  background-color: tomato;
+  /* flex-grow: 1; */
+}
+
+.box-1 {
+  height: 120px;
+
+  background-color: cadetblue;
+}
+
+.box-2 {
+  background-color: darksalmon;
+}
+
+aside {
+  background-color: teal;
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

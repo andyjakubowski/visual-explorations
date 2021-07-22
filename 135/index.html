@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>135 - sizing an absolutely positioned non-replaced element</title>
+    <style>
+      :root {
+        background-color: #334;
+      }
+
+      body {
+        background-color: burlywood;
+        margin: 50px;
+      }
+
+      .flex-container {
+        display: flex;
+        /* display: none; */
+        position: absolute;
+        background-color: #dadaee;
+        padding: 10px;
+      }
+
+      div:nth-child(odd) {
+        background-color: white;
+      }
+
+      div:nth-child(even) {
+        background-color: cadetblue;
+      }
+
+      /* p {
+        float: left;
+        color: white;
+      } */
+
+      footer {
+        font-size: 0.8em;
+        position: fixed;
+        inset: auto 0 0;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <p>
+      If all three of 'left', 'width', and 'right' are 'auto': First set any
+      'auto' values for 'margin-left' and 'margin-right' to 0. Then, if the
+      'direction' property of the element establishing the static-position
+      containing block is 'ltr' set 'left' to the static position and apply rule
+      number three below; otherwise, set 'right' to the static position and
+      apply rule number one below. Rule number three: 'width' and 'right' are
+      'auto' and 'left' is not 'auto', then the width is shrink-to-fit . Then
+      solve for 'right'
+    </p> -->
+    <main class="flex-container">
+      <!-- <div class="flex-item">
+        If all three of 'left', 'width', and 'right' are 'auto': First set any
+        'auto' values for 'margin-left'
+      </div> -->
+      <div class="flex-item one">Item One</div>
+      <div class="flex-item two">Item Two</div>
+      <div class="flex-item three">Item Three</div>
+    </main>
+    <footer>
+      <p>
+        <a href="https://www.w3.org/TR/CSS2/visudet.html#abs-non-replaced-width"
+          >Abspos width</a
+        >: If all three of 'left', 'width', and 'right' are 'auto': First set
+        any 'auto' values for 'margin-left' and 'margin-right' to 0. Then, if
+        the 'direction' property of the element establishing the static-position
+        containing block is 'ltr' set 'left' to the static position and apply
+        rule number three below; otherwise, set 'right' to the static position
+        and apply rule number one below. Rule number three: 'width' and 'right'
+        are 'auto' and 'left' is not 'auto', then the width is shrink-to-fit .
+        Then solve for 'right'
+      </p>
+      <p>
+        <a
+          href="https://www.w3.org/TR/CSS2/visudet.html#abs-non-replaced-height"
+          >Abspos height</a
+        >: If all three of 'top', 'height', and 'bottom' are auto, set 'top' to
+        the static position and apply rule number three: 'height' and 'bottom'
+        are 'auto' and 'top' is not 'auto', then the height is based on the
+        content per 10.6.7, set 'auto' values for 'margin-top' and
+        'margin-bottom' to 0, and solve for 'bottom'
+      </p>
+      <p>
+        <a href="https://www.w3.org/TR/CSS2/visudet.html#root-height"
+          >10.6.7 'Auto' heights for block formatting context roots</a
+        >: If it only has inline-level children, the height is the distance
+        between the top of the topmost line box and the bottom of the bottommost
+        line box. <br />
+        If it has block-level children, the height is the distance between the
+        top margin-edge of the topmost block-level child box and the bottom
+        margin-edge of the bottommost block-level child box. <br />
+        In addition, if the element has any floating descendants whose bottom
+        margin edge is below the element's bottom content edge, then the height
+        is increased to include those edges. Only floats that participate in
+        this block formatting context are taken into account, e.g., floats
+        inside absolutely positioned descendants or other floats are not.
+      </p>
+    </footer>
+  </body>
+</html>
+<!-- fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff -->

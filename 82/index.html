@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>82 - Intersection Observer test</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background-color: burlywood;
+      }
+
+      .tomato-box {
+        width: 30px;
+        height: 100px;
+        background-color: tomato;
+        display: inline-block;
+      }
+
+      .plum-box {
+        padding-top: 50px;
+        width: 30px;
+        height: 100px;
+        background-color: plum;
+        display: inline-block;
+      }
+
+      .blue-box {
+        width: 30px;
+        height: 100px;
+        background-color: royalblue;
+        display: inline-block;
+      }
+
+      .intersecting {
+        background-color: whitesmoke;
+      }
+    </style>
+    <script>
+      let tomatoBoxEl;
+      let blueBoxEl;
+      let plumBoxEl;
+      let observer;
+
+      function intersectionObserverCallback(entries, observer) {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('intersecting', entry.isIntersecting);
+        });
+        // console.log('intersectionObserverCallback', entries);
+      }
+
+      function handleDOMContentLoaded() {
+        tomatoBoxEl = document.getElementsByClassName('tomato-box').item(0);
+        blueBoxEl = document.getElementsByClassName('blue-box').item(0);
+        plumBoxEl = document.getElementsByClassName('plum-box').item(0);
+
+        observer = new IntersectionObserver(intersectionObserverCallback);
+        observer.observe(tomatoBoxEl);
+        observer.observe(blueBoxEl);
+        observer.observe(plumBoxEl);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+      } else {
+        handleDOMContentLoaded();
+      }
+    </script>
+  </head>
+  <body>
+    <p>
+      Condimentum mattis pellentesque id nibh tortor. Porttitor leo a diam
+      sollicitudin tempor. Eget magna fermentum iaculis eu non diam phasellus.
+      Consequat interdum varius sit amet. Porttitor leo a diam sollicitudin
+      tempor id eu nisl. Diam maecenas sed enim ut sem viverra aliquet. A
+      iaculis at erat pellentesque adipiscing commodo elit. Elementum facilisis
+      leo vel fringilla est ullamcorper eget nulla. Nam aliquam sem et tortor
+      consequat id. Egestas egestas fringilla phasellus faucibus scelerisque
+      eleifend donec. Nunc congue nisi vitae suscipit tellus. Ullamcorper a
+      lacus vestibulum sed arcu. Posuere ac ut consequat semper viverra. Tortor
+      dignissim convallis aenean et tortor at risus viverra adipiscing. Viverra
+      aliquet eget sit amet tellus cras. Sapien faucibus et molestie ac feugiat
+      sed lectus vestibulum mattis. Imperdiet proin fermentum leo vel. Cras
+      fermentum odio eu feugiat pretium nibh. Turpis in eu mi bibendum neque
+      egestas congue quisque egestas. Mattis pellentesque id nibh tortor id
+      aliquet. Nunc non blandit massa enim nec dui nunc mattis enim. Augue neque
+      gravida in fermentum et sollicitudin. Non blandilla phasellus faucibus
+      scelerisque eleifend donec. Nunc congue nisi vitae suscipit tellus.
+      Ullamcorper a lacus vestibulum sed arcu. Posuere ac ut consequat semper
+      viverra. Tortor dignissim convallis aenean et tortor at risus viverra
+      adipiscing. Viverra aliquet eget sit amet tellus cras. Sapien faucibus et
+      molestie ac feugiat sed lectus vestibulum mattis. Imperdiet proin
+      fermentum leo vel. Cras fermentum odio eu feugiat pretium nibh. Turpis in
+      eu mi bibendum neque egestas congue quisque egestas. Mattis pellentesque
+      id nibh tortor id aliquet. Nunc non blandit massa enim nec dui nunc mattis
+      enim. Augue neque gravida in fermentum et sollicitudin. Non blandilla
+      phasellus faucibus scelerisque eleifend donec. Nunc congue nisi vitae
+      suscipit tellus. Ullamcorper a lacus vestibulum sed arcu. Posuere ac ut
+      consequat semper viverra. Tortor dignissim convallis aenean et tortor at
+      risus viverra adipiscing. Viverra aliquet eget sit amet tellus cras.
+      Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis.
+      Imperdiet proin fermentum leo vel. Cras fermentum odio eu feugiat pretium
+      nibh. Turpis in eu mi bibendum neque egestas congue quisque egestas.
+      Mattis pellentesque id nibh tortor id aliquet. Nunc non blandit massa enim
+      nec dui nunc mattis enim. Augue neque gravida in fermentum et
+      sollicitudin. Non bland
+    </p>
+    <div class="tomato-box"></div>
+    <div class="plum-box"></div>
+    <p>
+      Condimentum mattis pellentesque id nibh tortor. Porttitor leo a diam
+      sollicitudin tempor. Eget magna fermentum iaculis eu non diam phasellus.
+      Consequat interdum varius sit amet. Porttitor leo a diam sollicitudin
+      tempor id eu nisl. Diam maecenas sed enim ut sem viverra aliquet. A
+      iaculis at erat pellentesque adipiscing commodo elit. Elementum facilisis
+      leo vel fringilla est ullamcorper eget nulla. Nam aliquam sem et tortor
+      consequat id. Egestas egestas fringilla phasellus faucibus scelerisque
+      eleifend donec. Nunc congue nisi vitae suscipit tellus. Ullamcorper a
+      lacus vestibulum sed arcu. Posuere ac ut consequat semper viverra. Tortor
+      dignissim convallis aenean et tortor at risus viverra adipiscing. Viverra
+      aliquet eget sit amet tellus cras. Sapien faucibus et molestie ac feugiat
+      sed lectus vestibulum mattis. Imperdiet proin fermentum leo vel. Cras
+      fermentum odio eu feugiat pretium nibh. Turpis in eu mi bibendum neque
+      egestas congue quisque egestas. Mattis pellentesque id nibh tortor id
+      aliquet. Nunc non blandit massa enim nec dui nunc mattis enim. Augue neque
+      gravida in fermentum et sollicitudin. Non blandilla phasellus faucibus
+      scelerisque eleifend donec. Nunc congue nisi vitae suscipit tellus.
+      Ullamcorper a lacus vestibulum sed arcu. Posuere ac ut consequat semper
+      viverra. Tortor dignissim convallis aenean et tortor at risus viverra
+      adipiscing. Viverra aliquet eget sit amet tellus cras. Sapien faucibus et
+      molestie ac feugiat sed lectus vestibulum mattis. Imperdiet proin
+      fermentum leo vel. Cras fermentum odio eu feugiat pretium nibh. Turpis in
+      eu mi bibendum neque egestas congue quisque egestas. Mattis pellentesque
+      id nibh tortor id aliquet. Nunc non blandit massa enim nec dui nunc mattis
+      enim. Augue neque gravida in fermentum et sollicitudin. Non blandilla
+      phasellus faucibus scelerisque eleifend donec. Nunc congue nisi vitae
+      suscipit tellus. Ullamcorper a lacus vestibulum sed arcu. Posuere ac ut
+      consequat semper viverra. Tortor dignissim convallis aenean et tortor at
+      risus viverra adipiscing. Viverra aliquet eget sit amet tellus cras.
+      Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis.
+      Imperdiet proin fermentum leo vel. Cras fermentum odio eu feugiat pretium
+      nibh. Turpis in eu mi bibendum neque egestas congue quisque egestas.
+      Mattis pellentesque id nibh tortor id aliquet. Nunc non blandit massa enim
+      nec dui nunc mattis enim. Augue neque gravida in fermentum et
+      sollicitudin. Non bland
+    </p>
+    <div class="blue-box"></div>
+    <p>
+      Condimentum mattis pellentesque id nibh tortor. Porttitor leo a diam
+      sollicitudin tempor. Eget magna fermentum iaculis eu non diam phasellus.
+      Consequat interdum varius sit amet. Porttitor leo a diam sollicitudin
+      tempor id eu nisl. Diam maecenas sed enim ut sem viverra aliquet. A
+      iaculis at erat pellentesque adipiscing commodo elit. Elementum facilisis
+      leo vel fringilla est ullamcorper eget nulla. Nam aliquam sem et tortor
+      consequat id. Egestas egestas fringilla phasellus faucibus scelerisque
+      eleifend donec. Nunc congue nisi vitae suscipit tellus. Ullamcorper a
+      lacus vestibulum sed arcu. Posuere ac ut consequat semper viverra. Tortor
+      dignissim convallis aenean et tortor at risus viverra adipiscing. Viverra
+      aliquet eget sit amet tellus cras. Sapien faucibus et molestie ac feugiat
+      sed lectus vestibulum mattis. Imperdiet proin fermentum leo vel. Cras
+      fermentum odio eu feugiat pretium nibh. Turpis in eu mi bibendum neque
+      egestas congue quisque egestas. Mattis pellentesque id nibh tortor id
+      aliquet. Nunc non blandit massa enim nec dui nunc mattis enim. Augue neque
+      gravida in fermentum et sollicitudin. Non blandilla phasellus faucibus
+      scelerisque eleifend donec. Nunc congue nisi vitae suscipit tellus.
+      Ullamcorper a lacus vestibulum sed arcu. Posuere ac ut consequat semper
+      viverra. Tortor dignissim convallis aenean et tortor at risus viverra
+      adipiscing. Viverra aliquet eget sit amet tellus cras. Sapien faucibus et
+      molestie ac feugiat sed lectus vestibulum mattis. Imperdiet proin
+      fermentum leo vel. Cras fermentum odio eu feugiat pretium nibh. Turpis in
+      eu mi bibendum neque egestas congue quisque egestas. Mattis pellentesque
+      id nibh tortor id aliquet. Nunc non blandit massa enim nec dui nunc mattis
+      enim. Augue neque gravida in fermentum et sollicitudin. Non blandilla
+      phasellus faucibus scelerisque eleifend donec. Nunc congue nisi vitae
+      suscipit tellus. Ullamcorper a lacus vestibulum sed arcu. Posuere ac ut
+      consequat semper viverra. Tortor dignissim convallis aenean et tortor at
+      risus viverra adipiscing. Viverra aliquet eget sit amet tellus cras.
+      Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis.
+      Imperdiet proin fermentum leo vel. Cras fermentum odio eu feugiat pretium
+      nibh. Turpis in eu mi bibendum neque egestas congue quisque egestas.
+      Mattis pellentesque id nibh tortor id aliquet. Nunc non blandit massa enim
+      nec dui nunc mattis enim. Augue neque gravida in fermentum et
+      sollicitudin. Non bland
+    </p>
+  </body>
+</html>

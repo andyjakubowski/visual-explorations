@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>103 - Grid Container and Writing Mode</title>
+  </head>
+  <style>
+    :root {
+      background-color: #444;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-content: center;
+    }
+
+    body {
+      background-color: whitesmoke;
+      width: 300px;
+      height: 300px;
+      margin: 0;
+    }
+
+    .grid-container {
+      inline-size: 100%;
+      block-size: 100%;
+      background-color: aquamarine;
+
+      display: grid;
+    }
+
+    .label {
+      place-self: start;
+      background-color: black;
+      color: white;
+    }
+
+
+  </style>
+  <body>
+    <div class="grid-container">
+      <div class="label">Label</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>147 - grid repeat(auto-fill, &lt;track-list&gt;)</title>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 120px 40px);
+        resize: horizontal;
+        overflow: hidden;
+        border: 10px solid black;
+      }
+
+      .grid-item-big {
+        border: 10px solid #f77;
+      }
+
+      .grid-item-small {
+        border: 10px solid #373;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-item-big">A</div>
+      <div class="grid-item-small">B</div>
+      <div class="grid-item-big">C</div>
+      <div class="grid-item-small">D</div>
+      <div class="grid-item-big">E</div>
+      <div class="grid-item-small">F</div>
+    </div>
+  </body>
+</html>

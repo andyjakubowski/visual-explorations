@@ -1,0 +1,29 @@
+:root {
+  padding: 100px;
+  background: black;
+}
+
+body {
+  margin: 0;
+  /* background: white; */
+  display: grid;
+  place-content: center;
+  gap: 16px;
+  background: burlywood;
+}
+
+.text.one {
+  width: min-content;
+  background: white;
+}
+
+.text.two {
+  width: max-content;
+  background: thistle;
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>80 - CSS custom property Recalculating Styles comparison #1</title>
+    <style>
+      body {
+        background-color: burlywood;
+      }
+
+      .box {
+        background-color: var(--background-color);
+        color: var(--color);
+      }
+    </style>
+    <script>
+      const nextColor = (function makeNextColor() {
+        const colors = ['purple', 'brown', 'blue'];
+        let index = 0;
+        return function nextColor() {
+          const color = colors[index];
+          const isLastColor = index === colors.length - 1;
+          if (isLastColor) {
+            index = 0;
+          } else {
+            index += 1;
+          }
+          return color;
+        };
+      })();
+
+      function handleDOMContentLoaded() {
+        document.body.append(
+          ...[...Array(50000)].map((_, i) => {
+            const box = document.createElement('div');
+            box.textContent = String(i);
+            box.classList.add('box');
+            return box;
+          })
+        );
+
+        const buttonEl = document.getElementById('button');
+        buttonEl.addEventListener('click', () => {
+          document.body.style.setProperty('--background-color', nextColor());
+          document.body.style.setProperty('--color', nextColor());
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+      } else {
+        handleDOMContentLoaded();
+      }
+    </script>
+  </head>
+  <body style="--background-color: tomato; --color: white">
+    <button id="button">Change styles</button>
+  </body>
+</html>

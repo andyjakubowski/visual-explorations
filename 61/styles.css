@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  max-width: max-content;
+  flex: 0 1 100%;
+}
+
+.item:nth-child(1) {
+  /* padding: 16px; */
+}
+
+.hermione {
+  padding: 32px;
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

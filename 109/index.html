@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      109 - Transparent Radio Inputs Stretched Behind Visible Labels
+    </title>
+  </head>
+  <style>
+    body {
+      /* display: flex; */
+    }
+
+    div {
+      display: inline-grid;
+      grid-template-areas: 'the-one-area';
+    }
+
+    input,
+    label {
+      grid-area: the-one-area;
+    }
+
+    input[type='radio'] {
+      appearance: none;
+      margin: 0;
+    }
+
+    input[type='radio']:checked + label {
+      color: blue;
+    }
+  </style>
+  <body>
+    <div>
+      <input type="radio" name="align-self" id="auto" value="auto" />
+      <label for="auto">auto</label>
+    </div>
+    <div>
+      <input type="radio" name="align-self" id="stretch" value="stretch" />
+      <label for="stretch">stretch</label>
+    </div>
+    <div>
+      <input
+        type="radio"
+        name="align-self"
+        id="flex-start"
+        value="flex-start"
+      />
+      <label for="flex-start">flex-start</label>
+    </div>
+    <div>
+      <input type="radio" name="align-self" id="center" value="center" />
+      <label for="center">center</label>
+    </div>
+    <div>
+      <input type="radio" name="align-self" id="flex-end" value="flex-end" />
+      <label for="flex-end">flex-end</label>
+    </div>
+  </body>
+</html>

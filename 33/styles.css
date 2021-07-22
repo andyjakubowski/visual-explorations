@@ -1,0 +1,58 @@
+:root {
+  box-sizing: border-box;
+  /* border: 10px solid black; */
+  /* padding: 16px; */
+  height: 100vh;
+  background: thistle;
+}
+
+body {
+  margin: 0;
+  /* height: 100%; */
+
+  background: white;
+}
+
+.v-stack {
+  min-width: 0;
+  min-height: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.h-stack {
+  min-width: 0;
+  min-height: 0;
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.v-spacer {
+  height: 100vh;
+  flex: auto;
+}
+
+.h-spacer {
+  width: 100vw;
+  flex: auto;
+}
+
+.view {
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border: 1px solid black;
+  background: seashell;
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+}
+
+main {
+  background-color: seashell;
+
+  display: grid;
+  grid-template-columns: repeat(7, 100px);
+}
+
+div {
+  /* width: 700px; */
+
+  height: 80px;
+
+  background-color: lightblue;
+}
+
+div:nth-child(2n) {
+  background-color: lightgoldenrodyellow;
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

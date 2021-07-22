@@ -1,0 +1,58 @@
+* {
+  /* outline: 1px solid hsla(0, 0%, 50%, 50%); */
+}
+
+:root {
+  height: 100vh;
+  background: thistle;
+}
+
+body {
+  margin: 0;
+  padding: 64px;
+  height: 100%;
+}
+
+.container {
+  width: 800px;
+  height: 300px;
+  background: white;
+
+  display: grid;
+  align-items: start;
+  grid-auto-rows: minmax(0, min-content);
+  gap: 8px;
+}
+
+.view {
+  /* box-sizing: border-box; */
+  flex: none;
+  background: greenyellow;
+  opacity: 0.5;
+}
+
+.view.a {
+  /* padding: 12px 16px; */
+}
+.view.b {
+  /* padding: 4px 32px; */
+}
+.view.c {
+  /* padding: 16px 8px; */
+}
+
+.view.e {
+  /* height: 100%; */
+}
+
+.spacer {
+  block-size: 100vmax;
+  /* min-block-size: 0; */
+  /* max-block-size: 100vmax; */
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

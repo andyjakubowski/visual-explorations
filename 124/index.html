@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>124 - inline-block auto width with floats</title>
+  </head>
+  <style>
+    :root {
+      background-color: white;
+    }
+
+    body {
+      background-color: bisque;
+    }
+
+    div {
+      background-color: rosybrown;
+    }
+
+    span {
+      display: inline-block;
+      display: inline flow-root;
+    }
+
+    span:nth-child(odd) {
+      background-color: coral;
+    }
+
+    span:nth-child(even) {
+      background-color: cornflowerblue;
+    }
+
+    .image-laptop {
+      float: left;
+      margin: 10px;
+    }
+
+    .image-shoe {
+
+    }
+
+    p {
+      /* display: inline; */
+      background-color: teal;
+    }
+
+  </style>
+  <body>
+    <img class="image-laptop" src="https://picsum.photos/id/1/50" alt="Random image">
+    <div>A block</div>
+    <span>One one</span>
+    <span>Two two</span>
+    <span>Three three</span>
+    <p>I am a paragraph, which has a display of block flow by default.</p>
+    <span>Four four four four four</span>
+    <span>Longasswordwhoathatslooong!!!</span>
+    <img class="image-shoe" src="https://picsum.photos/id/21/50" alt="Random image">
+  </body>
+</html>

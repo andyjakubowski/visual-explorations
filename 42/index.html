@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>42 - Flexbox stacks with display: contents</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <p>
+      The container is a grid with one grid item.
+      The grid centers its content.
+      display: contents is used for same-type nested stacks.
+      Spacers have a huge flex-shrink factor so that only they
+      shrink inside a stack, especially when a stack would shrink
+      on its cross axis.
+    </p>
+    <div
+      class="container two"
+      style="
+        /* --v-stack-alignment: flex-start; */
+      "
+    >
+      <div class="h-stack two">
+        <div class="h-spacer two"></div>
+        <div
+          class="v-stack two"
+          style="
+            --v-stack-alignment: flex-start;
+          "
+        >
+          <h2>Bory Tucholskie</h2>
+          <div class="v-spacer two"></div>
+          <div
+            class="h-stack two"
+            style="
+            --h-stack-alignment: center;
+            "
+          >
+            <h1 style="
+              flex: none;
+            ">Hello World!</h1>
+            <div class="h-spacer two"></div>
+            <div class="view two a">A</div>
+            <div class="view two b">B</div>
+            <div class="view two c">C</div>
+            <div class="view two d">D</div>
+            <div class="view two e">E</div>
+            <div class="view two f">F</div>
+            <div class="view two g">G</div>
+          </div>
+        </div>
+        <div class="h-spacer two"></div>
+      </div>
+    </div>
+
+    <p>
+      An HStack with an H1 and two HStacks nested inside.
+      HStacks that are direct children of other HStacks 
+      have display: contents.
+
+      This is because HStacks with Spacers expand a lot and
+      shrink, but then HStacks without Spacers are forced
+      to shrink, too — and we don’t want them to shrink if
+      the only have content and no Spacers.
+    </p>
+    <div class="container one">
+      <div
+        class="h-stack one"
+      >
+        <h1>Hello World!</h1>
+        <div class="h-stack one">
+          <div class="view one a">A</div>
+          <div class="view one b">B</div>
+          <div class="view one c">C</div>
+          <div class='h-spacer one'></div>
+          <div class="view one d">D</div>
+        </div>
+        <div class="h-stack one">
+          <div class="view one a">A</div>
+          <div class="view one b">B</div>
+          <div class="view one c">C</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

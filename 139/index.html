@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>139 - auto-sized block container in orthogonal flow</title>
+    <style>
+      :root {
+        /* background-color: #334; */
+        background-color: whitesmoke;
+      }
+
+      body {
+        background-color: burlywood;
+        /* overflow: hidden; */
+        /* min-block-size: 0; */
+        /* max-block-size: 100px; */
+        block-size: 100px;
+      }
+
+      main {
+        writing-mode: vertical-rl;
+        background-color: white;
+        border: solid 10px tomato;
+        /* width: min-content; */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Orthogonal flow</h1>
+    <main>
+      This text sits inside the main element, which has
+      <code>writing-mode: vertical-rl</code>. One question to ask would be when
+      this text will wrap into another line? Hmmm....
+      SuperDuperLongWordSuperDuperLongWordSuperDuperLongWord
+    </main>
+    <aside>
+      If a box establishing an orthogonal flow is either a block container or a
+      multi-column container, for the case where the box’s inline size is auto.
+      If column-count and column-width are both auto, use the shrink-to-fit
+      formula min(max-content, max(min-content, constraint)). Constraint is the
+      inline-axis size that would stretch fit into to the smallest of:
+      <ul>
+        <li>
+          the available space: the containing block’s size if that is fixed,
+          else the size represented by the containing block’s inner max size (if
+          that is fixed) floored by its inner min size (if that is fixed)
+        </li>
+        <li>
+          the nearest ancestor scrollport’s inner size if that is fixed, else /
+          capped by its inner max size if that is fixed, floored by its inner
+          min size if that is fixed
+        </li>
+        <li>the initial containing block’s size</li>
+      </ul>
+      <a href="https://drafts.csswg.org/css-writing-modes-4/#orthogonal-auto"
+        >https://drafts.csswg.org/css-writing-modes-4/#orthogonal-auto</a
+      >
+      <a href="https://drafts.csswg.org/css-writing-modes-4/#auto-multicol"
+        >https://drafts.csswg.org/css-writing-modes-4/#auto-multicol</a
+      >
+    </aside>
+  </body>
+</html>

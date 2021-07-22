@@ -1,0 +1,47 @@
+:root {
+  padding: 100px;
+  background: black;
+}
+
+body {
+  margin: 0;
+  /* background: white; */
+  display: grid;
+  place-content: center;
+  gap: 16px;
+  background: burlywood;
+}
+
+.image.one {
+  width: min-content;
+  background: white;
+}
+
+.image.two {
+  width: max-content;
+  background: thistle;
+}
+
+.image.three {
+  width: max-content;
+  height: 50px;
+  background: thistle;
+}
+
+.image.four {
+  width: 50px;
+  height: max-content;
+  background: thistle;
+}
+
+.image.five {
+  width: 50px;
+  height: 200px;
+  background: thistle;
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

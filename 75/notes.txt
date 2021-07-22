@@ -1,0 +1,101 @@
+Firefox on macOS Big Sur
+
+1. Press down left mouse button
+2. move pointer within the target’s boundaries
+3. Switch tabs with a keyboard shortcut
+4. Don’t move the mouse
+5. Switch back
+6. Then move the mouse again
+
+
+Switch tabs
+- switch to another tab
+11:08:34.257 visibilitychange: hidden
+- come back
+11:08:34.930 visibilitychange: visible
+
+=================
+
+iPhone, Safari 14?
+
+Tap
+[Log] pointerover (index.js, line 6)
+[Log] pointerenter (index.js, line 6)
+[Log] pointerdown (index.js, line 6)
+[Log] gotpointercapture (index.js, line 6)
+[Log] pointerup (index.js, line 6)
+[Log] lostpointercapture (index.js, line 6)
+[Log] pointerout (index.js, line 6)
+
+Touch, drag, lift finger with hit test boundaries
+[Log] pointerover (index.js, line 6)
+[Log] pointerenter (index.js, line 6)
+[Log] pointerdown (index.js, line 6)
+[Log] gotpointercapture (index.js, line 6)
+[Log] pointermove (index.js, line 6, x365)
+[Log] pointerup (index.js, line 6)
+[Log] lostpointercapture (index.js, line 6)
+[Log] pointerout (index.js, line 6)
+
+Scroll within hit test boundaries (if you don’t set touch-action)
+[Log] pointerover (index.js, line 6)
+[Log] pointerenter (index.js, line 6)
+[Log] pointerdown (index.js, line 6)
+[Log] gotpointercapture (index.js, line 6)
+[Log] pointermove (index.js, line 6, x2)
+[Log] pointercancel (index.js, line 6)
+[Log] pointerout (index.js, line 6)
+[Log] lostpointercapture (index.js, line 6)
+
+Scroll within hit test boundaries (if you set touch-action: none)
+- note that pointercancel doesn’t fire
+[Log] pointerover (index.js, line 6)
+[Log] pointerenter (index.js, line 6)
+[Log] pointerdown (index.js, line 6)
+[Log] gotpointercapture (index.js, line 6)
+[Log] pointermove (index.js, line 6, x13)
+[Log] pointerup (index.js, line 6)
+[Log] lostpointercapture (index.js, line 6)
+[Log] pointerout (index.js, line 6)
+
+Touch, drag outside of hit test boundaries, lift finger
+[Log] pointerover (index.js, line 6)
+[Log] pointerenter (index.js, line 6)
+[Log] pointerdown (index.js, line 6)
+[Log] gotpointercapture (index.js, line 6)
+- start dragging:
+[Log] pointermove (index.js, line 6, x114)
+- move out of hit test boundaries
+- note no event fires!
+- at this point you can move your finger anywhere 
+on the device’s screen, event outside of the 
+viewport and onto the browser UI chrome
+- once you lift the finger:
+[Log] pointerup (index.js, line 6)
+[Log] lostpointercapture (index.js, line 6)
+[Log] pointerout (index.js, line 6)
+
+Touch, drag, then press the Home button
+[Log] pointerover (index.js, line 6)
+[Log] pointerenter (index.js, line 6)
+[Log] pointerdown (index.js, line 6)
+[Log] gotpointercapture (index.js, line 6)
+[Log] pointermove (index.js, line 6, x111)
+- press the Home button
+[Log] pointercancel (index.js, line 6)
+- JavaScript stops executing once you’re in the Home screen
+- for example, my console clearing interval didn’t execute (5000 ms)
+- it did execute immediately after I opened Safari
+- the interval does execute at 2000 ms, so it might be that Safari
+gives you a couple of seconds to execute JavaScript once the app
+has moved out of the foreground
+
+Touch, drag, then press the Safari address bar
+[Log] pointerover (index.js, line 6)
+[Log] pointerenter (index.js, line 6)
+[Log] pointerdown (index.js, line 6)
+[Log] gotpointercapture (index.js, line 6)
+[Log] pointermove (index.js, line 6, x111)
+- your target keeps receiving events while you interact with
+the Safari address bar and settings!
+- the toolbar is disabled while you drag, though

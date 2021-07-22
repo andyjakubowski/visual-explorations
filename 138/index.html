@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>138 - vertical writing modes - orthogonal flow</title>
+    <style>
+      :root {
+        background-color: #334;
+      }
+
+      body {
+        background-color: burlywood;
+        /* overflow: hidden; */
+        /* min-block-size: 0; */
+        /* max-block-size: 100px; */
+        block-size: 100px;
+      }
+
+      main {
+        writing-mode: vertical-rl;
+        background-color: white;
+        border: solid 10px tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Orthogonal flow</h1>
+    <main>
+      This text sits inside the main element, which has
+      <code>writing-mode: vertical-rl</code>. One question to ask would be when
+      this text will wrap into another line? Hmmm....
+    </main>
+    <h2>Mr. Peanutbutter</h2>
+    <aside>
+      Mr. Peanutbutter is an energetic and cheerful yellow Labrador Retriever
+      who is BoJack's former sitcom rival and Diane's ex-husband. Mr.
+      Peanutbutter was the star of Mr. Peanutbutter's House, which, according to
+      BoJack, "borrowed the premise" from Horsin' Around. It is revealed in the
+      episode "See Mr. Peanutbutter Run" that the working title for Mr.
+      Peanutbutter's House was Untitled Horsin' Around Knockoff. Mr.
+      Peanutbutter portrays many characteristics of an actual Labrador,
+      including a love for tennis balls, a hatred of the mail man, and suspicion
+      of doorbells and is sweet, loyal, kind, playful, and considerate. His
+      generally upbeat and affable personality is often contrasted with the
+      show's other major characters, particularly Bojack and Dianne.
+    </aside>
+  </body>
+</html>

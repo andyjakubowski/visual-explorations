@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>55 - Stacks - Nesting Stress Test</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  
+  <body>
+    <div class="preview">
+      <div class="h stack root-stack root-stack-h-expand root-stack-v-expand">
+        <div class="content root-stack">
+          <div class="h stack v-resizable h-resizable" style="background: white;">
+            <div class="content" style="align-items: center;">
+              <div class="v stack v-resizable">
+                <div class="v content" style="padding: 24px;">
+                  <div class="text">Hello World
+                    <!-- okay now we’re dealing with some longer text and I’m super I’m super curious how this whole thing will turn out yeah I’m super curious how this whole thing will turn out yeahHello -->
+                    </div>
+                  <div class="v spacer"></div>
+                  <div class="text">Hello World</div>
+                  <div class="v spacer"></div>
+                  <div class="text">Hello World</div>
+                </div>
+              </div>
+              <div class="h spacer hide"></div>
+              <div class="v stack h-resizable v-resizable">
+                <div class="content">
+                  <div>Alohomora</div>
+                  <div class="h-resizable v-resizable">
+                    <img class="hermione h-resizable v-resizable" src="hermione_card_200_250.jpg" />
+                  </div>
+                  <div>Bravadio</div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="content text" style="padding: 8px;">
+                  Hello World okay 
+                  now we’re dealing with some longer text and I’m super I’m super curious how this whole thing will turn out yeah I’m super cu
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="h spacer"></div>
+          <div class="stack-item">
+            <div class="content text" style="padding: 8px; background: tomato;">
+              Alright alright alright
+              <!-- okay now we’re dealing with some longer text and I’m super I’m super curious how this whole thing will turn out yeah I’m super curious how this whole thing will turn out yeahHello -->
+              <!-- okay now we’re dealing with some longer text and I’m super I’m super curious how this whole thing will turn out yeah I’m super curious how this whole thing will turn out yeahHello -->
+              <!-- okay now we’re dealing with some longer text and I’m super I’m super curious how this whole thing will turn out yeah I’m super curious how this whole thing will turn out yeahHello -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

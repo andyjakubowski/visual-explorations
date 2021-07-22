@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+}
+
+div {
+  /* pointer-events: none; */
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  border: 10px solid black;
+  width: 100px;
+  height: 100px;
+}
+
+input[type='checkbox']:checked {
+  background-color: tomato;
+}
+
+input[type='checkbox']:hover {
+  background-color: lightgray;
+}
+
+input[type='checkbox']:active {
+  border: 10px solid red;
+}
+
+input[type='checkbox']:focus {
+  background-color: green;
+}

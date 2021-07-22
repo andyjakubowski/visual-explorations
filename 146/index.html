@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      146 - SO - prevent line wrap between certain flex child elements
+    </title>
+    <style></style>
+  </head>
+  <body>
+    <div style="resize: horizontal; overflow: hidden; border: 10px solid black">
+      <div style="display: flex; flex-wrap: wrap">
+        <div class="flex-item" style="flex: none; display: flex">
+          <div style="width: 100px; border: 10px solid #f77">A</div>
+          <div style="width: 20px; border: 10px solid #373">B</div>
+        </div>
+        <div class="flex-item" style="flex: none; display: flex">
+          <div style="width: 100px; border: 10px solid #f77">C</div>
+          <div style="width: 20px; border: 10px solid #373">D</div>
+        </div>
+        <div class="flex-item" style="flex: none; display: flex">
+          <div style="width: 100px; border: 10px solid #f77">E</div>
+          <div style="width: 20px; border: 10px solid #373">F</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+* {
+  outline: 1px solid hsla(0, 0%, 50%, 50%);
+}
+
+:root {
+  background: thistle;
+}
+
+body {
+  margin: 0;
+}
+
+.container-grow {
+  display: flex;
+}
+
+.box-grow {
+  background: white;
+}
+
+.box-grow.a {
+  flex: 2 1 200px;
+}
+
+.box-grow.b {
+  flex: 1 1 200px;
+}
+
+.box-grow.c {
+  flex: 1 1 200px;
+}
+
+.container-shrink {
+  display: flex;
+}
+
+.box-shrink {
+  background: white;
+}
+
+.box-shrink.x {
+  flex: 1 10 1000px;
+}
+
+.box-shrink.y {
+  flex: 1 1 1000px;
+}
+
+.box-shrink.z {
+  flex: 1 1 1000px;
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

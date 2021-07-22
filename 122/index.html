@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>122 - Flexbox - complex auto-sized flex container</title>
+  </head>
+  <style>
+    :root {
+      background-color: white;
+    }
+
+    .flex-container {
+      float: left;
+      background-color: bisque;
+      display: flex;
+    }
+
+    pre {
+      clear: left;
+    }
+
+  </style>
+  <body>
+    <div class="flex-container">
+      <p>Hello World</p>
+      <img src="https://picsum.photos/id/1062/200/100" alt="Doggy">
+    </div>
+    <pre>
+      122 - Flexbox - complex auto-sized flex container
+Tuesday, 13 July 2021
+https://github.com/andyjakubowski/visual-explorations/commit/97ec3f2223e3e64037797a458833d21240ce4adb
+
+VIEWPORT
+400 x 300
+
+
+PRE-INITIAL SETUP
+0a. Identify in-flow children (mind position: absolute, display: contents)
+
+INITIAL SETUP
+1. Generate anonymous flex items
+
+- none
+
+LINE LENGTH DETERMINATION
+2. Determine the available main and cross space for the flex items
+
+- we have a floated auto-sized flex container
+- available main size, so width: 400px (viewport) - 16px (flex container left and right margins) = 384px
+- available cross size: infinity
+
+3. Determine the flex base size and hypothetical main size of each item
+
+- for the paragraph
+flex-basis: auto -> used flex-basis: content -> treating content as max-content
+flex base size = max-content = 79.17px
+hypothetical main size = clamp(used min size, flex base size, used max size)
+used min size = min-width: auto = automatic minimum size https://drafts.csswg.org/css-flexbox-1/#min-size-auto
+- no specified size
+- no transferred size
+- content size suggestion = min-content = 39.62px
+used max size = max-width: none = infinity
+hypothetical main size = clamp(39.62px, 79.17px, infinity) = 79.17px
+
+- for the image
+flex-basis: auto -> used flex-basis: content -> treating content as max-content
+flex base size = max-content -> look at natural image dimensions = 200px
+used min size = min-width: auto = automatic minimum size
+- no specified size
+- no transferred size (it has a preferred aspect ratio derived from the natural aspect ratio, but it has no definite preferred cross size)
+- content size suggestion = min-content = 200px
+hypothetical main size = clamp(200px, 200px, infinity) = 200px
+
+4. Determine the main size of the flex container
+
+- the flex container is floating, so for its width we’ll use shrink-to-fit AKA the fit-content size
+min-content = 239.617px
+stretch-fit size = 400px (the size of the containing block as described in https://www.w3.org/TR/CSS2/visudet.html#blockwidth)
+max-content = 279.167px
+clamp(min-content size, stretch-fit size, max-content size) = 279.167px
+
+
+MAIN ITEM SIZE DETERMINATION
+5. Collect flex items into flex lines
+
+- flex-wrap: nowrap, so both items go into the only flex line
+
+6. Resolve the flexible lengths of all the flex items to find their used main size
+6.1. Determine the used flex factor
+
+flex container inner main size = 279.167px
+sum of flex item outer hypothetical main sizes = 79.17px + 200px = 279.167px
+sum = flex container inner main size
+- the sum is not less than the flex container inner main size
+used flex factor = flex shrink
+
+6.2. Set each item’s target main size to its flex base size
+
+p item target main size = flex base size = 79.17px
+img item target main size = flex base size = 200px
+
+6.3. Size inflexible items
+
+- no flex item has a flex base size smaller than its hypothetical main size
+- thus, not freezing any flex items
+
+6.4. Calculate initial free space
+
+flex container inner main size = 279.167px
+sum of flex item outer flex base sizes = 79.17px + 200px = 279.167px
+initial free space = 0
+
+6.5. Loop
+
+6.5.a. Check for flexible items
+- not all items frozen, continue
+
+6.5.b. Calculate the remaining free space
+same as initial free space = 0
+
+6.5.c. Distribute free space proportional to the flex factors
+- nothing to do, no free space
+
+6.5.d. Fix min/max violations
+- no violations
+
+6.5.e. Freeze over-flexed items
+sum of violations = 0
+- freezing all items
+
+6.6. Set each item’s used main size to its target main size.
+
+p flex item used main size = target main size = 79.17px
+img flex item used main size = target main size = 200px
+
+
+CROSS SIZE DETERMINATION
+7. Determine the hypothetical cross size of each item
+
+p flex item, inner hypothetical cross size = 19.2px
+img flex item, inner hypothetical cross size = 100px
+
+8. Calculate the cross size of each flex line.
+9. Handle align-content: stretch.
+10. Collapse visibility:collapse items.
+11. Determine the used cross size of each flex item.
+
+MAIN-AXIS ALIGNMENT
+12. Distribute any remaining free space.
+
+CROSS-AXIS ALIGNMENT
+13. Resolve cross-axis auto margins.
+14. Align all flex items along the cross-axis per align-self, if neither of the item’s cross-axis margins are auto.
+15. Determine the flex container’s used cross size.
+16. Align all flex lines per align-content.
+    </pre>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      142 - auto-sized flex container establishing an orthogonal flow
+    </title>
+    <style>
+      :root {
+        background-color: #aac;
+        /* background-color: whitesmoke; */
+      }
+
+      body {
+        margin: 0;
+        display: flow-root;
+        background-color: burlywood;
+        /* block-size: 100px; */
+        /* min-block-size: 1500px; */
+        /* max-block-size: 10000px; */
+      }
+
+      main {
+        writing-mode: vertical-rl;
+        background-color: white;
+        /* border: solid 10px tomato; */
+        display: flex;
+        /* gap: 110px; */
+        /* width: min-content; */
+        /* inline-size: -webkit-fill-available; */
+        /* inline-size: -moz-available; */
+        /* inline-size: stretch; */
+      }
+
+      main > * {
+        /* flex: 0 1 max-content; */
+        /* inline-size: max-content; */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Orthogonal flow</h1>
+    <main>
+      <p>Flex item one</p>
+      <p>Flex item two</p>
+      <p>Flex item Three</p>
+    </main>
+    <!-- <main>
+      <p>
+        For example, a table or flex container establishing an orthogonal flow
+        is laid out into its given available space. If its available inline
+        space is infinite, this effectively lays the box out at its max-content
+        size.
+      </p>
+      <p>
+        For example, a table or flex container establishing an orthogonal flow
+        is laid out into its given available space. If its available inline
+        space is infinite, this effectively lays the box out at its max-content
+        size.
+      </p>
+      <p>
+        For example, a table or flex container establishing an orthogonal flow
+        is laid out into its given available space. If its available inline
+        space is infinite, this effectively lays the box out at its max-content
+        size.
+      </p>
+    </main> -->
+    <aside>
+      <h3>
+        <a
+          href="https://drafts.csswg.org/css-writing-modes-4/#orthogonal-layout"
+          >Auto-sizing Other Orthogonal Flow Roots</a
+        >
+      </h3>
+      <p>
+        For example, a table or flex container establishing an orthogonal flow
+        is laid out into its given available space. If its available inline
+        space is infinite, this effectively lays the box out at its max-content
+        size. However, any of its table cells or flex items that are block
+        containers are laid out assuming infinite available inline space and so
+        behave accordingly.
+      </p>
+      <a
+        href="https://drafts.csswg.org/css-flexbox-1/#valdef-flex-basis-content"
+        >https://drafts.csswg.org/css-flexbox-1/#valdef-flex-basis-content</a
+      >
+      <a href="https://drafts.csswg.org/css-flexbox-1/#algo-main-item"
+        >https://drafts.csswg.org/css-flexbox-1/#algo-main-item</a
+      >
+    </aside>
+  </body>
+</html>

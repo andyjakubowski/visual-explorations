@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>108 - Invisible Radio Inputs with Visible Labels</title>
+  </head>
+  <style>
+    body {
+    }
+
+    input[type='radio'] {
+      appearance: none;
+    }
+
+    input[type='radio']:checked + label {
+      color: blue;
+    }
+  </style>
+  <body>
+    <input type="radio" name="align-self" id="auto" value="auto" />
+    <label for="auto">auto</label>
+    <input type="radio" name="align-self" id="stretch" value="stretch" />
+    <label for="stretch">stretch</label>
+    <input type="radio" name="align-self" id="flex-start" value="flex-start" />
+    <label for="flex-start">flex-start</label>
+    <input type="radio" name="align-self" id="center" value="center" />
+    <label for="center">center</label>
+    <input type="radio" name="align-self" id="flex-end" value="flex-end" />
+    <label for="flex-end">flex-end</label>
+  </body>
+</html>

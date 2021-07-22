@@ -1,0 +1,33 @@
+* {
+  outline: 1px solid hsla(109, 90%, 50%, 20%);
+}
+
+:root {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.stack {
+  height: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
+
+.stack-item-container {
+  flex: 100000 0 0;
+  max-width: max-content;
+}
+
+.stack-item-container_resizable {
+  flex: 1 1 0;
+  max-width: none;
+}
+
+.stack-item-content {
+}

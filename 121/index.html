@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>121 - max-content sizing</title>
+  </head>
+  <style>
+    :root {
+      background-color: white;
+    }
+
+    body {
+      width: max-content;
+      display: flex;
+      background-color: bisque;
+    }
+
+    p {
+      flex-basis: 0;
+    }
+  </style>
+  <body>
+    <p>Lorem ipsum dolor sit amet</p>
+    <p>Lorem ipsum dolor sit amet, consectetur</p>
+    <div>
+      <p>
+        Lorem ipsum
+      </p>
+      <img src="https://picsum.photos/400/300" alt="Random image">
+    </div>
+  </body>
+</html>

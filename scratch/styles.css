@@ -1,0 +1,10 @@
+html {
+  background-color: burlywood;
+}
+
+body {
+  display: flex;
+  width: 500px;
+  height: 100px;
+  background-color: white;
+}

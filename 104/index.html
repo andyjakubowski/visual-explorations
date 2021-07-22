@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>104 - Content Size Contribution of Flex Item with Different Writing Mode</title>
+  </head>
+  <style>
+    :root {
+      background-color: #444;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-content: center;
+    }
+
+    body {
+      background-color: whitesmoke;
+      width: 300px;
+      height: 300px;
+      margin: 0;
+    }
+
+    .flex-container {
+      display: flex;
+    }
+
+    .flex-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flex-item-content-wrapper {
+
+    }
+
+    .flex-item-content {
+      writing-mode: vertical-rl;
+    }
+
+
+
+  </style>
+  <body class="flex-container">
+    <div class="flex-item">
+      <div class="flex-item-content-wrapper">
+        <div class="flex-item-content">Flex item child</div>
+      </div>
+      <!-- <div class="flex-item-child">Flex item child</div> -->
+    </div>
+  </body>
+</html>

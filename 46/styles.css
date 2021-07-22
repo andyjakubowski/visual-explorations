@@ -1,0 +1,86 @@
+* {
+  outline: 1px solid hsla(0, 0%, 50%, 50%);
+  /* opacity: 0.8; */
+  box-sizing: border-box;
+}
+
+:root {
+  height: 100vh;
+  background: black;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.hermione {
+  min-width: 50px;
+  min-height: 50px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  align-self: stretch;
+  object-fit: cover;
+  object-position: center 10%;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 17px;
+  overflow: hidden;
+  display: grid;
+  place-content: center;
+}
+
+.component-container {
+  display: contents;
+}
+
+.stack {
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+}
+
+.shrinkable.stack {
+  /* min-width: 0; */
+  /* min-height: 0; */
+}
+
+.vertical.stack {
+  flex-direction: column;
+  /* justify-content: var(--h-stack-alignment, center); */
+  align-items: var(--v-stack-alignment, center);
+}
+
+.horizontal.stack {
+  /* justify-content: var(--v-stack-alignment, center); */
+  align-items: var(--h-stack-alignment, center);
+}
+
+.vertical.stack > .vertical.stack,
+.horizontal.stack > .horizontal.stack {
+  /* display: contents; */
+}
+
+.shrinkable,
+.spacer {
+  flex: 1 100000 auto;
+}
+
+.vertical.spacer {
+  height: 100vh;
+}
+
+.horizontal.spacer {
+  width: 100vw;
+}
+
+.stack *:not(.spacer):not(.shrinkable) {
+  flex: 1 1 auto;
+}

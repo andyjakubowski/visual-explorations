@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>79 - style element textContent vs CSSOM</title>
+    <style>
+      body {
+        background-color: burlywood;
+      }
+
+      .apple {
+      }
+
+      .apple,
+      .banana {
+      }
+    </style>
+    <script>
+      setTimeout(() => {
+        document.styleSheets[0].cssRules[0].style.setProperty(
+          'background-color',
+          'tomato'
+        );
+      }, 3000);
+    </script>
+  </head>
+  <body>
+    The background will change after 3 seconds
+  </body>
+</html>

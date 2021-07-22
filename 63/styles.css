@@ -1,0 +1,86 @@
+* {
+  outline: 1px solid hsla(109, 90%, 50%, 20%);
+}
+
+body {
+  margin: 0;
+  padding: 50px;
+}
+
+.stack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stack_vertical {
+  flex-direction: column;
+}
+
+.item-container_content-sized {
+  width: 100%;
+  min-width: min-content;
+  max-width: max-content;
+}
+
+.item-container_resizable-horizontally {
+  width: 100%;
+  min-width: 8px;
+  max-width: none;
+}
+
+.item-container_resizable-horizontally-spacer {
+  flex-shrink: 10000;
+  width: 100%;
+  min-width: 8px;
+  max-width: none;
+}
+
+.item-container_resizable-vertically {
+  height: 100%;
+  min-height: 8px;
+  max-height: none;
+
+  width: var(--width, auto);
+  max-width: var(--width, max-content);
+}
+
+.item-content {
+}
+
+.item-content.one {
+}
+
+.item-content.two {
+  padding: 32px;
+}
+
+.item-content.three {
+  padding: 16px;
+}
+
+.item-content_spacer {
+  max-width: 100%;
+  width: 100vw;
+}
+
+.item-content_resizable-horizontally {
+  width: 100vw;
+  max-width: 100%;
+  --arbitrary-item-height: 100px;
+  height: var(--arbitrary-item-height, max-content);
+}
+
+.item-content_resizable-vertically {
+  height: 100vh;
+  max-height: 100%;
+
+  /* --arbitrary-item-width: 200px; */
+  width: var(--arbitrary-item-width, max-content);
+}
+
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

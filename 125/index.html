@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>125 - flex container and floats</title>
+  </head>
+  <style>
+    :root {
+      background-color: white;
+    }
+
+    body {
+      background-color: bisque;
+    }
+
+    div {
+      background-color: rosybrown;
+    }
+
+    span {
+      /* display: inline-block; */
+      /* display: inline flow-root; */
+    }
+
+    .flex-item:nth-child(odd) {
+      background-color: coral;
+    }
+
+    .flex-item:nth-child(even) {
+      background-color: cornflowerblue;
+    }
+
+    .image-laptop {
+      float: left;
+      margin: 10px;
+    }
+
+    .image-shoe {
+
+    }
+
+    p {
+      /* display: inline; */
+      background-color: teal;
+    }
+
+    .flex-container {
+      display: flex;
+      display: block flex;
+      margin-left: 20px;
+      /* display: inline-flex;
+      display: inline flex; */
+    }
+
+  </style>
+  <body>
+    <pre>UAs must prevent overlap between float margin boxes and border boxes of certain elements (including flex and grid containers)
+      Wednesday, 14 July 2021
+      https://www.w3.org/TR/CSS2/visuren.html#floats
+      https://www.w3.org/TR/CSS2/visudet.html#blockwidth
+      
+      The border box of
+      - a table
+      - a block-level replaced element
+      - an element in the normal flow that establishes a new block formatting context (such as an element with 'overflow' other than 'visible') must not overlap the margin box of any floats in the same block formatting context as the element itself. 
+      
+      If necessary, implementations should clear the said element by placing it below any preceding floats, but may place it adjacent to such floats if there is sufficient space.
+      
+      They may even make the border box of said element narrower than defined by section 10.3.3. 
+      
+      CSS2 does not define when a UA may put said element next to the float or by how much said element may become narrower. 
+      
+      The border box of a table, block-level replaced element, or an element in the normal flow that establishes a new block (or flex, grid, etc.) formatting context must not overlap</pre>
+    <img class="image-laptop" src="https://picsum.photos/id/1/50" alt="Random image">
+    Just some inline text
+    <div class="flex-container">
+      <div class="flex-item"><span>Flex item one</span></div>
+      <div class="flex-item"><span>Flex item two</span></div>
+      <div class="flex-item"><span>Flex item three</span></div>
+    </div>
+    <img class="image-shoe" src="https://picsum.photos/id/21/50" alt="Random image">
+  </body>
+</html>

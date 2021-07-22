@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="156px" height="48px" viewBox="0 0 156 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>tooltip-polygon</title>
+    <g id="tooltip-polygon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#FCFCFC" x="0" y="0" width="156" height="40"></rect>
+        <polygon id="Rectangle" fill="#FCFCFC" points="73 40 84 40 78.5 48"></polygon>
+    </g>
+</svg>

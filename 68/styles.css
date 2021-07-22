@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+
+#not-blinking,
+#blinking {
+  width: 50px;
+  fill: tomato;
+}
+
+#blinking {
+  /* animation-direction: alternate;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-name: blink; */
+  animation: blink 0.6s infinite alternate;
+}
+
+@keyframes blink {
+  0%,
+  45.8333333% {
+    opacity: 0;
+  }
+
+  54.1666666% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+/* Positioning */
+/* Display */
+/* Colors */
+/* Type */
+/* Other */

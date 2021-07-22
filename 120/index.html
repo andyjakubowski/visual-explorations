@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>120 - Flexbox - the wider the screen the more divs</title>
+  </head>
+  <style>
+    .flex-container {
+      display: flex;
+      flex-flow: row wrap;
+      gap: 8px;
+    }
+
+    .flex-item {
+      flex: auto;
+      padding: 32px;
+      background-color: bisque;
+    }
+  </style>
+  <body>
+    <div class="flex-container">
+      <div class="flex-item">One</div>
+      <div class="flex-item">Two</div>
+      <div class="flex-item">Three</div>
+      <div class="flex-item">Four</div>
+      <div class="flex-item">Five</div>
+      <div class="flex-item">Six</div>
+      <div class="flex-item">Seven</div>
+      <div class="flex-item">Eight</div>
+      <div class="flex-item">Nine</div>
+      <div class="flex-item">Ten</div>
+      <div class="flex-item">Eleven</div>
+      <div class="flex-item">Twelve</div>
+    </div>
+  </body>
+</html>

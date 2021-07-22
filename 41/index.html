@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>41 - Grid - sizing tracks</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <p>
+    </p>
+    <pre>
+    </pre>
+    <div class="container eight">
+      <div class="view eight-a">Eight A</div>
+      <div class="view eight-b">Eight B</div>
+      <div class="view eight-c">Eight C</div>
+      <div class="spacer-eight"></div>
+      <div class="view eight-d">Eight D</div>
+    </div>
+
+    <p>
+      All views are placed onto the explicit grid, where the size of each row is max-content.
+    </p>
+    <pre>
+      grid: repeat(auto-fit, 40px) / 1fr;
+      justify-items: start;
+      align-items: start;
+    </pre>
+    <div class="container seven">
+      <div class="view seven-a">Seven A</div>
+      <div class="view seven-b">Seven B</div>
+      <div class="view seven-c">Seven C</div>
+      <div class="view seven-d">Seven D</div>
+    </div>
+
+    <p>
+      The row tracks are explicitly 20px and are repeated to fill the height of the grid container.
+
+      grid-auto-flow is switched from the default of row to column, so when we run out of rows a new implicit column is created. The size of the column is the max-content of the row with the widest content.
+
+      justify-items aligns each grid item within its grid cell.
+
+    </p>
+    <pre>
+      grid: repeat(auto-fill, 20px) / auto-flow max-content;
+      justify-items: start;
+    </pre>
+    <div class="container six">
+      <div class="view six-a">Six A</div>
+      <div class="view six-b">Six B</div>
+      <div class="view six-c">Six C</div>
+      <div class="view six-c">Six C</div>
+      <div class="view six-c">Six C</div>
+      <div class="view six-c">Six C</div>
+      <div class="view six-c">Six C</div>
+      <div class="view six-c">Six C</div>
+      <div class="view six-c">Six C</div>
+      <div class="view six-c">Six C Wow what a long piece of content</div>
+      <div class="view six-c">Six C</div>
+      <div class="view six-c">Six C</div>
+      <div class="view six-c">Six C</div>
+      <div class="view six-c">Six C</div>
+    </div>
+
+    <pre>grid: auto-flow minmax(min-content, 1fr) / 400px;</pre>
+    <div class="container five">
+      <div class="view five-a">Five A</div>
+      <div class="view five-b">Five B</div>
+      <div class="view five-c">Five C</div>
+    </div>
+
+    <pre>grid: auto-flow min-content / 1fr;</pre>
+    <div class="container four">
+      <div class="view four-a">Four A</div>
+      <div class="view four-b">Four B</div>
+      <div class="view four-c">Four C</div>
+    </div>
+
+    <pre>
+      grid: 40px 40px / 300px;
+      grid-auto-rows: 100px;
+      align-items: end;</pre>
+    <div class="container three">
+      <div class="view three-a">Three A</div>
+      <div class="view three-b">Three B</div>
+      <div class="view three-c">Three C</div>
+    </div>
+
+    <pre>grid: auto-flow 80px / 200px;</pre>
+    <div class="container two">
+      <div class="view two-a">Two A</div>
+      <div class="view two-b">Two B</div>
+      <div class="view two-c">Two C</div>
+    </div>
+
+    <pre>grid:
+      'A' 40px
+      'B' 80px
+      'C' 120px /
+      300px;</pre>
+    <div class="container one">
+      <div class="view one-a">One A</div>
+      <div class="view one-b">One B</div>
+      <div class="view one-c">One C</div>
+    </div>
+  </body>
+</html>

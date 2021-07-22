@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>94 - Flexbox - container in block formatting context</title>
+  </head>
+  <style>
+    :root {
+      /* box-sizing: border-box;
+      width: 100vw;
+      height: 100vh;
+
+      margin: 0;*/
+      border: 1px dashed tomato;
+      /* padding: 0;  */
+
+      background-color: whitesmoke;
+
+      line-height: 40px;
+
+      display: block flow;
+    }
+
+    body {
+      /* box-sizing: border-box; */
+
+      margin: 0;
+      /* border: 5px solid cadetblue; */
+      display: block flex;
+      background-color: wheat;
+    }
+
+    span {
+      flex-grow: 1;
+      background-color: burlywood;
+    }
+
+    span:nth-child(odd) {
+      background-color: darksalmon;
+    }
+  </style>
+  <body>
+    <span>One</span>
+    <span>Two</span>
+    <span>Three lalalalaalal al ala ala ala ala</span>
+    <!-- <span>A size that can be determined without performing layout; that is, a <length>, a measure of text (without consideration of line-wrapping), a size of the initial containing block, or a <percentage> or other formula (such the “stretch-fit” sizing of non-replaced blocks [CSS2]) that is resolved solely against definite sizes. </span> -->
+    <span>Four</span>
+    <span>Five</span>
+    <span>Six</span>
+    <span>Seven</span>
+    <span>Eight</span>
+    <span>Nine</span>
+    <span>Ten</span>
+  </body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>101 - Box Model Grid Layout - logical properties</title>
+    <style>
+      body {
+        font-size: 10px;
+        text-align: center;
+        --color-content: #cf5d1c;
+        --color-padding: #c6d093;
+        --color-border: #f8dfa4;
+        --color-margin: #f2cea5;
+        display: grid;
+        grid-template-areas:
+          '. . . margin-block-start . . .'
+          '. . . border-block-start . . .'
+          '. . . padding-block-start . . .'
+          'margin-inline-start border-inline-start padding-inline-start content padding-inline-end border-inline-end margin-inline-end'
+          '. . . padding-block-end . . .'
+          '. . . border-block-end . . .'
+          '. . . margin-block-end . . .';
+        grid-auto-columns: max-content;
+      }
+
+      .content {
+        background-color: var(--color-content);
+        grid-area: content;
+      }
+
+      .segment {
+        --thickness_px: calc(var(--thickness_unitless, 0) * 1px);
+
+      }
+
+      .segment_horizontal {
+        width: var(--thickness_px);
+      }
+
+      .segment_vertical {
+        height: var(--thickness_px);
+      }
+
+      .margin-block-start {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        block-size: var(--thickness_px);
+        background-color: var(--color-margin);
+        grid-area: margin-block-start;
+      }
+
+      .border-block-start {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        block-size: var(--thickness_px);
+        background-color: var(--color-border);
+        grid-area: border-block-start;
+      }
+
+      .padding-block-start {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        block-size: var(--thickness_px);
+        background-color: var(--color-padding);
+        grid-area: padding-block-start;
+      }
+
+      .margin-inline-start {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        inline-size: var(--thickness_px);
+        background-color: var(--color-margin);
+        grid-area: margin-inline-start;
+      }
+
+      .border-inline-start {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        inline-size: var(--thickness_px);
+        background-color: var(--color-border);
+        grid-area: border-inline-start;
+      }
+
+      .padding-inline-start {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        inline-size: var(--thickness_px);
+        background-color: var(--color-padding);
+        grid-area: padding-inline-start;
+      }
+
+      .padding-inline-end {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        inline-size: var(--thickness_px);
+        background-color: var(--color-padding);
+        grid-area: padding-inline-end;
+      }
+
+      .border-inline-end {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        inline-size: var(--thickness_px);
+        background-color: var(--color-border);
+        grid-area: border-inline-end;
+      }
+
+      .margin-inline-end {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        inline-size: var(--thickness_px);
+        background-color: var(--color-margin);
+        grid-area: margin-inline-end;
+      }
+
+      .padding-block-end {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        block-size: var(--thickness_px);
+        background-color: var(--color-padding);
+        grid-area: padding-block-end;
+      }
+
+      .border-block-end {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        block-size: var(--thickness_px);
+        background-color: var(--color-border);
+        grid-area: border-block-end;
+      }
+
+      .margin-block-end {
+        --thickness_px: calc(var(--thickness_unitless, 80) * 1px);
+        block-size: var(--thickness_px);
+        background-color: var(--color-margin);
+        grid-area: margin-block-end;
+      }
+    </style>
+    <script>
+      const boxAreas = [
+      {
+          name: 'content',
+          properties: [
+            {
+              name: 'width',
+              value: '100px',
+            },
+            {
+              name: 'height',
+              value: '50px',
+            },
+          ],
+        },
+        {
+          name: 'margin-block-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+        {
+          name: 'border-block-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+        {
+          name: 'padding-block-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+        {
+          name: 'margin-inline-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'border-inline-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'padding-inline-start',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'margin-inline-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'border-inline-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'padding-inline-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '100',
+            },
+          ],
+        },
+        {
+          name: 'margin-block-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+        {
+          name: 'border-block-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+        {
+          name: 'padding-block-end',
+          properties: [
+            {
+              name: '--thickness_unitless',
+              value: '20',
+            },
+          ],
+        },
+      ];
+
+      const start = function start() {
+        console.log(boxAreas);
+
+        const areaEls = boxAreas.map((area) => {
+          const { name, properties } = area;
+          const el = document.createElement('div');
+          el.classList.add(name);
+          el.textContent = name;
+          properties.forEach(({ name, value }) => {
+            el.style.setProperty(name, value);
+          });
+          return el;
+        });
+
+        document.body.append(...areaEls);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();
+      }
+    </script>
+  </head>
+  <body>
+    <!-- <div class="margin-block-start">margin-block-start</div>
+    <div class="border-block-start">border-block-start</div>
+    <div class="padding-block-start">padding-block-start</div>
+    <div class="margin-inline-start">margin-inline-start</div>
+    <div class="border-inline-start">border-inline-start</div>
+    <div class="padding-inline-start">padding-inline-start</div>
+    <div class="content">content</div>
+    <div class="padding-inline-end">padding-inline-end</div>
+    <div class="border-inline-end">border-inline-end</div>
+    <div class="margin-inline-end">margin-inline-end</div>
+    <div class="padding-block-end">padding-block-end</div>
+    <div class="border-block-end">border-block-end</div>
+    <div class="margin-block-end">margin-block-end</div> -->
+  </body>
+</html>
