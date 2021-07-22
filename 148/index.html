@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      148 - cross-stretched, auto-sized flex item affecting flex container main
+      size
+    </title>
+    <style>
+      :root {
+        background-color: #aac;
+      }
+
+      body {
+        margin: 50px;
+        padding: 50px;
+        background: content-box url('white-square.png'), burlywood;
+      }
+
+      .flex-container {
+        background-color: whitesmoke;
+        border: solid 10px tomato;
+        /* display: inline-flex; */
+        /* display: inline flex; */
+        display: flex;
+        display: block flex;
+        flex-direction: column;
+      }
+
+      .flex-item {
+        background-color: white;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .flex-item:nth-child(odd) {
+        border: 2px dotted #446;
+      }
+
+      .flex-item:nth-child(even) {
+        border: 2px dashed #446;
+      }
+
+      .doggy {
+        /* display: block flex; */
+      }
+    </style>
+  </head>
+  <body>
+    <strong
+      >In Firefox, Chrome, and Edge, an ‘auto’-sized flex item stretched in the
+      cross axis and with an aspect ratio will affect its flex base size, and
+      effectively the main size of the container. In Safari, the stretched size
+      isn’t taken into account and a content-based size seems to be
+      used.</strong
+    >
+    <main class="flex-container">
+      <img
+        class="doggy"
+        src="https://picsum.photos/id/237/40/200"
+        alt="Doggy"
+      />
+      <p class="flex-item"><span>Flex item one</span></p>
+      <!-- <p class="flex-item"><span>Flex item one Super_Long_Word</span></p> -->
+      <!-- <p class="flex-item">
+        <span
+          >The domestic dog (Canis familiaris or Canis lupus familiaris)[4] is a
+          domesticated descendant of the wolf. The dog derived from an ancient,
+          extinct wolf,[5][6] and the modern grey wolf is the dog's nearest
+          living relative.[7] The dog was the first species to be
+          domesticated,[8][7] by hunter–gatherers over 15,000 years ago,[6]
+          before the development of agriculture.[1] Their long association with
+          humans has led dogs to be uniquely adapted to human behavior,[9]
+          leading to a large number of domestic individuals[10] and the ability
+          to thrive on a starch-rich diet that would be inadequate for other
+          canids.</span
+        >
+      </p> -->
+      <p class="flex-item"><span>Flex item two</span></p>
+      <p class="flex-item"><span>Flex item three</span></p>
+    </main>
+    <img class="doggy" src="https://picsum.photos/id/237/80" alt="Doggy" />
+  </body>
+</html>
