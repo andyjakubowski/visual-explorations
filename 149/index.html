@@ -12,8 +12,8 @@
         grid-template-areas: 'item';
         place-content: end stretch;
         height: 300px;
-        width: 700px;
-        background-image: url(https://heroshockey.com/wp2021/wp-content/uploads/2021/07/program-billboards-future-stars.jpg);
+        width: 300px;
+        background-image: url(https://picsum.photos/id/237/300/300);
         background-size: cover;
         background-repeat: no-repeat;
       }
@@ -21,7 +21,7 @@
       .container::before {
         content: '';
         grid-area: item;
-        background-color: red;
+        background-color: seagreen;
         mix-blend-mode: multiply;
       }
 
@@ -29,20 +29,23 @@
         grid-area: item;
         isolation: isolate;
         color: white;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        gap: 8px;
       }
 
       h1,
       p {
         margin: 0;
-        padding: 10px;
       }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="item">
-        <h1>HEADLINE</h1>
-        <p>Subhead</p>
+        <h1>Happy Doggy</h1>
+        <p>I’m a dog hello</p>
       </div>
     </div>
   </body>
