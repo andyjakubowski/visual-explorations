@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      149 - SO - mix-blend-mody multiply background, but text solid white
+    </title>
+    <style>
+      .container {
+        display: grid;
+        grid-template-areas: 'item';
+        place-content: end stretch;
+        height: 300px;
+        width: 700px;
+        background-image: url(https://heroshockey.com/wp2021/wp-content/uploads/2021/07/program-billboards-future-stars.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .container::before {
+        content: '';
+        grid-area: item;
+        background-color: red;
+        mix-blend-mode: multiply;
+      }
+
+      .item {
+        grid-area: item;
+        isolation: isolate;
+        color: white;
+      }
+
+      h1,
+      p {
+        margin: 0;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">
+        <h1>HEADLINE</h1>
+        <p>Subhead</p>
+      </div>
+    </div>
+  </body>
+</html>
