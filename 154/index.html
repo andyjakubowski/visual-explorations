@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>154 - available block space for flex items - auto-sizing</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      section {
+        display: flow-root;
+        display: block flow-root;
+        margin-bottom: 32px;
+      }
+
+      section:nth-of-type(odd) {
+        background-color: bisque;
+      }
+
+      section:nth-of-type(even) {
+        background-color: antiquewhite;
+      }
+
+      .flex-container-parent {
+        outline: 2px dotted rgba(128, 128, 128, 0.4);
+      }
+
+      .flex-container {
+        display: flex;
+        padding: 8px;
+        gap: 16px;
+        outline: 1px dashed tomato;
+        background-color: whitesmoke;
+      }
+
+      .flex-item {
+      }
+
+      .flex-item:nth-child(odd) {
+        background-color: rgba(128, 128, 200, 0.2);
+      }
+
+      .flex-item:nth-child(even) {
+        background-color: rgba(128, 128, 200, 0.3);
+      }
+
+      .block-layout .flex-container {
+        display: flex;
+        display: block flex;
+      }
+
+      .block-layout-with-float img {
+        float: left;
+      }
+
+      .block-layout-with-float .flex-container {
+        display: flex;
+        display: block flex;
+      }
+
+      .block-layout-with-float .flex-item {
+        flex: auto;
+      }
+
+      .block-layout-with-orthogonal-flow .flex-container {
+        writing-mode: vertical-rl;
+        inline-size: min-content;
+        display: flex;
+        display: block flex;
+      }
+
+      .inline-layout .flex-container {
+        display: inline-flex;
+        display: inline flex;
+      }
+
+      .grid-layout .flex-container-parent {
+        display: grid;
+      }
+
+      .grid-layout .flex-container {
+        display: flex;
+        display: block flex;
+      }
+
+      .flex-layout .flex-container-parent {
+        display: flex;
+      }
+
+      .flex-layout .flex-container {
+        display: flex;
+        display: block flex;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Available block space for the flex items depending on the formatting context in which the flex container participates</h1>
+    <h2>All elements auto-sized</h2>
+    <p><code>Window.getComputedStyle()['inline-size']</code> returns the used inline size of an element. Once adjusted for <code>box-sizing</code>, it should always correspond to the available space for flex items in the inline dimension.</p>
+    <section class="block-layout">
+      <h2>Block layout</h2>
+      <div class="flex-container-parent">
+        <ul class="flex-container">
+          <li class="flex-item">Item One</li>
+          <li class="flex-item">Item Two</li>
+          <li class="flex-item">Item Three</li>
+        </ul>
+      </div>
+    </section>
+    <section class="block-layout">
+      <h2>Block layout — longer content</h2>
+      <div class="flex-container-parent">
+        <ul class="flex-container">
+          <li class="flex-item">Spicy jalapeno andouille salami tenderloin capicola meatball pig ham chuck doner cupim. Cupim capicola brisket landjaeger, ground round pork loin leberkas tail porchetta salami bacon beef ribs turkey pig short loin. Bresaola landjaeger biltong, pork belly andouille porchetta shoulder sausage cow bacon short loin doner pancetta tongue jerky. Flank chislic short loin strip steak fatback.</li>
+          <li class="flex-item">Tongue pastrami biltong pork. T-bone ham hock kielbasa beef ribs salami. Ham turkey meatloaf strip steak kielbasa corned beef meatball tail beef salami alcatra filet mignon shankle cow. Rump ball tip venison, picanha frankfurter t-bone beef ribs spare ribs landjaeger beef ham hock. Short loin pork belly shankle turducken kevin pork loin tenderloin buffalo biltong shank alcatra. Kevin chuck swine meatball pork chop shoulder capicola spare ribs tri-tip.</li>
+          <li class="flex-item">Picanha ball tip short ribs ribeye sirloin drumstick prosciutto doner. Andouille alcatra shoulder, filet mignon pig chislic jerky kevin swine shank picanha prosciutto tenderloin pork chop. Pancetta shoulder landjaeger, flank capicola boudin ball tip leberkas swine venison tri-tip pork chop kevin.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="block-layout-with-float">
+      <h2>Block layout with a floating element</h2>
+      <div class="flex-container-parent">
+        <img src="https://picsum.photos/id/237/150/100" alt="Doggy" />
+        <ul class="flex-container">
+          <li class="flex-item">Item One</li>
+          <li class="flex-item">Item Two</li>
+          <li class="flex-item">Item Three</li>
+        </ul>
+      </div>
+    </section>
+    <section class="block-layout-with-orthogonal-flow">
+      <h2>
+        Block layout with the flex container establishing an orthogonal flow — the same flex item content as the other examples
+      </h2>
+      <p>Notice that the size of <code>.flex-container-parent</code> maxes out at its <code>max-content</code> size.</p>
+      <div class="flex-container-parent">
+        <ul class="flex-container">
+          <li class="flex-item">Item One</li>
+          <li class="flex-item">Item Two</li>
+          <li class="flex-item">Item Three</li>
+        </ul>
+      </div>
+    </section>
+    <section class="block-layout-with-orthogonal-flow">
+      <h2>
+        Block layout with the flex container establishing an orthogonal flow — longer flex item content
+      </h2>
+      <p>Notice that the size of <code>.flex-container-parent</code> maxes out at its <code>stretch-fit</code> size, where <code>stretch-fit</code> is the <em>fallback size</em> capped to the size of the initial containing block.</p>
+      <div class="flex-container-parent">
+        <ul class="flex-container">
+          <li class="flex-item">Spicy jalapeno andouille salami tenderloin capicola meatball pig ham chuck doner cupim. Cupim capicola brisket landjaeger, ground round pork loin leberkas tail porchetta salami bacon beef ribs turkey pig short loin. Bresaola landjaeger biltong, pork belly andouille porchetta shoulder sausage cow bacon short loin doner pancetta tongue jerky. Flank chislic short loin strip steak fatback.</li>
+          <li class="flex-item">Item Two</li>
+          <li class="flex-item">Item Three</li>
+        </ul>
+      </div>
+    </section>
+    <section class="inline-layout">
+      <h2>Inline layout</h2>
+      <div class="flex-container-parent">
+        <ul class="flex-container">
+          <li class="flex-item">Item One</li>
+          <li class="flex-item">Item Two</li>
+          <li class="flex-item">Item Three</li>
+        </ul>
+      </div>
+    </section>
+    <section class="inline-layout">
+      <h2>Inline layout — longer content</h2>
+      <div class="flex-container-parent">
+        <ul class="flex-container">
+          <li class="flex-item">Spicy jalapeno andouille salami tenderloin capicola meatball pig ham chuck doner cupim. Cupim capicola brisket landjaeger, ground round pork loin leberkas tail porchetta salami bacon beef ribs turkey pig short loin. Bresaola landjaeger biltong, pork belly andouille porchetta shoulder sausage cow bacon short loin doner pancetta tongue jerky. Flank chislic short loin strip steak fatback.</li>
+          <li class="flex-item">Item Two</li>
+          <li class="flex-item">Item Three</li>
+        </ul>
+      </div>
+    </section>
+    <section class="grid-layout">
+      <h2>Grid layout</h2>
+      <div class="flex-container-parent">
+        <ul class="flex-container">
+          <li class="flex-item">Item One</li>
+          <li class="flex-item">Item Two</li>
+          <li class="flex-item">Item Three</li>
+        </ul>
+      </div>
+    </section>
+    <section class="flex-layout">
+      <h2>Flex layout</h2>
+      <div class="flex-container-parent">
+        <ul class="flex-container">
+          <li class="flex-item">Item One</li>
+          <li class="flex-item">Item Two</li>
+          <li class="flex-item">Item Three</li>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>
