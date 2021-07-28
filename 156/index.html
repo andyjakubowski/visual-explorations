@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      156 - SO - Place a set of small divs above and below one full-width large
+      div depending on space available
+    </title>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+
+      div {
+        padding: 24px;
+        text-align: center;
+        border: 1px solid black;
+      }
+
+      div:nth-of-type(odd) {
+        background-color: whitesmoke;
+      }
+
+      .big-div {
+        grid-row: 2;
+        grid-column: 1 / -1;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="grid-container">
+      <div>Small</div>
+      <div>Small</div>
+      <div>Small</div>
+      <div class="big-div">Big</div>
+      <div>Small</div>
+      <div>Small</div>
+      <div>Small</div>
+      <div>Small</div>
+      <div>Small</div>
+    </main>
+  </body>
+</html>
