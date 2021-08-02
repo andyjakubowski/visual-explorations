@@ -11,7 +11,9 @@ const htmlStrings = [
       console.log('hello from the first iframe');
       window.addEventListener('load', (event) => {
         const flexContainerEl = document.getElementById('flex-container');
+        const styles = getComputedStyle(flexContainerEl);
         console.log('getComputedStyle(flexContainerEl).width:', getComputedStyle(flexContainerEl).width);
+        window.parent.postMessage(JSON.stringify({ name: 'Florian', styles }), "*");
       });
     </script>
   </body>
@@ -77,4 +79,9 @@ htmlStrings.forEach((htmlString, index) => {
     })
   });
   document.body.append(buttonEl);
+});
+
+window.addEventListener('message', (e) => {
+  const { data } = e;
+  console.log('data:', JSON.parse(data));
 });
