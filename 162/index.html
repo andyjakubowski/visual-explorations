@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>162 - SO - Making a grid system of images and text mobile responsive</title>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, auto);
+      }
+
+      .grid-item {
+        padding: 24px;
+        text-align: center;
+        border: 1px solid black;
+      }
+
+      .grid-item:nth-of-type(odd) {
+        background-color: beige;
+      }
+
+      @media screen and (min-width: 600px) {
+        .grid-container {
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(3, auto);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="grid-container">
+      <div class="grid-item">Item 1</div>
+      <div class="grid-item">Item 2</div>
+      <div class="grid-item">Item 3</div>
+      <div class="grid-item">Item 4</div>
+      <div class="grid-item">Item 5</div>
+      <div class="grid-item">Item 6</div>
+      <div class="grid-item">Item 7</div>
+      <div class="grid-item">Item 8</div>
+      <div class="grid-item">Item 9</div>
+      <div class="grid-item">Item 10</div>
+      <div class="grid-item">Item 11</div>
+      <div class="grid-item">Item 12</div>
+    </main>
+  </body>
+</html>
