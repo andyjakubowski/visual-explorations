@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>164 - SO - how to add space bettween elements in flex box</title>
+    <!-- https://stackoverflow.com/questions/68631112/how-to-add-space-bettween-elements-in-flex-box -->
+    <style>
+      .flex-container-list-item {
+        display: flex;
+        border: 6px solid red;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .details {
+        background-color: lightcoral;
+      }
+
+      .edit {
+        background-color: lightgreen;
+      }
+
+      .delete {
+        background-color: lightskyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container-list-item">
+      <div class="details">
+        <h3>Job</h3>
+        <h4>Status: active</h4>
+        <p>
+          <span> Start time: 2 PM</span>
+        </p>
+        <p>
+          <span> End time: 4 PM</span>
+        </p>
+        <p>
+          <span> Runs Every: 3 days </span>
+        </p>
+
+        <p>
+          <button>Machine Details</button>
+        </p>
+      </div>
+      <div class="edit">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="openUpdateScheduledJobDialog(scheduledjob)"
+        >
+          Edit
+        </button>
+      </div>
+      <div class="delete">
+        <button mat-raised-button (click)="delete(scheduledjob)" color="warn">
+          Delete
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
