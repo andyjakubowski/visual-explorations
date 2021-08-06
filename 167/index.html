@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>167 - SO - Auto scrolling breaking height restrictions</title>
+    <!-- https://stackoverflow.com/questions/68676166/auto-scrolling-breaking-height-restrictions -->
+    <style>
+      :root {
+        background-color: black;
+      }
+
+      body {
+        margin: 0;
+        color: white;
+      }
+
+      .app {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      header {
+        text-align: center;
+      }
+
+      .nav-list {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        justify-content: space-evenly;
+      }
+
+      .todo-list-container {
+        flex-grow: 1;
+        padding: 24px;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .todo-list-content {
+        background-color: burlywood;
+      }
+
+      .todo-item {
+        font-size: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header><h1>Exist Better</h1></header>
+      <nav>
+        <ul class="nav-list">
+          <li>Routines</li>
+          <li>Behaviors</li>
+          <li>To Dos</li>
+        </ul>
+      </nav>
+      <div class="todo-list-container">
+        <div class="todo-list-content">
+          <ul class="todo-list">
+            <li class="todo-item">Routine 1</li>
+            <li class="todo-item">Routine 2</li>
+            <li class="todo-item">Routine 3</li>
+            <li class="todo-item">Routine 4</li>
+            <li class="todo-item">Routine 5</li>
+            <li class="todo-item">Routine 6</li>
+            <li class="todo-item">Routine 7</li>
+            <li class="todo-item">Routine 8</li>
+            <li class="todo-item">Routine 9</li>
+            <li class="todo-item">Routine 10</li>
+          </ul>
+          <button>Add a new routine</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
