@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>169 - resolving percentage min size of a grid item</title>
+    <!-- Resolving minimum and maximum sizes
+    - same as the preferred size, but computed percentages resolve to
+    percentages in Window.getComputedStyle
+    - that means you have a percentage and you must know the size of the
+    containing block, which may not be exposed in the DOM (like a grid
+    area) -->
+    <style>
+      :root {
+        background-color: #111;
+        font-size: 24px;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr 1fr;
+        grid-template-rows: 300px 100px 300px 100px;
+        /* place-items: start; */
+      }
+
+      .grid-item {
+      }
+
+      .grid-item.a {
+        grid-column: 2 / 4;
+        grid-row: 3 / 5;
+        width: 50%;
+        height: 25%;
+        background-color: cornflowerblue;
+      }
+
+      .grid-item.b {
+        background-color: lightgreen;
+      }
+
+      .grid-item.c {
+        background-color: lightpink;
+        grid-column: span 3;
+      }
+    </style>
+  </head>
+  <body class="grid-container">
+    <div class="grid-item a">
+      Grid item A. Grid area sizes aren’t exposed to authors.
+    </div>
+    <div class="grid-item b">
+      Grid item B. A grid item’s grid area forms the containing block into which
+      it is laid out.
+    </div>
+    <div class="grid-item c">
+      Grid item C. Percentage sizes of grid items are resolved against the size
+      of the containing block.
+    </div>
+  </body>
+</html>
