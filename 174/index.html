@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>174 - percentage width and containing block</title>
+    <!-- https://stackoverflow.com/questions/33891709/when-flexbox-items-wrap-in-column-mode-container-does-not-grow-its-width -->
+    <!-- https://www.w3.org/TR/css-flexbox-1/#flex-flow-property -->
+    <style>
+      :root {
+        background-color: burlywood;
+      }
+
+      body {
+        background-color: royalblue;
+        width: 400px;
+        padding: 100px;
+        box-sizing: border-box;
+      }
+
+      main {
+        background-color: white;
+        width: 50%;
+        padding: 10%;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <main>Text inside body > main</main>
+  </body>
+</html>
