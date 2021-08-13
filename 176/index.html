@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-      173 - When flexbox items wrap in column mode, container does not grow its
-      width #1
+      176 - When flexbox items wrap in column mode, container does not grow its
+      width #2
     </title>
     <!-- https://stackoverflow.com/questions/33891709/when-flexbox-items-wrap-in-column-mode-container-does-not-grow-its-width -->
     <!-- https://www.w3.org/TR/css-flexbox-1/#flex-flow-property -->
@@ -23,13 +23,16 @@
         padding: 0;
         margin: 0;
         background-color: royalblue;
+        display: flex;
+        gap: 24px;
       }
 
       li {
-        display: inline-flex;
+        display: flex;
         height: 200px;
         flex-flow: column wrap;
         background-color: lightgrey;
+        padding: 16px;
       }
 
       div {
@@ -37,15 +40,21 @@
         font-size: 2em;
         padding: 24px;
         border: 1px dashed black;
+        opacity: 0.9;
       }
     </style>
   </head>
   <body>
     <ul>
       <li>
-        <div>Item A</div>
-        <div>Item C</div>
-        <div>ItemBIsVeryLongHaha!</div>
+        <div>One A</div>
+        <div>One B</div>
+        <div>One C</div>
+      </li>
+      <li>
+        <div>Two A</div>
+        <div>Two B</div>
+        <div>Two C</div>
       </li>
     </ul>
   </body>
