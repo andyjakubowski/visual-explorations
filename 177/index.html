@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      177 - SO - Two elements with equal width when stacked vertically,
+      otherwise auto width
+    </title>
+    <!-- https://stackoverflow.com/questions/68759592/how-to-two-elements-with-equal-width-when-stacked-vertically-otherwise-auto-wi -->
+    <style>
+      :root {
+        background-color: burlywood;
+      }
+
+      body {
+        background-color: #ddd;
+      }
+
+      .container {
+        display: inline-flex;
+        flex-wrap: wrap;
+        background-color: whitesmoke;
+        /* grid-template-columns: repeat(auto-fit, max-content); */
+      }
+
+      .item {
+        flex: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <button class="item">one one one one</button>
+      <button class="item">two two two two two two two two two</button>
+    </main>
+  </body>
+</html>
