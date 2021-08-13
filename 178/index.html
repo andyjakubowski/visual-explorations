@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Scratch</title>
+    <title>178 - anonymous flex item box generation #1</title>
+    <!-- https://drafts.csswg.org/css-flexbox-1/#flex-items -->
+    <!-- see [[flexbox anonymous items]] in Notational Velocity -->
     <style>
       :root {
         background-color: rosybrown;
@@ -27,6 +29,10 @@
       div:nth-child(even) {
         background-color: cadetblue;
       }
+
+      .flex-container > *:nth-child(2) {
+        color: pink !important;
+      }
     </style>
   </head>
   <body>
@@ -34,12 +40,23 @@
       Text node one
       <!-- Comment node one -->
       Text node two
+      <div style="position: absolute; bottom: 0">
+        Text inside position: absolute div
+      </div>
       <div style="display: contents; color: royalblue">
-        Text inside display: contents;
+        Text inside first div with display: contents;
+      </div>
+      <div style="display: contents; color: tomato">
+        Text inside second div with display: contents;
+        <span style="display: contents"
+          >Text inside span inside second div with display: contents;</span
+        >
       </div>
       Text node three
       <div style="display: none">Text inside display: none; element</div>
       <div>Text inside div</div>
+      <div style="display: table-cell">Table cell one</div>
+      <div style="display: table-cell">Table cell two</div>
     </main>
   </body>
 </html>
