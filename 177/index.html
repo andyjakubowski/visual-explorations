@@ -21,11 +21,20 @@
         display: inline-flex;
         flex-wrap: wrap;
         background-color: whitesmoke;
-        /* grid-template-columns: repeat(auto-fit, max-content); */
       }
 
       .item {
-        flex: none;
+        flex: auto;
+      }
+
+      .container {
+        display: grid;
+        background-color: whitesmoke;
+        grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
+      }
+
+      .item {
+        /* flex: auto; */
       }
     </style>
   </head>
