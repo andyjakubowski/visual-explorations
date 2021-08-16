@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>179 - anonymous flex item box generation #2 - pseudo-elements</title>
+    <!-- https://drafts.csswg.org/css-flexbox-1/#flex-items -->
+    <!-- see [[flexbox anonymous items]] in Notational Velocity -->
+    <style>
+      :root {
+        background-color: rosybrown;
+      }
+
+      body {
+        /* background-color: white; */
+      }
+
+      .flex-container {
+        display: flex;
+        background-color: whitesmoke;
+      }
+
+      .flex-container::before {
+        content: 'Before';
+        padding: 24px;
+        font-size: 3em;
+        background-color: aquamarine;
+        display: contents;
+      }
+
+      #first-item {
+        /* order: -1; */
+        /* display: contents; */
+      }
+
+      .flex-container::after {
+        content: 'After';
+        padding: 24px;
+        font-size: 3em;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="flex-container">Text run<span id="first-item"></span></main>
+  </body>
+</html>
