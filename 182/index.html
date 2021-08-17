@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>182 - content property</title>
+    <!-- https://drafts.csswg.org/css-content-3/#propdef-content -->
+    <style>
+      :root {
+      }
+
+      body {
+        /* background-color: white; */
+      }
+
+      section {
+        background-color: whitesmoke;
+        margin: 32px 0;
+      }
+
+      .one > div {
+        content: 'Content property value';
+      }
+
+      .two > div::before {
+        content: 'Content property value';
+      }
+
+      .three > div {
+        content: url('https://picsum.photos/id/237/100');
+      }
+    </style>
+  </head>
+  <body>
+    <section class="one">
+      <p>
+        Setting <code>content: "Content property value"</code> on an element
+        seems to do nothing. This may be because
+        <a href="">[css-content]</a> says
+      </p>
+      <blockquote>
+        For elements, it has only one purpose: specifying that the element
+        renders as normal, or replacing the element with an image (and possibly
+        some associated "alt text").
+      </blockquote>
+      <div>Text inside an element</div>
+    </section>
+    <section class="two">
+      <p>
+        Setting content: "Content property value" on a pseudo-element does seem
+        to cause the pseudo-element to render with that text as its contents.
+      </p>
+      <div>Text inside an element</div>
+    </section>
+    <section class="three">
+      <p>
+        Setting content: url("image.png") on an element does seem to replace its
+        contents.
+      </p>
+      <div><span>Text inside a span inside an element</span></div>
+    </section>
+  </body>
+</html>
