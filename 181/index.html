@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>181 - SO - two rows of shrink-wrapped buttons in flexbox</title>
+    <!-- https://stackoverflow.com/questions/68810702/why-arent-my-html-buttons-aligning-properly -->
+    <style>
+      :root {
+      }
+
+      body {
+        /* background-color: white; */
+      }
+
+      .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .flex-item {
+        flex: 50%;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: white;
+        display: flex;
+        justify-content: center;
+      }
+
+      .flex-item > span {
+        background-color: rosybrown;
+        padding: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="flex-container">
+      <a class="flex-item" href=""><span>present</span></a>
+      <a class="flex-item" href=""><span>past</span></a>
+      <a class="flex-item" href=""><span>future</span></a>
+      <a class="flex-item" href=""><span>imperfect</span></a>
+    </main>
+  </body>
+</html>
