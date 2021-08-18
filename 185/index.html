@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      185 - SO - How to get flexbox item width dynamically including the gap
+      value?
+    </title>
+    <!-- https://stackoverflow.com/questions/68824785/how-to-get-flexbox-item-width-dynamically-including-the-gap-value -->
+    <style>
+      :root {
+        background-color: seagreen;
+      }
+
+      section {
+        margin: 20px 0;
+      }
+
+      .flex-container__col-12 {
+        --container-col-count: 12;
+        --container-gap-count: calc(var(--container-col-count) - 1);
+        --gap-size: 20px;
+        --combined-gap-size: calc(var(--container-gap-count) * var(--gap-size));
+        --col-size: calc(
+          (100% - var(--combined-gap-size)) / var(--container-col-count)
+        );
+
+        display: flex;
+        gap: var(--gap-size);
+      }
+
+      .flex-item {
+        --item-gap-count: calc(var(--item-col-count) - 1);
+        --item-size: calc(
+          var(--item-col-count) * var(--col-size) + var(--item-gap-count) *
+            var(--gap-size)
+        );
+        flex: 0 0 var(--item-size);
+        background-color: white;
+        min-width: 0;
+      }
+
+      .col-1 {
+        --item-col-count: 1;
+      }
+
+      .col-2 {
+        --item-col-count: 2;
+      }
+
+      .col-4 {
+        --item-col-count: 4;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="flex-container__col-12">
+      <div class="flex-item col-4">4 col</div>
+      <div class="flex-item col-2">2 col</div>
+      <div class="flex-item col-2">2 col</div>
+      <div class="flex-item col-4">4 col</div>
+    </section>
+    <section class="flex-container__col-12">
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+      <div class="flex-item col-1">1 col</div>
+    </section>
+  </body>
+</html>
