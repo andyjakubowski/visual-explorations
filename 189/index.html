@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>189 - child boxes of pseudo-elements ::before and ::after</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      section {
+        background-color: white;
+        margin: 64px 0;
+      }
+
+      .one::before {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 24px;
+        background-color: royalblue;
+        color: white;
+        content: 'Just some text ' url('https://picsum.photos/id/237/360/150')
+          ' and more text after an image';
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .two::before {
+        padding: 24px;
+        background-color: tomato;
+        color: white;
+        content: 'Just some text ' url('https://picsum.photos/id/237/360/150')
+          ' and more text after an image';
+      }
+
+      .three > span {
+        padding: 24px;
+        background-color: tomato;
+        color: white;
+      }
+
+      .four::before {
+        padding: 24px;
+        background-color: seagreen;
+        color: white;
+        content: 'Just some text ' url('https://picsum.photos/id/237/360/150')
+          ' and more text after an image';
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 32px;
+        place-items: center;
+        direction: rtl;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="one">
+      <pre>
+        one::before {
+          display: flex;
+          flex-wrap: wrap;
+          padding: 24px;
+          background-color: royalblue;
+          color: white;
+          content: 'Hello from ::before'
+            url('https://picsum.photos/id/237/360/150') 'text after an image';
+          justify-content: flex-end;
+          align-items: center;
+        }
+      </pre>
+    </section>
+    <section class="two">
+      <pre>
+        .two::before {
+          padding: 24px;
+          background-color: tomato;
+          color: white;
+          content: 'Just some text '
+            url('https://picsum.photos/id/237/360/150') ' and more text after an image';
+        }
+      </pre>
+    </section>
+    <section class="three">
+      <span
+        >Just some text
+        <img src="https://picsum.photos/id/237/360/150" alt="Doggy" /> and more
+        text after an image</span
+      >
+      <pre>
+        .three > span {
+          padding: 24px;
+          background-color: tomato;
+          color: white;
+        }
+      </pre>
+    </section>
+    <section class="four">
+      <pre>
+        .four::before {
+          padding: 24px;
+          background-color: seagreen;
+          color: white;
+          content: 'Just some text ' url('https://picsum.photos/id/237/360/150')
+            ' and more text after an image';
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 32px;
+          place-items: center;
+          direction: rtl;
+        }
+      </pre>
+    </section>
+    <section class="five"></section>
+    <section class="six"></section>
+    <section class="seven"></section>
+  </body>
+</html>
