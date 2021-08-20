@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>150 - mix-blend-mode and isolation</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: crimson;
+      }
+
+      section {
+        width: 120px;
+        height: 120px;
+      }
+
+      .circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        mix-blend-mode: screen;
+        position: absolute;
+      }
+
+      .circle-1 {
+        background: red;
+      }
+
+      .circle-2 {
+        background: lightgreen;
+        left: 40px;
+      }
+
+      .circle-3 {
+        background: blue;
+        left: 20px;
+        top: 40px;
+      }
+
+      .isolate {
+        isolation: isolate; /* Without isolation, the background color will be taken into account */
+        position: relative;
+      }
+
+      .dont-isolate {
+        isolation: initial;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="isolate">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
+    </section>
+    <section class="dont-isolate">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
+    </section>
+  </body>
+</html>

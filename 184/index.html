@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>184 - getComputedStyle of display: none element</title>
+    <!-- https://drafts.csswg.org/css-content-3/#propdef-content -->
+    <style>
+      :root {
+      }
+
+      body {
+        /* background-color: white; */
+      }
+
+      main {
+        display: flex;
+        /* content: url('https://picsum.photos/id/237/100'); */
+      }
+
+      p {
+        margin-left: auto !important;
+      }
+
+      p:last-child {
+        background-color: royalblue;
+      }
+
+      .three > div {
+        content: url('https://picsum.photos/id/237/100');
+      }
+
+      .paragraph {
+        color: white;
+        width: 100px;
+      }
+
+      body > main > p.paragraph {
+        /* width: auto; */
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Hello World</h1>
+      <p class="paragraph" style="margin-left: 100px">
+        Content inside the main element
+      </p>
+    </main>
+    <script>
+      function start() {
+        const para = document.getElementsByTagName('p')[0];
+        window.para = para;
+        para.style.display = 'none';
+        para.computedStyle = {
+          marginLeft: getComputedStyle(para).marginLeft,
+          width: getComputedStyle(para).width,
+        };
+        para.style.display = 'unset';
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();
+      }
+    </script>
+  </body>
+</html>

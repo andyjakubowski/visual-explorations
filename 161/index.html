@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>161 - grid item percentage sizing always resolves</title>
+    <style>
+      :root {
+        /* height: 100vh; */
+        background-color: white;
+        color: rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
+        padding: 50px;
+      }
+
+      body {
+        /* min-height: 80%; */
+        /* max-height: 90%; */
+        background-color: royalblue;
+        box-sizing: border-box;
+
+        display: grid;
+        place-content: start;
+      }
+
+      main {
+        background-color: rosybrown;
+        width: 30%;
+        min-width: 50%;
+        height: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      :ROOT > BODY > MAIN > #Text
+    </main>
+  </body>
+  <!-- <body>
+    <main>
+      <div>:ROOT > BODY > MAIN > DIV > #Text</div>
+    </main>
+  </body> -->
+</html>

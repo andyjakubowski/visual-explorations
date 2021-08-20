@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      180 - pseudo-elements with image content and display: contents
+    </title>
+    <!-- http://developer.mozilla.org/en-US/docs/Web/CSS/content -->
+    <!-- http://developer.mozilla.org/en-US/docs/Web/CSS/display -->
+    <style>
+      :root {
+        background-color: rosybrown;
+      }
+
+      body {
+        /* background-color: white; */
+      }
+
+      .flex-container {
+        display: flex;
+        background-color: whitesmoke;
+      }
+
+      .flex-container::before {
+        content: attr(data-country);
+        /* content: url('https://picsum.photos/id/237/200/300'); */
+        padding: 24px;
+        font-size: 3em;
+        background-color: aquamarine;
+        /* display: none; */
+      }
+
+      #span {
+        /* order: -1; */
+        /* content: url('https://picsum.photos/id/237/200/300'); */
+        content: none;
+        /* display: contents; */
+      }
+
+      .flex-container::after {
+        content: 'After';
+        padding: 24px;
+        font-size: 3em;
+      }
+
+      div {
+        content: url('https://picsum.photos/id/237/200/300');
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Firefox is
+      <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1418138">buggy</a>
+      and inlinifies pseudo-elements with display: contents.
+    </p>
+    <p>
+      Elements with an image value of the content property become replaced
+      elements. That means they have no child boxes. Instead, they have an
+      object whose contents are controlled by something other than CSS. So when
+      you set display: contents on such an element, there are no child boxes to
+      render, and nothing should be rendered. See how the span element doesn’t
+      have its image content rendered because of display: contents.
+    </p>
+    <p>
+      However, if you set an image content and display: contents on a generated
+      content pseudo element, the image will still be rendered.
+    </p>
+    <p>
+      It seems like what should happen instead is the element or pseudo-element
+      becomes a replaced element, and its contents don’t generate boxes as if
+      they were display: none. So if you set display: contents on such a
+      replaced element, neither this element’s box nor any of its child boxes
+      (actually none exist) should be rendered.
+    </p>
+    <main class="flex-container" data-country="poland">
+      Text run<span id="span"><b>Interesting</b></span>
+      <div src="https://picsum.photos/id/237/200/300">Div content</div>
+    </main>
+  </body>
+</html>

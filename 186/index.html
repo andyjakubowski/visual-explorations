@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      186 - root element as originating element for content generating
+      pseudo-elements ::before and ::after
+    </title>
+    <style>
+      :root {
+        background-color: burlywood;
+        display: flex;
+      }
+
+      :root::before {
+        content: ':root ::before pseudo!';
+        font-size: 5em;
+        background-color: coral;
+        display: block;
+        /* position: absolute; */
+        /* inset: 0; */
+        /* opacity: 0.5; */
+      }
+
+      :root::after {
+        content: ':root ::after!!!';
+        font-size: 5em;
+        background-color: royalblue;
+        color: white;
+        display: block;
+      }
+
+      body::before {
+        /* content: "body before"; */
+        display: flex;
+        content: url('https://picsum.photos/id/237/200/200');
+        padding: 24px;
+        background-color: aliceblue;
+        justify-content: center;
+      }
+
+      svg {
+        display: inline-flex;
+        width: 300px;
+      }
+
+      img {
+        display: inline-flex;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Check if input is a flex container</h1>
+    <svg viewBox="0 0 100 100" stroke="black" fill="white">
+      <circle cx="50" cy="50" r="40" />
+    </svg>
+    <img src="https://picsum.photos/id/237/200/200" alt="Doggy" />
+  </body>
+</html>

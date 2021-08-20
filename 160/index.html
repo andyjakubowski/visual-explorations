@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>160 - SO - container on hover with text as single line</title>
+    <!-- https://stackoverflow.com/questions/68570453/container-on-hover-with-text-as-single-line -->
+    <style>
+      .flex-container {
+        height: 300px;
+        display: flex;
+      }
+      .flex-item {
+        flex: 1 1 auto;
+        /* transition: flex 500ms cubic-bezier(0.09, 0.76, 0.52, 1); */
+        transition: flex 300ms;
+      }
+      .flex-item:hover {
+        flex: 1 0 auto;
+      }
+      /* colours */
+      .red {
+        background-color: lightcoral;
+      }
+      .blue {
+        background-color: lightblue;
+      }
+      .green {
+        background-color: lightseagreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="red flex-item">
+        <h1>It is a long established fact that a reader will be distracted</h1>
+      </div>
+      <div class="blue flex-item">
+        <h1>It is a long established fact that a reader will be distracted</h1>
+      </div>
+      <div class="green flex-item">
+        <h1>It is a long established fact that a reader will be distracted</h1>
+      </div>
+    </div>
+  </body>
+</html>

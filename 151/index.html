@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>151 - non-rectangular grid items</title>
+    <style>
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 32px;
+        height: 100vh;
+        background-color: seagreen;
+        display: grid;
+        grid-template-columns: minmax(auto, 1000px);
+        grid-template-rows: 256px 32px 256px;
+        place-content: center;
+      }
+
+      section {
+        display: flex;
+        min-width: 0;
+        gap: 8px;
+      }
+
+      section:nth-of-type(1) {
+        grid-area: 1 / 1 / span 2 / -1;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 86%);
+      }
+
+      section:nth-of-type(2) {
+        grid-area: 2 / 1 / span 2 / -1;
+        clip-path: polygon(0 0, 100% 14%, 100% 100%, 0 100%);
+      }
+
+      img {
+        min-width: 0;
+        flex: 1;
+        object-fit: cover;
+        transition: flex 0.3s;
+      }
+
+      img:hover {
+        flex: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <img src="character-1.png" alt="Character" />
+      <img src="character-2.png" alt="Character" />
+      <img src="character-3.png" alt="Character" />
+      <img src="character-4.png" alt="Character" />
+      <img src="character-5.png" alt="Character" />
+      <img src="character-6.png" alt="Character" />
+      <img src="character-7.png" alt="Character" />
+    </section>
+    <section>
+      <img src="character-8.png" alt="Character" />
+      <img src="character-9.png" alt="Character" />
+      <img src="character-10.png" alt="Character" />
+      <img src="character-11.png" alt="Character" />
+      <img src="character-12.png" alt="Character" />
+      <img src="character-13.png" alt="Character" />
+      <img src="character-14.png" alt="Character" />
+    </section>
+  </body>
+</html>

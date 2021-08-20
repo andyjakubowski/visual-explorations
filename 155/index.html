@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>155 - computed vs. used styles in getComputedStyle</title>
+    <style>
+      body {
+        display: inline;
+        display: inline flow;
+      }
+
+      main {
+        display: flex;
+        display: inline flex;
+      }
+    </style>
+  </head>
+  <body style="border-left-width: thick">
+    Yeah that’s pretty
+    <main
+      id="flex-container"
+      style="
+        block-size: 300px;
+        height: auto;
+        nonsense: bla;
+        color: red;
+        color: blue;
+        /* padding: 50px; */
+        padding: 20px;
+        /* padding-bottom: 30px; */
+        /* padding-inline: 100px; */
+      "
+    >
+      <div>Item One</div>
+      <div>Item Two</div>
+      <div>Item Three</div>
+    </main>
+    interesting
+    <script>
+      const flexContainer = document.getElementById('flex-container');
+      window.flexContainer = flexContainer;
+      console.log(
+        `flexContainer.style.blockSize = ${flexContainer.style.blockSize}`
+      );
+    </script>
+  </body>
+</html>

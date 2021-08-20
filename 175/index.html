@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>175 - computed values of Flexbox properties</title>
+    <!-- https://drafts.csswg.org/css-flexbox/#property-index -->
+    <style>
+      :root {
+        background-color: burlywood;
+      }
+
+      body {
+        background-color: royalblue;
+        padding: 100px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        background-color: white;
+        padding: 30px;
+        flex-basis: 40%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      Text inside body > main, where body is a flex container, and main is the
+      sole flex item.
+    </main>
+    <script>
+      const body = document.getElementsByTagName('body')[0];
+      const main = document.getElementsByTagName('main')[0];
+      const styleBody = getComputedStyle(body);
+      const styleMain = getComputedStyle(main);
+    </script>
+  </body>
+</html>

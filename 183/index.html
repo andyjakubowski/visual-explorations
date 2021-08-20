@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>183 - getComputedStyle of suppressed contents</title>
+    <!-- https://drafts.csswg.org/css-content-3/#propdef-content -->
+    <style>
+      :root {
+      }
+
+      body {
+        /* background-color: white; */
+      }
+
+      main {
+        display: flex;
+        /* content: url('https://picsum.photos/id/237/100'); */
+      }
+
+      p {
+        margin-left: auto !important;
+      }
+
+      .three > div {
+        content: url('https://picsum.photos/id/237/100');
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Hello World</h1>
+      <p style="margin-left: 100px">Content inside the main element</p>
+    </main>
+    <script>
+      function start() {
+        const para = document.getElementsByTagName('p')[0];
+        window.para = para;
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>158 - position: fixed and available space</title>
+    <style>
+      :root {
+        background-color: black;
+      }
+
+      body {
+        background-color: whitesmoke;
+        margin: 100px;
+        height: 100px;
+      }
+
+      main {
+        transform: translateX(5px);
+        height: 300px;
+      }
+
+      .position-fixed-element {
+        position: fixed;
+        background-color: rosybrown;
+        inset: 0;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="position-fixed-element">Text inside a ‘position: fixed;’ element</p>
+    </main>
+    <script>
+    </script>
+  </body>
+</html>

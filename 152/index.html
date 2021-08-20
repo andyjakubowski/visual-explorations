@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      152 - SO - I just need to center an unordered list, and image in the
+      middle of a blank page
+    </title>
+    <style>
+      body {
+        margin: 0;
+      }
+      main {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      img {
+        margin-bottom: 16px;
+      }
+
+      ul {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li:not(:last-of-type) {
+        margin-right: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src="https://picsum.photos/id/237/280/120" alt="Logo" />
+      <ul>
+        <li>Icon 1</li>
+        <li>Icon 2</li>
+        <li>Icon 3</li>
+        <li>Icon 4</li>
+        <li>Icon 5</li>
+        <li>Icon 6</li>
+        <li>Icon 7</li>
+      </ul>
+    </main>
+  </body>
+</html>

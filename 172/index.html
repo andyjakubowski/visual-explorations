@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      172 - resolving percentage padding of a flex item in a column flex
+      container
+    </title>
+    <!-- https://drafts.csswg.org/css-flexbox-1/#item-margins -->
+    <!-- https://github.com/w3c/csswg-drafts/issues/2085 -->
+    <style>
+      :root {
+        background-color: #222;
+      }
+
+      body {
+        background-color: lightslategray;
+        width: 600px;
+        padding: 100px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+
+      div {
+        background-color: white;
+        padding: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>Item A</div>
+    <div>Item B</div>
+    <div>Item C</div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>171 - resolving percentage padding of a flex item</title>
+    <!-- https://drafts.csswg.org/css-flexbox-1/#item-margins -->
+    <!-- https://github.com/w3c/csswg-drafts/issues/2085 -->
+    <style>
+      :root {
+        background-color: #222;
+      }
+
+      body {
+        background-color: lightslategray;
+        width: 600px;
+        padding: 100px;
+        box-sizing: border-box;
+        display: flex;
+      }
+
+      main {
+        background-color: white;
+        padding: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      Text inside a main element, which generates a block-level box that is a
+      block container. Body element width: 400px. Main element padding: 10%.
+      Percentages resolve against the inline size of the containing block. The
+      inline size is always the inner inline size, regardless of the value of
+      the containing block’s box-sizing.
+    </main>
+  </body>
+</html>

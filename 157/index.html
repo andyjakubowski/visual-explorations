@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>157 - find nearest ancestor element that generates a box</title>
+    <style>
+      /* :root’s display will compute to 'block' anyway */
+      /* https://drafts.csswg.org/css-display/#transformations */
+      :root, body {
+        display: contents;
+      }
+
+      main {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="flex-container">
+      Hello
+    </main>
+    <script>
+      const flexContainer = document.getElementById('flex-container');
+      window.flexContainer = flexContainer;
+      // function nearestBoxGeneratingAncestor
+      // let ancestorElement = flexContainer.parentElement;
+      // do {
+      //   currentElement = currentElement.parentElement;
+      //   let cssDeclarationBlock;
+      //   if (currentElement !== null) {
+      //     cssDeclarationBlock = getComputedStyle(currentElement);
+      //     console.log(`currentElement = ${currentElement}`);
+      //     console.log(`computed display = ${cssDeclarationBlock.display}`);
+      //   }
+      // } while (currentElement !== null)
+    </script>
+  </body>
+</html>
