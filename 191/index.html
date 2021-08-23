@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      191 - SO - intrinsically sized table in a scrollable container - starting
+      point
+    </title>
+    <!-- https://stackoverflow.com/questions/68884700/create-a-scrollable-container-for-a-table-without-fixed-size-that-also-prevents -->
+    <style>
+      body,
+      html {
+        height: 100vh;
+        width: 100vw;
+        max-height: 100vh;
+        max-width: 100vw;
+        display: flex;
+        flex: 1;
+        margin: 0;
+        padding: 0;
+      }
+
+      footer {
+        display: flex;
+        height: 10vh;
+        min-height: 10vh;
+        background-color: #666666;
+      }
+
+      .page {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+      }
+
+      .side-nav {
+        display: flex;
+        flex: 0 1 auto;
+        flex-flow: column;
+        width: 20vw;
+        min-width: 20vw;
+        height: 100vh;
+        min-height: 100vh;
+        background-color: #99ccff;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        background-color: #cccccc;
+      }
+
+      .col-layout {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+      }
+
+      .table-container {
+        display: flex;
+        flex-direction: column;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        margin: 3%;
+        background-color: red;
+        width: 90%;
+        max-width: 90%;
+        height: 90%;
+        max-height: 90%;
+      }
+
+      table {
+        margin: 3%;
+        width: 1500px;
+        height: 2000px;
+        background-color: #3399ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="side-nav">
+        <label>Side Nav</label>
+      </div>
+
+      <div class="col-layout">
+        <div class="content">
+          <label>Content</label>
+          <label
+            >The red div should have vertical and horizontal scroll bars - no
+            vertical or horizontal scroll bars should appear on the browser
+            window.</label
+          >
+          <div class="table-container">
+            <table>
+              <tr>
+                <td>key</td>
+                <td>value</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <footer>
+          <label>Footer</label>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
