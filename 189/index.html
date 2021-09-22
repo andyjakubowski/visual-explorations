@@ -28,6 +28,16 @@
         gap: 32px;
       }
 
+      .one::after,
+      .three::after,
+      .five::after,
+      .six::after {
+        content: 'Computed value of the content property for .'
+          attr(data-class-name) '::before: ' attr(data-computed-content-before)
+          '.' ' Computed value of the content property for .'
+          attr(data-class-name) ': ' attr(data-computed-content) '.';
+      }
+
       .two > span {
         display: flex;
         flex-wrap: wrap;
@@ -66,6 +76,13 @@
         gap: 32px;
         place-items: center;
         direction: rtl;
+      }
+
+      .six::before {
+        padding: 24px;
+        background-color: burlywood;
+        color: white;
+        content: initial;
       }
     </style>
   </head>
@@ -155,7 +172,31 @@
         }
       </pre>
     </section>
-    <section class="six"></section>
+    <section class="six">
+      <pre>
+        .six::before {
+          padding: 24px;
+          background-color: burlywood;
+          color: white;
+          content: initial;
+        }
+      </pre>
+    </section>
     <section class="seven"></section>
+    <script>
+      const classNames = ['one', 'three', 'five', 'six'];
+      classNames.forEach((className) => {
+        const sectionElement = document.getElementsByClassName(className)[0];
+        const contentComputedValue = getComputedStyle(sectionElement).content;
+        const contentComputedValueBefore = getComputedStyle(
+          sectionElement,
+          '::before'
+        ).content;
+        sectionElement.dataset.className = className;
+        sectionElement.dataset.computedContent = contentComputedValue;
+        sectionElement.dataset.computedContentBefore =
+          contentComputedValueBefore;
+      });
+    </script>
   </body>
 </html>
