@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-      180 - pseudo-elements with image content and display: contents
+      180 - pseudo-elements with content: <content-replacement> and display:
+      contents
     </title>
     <!-- http://developer.mozilla.org/en-US/docs/Web/CSS/content -->
     <!-- http://developer.mozilla.org/en-US/docs/Web/CSS/display -->
@@ -23,12 +24,12 @@
       }
 
       .flex-container::before {
-        content: attr(data-country);
-        /* content: url('https://picsum.photos/id/237/200/300'); */
+        /* content: attr(data-country); */
+        content: url('https://picsum.photos/id/237/200/300');
         padding: 24px;
         font-size: 3em;
         background-color: aquamarine;
-        /* display: none; */
+        display: contents;
       }
 
       #span {
@@ -46,6 +47,16 @@
 
       div {
         content: url('https://picsum.photos/id/237/200/300');
+        display: contents;
+      }
+
+      .img-one {
+        display: contents;
+      }
+
+      .img-two {
+        content: url('https://picsum.photos/id/330/200/300');
+        display: contents;
       }
     </style>
   </head>
@@ -77,6 +88,16 @@
     <main class="flex-container" data-country="poland">
       Text run<span id="span"><b>Interesting</b></span>
       <div src="https://picsum.photos/id/237/200/300">Div content</div>
+      <img
+        class="img-one"
+        src="https://picsum.photos/id/237/200/300"
+        alt="Doggy"
+      />
+      <img
+        class="img-two"
+        src="https://picsum.photos/id/237/200/300"
+        alt="Doggy"
+      />
     </main>
   </body>
 </html>
