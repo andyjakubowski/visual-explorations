@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      192 - SO - intrinsically sized table in a scrollable container - solution
+    </title>
+    <!-- https://stackoverflow.com/questions/68884700/create-a-scrollable-container-for-a-table-without-fixed-size-that-also-prevents -->
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+      }
+
+      nav {
+        padding: 32px;
+        background-color: bisque;
+      }
+
+      section {
+        flex: auto;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex: auto;
+        min-height: 0;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      footer {
+        padding: 24px;
+        background-color: burlywood;
+      }
+
+      .table-container {
+        flex: auto;
+        min-height: 0;
+        background-color: tomato;
+        padding: 24px;
+        overflow: auto;
+      }
+
+      table {
+        width: 1500px;
+        height: 2000px;
+        background-color: steelblue;
+        border: 10px solid white;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>Side nav</nav>
+    <section>
+      <main>
+        <h1>Content</h1>
+        <p>Below comes the red div containing the table:</p>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2">The table header</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>The table body</td>
+                <td>with two columns</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+      <footer>Footer</footer>
+    </section>
+  </body>
+</html>
