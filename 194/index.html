@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>194 - pseudo-element flex items with display: contents</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      section {
+        display: flex;
+        height: 300px;
+        background-color: thistle;
+        justify-content: space-between;
+      }
+
+      section.one::before {
+        content: 'Content of section::before';
+        color: red;
+      }
+
+      section.two::before {
+        content: 'Content of section::before';
+        display: contents;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>194 - pseudo-element flex items with display: contents</h1>
+    <h2>First, a pseudo-element with the default display: inline</h2>
+    <p>
+      The pseudo-element generates an inline box, and becomes a flex item of the
+      section flex container.
+    </p>
+    <section class="one">
+      text run inside section
+      <p>Text run inside a p element</p>
+    </section>
+    <h2>Second, a pseudo-element with display: contents</h2>
+    <p>
+      The pseudo-element’s child text run replaces the pseudo-element’s box. The
+      first child node of the section element is another text run. They are two
+      contiguous text runs, and they form a flex item together.
+    </p>
+    <p>
+      Keep in mind Firefox doesn’t implement display: contents on
+      pseudo-elements, so the pseudo-element will behave as display: inline
+    </p>
+    <section class="two">
+      text run inside section
+      <p>Text run inside a p element</p>
+    </section>
+  </body>
+</html>
