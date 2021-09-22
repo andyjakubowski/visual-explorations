@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      193 - content: content-replacement on elements and pseudo-elements
+    </title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      section {
+        background-color: white;
+      }
+
+      .one::before {
+        content: url('https://picsum.photos/id/237/200/300');
+        display: block;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        background-color: wheat;
+      }
+
+      .two {
+        content: url('https://picsum.photos/id/237/200/300');
+        display: block;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        background-color: wheat;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        background-color: wheat;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>193 - content: <content-replacement> on elements and pseudo-elements</h1>
+    <p>There seems to be a difference between how content-replacement is treated for elements and pseudo-elements. What seems to be happening is that the single url still means content-list for pseudo-elements, and it does mean content-replacement only for elements.</p>
+    <p>Let’s translate this into an analogous markup for pseudo-elements. The div is the pseudo-element, and the img is the inline anonymous replaced element representing the child box of the pseudo-element:</p>
+    <pre>
+      &lt;div&gt;
+        &lt;img src="" alt=""&gt;
+      &lt;/div&gt;
+    </pre>
+    <p>For elements, it really becomes equivalent to using an img element. Note that we can use properties like object-fit on it.</p>
+    <pre>
+      &lt;img src="" alt=""&gt;
+    </pre>
+    <h2>
+      A section element originating a display: block pseudo-element with content: content-replacement.
+    </h2>
+    <section class="one">
+      <pre>
+        .one::before {
+          content: url('https://picsum.photos/id/237/200/300');
+          display: block;
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          background-color: wheat;
+        }
+      </pre>
+    </section>
+    <h2>
+      A section element with content: content-replacement.
+    </h2>
+    <section class="two">
+    </section>
+    <pre>
+      .two {
+        content: url('https://picsum.photos/id/237/200/300');
+        display: block;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        background-color: wheat;
+      }
+    </pre>
+    <h2>
+      An actual image element.
+    </h2>
+    <img src="https://picsum.photos/id/237/200/300" alt="Doggy">
+    <pre>
+      img {
+        display: block;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        background-color: wheat;
+      }
+    </pre>
+  </body>
+</html>
