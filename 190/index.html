@@ -19,32 +19,34 @@
 
       .one {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
       }
 
       .one::before {
         display: contents;
-        flex-wrap: wrap;
         padding: 24px;
         background-color: royalblue;
-        content: 'Just some text ' url('https://picsum.photos/id/237/360/150')
-          ' and more text after an image';
-        justify-content: flex-end;
-        align-items: center;
+        content: 'Text inside the value of .one::before, before the image '
+          url('https://picsum.photos/id/237/360/150')
+          ' Text inside the value of .one::before, after the image';
       }
     </style>
   </head>
   <body>
     <section class="one">
       <pre>
-        one::before {
+        .one {
           display: flex;
+          flex-direction: row;
+        }
+
+        one::before {
+          display: contents;
           flex-wrap: wrap;
           padding: 24px;
           background-color: royalblue;
-          color: white;
-          content: 'Hello from ::before'
-            url('https://picsum.photos/id/237/360/150') 'text after an image';
+          content: 'Just some text ' url('https://picsum.photos/id/237/360/150')
+            ' and more text after an image';
           justify-content: flex-end;
           align-items: center;
         }
