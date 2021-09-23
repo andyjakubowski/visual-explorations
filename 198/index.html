@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>198 - computed value of the content property on elements</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      p.one {
+        color: tomato;
+        background-color: white;
+      }
+
+      p.two {
+        content: none;
+        color: tomato;
+        background-color: white;
+      }
+
+      p.three {
+        content: url('https://picsum.photos/id/237/200/300');
+        color: tomato;
+        background-color: white;
+      }
+
+      p.four {
+        content: 'Hello World';
+        color: tomato;
+        background-color: white;
+      }
+
+      p.five {
+        content: 'Hello World' 'Again, Hello!';
+        color: tomato;
+        background-color: white;
+      }
+
+      p.six {
+        content: "url('https://picsum.photos/id/237/200/300')";
+        color: tomato;
+        background-color: white;
+      }
+
+      p.seven {
+        content: url('https://picsum.photos/id/237/200/300')
+          url('https://picsum.photos/id/237/200/300');
+        color: tomato;
+        background-color: white;
+      }
+
+      p.eight {
+        content: url('https://picsum.photos/id/nonexistent/200/300');
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+
+      p.nine {
+        content: urla('https://picsum.photos/id/237/200/300');
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+
+      p.ten {
+        content: url('https://nonexistent.domain/id/237/200/300');
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>198 - computed value of the content property on elements</h1>
+    <p>
+      <a href="">css-content</a> specifies that for elements, the content
+      property only has one purpose: For elements, it has only one purpose:
+      specifying that the element renders as normal, or replacing the element
+      with an image (and possibly some associated "alt text").
+    </p>
+
+    <h2>unspecified content</h2>
+    <p>
+      content isn’t inherited, so the initial value of 'normal' should be
+      applied.
+    </p>
+    <p class="one">Text inside the p element.</p>
+    <pre class="one">
+      &lt;p class="one"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.one {
+        color: tomato;
+        background-color: white;
+      }
+    </pre>
+
+    <h2>content: normal</h2>
+    <p class="two">Text inside the p element.</p>
+    <pre class="two">
+      &lt;p class="two"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.two {
+        content: none;
+        color: tomato;
+        background-color: white;
+      }
+    </pre>
+
+    <h2>content: &lt;content-replacement&gt;</h2>
+    <p class="three">Text inside the p element.</p>
+    <pre class="three">
+      &lt;p class="three"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.three {
+        content: url('https://picsum.photos/id/237/200/300');
+        color: tomato;
+        background-color: white;
+      }
+    </pre>
+
+    <h2>content: &lt;content-list&gt; with one value</h2>
+    <p class="four">Text inside the p element.</p>
+    <pre class="four">
+      &lt;p class="four"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.four {
+        content: "Hello World";
+        color: tomato;
+        background-color: white;
+      }
+    </pre>
+
+    <h2>content: &lt;content-list&gt; with multiple values</h2>
+    <p class="five">Text inside the p element.</p>
+    <pre class="five">
+      &lt;p class="five"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.five {
+        content: "Hello World" "Again, Hello!";
+        color: tomato;
+        background-color: white;
+      }
+    </pre>
+
+    <h2>
+      content: &lt;content-list&gt; with one value that resembles an image url
+    </h2>
+    <p class="six">Text inside the p element.</p>
+    <pre class="six">
+      &lt;p class="six"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.six {
+        content: "url('https://picsum.photos/id/237/200/300')";
+        color: tomato;
+        background-color: white;
+      }
+    </pre>
+
+    <h2>content: &lt;content-list&gt; with two image values</h2>
+    <p class="seven">Text inside the p element.</p>
+    <pre class="seven">
+      &lt;p class="seven"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.seven {
+        content: url('https://picsum.photos/id/237/200/300') url('https://picsum.photos/id/237/200/300');
+        color: tomato;
+        background-color: white;
+      }
+    </pre>
+
+    <h2>content: &lt;content-replacement&gt; with a valid url pointing at a nonexistent (404) image</h2>
+    <p>The <a href="https://drafts.csswg.org/css-content/#typedef-content-content-replacement">spec</a> says that “If the <image> represents an invalid image, then it must be treated as instead representing an image with zero natural width and height, filled with transparent black.”</p>
+    <p class="eight">Text inside the p element.</p>
+    <pre class="eight">
+      &lt;p class="eight"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.eight {
+        content: url('https://picsum.photos/id/nonexistent/200/300');
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+    </pre>
+
+    <h2>content: &lt;content-replacement&gt; with a single invalid url</h2>
+    <p>The browser engine will recognize the value as invalid, and effectively ignore it. Given the lack of any other declarations for content, the initial value of normal will be used.</p>
+    <p class="nine">Text inside the p element.</p>
+    <pre class="nine">
+      &lt;p class="nine"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.nine {
+        content: url('https://picsum.photos/id/nonexistent/200/300');
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+    </pre>
+
+    <h2>content: &lt;content-replacement&gt; with a valid url pointing at a nonexistent domain</h2>
+    <p class="ten">Text inside the p element.</p>
+    <pre class="ten">
+      &lt;p class="ten"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.ten {
+        content: url('https://nonexistent.domain/id/237/200/300');
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+    </pre>
+    <script>
+      const classNames = [
+        'one',
+        'two',
+        'three',
+        'four',
+        'five',
+        'six',
+        'seven',
+        'eight',
+        'nine',
+        'ten',
+      ];
+      classNames.forEach((className) => {
+        const paraEl = document.querySelector(`p.${className}`);
+        const preEl = document.querySelector(`pre.${className}`);
+        const computedParaElContent = getComputedStyle(paraEl).content;
+        const prefixText = `Computed value of the p.${className} element’s 'content' property:`;
+        const text = `${prefixText} ${computedParaElContent}.`;
+        console.log(prefixText);
+        console.log(computedParaElContent);
+        preEl.append(`\n      ${text}`);
+      });
+    </script>
+  </body>
+</html>
