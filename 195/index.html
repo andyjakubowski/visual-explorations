@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>195 - content: image on pseudo-element flex containers</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      /* section {
+        background-color: white;
+      } */
+
+      img.one {
+        display: flex;
+        width: 100%;
+        height: 400px;
+        justify-content: center;
+        align-items: center;
+        background-color: wheat;
+      }
+
+      .two::before {
+        content: url('https://picsum.photos/id/237/200/300');
+        display: flex;
+        width: 100%;
+        height: 400px;
+        justify-content: center;
+        align-items: center;
+        background-color: wheat;
+      }
+
+      .three {
+        content: url('https://picsum.photos/id/237/200/300');
+        display: flex;
+        width: 100%;
+        height: 400px;
+        justify-content: center;
+        align-items: center;
+        background-color: wheat;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>195 - content: image on pseudo-element flex containers</h1>
+    <p>
+      <a
+        href="https://drafts.csswg.org/css-content/#typedef-content-content-replacement"
+        >content: content-replacement</a
+      >
+      is equal to content: image.
+    </p>
+    <p>
+      This test verifies that pseudo-elements with content: image are not
+      replaced elements.
+    </p>
+    <h2>img element with display: flex</h2>
+    <p>
+      First, let’s test a real replaced element, img, and make it a flex
+      container. The position of the image is of course not governed by flexbox.
+    </p>
+    <pre>
+      &lt;img src="https://picsum.photos/id/237/200/300" alt="Doggy"&gt;
+    </pre>
+    <img class="one" src="https://picsum.photos/id/237/200/300" alt="Doggy" />
+    <h2>Pseudo-element with content: image and display: flex</h2>
+    <section class="two">
+      <pre>
+        .two::before {
+          content: url('https://picsum.photos/id/237/200/300');
+          display: flex;
+          width: 100%;
+          height: 400px;
+          justify-content: center;
+          align-items: center;
+          background-color: wheat;
+        }
+      </pre>
+    </section>
+    <h2>Element with content: image and display: flex</h2>
+    <section class="three"></section>
+    <pre>
+      .three {
+        content: url('https://picsum.photos/id/237/200/300');
+        display: flex;
+        width: 100%;
+        height: 400px;
+        justify-content: center;
+        align-items: center;
+        background-color: wheat;
+      }
+    </pre>
+  </body>
+</html>
