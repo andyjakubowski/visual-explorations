@@ -222,8 +222,8 @@
     <h2>content: &lt;content-replacement&gt; with a single &lt;gradient&gt;</h2>
     <pre>&lt;content-replacement&gt; is equal to &lt;image&gt;</pre>
     <pre>&lt;image&gt; = &lt;url&gt; | &lt;gradient&gt;</pre>
-    <p>Chrome follows the <a href="https://drafts.csswg.org/css-images-3/#typedef-image">spec</a> and renders a gradient, which replaces all of its regular document tree contents. The natural dimensions of the gradient seem to be the dimensions of the viewport.</p>
-    <p>Safari and Firefox consider content: &lt;gradient&gt; an invalid value. The declaration is dismissed, and the initial value of content: normal is used. This means regular document tree contents are rendered.</p>
+    <p>Safari and Chrome follow the <a href="https://drafts.csswg.org/css-images-3/#typedef-image">spec</a>. Both replace all of the regular document tree contents of the element. Chrome renders the gradient correctly. Safari doesn’t render the gradient, it renders a transparent area. The natural dimensions of the gradient object seem to be the dimensions of the viewport.</p>
+    <p>Firefox considers content: &lt;gradient&gt; an invalid value. The declaration is dismissed, and the initial value of content: normal is used. This means regular document tree contents are rendered.</p>
     <p class="eleven">Text inside the p element.</p>
     <pre class="eleven">
       &lt;p class="eleven"&gt;Text inside the p element.&lt;/p&gt;
