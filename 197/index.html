@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      197 - Elements with content: image don’t behave like replaced elements
+      when display: contents
+    </title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      img.one {
+        display: block;
+        width: 100%;
+        height: 400px;
+        background-color: wheat;
+      }
+
+      img.two {
+        display: contents;
+        width: 100%;
+        height: 400px;
+        background-color: wheat;
+      }
+
+      div.three {
+        display: block;
+        content: url('https://picsum.photos/id/237/200/300');
+        width: 100%;
+        height: 400px;
+        background-color: wheat;
+      }
+
+      div.four {
+        display: contents;
+        content: url('https://picsum.photos/id/237/200/300');
+        width: 100%;
+        height: 400px;
+        background-color: wheat;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      197 - Elements with content: image don’t behave like replaced elements
+      when display: contents
+    </h1>
+    <h2>img element with display: block</h2>
+    <p>A regular replaced element. No surprises here.</p>
+    <img class="one" src="https://picsum.photos/id/237/200/300" alt="Doggy" />
+    <pre>
+      &lt;img class="one" src="https://picsum.photos/id/237/200/300" alt="Doggy"&gt;
+
+      img.one {
+        display: block;
+        width: 100%;
+        height: 400px;
+        background-color: wheat;
+      }
+    </pre>
+    <h2>img element with display: contents</h2>
+    <p>
+      As specified in
+      <a href="https://drafts.csswg.org/css-display/#unbox"
+        >Appendix B: Effects of display: contents on Unusual Elements</a
+      >, display: contents computes to display: none.
+    </p>
+
+    <img class="two" src="https://picsum.photos/id/237/200/300" alt="Doggy" />
+    <pre>
+      &lt;img class="two" src="https://picsum.photos/id/237/200/300" alt="Doggy"&gt;
+
+      img.two {
+        display: contents;
+        width: 100%;
+        height: 400px;
+        background-color: wheat;
+      }
+    </pre>
+    <h2>Element with content: image and display: block</h2>
+    <p>
+      As specified in
+      <a
+        href="https://drafts.csswg.org/css-content/#typedef-content-content-replacement"
+        >the definition of &lt;content-replacement&gt;</a
+      >, this Makes the element or pseudo-element a replaced element, filled
+      with the specified &lt;image&gt;. Its normal contents are suppressed and
+      do not generate boxes, as if they were display: none.
+    </p>
+    <div class="three">
+      <p>Text run inside a paragraph element inside the div element</p>
+    </div>
+    <pre>
+      &lt;div class="three"&gt;
+        &lt;p&gt;Text run inside a paragraph element inside the div element&lt;/p&gt;
+      &lt;/div&gt;
+
+      div.three {
+        display: block;
+        content: url('https://picsum.photos/id/237/200/300');
+        width: 100%;
+        height: 400px;
+        background-color: wheat;
+      }
+    </pre>
+    <h2>Element with content: image and display: contents</h2>
+    <p>
+      This one is surprising. content: image dictates that the element is made a
+      replaced element, and its normal contents are suppressed. But the
+      definition of
+      <a href="https://drafts.csswg.org/css-display/#valdef-display-contents"
+        >display: contents</a
+      >
+      first says that “The element itself does not generate any boxes, but its
+      children and pseudo-elements still generate boxes and text runs as
+      normal”, and then that “This value computes to display: none on replaced
+      elements and other elements whose rendering is not entirely controlled by
+      CSS”. The
+      <a href="https://drafts.csswg.org/css-display/#unbox">appendix</a> only
+      looks at the element type when determining how an element interacts with
+      display: contents. In the end, it looks like display: contents is applied
+      normally to elements not mentioned in the Appendix, regardless of their
+      content value.
+    </p>
+    <div class="four">
+      <p>Text run inside a paragraph element inside the div element</p>
+    </div>
+    <pre>
+      &lt;div class="four"&gt;
+        &lt;p&gt;Text run inside a paragraph element inside the div element&lt;/p&gt;
+      &lt;/div&gt;
+
+      div.four {
+        display: contents;
+        content: url('https://picsum.photos/id/237/200/300');
+        width: 100%;
+        height: 400px;
+        background-color: wheat;
+      }
+    </pre>
+  </body>
+</html>
