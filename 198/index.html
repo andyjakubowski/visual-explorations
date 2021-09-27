@@ -78,6 +78,41 @@
         background-color: thistle;
         padding: 64px;
       }
+
+      p.twelve {
+        content: repeating-linear-gradient(45deg, white, black 33.3%);
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+
+      p.thirteen {
+        content: radial-gradient(white, black);
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+
+      p.fourteen {
+        content: radial-gradient(white, black 20%);
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+
+      p.fifteen {
+        content: conic-gradient(from 45deg, white, black);
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+
+      p.sixteen {
+        content: linear-gradient(white, black) linear-gradient(white, red);
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
     </style>
   </head>
   <body>
@@ -219,7 +254,7 @@
       }
     </pre>
 
-    <h2>content: &lt;content-replacement&gt; with a single &lt;gradient&gt;</h2>
+    <h2>content: &lt;content-replacement&gt; with a single &lt;gradient&gt; (&lt;linear-gradient&gt;)</h2>
     <pre>&lt;content-replacement&gt; is equal to &lt;image&gt;</pre>
     <pre>&lt;image&gt; = &lt;url&gt; | &lt;gradient&gt;</pre>
     <p>Safari and Chrome follow the <a href="https://drafts.csswg.org/css-images-3/#typedef-image">spec</a>. Both replace all of the regular document tree contents of the element. Chrome renders the gradient correctly. Safari doesn’t render the gradient, it renders a transparent area. The natural dimensions of the gradient object seem to be the dimensions of the viewport.</p>
@@ -230,6 +265,71 @@
 
       p.eleven {
         content: linear-gradient(white, black);
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+    </pre>
+
+    <h2>content: &lt;content-replacement&gt; with a single &lt;gradient&gt; (&lt;repeating-linear-gradient&gt;)</h2>
+    <p class="twelve">Text inside the p element.</p>
+    <pre class="twelve">
+      &lt;p class="twelve"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.twelve {
+        content: repeating-linear-gradient(45deg, white, black 33.3%);
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+    </pre>
+
+    <h2>content: &lt;content-replacement&gt; with a single &lt;gradient&gt; (&lt;radial-gradient&gt;)</h2>
+    <p class="thirteen">Text inside the p element.</p>
+    <pre class="thirteen">
+      &lt;p class="thirteen"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.thirteen {
+        content: radial-gradient(white, black);
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+    </pre>
+
+    <h2>content: &lt;content-replacement&gt; with a single &lt;gradient&gt; (&lt;repeating-radial-gradient&gt;)</h2>
+    <p class="fourteen">Text inside the p element.</p>
+    <pre class="fourteen">
+      &lt;p class="fourteen"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.fourteen {
+        content: radial-gradient(white, black 20%);
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+    </pre>
+
+    <h2>content: &lt;content-replacement&gt; with a single &lt;gradient&gt; (&lt;conic-gradient&gt;)</h2>
+    <p class="fifteen">Text inside the p element.</p>
+    <pre class="fifteen">
+      &lt;p class="fifteen"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.fifteen {
+        content: conic-gradient(from 45deg, white, black);
+        color: tomato;
+        background-color: thistle;
+        padding: 64px;
+      }
+    </pre>
+
+    <h2>content: &lt;content-replacement&gt; with two &lt;gradient&gt;s (&lt;linear-gradient&gt;)</h2>
+    <p class="sixteen">Text inside the p element.</p>
+    <pre class="sixteen">
+      &lt;p class="sixteen"&gt;Text inside the p element.&lt;/p&gt;
+
+      p.sixteen {
+        content: linear-gradient(white, black) linear-gradient(white, red);
         color: tomato;
         background-color: thistle;
         padding: 64px;
@@ -248,6 +348,11 @@
         'nine',
         'ten',
         'eleven',
+        'twelve',
+        'thirteen',
+        'fourteen',
+        'fifteen',
+        'sixteen',
       ];
       classNames.forEach((className) => {
         const paraEl = document.querySelector(`p.${className}`);
