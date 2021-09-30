@@ -20,11 +20,12 @@
         box-sizing: border-box;
 
         display: grid;
-        place-content: start;
+        place-content: start; /* Size grid area to content; effectively max-content size of main */
       }
 
       main {
         background-color: rosybrown;
+        /* All three resolve against the containing block size, which is established by the grid area */
         width: 30%;
         min-width: 50%;
         height: 50%;
@@ -32,9 +33,7 @@
     </style>
   </head>
   <body>
-    <main>
-      :ROOT > BODY > MAIN > #Text
-    </main>
+    <main>:ROOT > BODY > MAIN > #Text</main>
   </body>
   <!-- <body>
     <main>
