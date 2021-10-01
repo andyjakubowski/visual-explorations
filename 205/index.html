@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      205 - flex base size algorithm scenario 3.B. - cyclic percentage
+    </title>
+    <style>
+      :root {
+        background-color: burlywood;
+        /* font-size: 12px; */
+      }
+
+      body {
+        margin: 32px;
+        color: tomato;
+      }
+
+      .flex-container {
+        background-color: saddlebrown;
+
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .flex-item {
+        background-color: white;
+      }
+
+      .flex-item.doggy {
+        flex-basis: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      From the Flexbox layout algorithm
+      https://drafts.csswg.org/css-flexbox/#algo-main-item
+
+      3.B. If the flex item has ...
+      - a preferred aspect ratio,
+      - a used flex basis of content, and
+        (this will happen if you have a computed cyclic percentage flex-basis, see https://drafts.csswg.org/css-flexbox/#flex-basis-property)
+      - a definite cross size,
+      then the flex base size is calculated from its used cross size and the flex item’s aspect ratio.
+    -->
+    <section class="flex-container">
+      <img
+        class="flex-item one doggy"
+        src="https://picsum.photos/id/237/400/100"
+        alt="Doggy"
+      />
+    </section>
+    <script>
+      const start = function start() {};
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();
+      }
+    </script>
+  </body>
+</html>
