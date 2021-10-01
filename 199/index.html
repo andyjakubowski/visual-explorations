@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>199 - in-flow children of a flex container</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      main {
+        display: flex;
+        gap: 30px;
+        background-color: white;
+      }
+
+      main::before {
+        flex: auto;
+        display: flex;
+        justify-content: space-evenly;
+        gap: 30px;
+        content: url('https://picsum.photos/id/237/200/300');
+        color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>199 - in-flow children of a flex container</h1>
+    <main>
+      <h1>Identify flex items</h1>
+      &nbsp;
+      <p>This should be fun.</p>
+      <script>
+        console.log('hello world');
+      </script>
+      First text&nbsp;node<!-- comment -->
+      Second text            node &#9;
+      <script></script>
+    </main>
+    <script>
+      const CSS_WHITE_SPACE_REG_EXP = /[^\t\n\r ]/;
+
+      function isOnlyWhiteSpace(node) {
+        return !CSS_WHITE_SPACE_REG_EXP.test(node.textContent);
+      }
+
+      function isNotWhiteSpaceTextNode(node) {
+        if (!isTextNode(node)) {
+          return true;
+        }
+
+        return !isOnlyWhiteSpace(node);
+      }
+
+      function isTextNode(node) {
+        return node.nodeType === Node.TEXT_NODE;
+      }
+
+      function isElementNode(node) {
+        return node.nodeType === Node.ELEMENT_NODE;
+      }
+
+      function isElementOrTextNode(node) {
+        return isElementNode(node) || isTextNode(node);
+      }
+    </script>
+  </body>
+</html>

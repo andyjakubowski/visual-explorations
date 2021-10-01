@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      204 - read flex item element min-content width in pixels - in-place
+      measurement
+    </title>
+    <style>
+      :root {
+        background-color: burlywood;
+        /* font-size: 12px; */
+      }
+
+      body {
+        margin: 32px;
+        color: tomato;
+      }
+
+      .flex-container {
+        background-color: saddlebrown;
+
+        display: flex;
+        gap: 16px;
+      }
+
+      .flex-item {
+        background-color: white;
+      }
+
+      .flex-item.min-content-measurement {
+      }
+    </style>
+  </head>
+  <body>
+    <section class="flex-container">
+      <h1 class="flex-item one min-content-measurement">
+        Longlonglonglong short longagainandagain
+      </h1>
+      <h2 class="flex-item two">A ratherShortWordWasAtTheBeginning.</h2>
+      <h2 class="flex-item three">What an interesting challenge.</h2>
+      <p class="flex-item four">
+        SuperDuperLongWordHa Spicy jalapeno andouille salami tenderloin capicola
+        meatball pig ham chuck doner cupim. Cupim capicola brisket landjaeger,
+        ground round pork loin leberkas tail porchetta salami bacon beef ribs
+        turkey pig short loin. Bresaola landjaeger biltong, pork belly andouille
+        porchetta shoulder sausage cow bacon short loin doner pancetta tongue
+        jerky. Flank chislic short loin strip steak fatback. Tongue pastrami
+        biltong pork. T-bone ham hock kielbasa beef ribs salami. Ham turkey
+        meatloaf strip steak kielbasa corned beef meatball tail beef salami
+        alcatra filet mignon shankle cow. Rump ball tip venison, picanha
+        frankfurter t-bone beef ribs spare ribs landjaeger beef ham hock. Short
+        loin pork belly shankle turducken kevin pork loin tenderloin buffalo
+        biltong shank alcatra. Kevin chuck swine meatball pork chop shoulder
+        capicola spare ribs tri-tip. Bacon sirloin pastrami alcatra. Bacon flank
+        shankle bresaola pig. Ham hock bresaola tenderloin swine shankle chuck
+        jowl landjaeger porchetta beef ribs chicken short loin tri-tip turkey.
+        Picanha ball tip short ribs ribeye sirloin drumstick prosciutto doner.
+        Andouille alcatra shoulder, filet mignon pig chislic jerky kevin swine
+        shank picanha prosciutto tenderloin pork chop. Pancetta shoulder
+        landjaeger, flank capicola boudin ball tip leberkas swine venison
+        tri-tip pork chop kevin. Doner pork kevin fatback sausage picanha filet
+        mignon leberkas ham chislic short loin tongue andouille drumstick spare
+        ribs. Turkey chuck filet mignon, chicken strip steak ground round
+        buffalo bresaola. Short loin corned beef andouille, landjaeger t-bone
+        strip steak tri-tip meatball. Hamburger alcatra bresaola ball tip, pork
+        loin ground round short ribs. Landjaeger boudin alcatra andouille.
+        Ribeye pork chop picanha biltong, rump pork belly chislic flank sirloin
+        ham hock fatback buffalo chuck bresaola porchetta. Boudin ham cupim,
+        beef ribs corned beef doner brisket landjaeger fatback t-bone. Tri-tip
+        beef ribs chislic turducken short loin bacon. Cow landjaeger prosciutto
+        jowl, fatback shank beef brisket tri-tip sausage short ribs strip steak
+        meatball hamburger sirloin. Chuck corned beef cupim cow pork picanha,
+        drumstick salami chislic brisket pancetta tail swine. Meatloaf kielbasa
+        fatback t-bone hamburger jowl porchetta turducken rump ham cow salami.
+        Pork belly pig boudin landjaeger beef shoulder.
+      </p>
+    </section>
+    <script>
+      const getMinContentSizeInPx = function getMinContentSizeInPx(element) {
+        let minContentInPx;
+
+        // Store a reference to the live CSSStyleDeclaration object returned by Window.getComputedStyle
+        // Our referenced object will update as we make style changes
+        // We name the binding computedStyle because the method’s named getComputedStyle, but we know that method returns an object with resolved values that may be computed or used
+        const computedStyle = getComputedStyle(element);
+        const inlineStyle = element.style;
+
+        // Setting inlines style will overwrite any existing previous inline styles, so keep a backup to restore it later
+        // Only keep a backup if there’s an existing inline style
+        let styleBackup = {};
+
+        // Only keep a backup if there’s an existing inline style
+        const widthPropertyNames = ['width', 'min-width', 'max-width'];
+        widthPropertyNames.forEach((propertyName) => {
+          const propertyValue = inlineStyle.getPropertyValue(propertyName);
+          const isValueSet = propertyValue !== '';
+          if (isValueSet) {
+            styleBackup[propertyName] = propertyValue;
+          }
+        });
+
+        // Set all width properties to min-content
+        widthPropertyNames.forEach((propertyName) => {
+          inlineStyle.setProperty(propertyName, 'min-content', 'important');
+        });
+
+        // Read out the used width
+        minContentInPx = computedStyle.width;
+
+        // Remove the width properties you set a moment ago
+        widthPropertyNames.forEach((propertyName) => {
+          inlineStyle.removeProperty(propertyName);
+        });
+
+        // Restore the original values for width
+        Object.entries(styleBackup).forEach(([propertyName, propertyValue]) => {
+          inlineStyle.setProperty(propertyName, propertyValue);
+        });
+
+        // Return the min-content size in pixels
+        return Number.parseFloat(minContentInPx);
+      };
+      const start = function start() {
+        window.getMinContentSizeInPx = getMinContentSizeInPx;
+        window.one = document.querySelector('.flex-item.one');
+        window.two = document.querySelector('.flex-item.two');
+        window.three = document.querySelector('.flex-item.three');
+        window.four = document.querySelector('.flex-item.four');
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();
+      }
+    </script>
+  </body>
+</html>

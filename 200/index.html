@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      200 - contiguous text run sequences wrapped in an anonymous flex item
+    </title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      main {
+        display: flex;
+        gap: 30px;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+      }
+
+      span {
+        font-size: 24px;
+        display: contents;
+      }
+
+      span:nth-child(odd) {
+        color: tomato;
+        font-size: 4em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      200 - contiguous text run sequences wrapped in an anonymous flex item
+    </h1>
+    <main>
+      <span>Text Run One</span>
+      <span>Text Run Two</span>
+      <span>Text Run Three</span>
+    </main>
+  </body>
+</html>

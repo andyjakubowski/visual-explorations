@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      202 - read flex item element max-content width in pixels - iframe
+      measurement (not finished)
+    </title>
+    <style>
+      :root {
+        background-color: burlywood;
+        font-size: 12px;
+      }
+
+      body {
+        margin: 32px;
+        color: tomato;
+      }
+
+      h1 {
+        width: max-content;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 data-name="Andy" style="color: seagreen">
+      How can we resolve a max-content width of an element into a pixel value?
+    </h1>
+    <iframe id="iframe"></iframe>
+    <script>
+      const getMaxContentSize = function getMaxContentSize(element) {
+        console.log('getMaxContentSize:', element);
+        const clonedEl = element.cloneNode(true);
+        const iframeEl = document.getElementById('iframe');
+        clonedEl.style.width = 'max-content';
+        clonedEl.style.minWidth = '0';
+        clonedEl.style.maxWidth = 'none';
+        iframeEl.contentDocument.body.append(clonedEl);
+        // const iframeElement = document.createElement("iframe");
+        // iframeElement.srcdoc = url;
+        // iframeElement.testName = testName;
+        // document.body.append(iframeElement);
+        // iframeElement.addEventListener("load", handleLoadEvent);
+      };
+      window.getMaxContentSize;
+
+      function start() {
+        const headingEl = document.getElementsByTagName('h1')[0];
+        const iframeEl = document.getElementById('iframe');
+        iframeEl.addEventListener('load', () => {
+          getMaxContentSize(headingEl);
+        });
+        window.iframeEl = iframeEl;
+        window.headingEl = headingEl;
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();
+      }
+    </script>
+  </body>
+</html>
