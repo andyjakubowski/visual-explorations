@@ -120,7 +120,7 @@
         });
 
         // Return the max-content size in pixels
-        return maxContentInPx;
+        return Number.parseFloat(maxContentInPx);
       };
       const start = function start() {
         window.getMaxContentSizeInPx = getMaxContentSizeInPx;
