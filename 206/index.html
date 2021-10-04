@@ -18,10 +18,14 @@
       - Prevent other flex items from generating boxes altogether with display: none.
       - Measure the used width or height of the flex item.
         - Because the flex container has a main size of 0, the flex item will be forced to shrink all the way to 0. On the way there, it should hit its minimum size and clamp to that. Then its final size will be equal to its minimum size, and we can measure that.
+
+      Why this approach is incorrect
+      - Flex item percentage min sizes won’t resolve if you set the flex container size to zero.
+      - Flex container size may be affected if you hide other flex items altogether.
     -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>206 - flex item used min size</title>
+    <title>206 - flex item used min size - incorrect approach</title>
     <style>
       :root {
         background-color: #ddddde;
