@@ -20,10 +20,13 @@
         - Because the flex container has a main size of 0, the flex item will be forced to shrink all the way to 0. On the way there, it should hit its minimum size and clamp to that. Then its final size will be equal to its minimum size, and we can measure that.
 
       Updated measurement to account for percentages
-      - Set flex container size to its used size.
-      - Set flex-grow to 0.
       - Set flex-basis to 0.
+      - Set flex-grow to 0.
+      - We set the base size to 0, and we don’t want the item to grow. We want the item’s size to be clamped to its min size.
       // - Set flex item flex-shrink to 1.
+        - The value of flex-shrink shouldn’t matter, because the base size is 0. When you clamp(used min, 0, used max), used min will always be favored.
+      // - Set flex container size to its used size.
+        - We don’t need to do this.
 
       Interaction with max size
       - auto min size gets clamped by max size
@@ -45,6 +48,7 @@
       Does setting flex-basis: 0, and thus base size to 0, affect flex container main size?
       - flex base size does affect hypothetical main size, hypo = clamp(used min, base, used max)
       - hypo affects flex line placement of flex items
+      - the flex base size of flex items affects the max-content main size of their flex container, so I suspect that changing flex-basis to zero might lead to incorrect measurements... https://drafts.csswg.org/css-flexbox/#intrinsic-main-sizes
 
       Does flex base size affect the size of the container?
 
@@ -83,7 +87,7 @@
     -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>209 - flex item used min size - percentage</title>
+    <title>209 - flex item used min size - zero flex base approach</title>
     <style>
       :root {
         background-color: #ddddde;
