@@ -19,6 +19,9 @@
       - We render our flex item at exactly its max size, and measure the used main size afterwards.
       - We take the actual min and max main size out of the equation by setting them to 0 and none, respectively.
       - Max size properties don’t have an auto value, and all the existing values are resolved the same way preferred size properties are, that’s why we can take advantage of the fact `Window.getComputedStyle` returns used values for preferred size properties.
+
+      How to test this:
+      - Set viewport width to 600px, otherwise the fixed-width in .flex-container.after won’t make sense
     -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,31 +35,43 @@
         margin: 32px;
       }
 
-      .flex-container {
+      .flex-container.before {
         background-color: #bbbbbe;
-
         display: flex;
-        gap: 16px;
+      }
+
+      .flex-container.after {
+        /* Hardcoded value for a 600px-wide viewport */
+        width: 536px;
       }
 
       .flex-item {
+        --max-width: 40%;
         background-color: white;
+        opacity: 0.8;
       }
 
-      .flex-item.measurement {
-        /* max-width: min-content; */
-        flex: 0 0 min-content;
-        max-width: none;
+      .flex-item.measurement_before {
+        max-width: var(--max-width);
+      }
+
+      .flex-item.measurement_after {
+        flex: 0 0 var(--max-width);
         min-width: 0;
+        max-width: none;
       }
 
-      .flex-item.other {
+      .flex-item.other_before {
+        font-size: 200%;
+      }
+
+      .flex-item.other_after {
       }
     </style>
   </head>
   <body>
-    <section class="flex-container">
-      <h1 class="flex-item measurement">
+    <section class="flex-container before after">
+      <h1 class="flex-item measurement_before measurement_after">
         A rather superinteresting turn of events.
       </h1>
       <p class="flex-item other">
