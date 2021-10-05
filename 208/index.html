@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <!--
+      Can flex-basis affect flex container size?
+      - flex-basis affects flex base size
+      - flex base size affects hypothetical main size, hypo = clamp(used min, base, used max)
+      - hypo affects flex line placement of flex items
+      - hypo affects the final flex item size
+      - the flex item might itself be a flex container, or have percentage-sized children
+      - the flex base size of flex items affects the max-content main size of their flex container, so I suspect that changing flex-basis to zero might lead to incorrect measurements... https://drafts.csswg.org/css-flexbox/#intrinsic-main-sizes
+      - I can’t come up with a test case to prove that flex-basis will affect my measurement of min sizes...
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>208 - flex item flex base size</title>
+    <style>
+      :root {
+        background-color: #ddddde;
+      }
+
+      body {
+        margin: 32px;
+      }
+
+      .flex-container {
+        background-color: #bbbbbe;
+        display: flex;
+
+        width: max-content;
+      }
+
+      .flex-item {
+        background-color: white;
+        opacity: 0.8;
+      }
+
+      .flex-item.measurement_before {
+      }
+
+      .flex-item.measurement_after {
+        /* flex: 0 1 0; */
+      }
+
+      .flex-item.other_before {
+        font-size: 200%;
+      }
+
+      .flex-item.other_after {
+      }
+
+      .flex-item-child-level-1 {
+        background-color: tomato;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="flex-container">
+      <div class="flex-item measurement_before measurement_after">
+        <div class="flex-item-child-level-1">
+          A rather superinteresting turn of events.
+        </div>
+      </div>
+      <!-- <p class="flex-item other_before other_after">Two</p>
+      <p class="flex-item other_before other_after">Three</p>
+      <p class="flex-item other_before other_after">Four</p> -->
+    </section>
+  </body>
+</html>

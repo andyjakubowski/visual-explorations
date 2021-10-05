@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <!--
+      Used value of min size property used for:
+
+      - Clamping the flex item flex base size when determining the flex item hypothetical main size.
+      - Clamping the flex item target main size when resolving the flex item’s flexible length.
+      - Clamping each non-frozen item’s target main size by its used min and max main sizes when resolving flexible lengths.
+
+      Min size resolves differently depending on value.
+      - auto min size resolves according to https://drafts.csswg.org/css-flexbox/#min-size-auto
+
+      How to measure this:
+      - Give flex container zero width or height (whichever measurement corresponds to the main size).
+      - Give the flex item you’re measuring flex-shrink: 1000.
+        - You could give it a 1, but any anonymous flex items will also have an unchangeable initial flex-shrink: 1. I’m not 100 % sure, but it could affect the shrinkage of our item of interest such that it stops shrinking before hitting its minimum size. So let’s force it to shrink at a vastly higher rate than the anonymous flex items.
+      - Prevent other flex items from generating boxes altogether with display: none.
+      - Measure the used width or height of the flex item.
+        - Because the flex container has a main size of 0, the flex item will be forced to shrink all the way to 0. On the way there, it should hit its minimum size and clamp to that. Then its final size will be equal to its minimum size, and we can measure that.
+
+      Updated measurement to account for percentages
+      - Set flex-basis to 0.
+      - Set flex-grow to 0.
+      - We set the base size to 0, and we don’t want the item to grow. We want the item’s size to be clamped to its min size.
+      // - Set flex item flex-shrink to 1.
+        - The value of flex-shrink shouldn’t matter, because the base size is 0. When you clamp(used min, 0, used max), used min will always be favored.
+      // - Set flex container size to its used size.
+        - We don’t need to do this.
+
+      Interaction with max size
+      - auto min size gets clamped by max size
+
+      Does max size clamp on min size when clamping the flex item target main size, or vice versa?
+      The clamp() CSS function  resolves this way:
+      max( MIN, min(VAL, MAX) )
+      http://developer.mozilla.org/en-US/docs/Web/CSS/clamp()
+      https://drafts.csswg.org/css-values/#funcdef-clamp
+      - let noGreaterThanMAX be the result of calling min(VAL, MAX)
+      - let noLessThanMIN be the result of calling max(MIN, noGreaterThanMAX)
+      - based on that, it seems that the min size value takes precedence.
+
+      Min main size is dependent on
+      - content (auto and intrinsic sizing)
+      - max main size if definite (clamped by it if auto sizing)
+      - containing block main size (if percentage specified size is used)
+
+      Does setting flex-basis: 0, and thus base size to 0, affect flex container main size?
+      - flex base size does affect hypothetical main size, hypo = clamp(used min, base, used max)
+      - hypo affects flex line placement of flex items
+      - the flex base size of flex items affects the max-content main size of their flex container, so I suspect that changing flex-basis to zero might lead to incorrect measurements... https://drafts.csswg.org/css-flexbox/#intrinsic-main-sizes
+
+      Does flex base size affect the size of the container?
+
+      flex base size
+      400 whatever
+      50
+      70
+      40
+
+      calc initial free space
+      none of the items is frozen
+      for not-frozen items, use outer flex base size
+      414.18 + 56.43 + 74.6 + 60.45 = 605.66
+
+      flex container inner main size
+      311.483
+
+      initial free space
+      311.483 - 605.66 = -294.177
+      abs(-294.177) = 294.177
+
+      #1
+      414.18 / 605.66 = 0.68384902
+      unclamped target main size
+      414.18 - 0.68384902 * 294.177 = 414.18 - 201.17265316 = 213.00734684
+      clamped target main size
+      clamp(used min, 213.00734684, used max) = clamp(120, 213.00734684, 120) = 120
+
+      #2
+      56.43 / 605.66 = 0.09317109
+      unclamped target main size
+      56.43 - 0.09317109 * 294.177 = 56.43 - 27.40879174 = 29.02120826
+      clamped target main size
+      clamp(56.43, 29.02120826, Infinity) = 56.43
+
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>209 - flex item used min size - zero flex base approach</title>
+    <style>
+      :root {
+        background-color: #ddddde;
+      }
+
+      body {
+        margin: 32px;
+      }
+
+      .flex-container {
+        /* Used width at viewport 600px */
+        /* width: 536px; */
+        /* Used width at viewport 360px */
+        /* width: 296px; */
+        background-color: #bbbbbe;
+
+        display: flex;
+        /* flex-direction: column; */
+        /* gap: 16px; */
+        width: max-content;
+      }
+
+      .flex-item {
+        background-color: white;
+        opacity: 0.8;
+      }
+
+      /* Only Firefox supports max-content flex-basis */
+      /* .flex-item.measurement_before {
+        flex: 0 1 max-content;
+        width: 10%;
+        max-width: 120px;
+      } */
+
+      .flex-item.measurement_before {
+        flex: 0 1 auto;
+        width: auto;
+        min-width: 80%;
+        max-width: 120px;
+      }
+
+      .flex-item.measurement_after {
+        flex: 0 1 0;
+      }
+
+      .flex-item.other_before {
+        font-size: 200%;
+      }
+
+      .flex-item.other_after {
+        flex: 0 0 1000px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="flex-container">
+      <h1 class="flex-item measurement_before measurement_after">
+        A rather superinteresting turn of events.
+      </h1>
+      <p class="flex-item other_before">Two</p>
+      <p class="flex-item other_before">Three</p>
+      <p class="flex-item other_before">Four</p>
+    </section>
+  </body>
+</html>

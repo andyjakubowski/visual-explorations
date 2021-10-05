@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <!--
+      Used value of min size property used for:
+
+      - Clamping the flex item flex base size when determining the flex item hypothetical main size.
+      - Clamping the flex item target main size when resolving the flex item’s flexible length.
+      - Clamping each non-frozen item’s target main size by its used min and max main sizes when resolving flexible lengths.
+
+      Min size resolves differently depending on value.
+      - auto min size resolves according to https://drafts.csswg.org/css-flexbox/#min-size-auto
+
+      How to measure this:
+      - Give flex container zero width or height (whichever measurement corresponds to the main size).
+      - Give the flex item you’re measuring flex-shrink: 1000.
+        - You could give it a 1, but any anonymous flex items will also have an unchangeable initial flex-shrink: 1. I’m not 100 % sure, but it could affect the shrinkage of our item of interest such that it stops shrinking before hitting its minimum size. So let’s force it to shrink at a vastly higher rate than the anonymous flex items.
+      - Prevent other flex items from generating boxes altogether with display: none.
+      - Measure the used width or height of the flex item.
+        - Because the flex container has a main size of 0, the flex item will be forced to shrink all the way to 0. On the way there, it should hit its minimum size and clamp to that. Then its final size will be equal to its minimum size, and we can measure that.
+
+      Why this approach is incorrect
+      - Flex item percentage min sizes won’t resolve if you set the flex container size to zero.
+      - Flex container size may be affected if you hide other flex items altogether.
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>206 - flex item used min size - incorrect approach</title>
+    <style>
+      :root {
+        background-color: #ddddde;
+      }
+
+      body {
+        margin: 32px;
+      }
+
+      .flex-container {
+        width: 0px;
+        background-color: #bbbbbe;
+
+        display: flex;
+        gap: 16px;
+      }
+
+      .flex-item {
+        background-color: white;
+      }
+
+      .flex-item.measurement {
+        flex-shrink: 1000;
+      }
+
+      .flex-item.other {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="flex-container">
+      <h1 class="flex-item measurement">
+        A rather superinteresting turn of events.
+      </h1>
+      <p class="flex-item other">
+        Spicy jalapeno andouille salami tenderloin capicola meatball pig ham
+        chuck doner cupim. Cupim capicola brisket landjaeger, ground round pork
+        loin leberkas tail porchetta salami bacon beef ribs turkey pig short
+        loin. Bresaola landjaeger biltong, pork belly andouille porchetta
+        shoulder sausage cow bacon short loin doner pancetta tongue jerky. Flank
+        chislic short loin strip steak fatback. Tongue pastrami biltong pork.
+        T-bone ham hock kielbasa beef ribs salami. Ham turkey meatloaf strip
+        steak kielbasa corned beef meatball tail beef salami alcatra filet
+        mignon shankle cow. Rump ball tip venison, picanha frankfurter t-bone
+        beef ribs spare ribs landjaeger beef ham hock. Short loin pork belly
+        shankle turducken kevin pork loin tenderloin buffalo biltong shank
+        alcatra. Kevin chuck swine meatball pork chop shoulder capicola spare
+        ribs tri-tip. Bacon sirloin pastrami alcatra. Bacon flank shankle
+        bresaola pig. Ham hock bresaola tenderloin swine shankle chuck jowl
+        landjaeger porchetta beef ribs chicken short loin tri-tip turkey.
+        Picanha ball tip short ribs ribeye sirloin drumstick prosciutto doner.
+        Andouille alcatra shoulder, filet mignon pig chislic jerky kevin swine
+        shank picanha prosciutto tenderloin pork chop. Pancetta shoulder
+        landjaeger, flank capicola boudin ball tip leberkas swine venison
+        tri-tip pork chop kevin. Doner pork kevin fatback sausage picanha filet
+        mignon leberkas ham chislic short loin tongue andouille drumstick spare
+        ribs. Turkey chuck filet mignon, chicken strip steak ground round
+        buffalo bresaola. Short loin corned beef andouille, landjaeger t-bone
+        strip steak tri-tip meatball. Hamburger alcatra bresaola ball tip, pork
+        loin ground round short ribs. Landjaeger boudin alcatra andouille.
+        Ribeye pork chop picanha biltong, rump pork belly chislic flank sirloin
+        ham hock fatback buffalo chuck bresaola porchetta. Boudin ham cupim,
+        beef ribs corned beef doner brisket landjaeger fatback t-bone. Tri-tip
+        beef ribs chislic turducken short loin bacon. Cow landjaeger prosciutto
+        jowl, fatback shank beef brisket tri-tip sausage short ribs strip steak
+        meatball hamburger sirloin. Chuck corned beef cupim cow pork picanha,
+        drumstick salami chislic brisket pancetta tail swine. Meatloaf kielbasa
+        fatback t-bone hamburger jowl porchetta turducken rump ham cow salami.
+        Pork belly pig boudin landjaeger beef shoulder.
+      </p>
+      <!-- <p class="flex-item">I</p>
+      <p class="flex-item">like</p>
+      <p class="flex-item">lamp.</p> -->
+    </section>
+  </body>
+</html>

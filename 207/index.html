@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <!--
+      Used value of max size property used for:
+
+      - Clamping the flex item flex base size when determining the flex item hypothetical main size.
+      - Clamping the flex item target main size when resolving the flex item’s flexible length.
+      - Clamping each non-frozen item’s target main size by its used min and max main sizes when resolving flexible lengths.
+
+      How to measure this:
+      - let computedMaxMainSize be the computed value of the max size property (`max-width` or `max-height`, whichever corresponds to the main size).
+      - Make the flex item fully inflexible with flex: 0 0 computedMaxMainSize.
+      - Set the flex item min main size to 0.
+      - Set the flex item max main size to none.
+      - Measure the used width or height of the flex item.
+
+      Why it works:
+      - We render our flex item at exactly its max size, and measure the used main size afterwards.
+      - We take the actual min and max main size out of the equation by setting them to 0 and none, respectively.
+      - Max size properties don’t have an auto value, and all the existing values are resolved the same way preferred size properties are, that’s why we can take advantage of the fact `Window.getComputedStyle` returns used values for preferred size properties.
+
+      How to test this:
+      - Set viewport width to 600px, otherwise the fixed-width in .flex-container.after won’t make sense
+
+      When it doesn’t work
+      - Percentage max size resolved against an indefinite size of the containing block.
+        - In short, the main size resulting from resolving flex: 0 0 40%; will be different from a max size of 40%.
+        - An unresolveable percentage max size would behave as its initial value, none. See https://drafts.csswg.org/css-sizing-3/#cyclic-percentage-contribution.
+        - An unresolveable percentage flex-basis would behave as content.
+        - Percentage values of flex-basis are resolved against the flex item’s containing block (i.e. its flex container); and if that containing block’s size is indefinite, the used value for flex-basis is content. See https://drafts.csswg.org/css-flexbox/#flex-basis-property.
+
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>207 - flex item used max size</title>
+    <style>
+      :root {
+        background-color: #ddddde;
+      }
+
+      body {
+        margin: 32px;
+      }
+
+      .flex-container.before {
+        background-color: #bbbbbe;
+        display: flex;
+      }
+
+      .flex-container.after {
+        /* Hardcoded value for a 600px-wide viewport */
+        width: 536px;
+      }
+
+      .flex-item {
+        --max-width: 40%;
+        background-color: white;
+        opacity: 0.8;
+      }
+
+      .flex-item.measurement_before {
+        max-width: var(--max-width);
+      }
+
+      .flex-item.measurement_after {
+        flex: 0 0 var(--max-width);
+        min-width: 0;
+        max-width: none;
+      }
+
+      .flex-item.other_before {
+        font-size: 200%;
+      }
+
+      .flex-item.other_after {
+      }
+    </style>
+  </head>
+  <body>
+    <section class="flex-container before after">
+      <h1 class="flex-item measurement_before measurement_after">
+        A rather superinteresting turn of events.
+      </h1>
+      <p class="flex-item other">
+        Spicy jalapeno andouille salami tenderloin capicola meatball pig ham
+        chuck doner cupim. Cupim capicola brisket landjaeger, ground round pork
+        loin leberkas tail porchetta salami bacon beef ribs turkey pig short
+        loin. Bresaola landjaeger biltong, pork belly andouille porchetta
+        shoulder sausage cow bacon short loin doner pancetta tongue jerky. Flank
+        chislic short loin strip steak fatback. Tongue pastrami biltong pork.
+        T-bone ham hock kielbasa beef ribs salami. Ham turkey meatloaf strip
+        steak kielbasa corned beef meatball tail beef salami alcatra filet
+        mignon shankle cow. Rump ball tip venison, picanha frankfurter t-bone
+        beef ribs spare ribs landjaeger beef ham hock. Short loin pork belly
+        shankle turducken kevin pork loin tenderloin buffalo biltong shank
+        alcatra. Kevin chuck swine meatball pork chop shoulder capicola spare
+        ribs tri-tip. Bacon sirloin pastrami alcatra. Bacon flank shankle
+        bresaola pig. Ham hock bresaola tenderloin swine shankle chuck jowl
+        landjaeger porchetta beef ribs chicken short loin tri-tip turkey.
+        Picanha ball tip short ribs ribeye sirloin drumstick prosciutto doner.
+        Andouille alcatra shoulder, filet mignon pig chislic jerky kevin swine
+        shank picanha prosciutto tenderloin pork chop. Pancetta shoulder
+        landjaeger, flank capicola boudin ball tip leberkas swine venison
+        tri-tip pork chop kevin. Doner pork kevin fatback sausage picanha filet
+        mignon leberkas ham chislic short loin tongue andouille drumstick spare
+        ribs. Turkey chuck filet mignon, chicken strip steak ground round
+        buffalo bresaola. Short loin corned beef andouille, landjaeger t-bone
+        strip steak tri-tip meatball. Hamburger alcatra bresaola ball tip, pork
+        loin ground round short ribs. Landjaeger boudin alcatra andouille.
+        Ribeye pork chop picanha biltong, rump pork belly chislic flank sirloin
+        ham hock fatback buffalo chuck bresaola porchetta. Boudin ham cupim,
+        beef ribs corned beef doner brisket landjaeger fatback t-bone. Tri-tip
+        beef ribs chislic turducken short loin bacon. Cow landjaeger prosciutto
+        jowl, fatback shank beef brisket tri-tip sausage short ribs strip steak
+        meatball hamburger sirloin. Chuck corned beef cupim cow pork picanha,
+        drumstick salami chislic brisket pancetta tail swine. Meatloaf kielbasa
+        fatback t-bone hamburger jowl porchetta turducken rump ham cow salami.
+        Pork belly pig boudin landjaeger beef shoulder.
+      </p>
+      <!-- <p class="flex-item">I</p>
+      <p class="flex-item">like</p>
+      <p class="flex-item">lamp.</p> -->
+    </section>
+  </body>
+</html>
