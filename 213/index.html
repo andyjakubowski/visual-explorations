@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      213 - percentage column-gap doesn't contribute to max-content size of flex
+      container
+    </title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        background-color: chocolate;
+        margin: 10px;
+      }
+
+      .flex-container {
+        background-color: cadetblue;
+        display: flex;
+        width: max-content;
+        /* flex-direction: column; */
+        /* padding: 50px; */
+        /* row-gap: 50px; */
+        column-gap: 10%;
+        /* flex-wrap: wrap; */
+      }
+
+      .flex-item {
+        font-size: 96px;
+        background-color: white;
+        opacity: 0.8;
+        border: 1px dashed black;
+        flex: 1 1 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="flex-container">
+      <div class="flex-item">One</div>
+      <div class="flex-item">Two</div>
+      <div class="flex-item">Three</div>
+      <div class="flex-item">Four</div>
+    </main>
+  </body>
+</html>
