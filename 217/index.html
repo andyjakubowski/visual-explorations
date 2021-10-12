@@ -4,8 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-      223 - resolving percentages - vertical writing mode flex item max
-      block-size - inline dimension of flex container
+      217 - resolving percentages - flex item inline size - inline dimension
     </title>
     <style>
       :root {
@@ -31,14 +30,13 @@
       }
 
       .flex-item {
-        writing-mode: vertical-lr;
         font-size: 96px;
         opacity: 0.7;
         background-color: white;
-        flex: 0 0 0;
-        block-size: 10%;
-        min-block-size: 10%;
-        max-block-size: 10%;
+        flex: 0 1 auto;
+        inline-size: 10%;
+        min-inline-size: 0;
+        max-inline-size: none;
       }
 
       .flex-item:nth-child(even) {
@@ -48,11 +46,9 @@
   </head>
   <body>
     <!-- <section class="flex-container">
-      max-content: 36.4333px (in Firefox)
-      <div>Horiz</div>
-      max-content: 115.2px (in Firefox)
+      max-content: 154.567px (in Firefox)
       <div class="flex-item">Ace</div>
-      max-content: 115.2px (in Firefox)
+      max-content: 277.317px (in Firefox)
       <div class="flex-item">Bubble</div>
     </section> -->
     <script>
@@ -61,60 +57,48 @@
           {
             type: 'auto',
             value: 'auto',
-            comments: '',
+            description:
+              'The flex container should have the same inline size as its containing block.',
             expectedResolvedPercentageLengthPx: '50px',
           },
           {
             type: 'length',
             value: '1000px',
-            comments: '',
+            description: 'The flex container',
             expectedResolvedPercentageLengthPx: '100px',
           },
           {
             type: 'percentage',
             value: '50%',
-            comments: '',
+            description: '',
             expectedResolvedPercentageLengthPx: '25px',
           },
           {
             type: 'min-content',
             value: 'min-content',
-            comments:
-              'Percentages resolve as expected, in the sense that the resulting absolute length is derived from the size of the flex container. But the size of the flex container seems odd. Chrome 94 includes the vertical boxes in the intrinsic size calculation. Firefox 92 and Safari 14.1 don’t.',
-            expectedResolvedPercentageLengthPx:
-              '~26.68333px (if vertical boxes were measured)', // (36.4333+115.2+115.2)*0.1 = 26.68333
+            description: '',
+            expectedResolvedPercentageLengthPx: '~43.1884px', // (154.567+277.317)*0.1 = 43.1884
           },
           {
             type: 'max-content',
             value: 'max-content',
-            comments:
-              'Percentages resolve as expected, in the sense that the resulting absolute length is derived from the size of the flex container. But the size of the flex container seems odd. Chrome 94 includes the vertical boxes in the intrinsic size calculation. Firefox 92 and Safari 14.1 don’t.',
-            expectedResolvedPercentageLengthPx:
-              '~26.68333px (if vertical boxes were measured)', // (36.4333+115.2+115.2)*0.1 = 26.68333
+            description: '',
+            expectedResolvedPercentageLengthPx: '~43.1884px', // (154.567+277.317)*0.1 = 43.1884
           },
         ];
         const sectionEls = flexContainerInlineSizes.map(
-          ({
-            type,
-            value,
-            expectedResolvedPercentageLengthPx: sizePx,
-            comments,
-          }) => {
+          ({ type, value, expectedResolvedPercentageLengthPx: sizePx }) => {
             const sectionEl = document.createElement('section');
             const flexContainerEl = document.createElement('div');
-            const horizEl = document.createElement('div');
             const itemOneEl = document.createElement('div');
             const itemTwoEl = document.createElement('div');
-            const sizeEl = document.createElement('p');
-            sizeEl.textContent = `Expecting that percentage resolved to size: ${sizePx}`;
-            const commentsEl = document.createElement('p');
-            commentsEl.textContent = comments;
-            sectionEl.append(sizeEl, commentsEl, flexContainerEl);
-            flexContainerEl.append(horizEl, itemOneEl, itemTwoEl);
+            const descriptionEl = document.createElement('p');
+            descriptionEl.textContent = `Expecting that percentage resolved to size: ${sizePx}`;
+            sectionEl.append(descriptionEl, flexContainerEl);
+            flexContainerEl.append(itemOneEl, itemTwoEl);
             flexContainerEl.classList.add('flex-container');
             itemOneEl.classList.add('flex-item');
             itemTwoEl.classList.add('flex-item');
-            horizEl.textContent = 'Horiz';
             itemOneEl.textContent = 'Ace';
             itemTwoEl.textContent = 'Bubble';
             flexContainerEl.style['inline-size'] = value;

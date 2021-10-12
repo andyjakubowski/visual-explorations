@@ -3,58 +3,54 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>211 - resolve flex item intrinsic size to pixels</title>
+    <title>211 - infinite available space for flex items</title>
     <style>
       :root {
-        background-color: burlywood;
-        /* font-size: 12px; */
+        background-color: whitesmoke;
       }
 
       body {
-        margin: 32px;
-        color: tomato;
+        background-color: chocolate;
       }
 
       .flex-container {
-        background-color: saddlebrown;
-
+        background-color: cadetblue;
         display: flex;
         flex-direction: column;
-        height: 150px;
-        gap: 16px;
+        padding: 40px;
+        /* writing-mode: vertical-lr; */
+        /* float: left; */
+        /* height: 80vh; */
+        /* flex-wrap: wrap; */
       }
 
       .flex-item {
+        font-size: 96px;
         background-color: white;
-      }
-
-      .flex-item.min-content-measurement {
+        opacity: 0.8;
+        border: 1px dashed black;
+        flex: 1 1 auto;
       }
     </style>
   </head>
   <body>
-    <section class="flex-container">
-      <h1 class="flex-item one min-content-measurement">
-        Longlonglonglong short
-      </h1>
-      <!-- <h2 class="flex-item two">A ratherShortWordWasAtTheBeginning.</h2>
-      <h2 class="flex-item three">What an interesting challenge.</h2>
-      <p class="flex-item four">
-        SuperDuperLongWordHa Spicy jalapeno andouille salami tenderloin capicola
-        meatball pig ham chuck doner cupim. Cupim capicola brisket landjaeger,
-        ground round pork loin leberkas tail porchetta salami bacon beef ribs
-        turkey pig short loin. Bresaola landjaeger biltong, pork belly andouille
-        porchetta shoulder sausage cow bacon short loin doner pancetta tongue
-        jerky. Flank chislic short loin strip steak fatback. Tongue pastrami
-        biltong pork. T-bone ham hock kielbasa beef ribs salami. Ham turkey
-        meatloaf strip steak kielbasa corned beef meatball tail beef salami
-        alcatra filet mignon shankle cow. Rump ball tip venison, picanha
-        frankfurter t-bone beef ribs spare ribs landjaeger beef ham hock. Short
-        loin pork belly shankle turducken kevin pork loin tenderloin buffalo
-        biltong shank alcatra. Kevin chuck swine meatball pork chop shoulder
-        capicola spare ribs tri-tip. Bacon sirloin pastrami alcatra. Bacon flank
-        shankle bresaola pig. Ham hock bresaola tenderloin swine shankle chuck
-        jowl landjaeger porchetta beef ribs chicken short loin tri-tip turkey.
+    <main class="flex-container">
+      <div class="flex-item">
+        Spicy jalapeno andouille salami tenderloin capicola meatball pig ham
+        chuck doner cupim. Cupim capicola brisket landjaeger, ground round pork
+        loin leberkas tail porchetta salami bacon beef ribs turkey pig short
+        loin. Bresaola landjaeger biltong, pork belly andouille porchetta
+        shoulder sausage cow bacon short loin doner pancetta tongue jerky. Flank
+        chislic short loin strip steak fatback. Tongue pastrami biltong pork.
+        T-bone ham hock kielbasa beef ribs salami. Ham turkey meatloaf strip
+        steak kielbasa corned beef meatball tail beef salami alcatra filet
+        mignon shankle cow. Rump ball tip venison, picanha frankfurter t-bone
+        beef ribs spare ribs landjaeger beef ham hock. Short loin pork belly
+        shankle turducken kevin pork loin tenderloin buffalo biltong shank
+        alcatra. Kevin chuck swine meatball pork chop shoulder capicola spare
+        ribs tri-tip. Bacon sirloin pastrami alcatra. Bacon flank shankle
+        bresaola pig. Ham hock bresaola tenderloin swine shankle chuck jowl
+        landjaeger porchetta beef ribs chicken short loin tri-tip turkey.
         Picanha ball tip short ribs ribeye sirloin drumstick prosciutto doner.
         Andouille alcatra shoulder, filet mignon pig chislic jerky kevin swine
         shank picanha prosciutto tenderloin pork chop. Pancetta shoulder
@@ -74,95 +70,7 @@
         drumstick salami chislic brisket pancetta tail swine. Meatloaf kielbasa
         fatback t-bone hamburger jowl porchetta turducken rump ham cow salami.
         Pork belly pig boudin landjaeger beef shoulder.
-      </p> -->
-    </section>
-    <script>
-      // const INTRINSIC_VALUES = [
-      //   "min-content",
-      //   "max-content",
-      //   "fit-content",
-      //   "-webkit-fill-available",
-      //   "intrinsic",
-      //   "min-intrinsic",
-      //   "-moz-available",
-      //   "-moz-fit-content",
-      // ];
-
-      const DIMENSION_VERTICAL = 'vertical';
-      const DIMENSION_HORIZONTAL = 'horizontal';
-      const PREFERRED_SIZE_PROP_NAME_VERTICAL = 'height';
-      const PREFERRED_SIZE_PROP_NAME_HORIZONTAL = 'width';
-
-      const getIntrinsicSize = function getIntrinsicSize(
-        element,
-        intrinsicSizeType,
-        dimensionPhysical
-      ) {
-        let pxSizeString;
-
-        // Store a reference to the live CSSStyleDeclaration object returned by Window.getComputedStyle
-        // Our referenced object will update as we make style changes
-        // We name the binding computedStyle because the method’s named getComputedStyle, but we know that method returns an object with resolved values that may be computed or used
-        const computedStyle = getComputedStyle(element);
-        const inlineStyle = element.style;
-
-        // Setting inlines style will overwrite any existing previous inline styles, so keep a backup to restore it later
-        let styleBackup = {};
-
-        // Keep a backup if there’s an existing inline style
-        const preferredSizePropName =
-          dimensionPhysical === DIMENSION_HORIZONTAL
-            ? PREFERRED_SIZE_PROP_NAME_HORIZONTAL
-            : PREFERRED_SIZE_PROP_NAME_VERTICAL;
-        const minSizePropName = `min-${preferredSizePropName}`;
-        const maxSizePropName = `max-${preferredSizePropName}`;
-        const sizePropertyNames = [
-          minSizePropName,
-          preferredSizePropName,
-          maxSizePropName,
-        ];
-        sizePropertyNames.forEach((propertyName) => {
-          const propertyValue = inlineStyle.getPropertyValue(propertyName);
-          const isValueSet = propertyValue !== '';
-          if (isValueSet) {
-            styleBackup[propertyName] = propertyValue;
-          }
-        });
-
-        // Set all size properties to min-content
-        sizePropertyNames.forEach((propertyName) => {
-          inlineStyle.setProperty(propertyName, intrinsicSizeType, 'important');
-        });
-
-        // Read out the used size
-        pxSizeString = computedStyle[preferredSizePropName];
-
-        // Remove the size properties you set a moment ago
-        sizePropertyNames.forEach((propertyName) => {
-          inlineStyle.removeProperty(propertyName);
-        });
-
-        // Restore the original values for size
-        Object.entries(styleBackup).forEach(([propertyName, propertyValue]) => {
-          inlineStyle.setProperty(propertyName, propertyValue);
-        });
-
-        // Return the size in pixels
-        return Number.parseFloat(pxSizeString);
-      };
-      const start = function start() {
-        window.getIntrinsicSize = getIntrinsicSize;
-        window.one = document.querySelector('.flex-item.one');
-        window.two = document.querySelector('.flex-item.two');
-        window.three = document.querySelector('.flex-item.three');
-        window.four = document.querySelector('.flex-item.four');
-      };
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', start);
-      } else {
-        start();
-      }
-    </script>
+      </div>
+    </main>
   </body>
 </html>

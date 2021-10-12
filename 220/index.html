@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-      223 - resolving percentages - vertical writing mode flex item max
-      block-size - inline dimension of flex container
+      220 - resolving percentages - vertical writing mode flex item flex-basis -
+      inline dimension of flex container
     </title>
     <style>
       :root {
@@ -35,10 +35,9 @@
         font-size: 96px;
         opacity: 0.7;
         background-color: white;
-        flex: 0 0 0;
-        block-size: 10%;
-        min-block-size: 10%;
-        max-block-size: 10%;
+        flex: 0 0 10%;
+        min-block-size: 0;
+        max-block-size: none;
       }
 
       .flex-item:nth-child(even) {
