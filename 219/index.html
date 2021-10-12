@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      219 - resolving percentages - flex item max inline size - inline dimension
+    </title>
+    <style>
+      :root {
+        background-color: black;
+        inline-size: 500px;
+      }
+
+      body {
+        background-color: thistle;
+        margin: 0;
+        opacity: 0.7;
+      }
+
+      section {
+        padding-bottom: 24px;
+        border-bottom: 1px solid black;
+      }
+
+      .flex-container {
+        background-color: cadetblue;
+        display: flex;
+        opacity: 0.7;
+      }
+
+      .flex-item {
+        font-size: 96px;
+        opacity: 0.7;
+        background-color: white;
+        flex: 1 1 0;
+        min-inline-size: 0;
+        max-inline-size: 10%;
+      }
+
+      .flex-item:nth-child(even) {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <section class="flex-container">
+      max-content: 154.567px (in Firefox)
+      <div class="flex-item">Ace</div>
+      max-content: 277.317px (in Firefox)
+      <div class="flex-item">Bubble</div>
+    </section> -->
+    <script>
+      const start = function start() {
+        const flexContainerInlineSizes = [
+          {
+            type: 'auto',
+            value: 'auto',
+            description:
+              'The flex container should have the same inline size as its containing block.',
+            expectedResolvedPercentageLengthPx: '50px',
+          },
+          {
+            type: 'length',
+            value: '1000px',
+            description: 'The flex container',
+            expectedResolvedPercentageLengthPx: '100px',
+          },
+          {
+            type: 'percentage',
+            value: '50%',
+            description: '',
+            expectedResolvedPercentageLengthPx: '25px',
+          },
+          {
+            type: 'min-content',
+            value: 'min-content',
+            description: '',
+            expectedResolvedPercentageLengthPx: '~43.1884px', // (154.567+277.317)*0.1 = 43.1884
+          },
+          {
+            type: 'max-content',
+            value: 'max-content',
+            description: '',
+            expectedResolvedPercentageLengthPx: '~43.1884px', // (154.567+277.317)*0.1 = 43.1884
+          },
+        ];
+        const sectionEls = flexContainerInlineSizes.map(
+          ({ type, value, expectedResolvedPercentageLengthPx: sizePx }) => {
+            const sectionEl = document.createElement('section');
+            const flexContainerEl = document.createElement('div');
+            const itemOneEl = document.createElement('div');
+            const itemTwoEl = document.createElement('div');
+            const descriptionEl = document.createElement('p');
+            descriptionEl.textContent = `Expecting that percentage resolved to size: ${sizePx}`;
+            sectionEl.append(descriptionEl, flexContainerEl);
+            flexContainerEl.append(itemOneEl, itemTwoEl);
+            flexContainerEl.classList.add('flex-container');
+            itemOneEl.classList.add('flex-item');
+            itemTwoEl.classList.add('flex-item');
+            itemOneEl.textContent = 'Ace';
+            itemTwoEl.textContent = 'Bubble';
+            flexContainerEl.style['inline-size'] = value;
+            return sectionEl;
+          }
+        );
+        document.body.append(...sectionEls);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();
+      }
+    </script>
+  </body>
+</html>
