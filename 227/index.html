@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-      226 - percentage in orthogonal flows - inline percentage resolves against
-      definite block size
+      227 - percentage in orthogonal flows - inline percentage resolves against
+      fallback size instead of auto block-size
     </title>
     <style>
       :root {
@@ -22,7 +22,8 @@
       .container {
         background-color: cadetblue;
         opacity: 0.7;
-        block-size: 154.567px;
+        block-size: auto;
+        max-block-size: 300px;
       }
 
       .item {
@@ -39,6 +40,15 @@
     </style>
   </head>
   <body>
+    <p>
+      inline percentage resolves against fallback size in auto-block-sized
+      container. See https://www.w3.org/TR/css-writing-modes-3/#orthogonal-auto.
+      When determining the fallback size, Chrome 94 and Safari 14.1 seem to pay
+      attention to the size represented by the containing block’s inner max
+      size; Firefox 92 seems to ignore that and only relies on the initial
+      containing block’s size. I didn’t check whether the scrollport’s size is
+      included in this, as the spec says.
+    </p>
     <div class="container">
       <!-- max-content: 154.567px (in Firefox) -->
       <div class="item">Ace</div>
