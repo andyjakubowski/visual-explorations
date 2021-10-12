@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      226 - percentage in orthogonal flows - inline percentage resolves against
+      mapped block size
+    </title>
+    <style>
+      :root {
+        background-color: black;
+        inline-size: 500px;
+      }
+
+      body {
+        background-color: thistle;
+        margin: 0;
+        opacity: 0.7;
+      }
+
+      .container {
+        background-color: cadetblue;
+        opacity: 0.7;
+        block-size: 154.567px;
+      }
+
+      .item {
+        font-size: 96px;
+        background-color: white;
+        opacity: 0.7;
+        writing-mode: vertical-lr;
+        inline-size: 200%;
+      }
+
+      .item:nth-child(even) {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- max-content: 154.567px (in Firefox) -->
+      <div class="item">Ace</div>
+    </div>
+  </body>
+</html>
