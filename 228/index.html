@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>228 - determine if flex container size is definite</title>
+    <!--
+
+      EXPERIMENT
+      - fully inflexible (flex: 0 0 auto) and unstretched (align-self: flex-start) flex item
+      - natural image size 200x200
+      - initial aspect ratio derived from natural dimensions: 1/1
+      - show image at first block-size of calc(50% + 50px)
+      - show image at second block-size of calc(100% + 100px)
+
+      CASES
+
+      Percentage cannot be resolved, and flex container size is zero
+      - at calc(50% + 50px), size behaves as auto, and is the natural size of 200px
+      - at calc(100% + 100px), size behaves as auto, and is the natural size of 200px
+
+      Percentage cannot be resolved, and flex container size is greater than zero
+      - at calc(50% + 50px), size behaves as auto, and is the natural size of 200px
+      - at calc(100% + 100px), size behaves as auto, and is the natural size of 200px
+
+      Percentage can be resolved, and flex container size is zero
+      - at calc(50% + 50px), image size is 50px
+      - at calc(100% + 100px), image size is 100px
+
+      Percentage can be resolved, and flex container size is greater than zero
+      - at calc(50% + 50px), image size is X + 50px, where X > 0
+      - at calc(100% + 100px), image size is 2X + 100px
+
+      FORMULA
+      - flex container size is indefinite if the used block size is the same for the two measured sizes
+        - this works because computed calc() with percentage will behave as auto, and the image will render at its natural size which doesn’t change
+
+      ALGORITHM
+      - append a flex item to the flex container
+      - let size be the main or cross size, whichever we’re interested in
+      - give the flex item the following inline styles:
+        - flex: 0 0 auto
+        - size: calc(50% + 50px)
+        - align-self: flex-start;
+
+
+    -->
+    <style>
+      :root {
+        background-color: black;
+        /* inline-size: 500px; */
+      }
+
+      body {
+        background-color: thistle;
+        margin: 0;
+        opacity: 0.7;
+      }
+
+      .container {
+        background-color: cadetblue;
+        opacity: 0.7;
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        height: 0px;
+      }
+
+      .item {
+        font-size: 96px;
+        background-color: white;
+        opacity: 0.7;
+        color: rgba(150, 150, 150, 0.5);
+        flex: 0 0 auto;
+        align-self: flex-start;
+
+        height: calc(100% + 100px);
+        height: calc(50% + 50px);
+      }
+
+      .item:nth-child(even) {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- max-content: 154.567px (in Firefox) -->
+      <img class="item" src="https://picsum.photos/id/237/200" alt="Doggy" />
+      <!-- <div class="item">Ace</div> -->
+    </div>
+  </body>
+</html>
