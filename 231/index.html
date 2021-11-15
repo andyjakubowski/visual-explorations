@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      231 - Grid - as many min-X-sized columns as will fit - Airbnb Trips cards
+    </title>
+    <style>
+      body {
+        margin: 0;
+        background-color: whitesmoke;
+        padding: 48px;
+      }
+
+      ul,
+      menu {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .trips {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+      }
+
+      .trips__card {
+        box-sizing: border-box;
+        padding: 24px;
+        background-color: white;
+        border-radius: 12px;
+        font-size: 24px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="trips">
+      <li class="trips__card">Greater London</li>
+      <li class="trips__card">Sitia</li>
+      <li class="trips__card">Miami Beach</li>
+    </ul>
+  </body>
+</html>
