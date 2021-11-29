@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>234 - macOS Dock magnification</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .flex-container {
+        pointer-events: none;
+        box-sizing: border-box;
+        display: flex;
+        padding: 16px;
+        height: 100vh;
+        align-items: flex-end;
+      }
+
+      .flex-item {
+        pointer-events: auto;
+        box-sizing: border-box;
+        padding: 8px;
+        flex: none;
+
+        display: flex;
+        flex-direction: column;
+        transition: 0.15s;
+      }
+
+      .flex-item:first-child {
+        margin-inline-start: auto;
+      }
+
+      .flex-item:last-child {
+        margin-inline-end: auto;
+      }
+
+      .flex-item > span {
+        padding: 24px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        transition: 0.15s;
+        /* non-none transform creates stacking context and z-index: auto is treated like z-index: 0 */
+        /* https://www.w3.org/TR/css-transforms-1/#transform-rendering */
+        /* The default z-index: auto “loses” against z-index: 0, so set it to z-index: 0 so order-modified document order prevails in paint order */
+        /* https://drafts.csswg.org/css-flexbox/#painting */
+        z-index: 0;
+      }
+
+      .flex-item:hover > span {
+        transform: translate(0, -1.2rem) scale(1.1);
+      }
+
+      .flex-container:hover > .flex-item:not(:hover) {
+        opacity: 0.5;
+      }
+
+      .flex-item::after {
+        content: "";
+        height: 24px;
+        margin-block-start: -24px;
+      }
+    </style>
+  <body>
+    <main class="flex-container">
+      <div class="flex-item ace"><span>Ace</span></div>
+      <div class="flex-item bubble"><span>Bubble</span></div>
+      <div class="flex-item chojnice"><span>Chojnice</span></div>
+      <div class="flex-item dandelion"><span>Dandelion</span></div>
+      <div class="flex-item elephant"><span>Elephant</span></div>
+    </main>
+  </body>
+  </html>
+
