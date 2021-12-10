@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      225 - percentage not resolving against explicitly, intrinsically-sized
+      flex container
+    </title>
+    <style>
+      :root {
+        background-color: black;
+        inline-size: 500px;
+      }
+
+      body {
+        background-color: thistle;
+        margin: 0;
+        opacity: 0.7;
+      }
+
+      .flex-container {
+        background-color: cadetblue;
+        display: flex;
+        flex-direction: column;
+        opacity: 0.7;
+        align-items: flex-start;
+        block-size: auto;
+        min-block-size: 300px;
+
+        /* Note that min-block-size changes the size of the flex container, but it doesn’t change the fact flex items still won’t resolve against that resulting size. */
+      }
+
+      .flex-item {
+        font-size: 96px;
+        opacity: 0.7;
+        background-color: white;
+        flex: 0 1 50%;
+      }
+
+      .flex-item:nth-child(even) {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+      <!-- max-content: 154.567px (in Firefox) -->
+      <div class="flex-item">Ace</div>
+      <!-- max-content: 277.317px (in Firefox) -->
+      <div class="flex-item">Bubble</div>
+    </div>
+  </body>
+</html>

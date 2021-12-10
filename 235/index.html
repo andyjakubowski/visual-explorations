@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>235 - multi step chained transition</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .flex-container {
+        pointer-events: none;
+        box-sizing: border-box;
+        display: flex;
+        padding: 16px;
+        height: 100vh;
+        align-items: flex-end;
+      }
+
+      .flex-item {
+        pointer-events: auto;
+        /* box-sizing: border-box; */
+        padding: 8px;
+        flex: 0 0 120px;
+        min-width: 0;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      .flex-item:first-child {
+        margin-inline-start: auto;
+      }
+
+      .flex-item:last-child {
+        margin-inline-end: auto;
+      }
+
+      .flex-item > span {
+        box-sizing: border-box;
+        padding: 24px;
+        width: 120px;
+        height: 100px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        /* non-none transform creates stacking context and z-index: auto is treated like z-index: 0 */
+        /* https://www.w3.org/TR/css-transforms-1/#transform-rendering */
+        /* The default z-index: auto “loses” against z-index: 0, so set it to z-index: 0 so order-modified document order prevails in paint order */
+        /* https://drafts.csswg.org/css-flexbox/#painting */
+        z-index: 0;
+        transition: 
+          /* step 1 */
+          width      .2s,
+          /* step 2 */
+          transform 0.2s .2s;
+
+      }
+
+      .flex-item:hover > span {
+        transition:
+          /* step 1 */
+          transform      .3s,
+          /* step 2 */
+          width 0.5s .3s;
+        transform: translate(0, -8rem);
+        width: 200px;
+      }
+
+      .flex-container:hover > .flex-item:not(:hover) {
+        opacity: 0.5;
+      }
+
+      .flex-item::after {
+        content: "";
+        height: 24px;
+        margin-block-start: -24px;
+      }
+    </style>
+  <body>
+    <main class="flex-container">
+      <div class="flex-item ace"><span>Ace</span></div>
+      <div class="flex-item bubble"><span>Bubble</span></div>
+      <div class="flex-item chojnice"><span>Chojnice</span></div>
+      <div class="flex-item dandelion"><span>Dandelion</span></div>
+      <div class="flex-item elephant"><span>Elephant</span></div>
+    </main>
+  </body>
+  </html>
+

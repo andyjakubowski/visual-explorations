@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>238 - sticky flex item (bug in Firefox)</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        overflow: hidden;
+      }
+
+      main {
+        display: flex;
+        gap: 24px;
+
+        width: 300px;
+        background-color: black;
+        overflow: auto;
+      }
+
+      div {
+        font-size: 48px;
+        background-color: white;
+        border: 1px solid rosybrown;
+      }
+
+      aside {
+        background-color: tomato;
+        color: white;
+        font-weight: bold;
+        position: sticky;
+        right: 0;
+        opacity: 0.98;
+      }
+
+      img {
+        width: 50%;
+        display: block;
+        border: 4px white solid;
+        box-shadow: 4px 4px 4px gray;
+      }
+
+      /* In Chrome and Safari, aside behaves like a flex item, and there’s room for it when you scroll all the way. */
+      /* In Firefox, aside is recognized as a flex item in dev tools, but it still overlaps the last non-sticky item when scrolled all the way. Bug? */
+      /* https://bugzilla.mozilla.org/show_bug.cgi?id=1488080 */
+    </style>
+  </head>
+  <body>
+    <h2>Expected Behavior</h2>
+    <p>
+      The sticky element—which is the last flex item—doesn’t overlap the
+      next-to-last flex item when the flex container is scrolled all the way to
+      the end. Instead, it behaves as though it had position: relative with no
+      offset.
+    </p>
+    <img src="chrome-screenshot.png" alt="Working version in Chrome" />
+    <h2>Try it here:</h2>
+    <main>
+      <div>Austria</div>
+      <div>Belgium</div>
+      <div>Croatia</div>
+      <aside>Button</aside>
+    </main>
+  </body>
+</html>

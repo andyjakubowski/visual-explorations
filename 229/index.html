@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>229 - flex lines - negative outer hypothetical main size</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      .flex-container {
+        display: flex;
+        width: 400px;
+        flex-wrap: wrap;
+        background-color: burlywood;
+      }
+
+      .flex-item {
+        font-size: 72px;
+        background: linear-gradient(
+          to right top,
+          rgba(0, 0, 0, 0.16),
+          transparent
+        );
+      }
+
+      .ace {
+        flex: 0 0 0;
+        min-width: 0;
+        margin-left: -100px;
+      }
+
+      .bubble {
+        width: 500px;
+        outline: 1px solid tomato;
+      }
+
+      .chojnice {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="flex-container">
+      <div class="flex-item ace">Ace</div>
+      <div class="flex-item bubble">Bubble</div>
+      <div class="flex-item chojnice">Chojnice</div>
+    </main>
+  </body>
+</html>

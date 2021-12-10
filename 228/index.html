@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      228 - determine if flex container size is definite given logical dimension
+    </title>
+    <!--
+
+      EXPERIMENT
+      - fully inflexible (flex: 0 0 auto) and unstretched (align-self: flex-start) flex item
+      - natural image size 200x200
+      - initial aspect ratio derived from natural dimensions: 1/1
+      - show image at first block-size of calc(50% + 50px)
+      - show image at second block-size of calc(100% + 100px)
+
+      CASES
+
+      Percentage cannot be resolved, and flex container size is zero
+      - at calc(50% + 50px), size behaves as auto, and is the natural size of 200px
+      - at calc(100% + 100px), size behaves as auto, and is the natural size of 200px
+
+      Percentage cannot be resolved, and flex container size is greater than zero
+      - at calc(50% + 50px), size behaves as auto, and is the natural size of 200px
+      - at calc(100% + 100px), size behaves as auto, and is the natural size of 200px
+
+      Percentage can be resolved, and flex container size is zero
+      - at calc(50% + 50px), image size is 50px
+      - at calc(100% + 100px), image size is 100px
+
+      Percentage can be resolved, and flex container size is greater than zero
+      - at calc(50% + 50px), image size is X + 50px, where X > 0
+      - at calc(100% + 100px), image size is 2X + 100px
+
+      FORMULA
+      - flex container size is indefinite if the used block size is the same for the two measured sizes
+        - this works because computed calc() with percentage will behave as auto, and the image will render at its natural size which doesn’t change
+
+      ALGORITHM
+      - append a flex item to the flex container
+      - let size be the main or cross size, whichever we’re interested in
+      - give the flex item the following inline styles:
+        - flex: 0 0 auto
+        - size: calc(50% + 50px)
+        - align-self: flex-start;
+
+
+    -->
+    <style>
+      :root {
+        background-color: black;
+        /* inline-size: 500px; */
+      }
+
+      body {
+        background-color: thistle;
+        margin: 0;
+        opacity: 0.7;
+      }
+
+      .container {
+        background-color: cadetblue;
+        opacity: 0.7;
+        display: flex;
+        flex-direction: column;
+        /* height: 300px; */
+        /* height: 0px; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Some other item</h1>
+      <div class="item"></div>
+    </div>
+    <script>
+      const isFlexContainerSizeDefinite = function isFlexContainerSizeDefinite(
+        flexContainerEl,
+        logicalDimension
+      ) {
+        if (logicalDimension === 'inline') {
+          return true;
+        }
+
+        const flexItemEl = document.createElement('div');
+        flexContainerEl.append(flexItemEl);
+        const baseStyle = `
+          flex: 0 0 auto;
+          align-self: flex-start;
+        `;
+        flexItemEl.style = `
+          ${baseStyle}
+          block-size: calc(50% + 50px);
+        `;
+        const sizeCheckOne = getComputedStyle(flexItemEl).blockSize;
+        flexItemEl.style = `
+          ${baseStyle}
+          block-size: calc(100% + 100px);
+        `;
+        const sizeCheckTwo = getComputedStyle(flexItemEl).blockSize;
+        flexItemEl.remove();
+        const areBothSizesEqual = sizeCheckOne === sizeCheckTwo;
+        const isSizeDefinite = !areBothSizesEqual;
+        return isSizeDefinite;
+      };
+
+      const start = function start() {
+        const flexContainerEl = document.querySelector('.container');
+        window.flexContainerEl = flexContainerEl;
+        window.isFlexContainerSizeDefinite = isFlexContainerSizeDefinite;
+        const results = [];
+        for (let n = 0; n < 100; n += 1) {
+          const t0 = performance.now();
+          isFlexContainerSizeDefinite(flexContainerEl);
+          const t1 = performance.now();
+          results.push(t1 - t0);
+        }
+
+        const sum = results.reduce((sum, result) => sum + result, 0);
+        const average = sum / results.length;
+        console.log(
+          `On average, the call to isFlexContainerSizeDefinite took ${average} milliseconds.`
+        );
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+      } else {
+        start();
+      }
+    </script>
+  </body>
+</html>

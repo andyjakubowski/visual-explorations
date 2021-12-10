@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>230 - gradient pattern - non-transparent crosses</title>
+    <style>
+      :root {
+        /* <bg-image> <bg-position> / <bg-size> */
+        --green-circles: radial-gradient(
+            circle,
+            transparent 20%,
+            tomato 20% 80%,
+            transparent 80%
+          )
+          top left / 100px 100px;
+        --red-circles: radial-gradient(
+            circle,
+            transparent 20%,
+            tomato 20% 80%,
+            transparent 80%
+          )
+          50px 50px / 100px 100px;
+        height: 100vh;
+        background: var(--green-circles), var(--red-circles, transparent);
+        background: var(--red-circles), var(--green-circles, transparent);
+        background: var(--red-circles), var(--green-circles, transparent),
+          linear-gradient(white 8px, transparent 8px) 0 -4px / 50px 50px,
+          linear-gradient(90deg, white 8px, transparent 8px) -4px 0 / 50px 50px,
+          tomato;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
