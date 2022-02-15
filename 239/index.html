@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>239 - ink bleed CSS + SVG filter</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      h1 {
+        padding: 40px;
+        font-size: 40px;
+      }
+
+      #box {
+        margin: 30px;
+        width: 40px;
+        height: 60px;
+        flex: none;
+        background-color: black;
+      }
+
+      img {
+        min-width: 300px;
+      }
+
+      h1,
+      img,
+      #box,
+      .svg-text {
+        filter: url(#blurMe) url(#svgThreshold);
+      }
+
+      .svg-text {
+        width: 200px;
+        height: 100px;
+        font: bold 30px sans-serif;
+        fill: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <h1>CSS Text</h1>
+    <img src="../images/something-wonderful.png" alt="Something Wonderful" />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 200 100"
+      class="svg-text"
+    >
+      <text x="0" y="50">SVG Text</text>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <filter id="blurMe">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+      </filter>
+      <filter id="svgThreshold">
+        <feComponentTransfer>
+          <feFuncR type="discrete" tableValues=" 0 1" />
+          <feFuncG type="discrete" tableValues=" 0 1" />
+          <feFuncB type="discrete" tableValues=" 0 1" />
+        </feComponentTransfer>
+      </filter>
+    </svg>
+  </body>
+</html>
