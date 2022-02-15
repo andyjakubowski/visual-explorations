@@ -9,60 +9,114 @@
         background-color: whitesmoke;
       }
 
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
       h1 {
-        padding: 40px;
-        font-size: 40px;
+        font-size: 96px;
+        margin: 0;
       }
 
-      #box {
-        margin: 30px;
-        width: 40px;
-        height: 60px;
-        flex: none;
-        background-color: black;
-      }
-
-      img {
-        min-width: 300px;
-      }
-
-      h1,
-      img,
-      #box,
-      .svg-text {
-        filter: url(#blurMe) url(#svgThreshold);
-      }
-
-      .svg-text {
-        width: 200px;
-        height: 100px;
-        font: bold 30px sans-serif;
-        fill: black;
+      .ink-bleed {
+        filter: blur(var(--blur)) url(#svgThreshold);
       }
     </style>
   </head>
   <body>
-    <div id="box"></div>
-    <h1>CSS Text</h1>
-    <img src="../images/something-wonderful.png" alt="Something Wonderful" />
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 100"
-      class="svg-text"
-    >
-      <text x="0" y="50">SVG Text</text>
-    </svg>
+    <label
+      >Blur
+      <input
+        id="blur-slider"
+        type="range"
+        name="blur"
+        min="0"
+        max="5"
+        step="0.1"
+        value="2"
+      />
+      <span id="blur-label"></span>
+    </label>
+    <label
+      >Threshold
+      <input
+        id="threshold-slider"
+        type="range"
+        name="threshold"
+        min="10"
+        max="90"
+        step="10"
+        value="50"
+      />
+      <span id="threshold-label"></span>
+    </label>
+    <h1>Wonderful</h1>
+    <h1 class="ink-bleed">Wonderful</h1>
     <svg xmlns="http://www.w3.org/2000/svg">
-      <filter id="blurMe">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
-      </filter>
       <filter id="svgThreshold">
         <feComponentTransfer>
-          <feFuncR type="discrete" tableValues=" 0 1" />
-          <feFuncG type="discrete" tableValues=" 0 1" />
-          <feFuncB type="discrete" tableValues=" 0 1" />
+          <feFuncG class="transfer-func" type="discrete" tableValues="0 1 1" />
+          <feFuncB class="transfer-func" type="discrete" tableValues="0 1 1" />
+          <feFuncA class="transfer-func" type="discrete" tableValues="0 1 1" />
+          <feFuncR class="transfer-func" type="discrete" tableValues="0 1 1" />
         </feComponentTransfer>
       </filter>
     </svg>
+    <script>
+      const table = {
+        0: '0',
+        10: '0 1 1 1 1 1 1 1 1 1',
+        20: '0 0 1 1 1 1 1 1 1 1',
+        30: '0 0 0 1 1 1 1 1 1 1',
+        40: '0 0 0 0 1 1 1 1 1 1',
+        50: '0 1',
+        60: '0 0 0 0 0 0 1 1 1 1',
+        70: '0 0 0 0 0 0 0 1 1 1',
+        80: '0 0 0 0 0 0 0 0 1 1',
+        90: '0 0 0 0 0 0 0 0 0 1',
+        100: '1',
+      };
+      function handleDOMContentLoaded() {
+        const transferFuncs = Array.from(
+          document.getElementsByClassName('transfer-func')
+        );
+        const blurSlider = document.getElementById('blur-slider');
+        const thresholdSlider = document.getElementById('threshold-slider');
+        const blurLabel = document.getElementById('blur-label');
+        const thresholdLabel = document.getElementById('threshold-label');
+        document.documentElement.style.setProperty(
+          '--blur',
+          `${blurSlider.getAttribute('value')}px`
+        );
+        transferFuncs.forEach((func) =>
+          func.setAttribute(
+            'tableValues',
+            table[thresholdSlider.getAttribute('value')]
+          )
+        );
+        blurLabel.textContent = `${blurSlider.getAttribute('value')}px`;
+        thresholdLabel.textContent = thresholdSlider.getAttribute('value');
+        blurSlider.addEventListener('input', () => {
+          blurLabel.textContent = `${blurSlider.value}px`;
+          document.documentElement.style.setProperty(
+            '--blur',
+            `${blurSlider.value}px`
+          );
+        });
+        thresholdSlider.addEventListener('input', () => {
+          thresholdLabel.textContent = thresholdSlider.value;
+          transferFuncs.forEach((func) => {
+            func.setAttribute('tableValues', table[thresholdSlider.value]);
+          });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+      } else {
+        handleDOMContentLoaded();
+      }
+    </script>
   </body>
 </html>
