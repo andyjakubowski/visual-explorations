@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <linearGradient id="gradient" x1="0%" x2="100%" y1="0%" y2="1">
+    <stop stop-color="#0002" offset="0" />
+    <stop stop-color="black" offset="1" />
+  </linearGradient>
+  <filter id="filter-1">
+    <feTurbulence baseFrequency="0.2" />
+    <feComposite in2="SourceAlpha" operator="in" />
+  </filter>
+  <filter id="filter-2">
+    <feTurbulence baseFrequency="0.2" />
+    <feComposite in2="SourceAlpha" operator="in" />
+    <feColorMatrix values=" 0 0 0 -9 4
+                            0 0 0 -9 4
+                            0 0 0 -9 4
+                            0 0 0  0 1" />
+  </filter>
+  <filter id="filter-3">
+    <feTurbulence baseFrequency="0.2" />
+    <feComposite in2="SourceAlpha" operator="in" />
+    <feComponentTransfer>
+      <feFuncR type="identity"></feFuncR>
+      <feFuncG type="identity"></feFuncG>
+      <feFuncB type="identity"></feFuncB>
+      <feFuncA type="discrete" tableValues="0 0 0 0 1 1 1 1 1 1 1"></feFuncA>
+    </feComponentTransfer>
+    <feColorMatrix values=" 0 0 0 -9 4
+                            0 0 0 -9 4
+                            0 0 0 -9 4
+                            0 0 0  0 1" />
+  </filter>
+  <rect width="33%" height="100%" fill="url(#gradient)" filter="url(#filter-1)" />
+  <rect x="33%" width="33%" height="100%" fill="url(#gradient)" filter="url(#filter-2)" />
+  <rect x="66%" width="33%" height="100%" fill="url(#gradient)" filter="url(#filter-3)" />
+</svg>
+
+
