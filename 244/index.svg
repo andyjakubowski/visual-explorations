@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <circle cx="20" cy="20" r="20" fill="red">
+    <animate attributeName="cx" calcMode="spline" keyTimes="0; 0.5; 1" keySplines="0.5 0 0.5 1; 0.5 0 0.5 1" values="20; 220; 20" dur="1s" repeatCount="indefinite" />
+  </circle>
+</svg>
