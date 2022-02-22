@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="turbulent-dissolve" x="0%" y="0%">
+      <feTurbulence type="fractalNoise" baseFrequency=".012"/>
+
+      <!-- Same as <feColorMatrix type="luminanceToAlpha"/> -->
+      <!-- luminanceToAlpha is a shortcut for 0.2126 0.7152 0.0722 0 0 in the alpha component -->
+      <feColorMatrix type="matrix" values="
+                                            0 0 0 0 0
+                                            0 0 0 0 0
+                                            0 0 0 0 0
+                                            0.2126 0.7152 0.0722 0 0
+                                            "/>
+
+      <!-- In the following, C is the initial component (e.g., feFuncR), C' is the remapped component; both in the closed interval [0,1]. -->
+      <!-- type="linear" -->
+      <!-- C' = slope * C + intercept -->
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="1" intercept="0">
+          <!-- <animate attributeName="cx" calcMode="spline" keyTimes="0; 0.5; 1" keySplines="0.5 0 0.5 1; 0.5 0 0.5 1" values="20; 220; 20" dur="1s" repeatCount="indefinite" /> -->
+          <animate attributeName="slope" values="0; 2; 0" dur="2s" repeatCount="indefinite"/>
+        </feFuncA>
+
+      </feComponentTransfer>
+
+      <!-- Transfer Alpha component to 0 (completely transparent) or 1 (completely opaque, black because of the feColorMatrix above) -->
+      <feComponentTransfer>
+        <feFuncA type="discrete" tableValues="0 1"/>
+      </feComponentTransfer>
+
+      <!-- Soften the edges of the two buckets -->
+      <feGaussianBlur stdDeviation="1"/>
+
+      <!-- SourceGraphic is the <image> element to which this filter is applied -->
+      <!-- The default value of in2 will be the result of the previous filter primitive, which is the result of the entire filter chain that started with feTurbulence noise -->
+      <!-- For operator="in", the parts of the SourceGraphic that overlap the above filter chain result will replace the destination graphic. -->
+      <!-- result="overlay" is here so we can refer to this result later -->
+      <feComposite operator="in" in="SourceGraphic" result="overlay"/>
+
+      <!-- Grab image, provide it as output or as result="underlay" -->
+      <feImage href="https://ykob.github.io/glsl-dissolve/img/osaka02.jpg" width="100%" height="100%" result="underlay"/>
+
+      <!-- Place "overlay" over the "underlay" -->
+      <feComposite operator="over" in="overlay" in2="underlay"/>
+    </filter>
+  </defs>
+
+
+  <image filter="url(#turbulent-dissolve)" width="100%" height="100%" href="https://ykob.github.io/glsl-dissolve/img/osaka01.jpg"/>
+  <!-- <image filter="url(#turbulent-dissolve)" width="100%" height="100%" href="circles-rgb.png"/> -->
+
+</svg>
