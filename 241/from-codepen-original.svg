@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="turbulent-dissolve" x="0%" y="0%">
+      <feTurbulence type="fractalNoise" baseFrequency=".012"/>
+      <feColorMatrix type="luminanceToAlpha"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0">
+          <animate attributeName="slope" values="0;0;0;0;0;0.5;1;1.5;2;2;2;2;2;2;1.5;1;0.5;0" dur="8s" repeatCount="indefinite"/>
+        </feFuncA>
+      </feComponentTransfer>
+
+      <feComponentTransfer>
+        <feFuncA type="discrete" tableValues="0 1"/>
+      </feComponentTransfer>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite operator="in" in="SourceGraphic" result="overlay"/>
+
+      <feImage href="https://ykob.github.io/glsl-dissolve/img/osaka02.jpg" width="800" height="600" result="underlay"/>
+      <feComposite operator="over" in="overlay" in2="underlay"/>
+    </filter>
+  </defs>
+
+
+  <image filter="url(#turbulent-dissolve)" width="800" height="600" href="https://ykob.github.io/glsl-dissolve/img/osaka01.jpg"/>
+
+</svg>
