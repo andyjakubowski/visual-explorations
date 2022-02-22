@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>242 - discrete interpolation of filter: url(#svg-filter)</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      h1 {
+        display: inline-block;
+        font-size: 144px;
+        transition: filter 1s;
+        border: 1px solid black;
+        filter: url(#blur-1);
+      }
+
+      h1:hover {
+        filter: url(#blur-2);
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      The heading starts with filter: url(#blur-1). When you hover, it changes
+      to filter: url(#blur-2). It has transition: filter 1s. Because SVG filters
+      can’t be animated this way, the filter will instead discretely flip from
+      one to another in the middle of the duration set in the transition. See
+      http://developer.mozilla.org/en-US/docs/Web/CSS/filter#interpolation.
+    </p>
+    <h1>Hello World</h1>
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <filter id="blur-1">
+        <feGaussianBlur stdDeviation="2" />
+      </filter>
+      <filter id="blur-2">
+        <feGaussianBlur stdDeviation="10" />
+      </filter>
+    </svg>
+  </body>
+</html>
