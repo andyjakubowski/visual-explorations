@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>249 - identity feDisplacementMap</title>
+    <style>
+      body {
+        margin: 0;
+        background: white;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .svg-wrapper {
+        width: 508px;
+        height: 128px;
+        overflow: visible;
+        background-color: rgba(0.5, 0.5, 0.5, 0.05);
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="svg-wrapper">
+      <defs>
+        <filter
+          id="displacement-filter-01"
+          color-interpolation-filters="sRGB"
+          width="128"
+          filterUnits="userSpaceOnUse"
+          height="128"
+          x="380"
+          y="0"
+        >
+          <feImage width="128" height="128" href="identity-map.png" />
+          <feDisplacementMap
+            id="that-displacement-map"
+            class="map"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="B"
+            scale="100"
+          ></feDisplacementMap>
+        </filter>
+      </defs>
+
+      <!-- Row -->
+      <image href="identity-map.png" x="0" y="0" height="128px" width="128px" />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="0"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="0"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-01)"
+      />
+    </svg>
+    <label
+      >scale
+      <input
+        class="slider"
+        type="range"
+        name="scale"
+        min="0"
+        max="512"
+        step="1"
+        value="100"
+      />
+      <span class="label"></span>
+    </label>
+    <svg class="svg-wrapper">
+      <defs>
+        <filter
+          id="displacement-filter-02"
+          color-interpolation-filters="sRGB"
+          width="128"
+          filterUnits="userSpaceOnUse"
+          height="128"
+          x="380"
+          y="0"
+        >
+          <feImage width="128" height="128" href="identity-map-middle.png" />
+          <feDisplacementMap
+            id="that-displacement-map"
+            class="map"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="B"
+            scale="100"
+          ></feDisplacementMap>
+        </filter>
+      </defs>
+
+      <!-- Row -->
+      <image
+        href="identity-map-middle.png"
+        x="0"
+        y="0"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="0"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="0"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-02)"
+      />
+    </svg>
+    <label
+      >scale
+      <input
+        class="slider"
+        type="range"
+        name="scale"
+        min="0"
+        max="512"
+        step="1"
+        value="100"
+      />
+      <span class="label"></span>
+    </label>
+    <script>
+      function handleDOMContentLoaded() {
+        const maps = [...document.getElementsByClassName('map')];
+        const sliders = [...document.getElementsByClassName('slider')];
+        const labels = [...document.getElementsByClassName('label')];
+        const label = document.getElementById('label-01');
+        sliders.forEach((slider, index) => {
+          const map = maps[index];
+          const label = labels[index];
+          map.setAttribute('scale', slider.getAttribute('value'));
+          label.textContent = `${slider.getAttribute('value')}`;
+          slider.addEventListener('input', () => {
+            label.textContent = slider.value;
+            map.setAttribute('scale', slider.value);
+          });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+      } else {
+        handleDOMContentLoaded();
+      }
+    </script>
+  </body>
+</html>
