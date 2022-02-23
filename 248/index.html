@@ -14,13 +14,14 @@
         background: white;
         height: 100%;
         display: flex;
-        justify-content: center;
+        flex-flow: column;
+        justify-content: flex-start;
         align-items: center;
       }
 
       .wrapper {
         width: 508px;
-        height: 1024px;
+        height: 1152px;
         overflow: visible;
         background-color: rgba(0.5, 0.5, 0.5, 0.05);
       }
@@ -177,6 +178,31 @@
             yChannelSelector="A"
             scale="256"
           />
+        </filter>
+        <filter
+          id="displacement-filter-9"
+          width="128"
+          height="128"
+          x="380"
+          y="1024"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="gradient-8.png" />
+          <feDisplacementMap
+            id="that-displacement-map"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="A"
+            scale="256"
+          >
+            <!-- <animate
+              attributeName="scale"
+              values="0; 256; 0"
+              dur="5s"
+              repeatCount="indefinite"
+            /> -->
+          </feDisplacementMap>
         </filter>
       </defs>
 
@@ -353,19 +379,62 @@
         width="128px"
         filter="url(#displacement-filter-8)"
       />
+
+      <!-- Row 9 -->
+      <image
+        href="gradient-8.png"
+        x="0"
+        y="1024"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="1024"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="1024"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-9)"
+      />
     </svg>
-    <!-- <script>
-      const feImage = document.querySelector('feImage');
-
-      fetch('fed_sagrada-384.jpg')
-        .then((response) => {
-          return response.blob();
-        })
-        .then((blob) => {
-          const objURL = URL.createObjectURL(blob);
-
-          feImage.setAttribute('href', objURL);
+    <label
+      >scale
+      <input
+        id="slider"
+        type="range"
+        name="scale"
+        min="0"
+        max="512"
+        step="1"
+        value="256"
+      />
+      <span id="label"></span>
+    </label>
+    <script>
+      function handleDOMContentLoaded() {
+        const feMap = document.getElementById('that-displacement-map');
+        const slider = document.getElementById('slider');
+        const label = document.getElementById('label');
+        feMap.setAttribute('scale', slider.getAttribute('value'));
+        label.textContent = `${slider.getAttribute('value')}px`;
+        slider.addEventListener('input', () => {
+          label.textContent = slider.value;
+          feMap.setAttribute('scale', slider.value);
         });
-    </script> -->
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+      } else {
+        handleDOMContentLoaded();
+      }
+    </script>
   </body>
 </html>
