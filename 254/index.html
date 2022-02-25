@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>254 - feImage + feTurbulence + feDisplacementMap</title>
+    <title>254 - feImage + feDisplacementMap from image</title>
     <style>
       :root {
       }
@@ -17,6 +17,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 200px;
+      }
+
+      img {
+        width: 100px;
+        height: 100px;
       }
 
       svg {
@@ -34,31 +45,99 @@
     </style>
   </head>
   <body>
-    <svg>
-      <defs>
-        <filter
-          id="filter-1"
-          filterUnits="objectBoundingBox"
-          x="0"
-          y="0"
-          width="1"
-          height="1"
-        >
-          <feImage href="plus.png" result="image" />
-          <feTurbulence baseFrequency="0.005" result="turbulence" />
-          <!-- <feComposite operator="over" in="image" in2="turbulence" /> -->
-          <feDisplacementMap
-            in="image"
-            in2="turbulence"
-            scale="100"
-            xChannelSelector="A"
-            yChannelSelector="A"
-          />
-        </filter>
-      </defs>
-    </svg>
+    <section class="source">
+      Source image
+      <img class="dropbox" src="doggy-100.jpg" alt="Plus" />
+      <input type="file" accept="image/*" />
+    </section>
+    <section class="displacement-map">
+      Displacement map image
+      <img class="dropbox" src="identity-map-100.png" alt="Plus" />
+      <input type="file" accept="image/*" />
+    </section>
+    <section>
+      <svg>
+        <defs>
+          <filter
+            id="filter-1"
+            color-interpolation-filters="sRGB"
+            filterUnits="objectBoundingBox"
+            x="0"
+            y="0"
+            width="1"
+            height="1"
+          >
+            <feImage href="doggy-100.jpg" result="source" />
+            <feImage href="identity-map-100.png" result="displacementMap" />
+            <!-- <feComposite operator="over" in="image" in2="turbulence" /> -->
+            <feDisplacementMap
+              in="source"
+              in2="displacementMap"
+              scale="50"
+              xChannelSelector="R"
+              yChannelSelector="B"
+            />
+          </filter>
+        </defs>
+      </svg>
+      <label
+        >scale
+        <input
+          class="slider"
+          type="range"
+          name="scale"
+          min="0"
+          max="512"
+          step="1"
+          value="100"
+        />
+        <span class="label"></span>
+      </label>
+    </section>
     <script>
-      console.log('Hello Scratch');
+      function setUpImageFileInput() {
+        const classNames = ['source', 'displacement-map'];
+        classNames.forEach((className, index) => {
+          const imageDropEl = document.querySelector(`.${className} img`);
+          const imageInputEl = document.querySelector(`.${className} input`);
+          const feImageEl = document.querySelectorAll('feImage').item(index);
+          imageInputEl.addEventListener('change', (e) => {
+            const url = URL.createObjectURL(e.target.files.item(0));
+            feImageEl.setAttribute('href', url);
+            imageDropEl.setAttribute('src', url);
+          });
+          imageDropEl.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const file = e.dataTransfer.files.item(0);
+            const url = URL.createObjectURL(file);
+            feImageEl.setAttribute('href', url);
+            imageDropEl.setAttribute('src', url);
+          });
+          imageDropEl.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          });
+        });
+      }
+      function setUpScaleSlider() {
+        const maps = [...document.getElementsByTagName('feDisplacementMap')];
+        const rangeEls = [...document.querySelectorAll('input[type="range"]')];
+        const labels = [...document.getElementsByClassName('label')];
+        const label = document.getElementById('label-01');
+        rangeEls.forEach((rangeEl, index) => {
+          const map = maps[index];
+          const label = labels[index];
+          map.setAttribute('scale', rangeEl.getAttribute('value'));
+          label.textContent = `${rangeEl.getAttribute('value')}`;
+          rangeEl.addEventListener('input', () => {
+            label.textContent = rangeEl.value;
+            map.setAttribute('scale', rangeEl.value);
+          });
+        });
+      }
+      setUpImageFileInput();
+      setUpScaleSlider();
     </script>
   </body>
 </html>
