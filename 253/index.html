@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>253 - SVG filter starter</title>
+    <style>
+      :root {
+      }
+
+      body {
+        background-color: #50505f;
+        box-sizing: border-box;
+        height: 100vh;
+        margin: 0;
+        padding: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      svg {
+        width: 300px;
+        height: 300px;
+        background-color: tomato;
+        overflow: visible;
+        filter: url(#filter-1);
+      }
+
+      feFlood {
+        flood-color: white;
+        flood-opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <svg>
+      <defs>
+        <filter
+          id="filter-1"
+          filterUnits="objectBoundingBox"
+          x="0"
+          y="0"
+          width="1"
+          height="1"
+        >
+          <feTurbulence baseFrequency="0.005"></feTurbulence>
+        </filter>
+      </defs>
+    </svg>
+    <script>
+      console.log('Hello Scratch');
+    </script>
+  </body>
+</html>
