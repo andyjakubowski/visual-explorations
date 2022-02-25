@@ -10,13 +10,13 @@
 
       body {
         background-color: #50505f;
+        background-color: red;
         box-sizing: border-box;
         height: 100vh;
         margin: 0;
         padding: 100px;
         display: flex;
         justify-content: center;
-        align-items: center;
       }
 
       section {
@@ -25,14 +25,18 @@
         flex: 0 0 200px;
       }
 
+      label {
+        display: contents;
+      }
+
       img {
         width: 100px;
         height: 100px;
       }
 
       svg {
-        width: 300px;
-        height: 300px;
+        width: 100px;
+        height: 100px;
         background-color: tomato;
         overflow: visible;
         filter: url(#filter-1);
@@ -46,13 +50,13 @@
   </head>
   <body>
     <section class="source">
+      <img class="dropbox" src="circle-yellow.png" alt="" />
       Source image
-      <img class="dropbox" src="doggy-100.jpg" alt="Plus" />
       <input type="file" accept="image/*" />
     </section>
     <section class="displacement-map">
+      <img class="dropbox" src="map-circle-yellow.png" alt="Plus" />
       Displacement map image
-      <img class="dropbox" src="identity-map-100.png" alt="Plus" />
       <input type="file" accept="image/*" />
     </section>
     <section>
@@ -62,34 +66,44 @@
             id="filter-1"
             color-interpolation-filters="sRGB"
             filterUnits="objectBoundingBox"
+            primitiveUnits="objectBoundingBox"
             x="0"
             y="0"
             width="1"
             height="1"
           >
-            <feImage href="doggy-100.jpg" result="source" />
-            <feImage href="identity-map-100.png" result="displacementMap" />
+            <feImage
+              href="circle-yellow.png"
+              result="source"
+              color-interpolation-filters="sRGB"
+            />
+            <feImage
+              href="map-circle-yellow.png"
+              result="displacementMap"
+              color-interpolation-filters="sRGB"
+            />
             <!-- <feComposite operator="over" in="image" in2="turbulence" /> -->
             <feDisplacementMap
               in="source"
               in2="displacementMap"
-              scale="50"
+              scale="60"
               xChannelSelector="R"
               yChannelSelector="B"
+              color-interpolation-filters="sRGB"
             />
           </filter>
         </defs>
       </svg>
       <label
-        >scale
+        >scale (objectBoundingBox fraction)
         <input
           class="slider"
           type="range"
           name="scale"
           min="0"
-          max="512"
-          step="1"
-          value="100"
+          max="3"
+          step="0.01"
+          value="2"
         />
         <span class="label"></span>
       </label>
