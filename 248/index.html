@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>248 - feDisplacementMap Mona Lisa experiments</title>
+    <style>
+      body {
+        margin: 0;
+        background: white;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .wrapper {
+        width: 508px;
+        height: 1280px;
+        overflow: visible;
+        background-color: rgba(0.5, 0.5, 0.5, 0.05);
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      class="wrapper"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      version="1.1"
+    >
+      <defs>
+        <filter
+          id="displacement-filter-1"
+          width="128"
+          height="128"
+          x="380"
+          y="0"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="fed_sagrada-384.jpg" />
+          <feDisplacementMap
+            id="fedisplacementmap"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="B"
+            scale="50"
+          />
+        </filter>
+        <filter
+          id="displacement-filter-2"
+          width="128"
+          height="128"
+          x="380"
+          y="128"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="mona-lisa-1.png" />
+          <feDisplacementMap
+            id="fedisplacementmap"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="B"
+            scale="50"
+          />
+        </filter>
+        <filter
+          id="displacement-filter-3"
+          width="128"
+          height="128"
+          x="380"
+          y="256"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="mona-lisa-2.png" />
+          <feDisplacementMap
+            id="fedisplacementmap"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="B"
+            scale="50"
+          />
+        </filter>
+        <filter
+          id="displacement-filter-4"
+          width="128"
+          height="128"
+          x="380"
+          y="384"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="rb-gradient.png" />
+          <feDisplacementMap
+            id="fedisplacementmap"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="B"
+            scale="256"
+          />
+        </filter>
+        <filter
+          id="displacement-filter-5"
+          width="128"
+          height="128"
+          x="380"
+          y="512"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="r-gradient.png" />
+          <feDisplacementMap
+            id="fedisplacementmap"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="R"
+            scale="30"
+          />
+        </filter>
+        <filter
+          id="displacement-filter-6"
+          width="128"
+          height="128"
+          x="380"
+          y="640"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="ra-gradient.png" />
+          <feDisplacementMap
+            id="fedisplacementmap"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="A"
+            scale="256"
+          />
+        </filter>
+        <filter
+          id="displacement-filter-7"
+          width="128"
+          height="128"
+          x="380"
+          y="768"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="gradient-7.png" />
+          <feDisplacementMap
+            id="fedisplacementmap"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="R"
+            scale="256"
+          />
+        </filter>
+        <filter
+          id="displacement-filter-8"
+          width="128"
+          height="128"
+          x="380"
+          y="896"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="gradient-8.png" />
+          <feDisplacementMap
+            id="fedisplacementmap"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="A"
+            scale="256"
+          />
+        </filter>
+        <filter
+          id="displacement-filter-9"
+          width="128"
+          height="128"
+          x="380"
+          y="1024"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="identity-map.png" />
+          <feDisplacementMap
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="B"
+            scale="100"
+          >
+            <!-- <animate
+              attributeName="scale"
+              values="0; 256; 0"
+              dur="5s"
+              repeatCount="indefinite"
+            /> -->
+          </feDisplacementMap>
+        </filter>
+        <filter
+          id="displacement-filter-10"
+          width="128"
+          height="128"
+          x="380"
+          y="1152"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feImage width="128" height="128" href="gradient-8.png" />
+          <feDisplacementMap
+            id="that-displacement-map"
+            in="SourceGraphic"
+            xChannelSelector="R"
+            yChannelSelector="A"
+            scale="100"
+          >
+            <!-- <animate
+              attributeName="scale"
+              values="0; 256; 0"
+              dur="5s"
+              repeatCount="indefinite"
+            /> -->
+          </feDisplacementMap>
+        </filter>
+      </defs>
+
+      <!-- Row 1 -->
+      <image
+        href="fed_sagrada-384.jpg"
+        x="0"
+        y="0"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="0"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        filter="url(#displacement-filter-1)"
+        x="380"
+        y="0"
+        height="128px"
+        width="128px"
+      />
+
+      <!-- Row 2 -->
+      <image
+        href="mona-lisa-1.png"
+        x="0"
+        y="128"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="128"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="128"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-2)"
+      />
+
+      <!-- Row 3 -->
+      <image
+        href="mona-lisa-2.png"
+        x="0"
+        y="256"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="256"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="256"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-3)"
+      />
+
+      <!-- Row 4 -->
+      <image
+        href="rb-gradient.png"
+        x="0"
+        y="384"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="384"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="384"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-4)"
+      />
+
+      <!-- Row 5 -->
+      <image href="r-gradient.png" x="0" y="512" height="128px" width="128px" />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="512"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="512"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-5)"
+      />
+
+      <!-- Row 6 -->
+      <image
+        href="ra-gradient.png"
+        x="0"
+        y="640"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="640"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="640"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-6)"
+      />
+
+      <!-- Row 7 -->
+      <image href="gradient-7.png" x="0" y="768" height="128px" width="128px" />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="768"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="768"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-7)"
+      />
+
+      <!-- Row 8 -->
+      <image href="gradient-8.png" x="0" y="896" height="128px" width="128px" />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="896"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="896"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-8)"
+      />
+
+      <!-- Row 9 -->
+      <image
+        href="identity-map.png"
+        x="0"
+        y="1024"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="1024"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="1024"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-9)"
+      />
+
+      <!-- Row 10 -->
+      <image
+        href="gradient-8.png"
+        x="0"
+        y="1152"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="138"
+        y="1152"
+        height="128px"
+        width="128px"
+      />
+      <image
+        href="fed_monalisa-384.jpg"
+        x="380"
+        y="1152"
+        height="128px"
+        width="128px"
+        filter="url(#displacement-filter-10)"
+      />
+    </svg>
+    <label
+      >scale
+      <input
+        id="slider"
+        type="range"
+        name="scale"
+        min="0"
+        max="512"
+        step="1"
+        value="100"
+      />
+      <span id="label"></span>
+    </label>
+    <script>
+      function handleDOMContentLoaded() {
+        const feMap = document.getElementById('that-displacement-map');
+        const slider = document.getElementById('slider');
+        const label = document.getElementById('label');
+        feMap.setAttribute('scale', slider.getAttribute('value'));
+        label.textContent = `${slider.getAttribute('value')}`;
+        slider.addEventListener('input', () => {
+          label.textContent = slider.value;
+          feMap.setAttribute('scale', slider.value);
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+      } else {
+        handleDOMContentLoaded();
+      }
+    </script>
+  </body>
+</html>

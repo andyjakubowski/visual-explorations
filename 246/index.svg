@@ -1,0 +1,35 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="none"
+  version="1.1"
+  viewBox="0 0 400 200"
+  width="400"
+  height="200"
+>
+  <defs>
+    <filter id="displacement-filter">
+      <feFlood
+        flood-color="#000"
+        flood-opacity="0"
+      />
+      <feDisplacementMap
+        scale="100"
+        xChannelSelector="A"
+        yChannelSelector="A"
+        in="SourceGraphic"
+      />
+    </filter>
+  </defs>
+  <rect
+    width="100%"
+    height="100%"
+    fill="black"
+  />
+  <circle
+    cx="100"
+    cy="100"
+    r="100"
+    fill="white"
+    filter="url(#displacement-filter)"
+  />
+</svg>

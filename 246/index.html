@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>246 - basic feDisplacementMap</title>
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: burlywood;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      svg {
+        /* overflow: visible; */
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      viewBox="0 0 800 500"
+      width="800"
+      height="500"
+    >
+      <defs>
+        <filter id="filter-1">
+          <feFlood flood-color="#000" flood-opacity="0" />
+          <feDisplacementMap
+            scale="10"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            in="SourceGraphic"
+          />
+        </filter>
+        <filter id="filter-2">
+          <feFlood flood-color="#F00" flood-opacity="1" />
+          <feDisplacementMap
+            scale="100"
+            xChannelSelector="R"
+            yChannelSelector="R"
+            in="SourceGraphic"
+          />
+        </filter>
+        <filter id="filter-3">
+          <feFlood flood-color="#F00" flood-opacity="0.5" />
+          <feDisplacementMap
+            scale="100"
+            xChannelSelector="R"
+            yChannelSelector="R"
+            in="SourceGraphic"
+          />
+        </filter>
+        <filter id="filter-4">
+          <feFlood flood-color="#F00" flood-opacity="0.6" />
+          <feDisplacementMap
+            scale="100"
+            xChannelSelector="R"
+            yChannelSelector="R"
+            in="SourceGraphic"
+          />
+        </filter>
+      </defs>
+
+      <circle cx="40" cy="40" r="40" fill="white" filter="url(#filter-1)" />
+    </svg>
+  </body>
+</html>
+<!-- <circle cx="140" cy="40" r="40" fill="white" filter="url(#filter-2)" />
+
+  <circle cx="240" cy="40" r="40" fill="white" filter="url(#filter-3)" />
+
+  <circle cx="340" cy="40" r="40" fill="white" filter="url(#filter-4)" /> -->
+
+<!-- <feImage width="128" height="128" href="white-fill.png" /> -->

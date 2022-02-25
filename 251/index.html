@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      251 - Sizing SVG with intrinsic aspect ratio (viewBox) but no intrinsic
+      nor applied dimensions
+    </title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        display: flex;
+        margin: 100px;
+        padding: 100px;
+        border: 100px solid black;
+        width: 1000px;
+      }
+
+      rect {
+        fill: black;
+        width: 50px;
+        height: 50px;
+      }
+
+      main {
+        padding: 100px;
+      }
+
+      svg {
+        background-color: antiquewhite;
+        /* width: 100%; */
+        /* box-sizing: border-box; */
+        /* width: min-content; */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Whoa whoa whoa whoa</h1>
+    <script>
+      function createSVGElement(elName) {
+        return document.createElementNS('http://www.w3.org/2000/svg', elName);
+      }
+      const mainEl = document.createElement('main');
+      const svgEl = createSVGElement('svg');
+      const rectEl = createSVGElement('rect');
+      // svgEl.setAttribute('viewBox', '0 0 100 100');
+      mainEl.append(svgEl);
+      svgEl.append(rectEl);
+      document.body.append(mainEl);
+    </script>
+  </body>
+</html>
