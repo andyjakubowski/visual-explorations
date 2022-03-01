@@ -11,6 +11,7 @@
 
       body {
         background-color: rgba(210, 210, 210, 0.9);
+        background-color: black;
       }
 
       ul {
@@ -19,6 +20,7 @@
 
         margin: 0;
         padding: 0;
+        padding-inline-start: 40px;
       }
 
       li {
@@ -26,7 +28,8 @@
       }
 
       article {
-        margin-inline-start: -20px;
+        flex: 1 1 40ch;
+        margin-inline-start: -40px;
         /* padding: 48px; */
         border: 1px solid black;
         /* height: 200px; */
@@ -61,7 +64,6 @@
       p {
         margin: 0;
         font-size: 20px;
-        max-width: 40ch;
       }
 
       li:nth-of-type(1n) > article {
