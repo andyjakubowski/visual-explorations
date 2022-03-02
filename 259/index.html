@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>259 - Now Playing in Menu Bar</title>
+    <style>
+      :root {
+        background-color: #223;
+        display: flex;
+        flex-direction: column;
+      }
+
+      :root::before {
+        content: '';
+        width: 346px;
+        height: 166px;
+        background: url('now-playing.png') center / contain no-repeat;
+      }
+
+      body {
+        background-color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      article {
+        background-color: white;
+        display: flex;
+      }
+
+      article > section {
+        /* flex: 1 1 auto; */
+      }
+
+      article > * {
+        outline: solid burlywood 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <div>Thumbnail</div>
+      <section>
+        <h2>Rich Girl</h2>
+        <p>Daryl Hall & John Oates — Bigger Than Both Of Us</p>
+      </section>
+      <button>Play</button>
+      <button>Skip</button>
+    </article>
+    <!-- <article>
+      <div>Thumbnail</div>
+      <section>
+        <h2>Rich Girl</h2>
+        <p>Daryl Hall & John Oates — Bigger Than Both Of Us</p>
+      </section>
+      <button>Play</button>
+      <button>Skip</button>
+    </article> -->
+  </body>
+</html>
