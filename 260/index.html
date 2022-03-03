@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>260 - backdrop-filter: blur and mix-blend-mode</title>
+    <style>
+      :root {
+        background-color: burlywood;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 64px;
+        font-family: sans-serif;
+        font-weight: bold;
+        color: rgba(150, 150, 150, 1);
+      }
+
+      body {
+        margin: 0;
+        background-color: #b6a0e8;
+        background-color: tomato;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        background-image: url('umbrella.png');
+      }
+
+      body > span {
+        font-size: 96px;
+        font-weight: bold;
+        mix-blend-mode: multiply;
+        color: rgba(150, 150, 150, 1);
+      }
+
+      section:nth-of-type(1) {
+        /* background-color: rgba(150, 150, 150, 0.5); */
+        padding-bottom: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      section:nth-of-type(2) {
+        /* background-color: rgba(150, 150, 150, 0.5); */
+        backdrop-filter: blur(20px) saturate(116%) brightness(135%);
+        -webkit-backdrop-filter: blur(20px) saturate(116%) brightness(135%);
+        padding-bottom: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      div:nth-of-type(1) {
+        /* width: 100px; */
+        height: 50px;
+        /* background-color: #55535a; */
+      }
+
+      div:nth-of-type(2) {
+        /* width: 100px; */
+        height: 50px;
+        /* background-color: #55535a; */
+        mix-blend-mode: multiply;
+      }
+    </style>
+  </head>
+  <body>
+    <span>body</span>
+    <div>Normal</div>
+    <div>Multiply</div>
+    <section>
+      no backdrop blur
+      <div>Normal</div>
+      <div>Multiply</div>
+    </section>
+    <section>
+      with backdrop blur
+      <div>Normal</div>
+      <div>Multiply</div>
+    </section>
+  </body>
+</html>
