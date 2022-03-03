@@ -6,57 +6,146 @@
     <title>259 - Now Playing in Menu Bar</title>
     <style>
       :root {
-        background-color: #223;
+        background: url('backdrop.png') center 222px / 527px 371px no-repeat,
+          #223;
         display: flex;
         flex-direction: column;
+        /* align-items: center; */
       }
 
       :root::before {
         content: '';
-        width: 346px;
-        height: 166px;
-        background: url('now-playing.png') center / contain no-repeat;
+        width: 527px;
+        height: 222px;
+        align-self: center;
+        background: url('reference.png') center top / contain no-repeat;
       }
 
       body {
-        background-color: whitesmoke;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        font-family: sans-serif;
+        border-radius: 6px;
+        background-color: rgba(240, 240, 240, 1);
+      }
+
+      @supports (
+        (backdrop-filter: blur(132px)) or (-webkit-backdrop-filter: blur(132px))
+      ) {
+        body {
+          background-color: rgba(240, 240, 240, 0.55);
+          backdrop-filter: blur(132px) saturate(116%) brightness(135%);
+          -webkit-backdrop-filter: blur(132px) saturate(116%) brightness(135%);
+        }
+      }
+
+      h2 {
+        font-size: 1.1em;
       }
 
       article {
-        background-color: white;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        padding: 16px;
+      }
+
+      article:not(:last-of-type) {
+        padding-block-end: 17px;
+        --margin: 16px;
+        background-image: linear-gradient(to top, #bbb9c0 1px, transparent 1px);
+        background-size: calc(100% - calc(var(--margin) * 2)) 1px;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+      }
+
+      article > img {
+        box-sizing: border-box;
+        padding: 12px;
+        inline-size: 42px;
+        block-size: 42px;
+        background-color: #bbb9c0;
+        border-radius: 2px;
+      }
+
+      .section_song-info {
+        min-width: 0;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .section_song-info > h2,
+      .section_song-info > p {
+        margin: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      button {
+        border-style: none;
+        padding: 10px;
+        box-sizing: border-box;
+        inline-size: 44px;
+        block-size: 44px;
+        background-clip: content-box;
+      }
+
+      .section_playback-buttons {
+        flex: 0 0 auto;
         display: flex;
       }
 
-      article > section {
-        /* flex: 1 1 auto; */
+      .section_playback-buttons > button:first-of-type {
+        background: url('play-16.svg') center / contain no-repeat content-box;
+      }
+
+      .section_playback-buttons > button:first-of-type {
+        background: #55535a;
+        mix-blend-mode: multiply;
+      }
+
+      .section_playback-buttons > button:nth-of-type(2) {
+        background: url('skip-16.svg') center / contain no-repeat content-box;
+      }
+
+      @media (pointer: fine) {
+        button {
+          padding: 4px;
+          inline-size: 26px;
+        }
       }
 
       article > * {
-        outline: solid burlywood 1px;
+        /* outline: solid burlywood 1px; */
       }
     </style>
   </head>
   <body>
     <article>
-      <div>Thumbnail</div>
-      <section>
+      <img src="firefox-logo.svg" alt="Firefox Logo" />
+      <section class="section_song-info">
         <h2>Rich Girl</h2>
         <p>Daryl Hall & John Oates — Bigger Than Both Of Us</p>
       </section>
-      <button>Play</button>
-      <button>Skip</button>
+      <section class="section_playback-buttons">
+        <button aria-label="Play"></button>
+        <button aria-label="Skip"></button>
+      </section>
     </article>
-    <!-- <article>
-      <div>Thumbnail</div>
-      <section>
-        <h2>Rich Girl</h2>
-        <p>Daryl Hall & John Oates — Bigger Than Both Of Us</p>
+    <article>
+      <img src="firefox-logo.svg" alt="Firefox Logo" />
+      <section class="section_song-info">
+        <h2>Lone Swordsman</h2>
+        <p>Daniel Avery — Dusting For Smoke</p>
       </section>
-      <button>Play</button>
-      <button>Skip</button>
-    </article> -->
+      <section class="section_playback-buttons">
+        <button aria-label="Play"></button>
+        <button aria-label="Skip"></button>
+      </section>
+    </article>
   </body>
 </html>
