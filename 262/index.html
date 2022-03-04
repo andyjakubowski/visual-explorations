@@ -19,10 +19,10 @@
       /* Reggie styles */
 
       :root {
-        background-color: burlywood;
+        background-color: white;
         display: flex;
-        gap: 32px;
-        padding: 32px;
+        gap: 64px;
+        padding: 48px;
         justify-content: flex-end;
         align-items: flex-start;
       }
@@ -37,48 +37,65 @@
       body {
         background-color: #282828;
         --hover-item-background: #3e3e3e;
-        color: #ffffff;
+        color: rgba(255, 255, 255, 0.9);
         font: 13px sans-serif;
         padding: 4px;
         display: flex;
         flex-direction: column;
         min-inline-size: 160px;
         max-inline-size: 350px;
+        border-radius: 4px;
+        box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.2);
       }
 
       li {
         min-block-size: 40px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         padding: 0 12px;
+        border-radius: 2px;
+      }
+
+      li.divider {
+        background: linear-gradient(to top, #3e3e3e 1px, transparent 1px)
+          no-repeat;
       }
 
       span {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+
+        letter-spacing: 0.3px;
       }
 
       li:hover {
-        background-color: gray;
+        background: #3e3e3e;
       }
     </style>
   </head>
   <body>
     <ul>
       <li><span>Add to queue</span></li>
-      <li><span>Go to artist radio</span></li>
+      <li class="divider"><span>Go to artist radio</span></li>
       <li><span>Add to Your Library</span></li>
-      <li><span>Add to playlist</span></li>
-      <li><span>Share</span></li>
+      <li class="divider">
+        <span>Add to playlist</span>
+        <img src="arrow.svg" alt="Disclosure Arrow" />
+      </li>
       <li>
+        <span>Share</span>
+        <img src="arrow.svg" alt="Disclosure Arrow" />
+      </li>
+      <!-- <li>
         <span>
           Spicy jalapeno andouille salami tenderloin capicola meatball pig ham
           chuck doner cupim. Cupim capicola brisket landjaeger, ground round
           pork loin leberkas tail porchetta salami bacon beef ribs turkey pig
           short loin.
         </span>
-      </li>
+      </li> -->
     </ul>
   </body>
 </html>
