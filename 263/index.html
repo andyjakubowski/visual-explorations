@@ -19,7 +19,7 @@
       /* Reggie styles */
 
       :root {
-        background-color: whitesmoke;
+        background-color: white;
         display: flex;
         gap: 64px;
         padding: 48px;
@@ -49,6 +49,22 @@
         height: 24px;
         border-radius: 12px;
       }
+
+      input {
+        box-sizing: border-box;
+        inline-size: 268px;
+        block-size: 36px;
+        padding: 2px 12px 0 44px;
+        background: url('search.svg') 16px center no-repeat, #efefef;
+        border: none;
+        border-radius: 8px;
+        font: 16px sans-serif;
+        color: black;
+      }
+
+      input::placeholder {
+        color: rgb(142, 142, 142);
+      }
     </style>
   </head>
   <body>
@@ -60,7 +76,7 @@
           alt="Instagram Logo"
           srcset="logo@2x.png 2x"
       /></a>
-
+      <input type="text" name="Name" id="" placeholder="Search" />
       <a href=""><img src="home.svg" alt="Home" /></a>
       <a href=""><img src="dms.svg" alt="Direct Messages" /></a>
       <a href=""><img src="newpost.svg" alt="New Post" /></a>
