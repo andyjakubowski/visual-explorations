@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>262 - Reproduction - Spotify Context Menu</title>
+    <style>
+      /* Reset */
+      body {
+        margin: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      /* Reggie styles */
+
+      :root {
+        background-color: burlywood;
+        display: flex;
+        gap: 32px;
+        padding: 32px;
+        justify-content: flex-end;
+        align-items: flex-start;
+      }
+
+      :root::before {
+        content: '';
+        inline-size: 207px;
+        block-size: 277px;
+        background: url('reference.png') center / contain no-repeat;
+      }
+
+      body {
+        background-color: #282828;
+        --hover-item-background: #3e3e3e;
+        color: #ffffff;
+        font: 13px sans-serif;
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+        min-inline-size: 160px;
+        max-inline-size: 350px;
+      }
+
+      li {
+        min-block-size: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+      }
+
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      li:hover {
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><span>Add to queue</span></li>
+      <li><span>Go to artist radio</span></li>
+      <li><span>Add to Your Library</span></li>
+      <li><span>Add to playlist</span></li>
+      <li><span>Share</span></li>
+      <li>
+        <span>
+          Spicy jalapeno andouille salami tenderloin capicola meatball pig ham
+          chuck doner cupim. Cupim capicola brisket landjaeger, ground round
+          pork loin leberkas tail porchetta salami bacon beef ribs turkey pig
+          short loin.
+        </span>
+      </li>
+    </ul>
+  </body>
+</html>
