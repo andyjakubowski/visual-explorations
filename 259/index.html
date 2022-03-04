@@ -3,10 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>259 - Now Playing in Menu Bar</title>
+    <title>259 - Now Playing in macOS Menu Bar</title>
     <style>
       :root {
         background: url('backdrop.png') center 222px / 527px 371px no-repeat,
+          #223;
+        background: url('iridescence.png') center 222px / 729px 833px no-repeat,
           #223;
         display: flex;
         flex-direction: column;
@@ -27,6 +29,9 @@
         font-family: sans-serif;
         border-radius: 6px;
         background-color: rgba(240, 240, 240, 1);
+        color: rgba(0, 0, 40, 90%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+          0 4px 16px rgba(0, 0, 0, 0.26), 0 0 3px rgba(0, 0, 0, 0.5);
       }
 
       @supports (
@@ -54,7 +59,11 @@
       article:not(:last-of-type) {
         padding-block-end: 17px;
         --margin: 16px;
-        background-image: linear-gradient(to top, #bbb9c0 1px, transparent 1px);
+        background-image: linear-gradient(
+          to top,
+          rgba(0, 0, 40, 14%) 1px,
+          transparent 1px
+        );
         background-size: calc(100% - calc(var(--margin) * 2)) 1px;
         background-repeat: no-repeat;
         background-position: center bottom;
@@ -103,11 +112,6 @@
         background: url('play-16.svg') center / contain no-repeat content-box;
       }
 
-      .section_playback-buttons > button:first-of-type {
-        background: #55535a;
-        mix-blend-mode: multiply;
-      }
-
       .section_playback-buttons > button:nth-of-type(2) {
         background: url('skip-16.svg') center / contain no-repeat content-box;
       }
@@ -130,6 +134,28 @@
       <section class="section_song-info">
         <h2>Rich Girl</h2>
         <p>Daryl Hall & John Oates — Bigger Than Both Of Us</p>
+      </section>
+      <section class="section_playback-buttons">
+        <button aria-label="Play"></button>
+        <button aria-label="Skip"></button>
+      </section>
+    </article>
+    <article>
+      <img src="firefox-logo.svg" alt="Firefox Logo" />
+      <section class="section_song-info">
+        <h2>Lone Swordsman</h2>
+        <p>Daniel Avery — Dusting For Smoke</p>
+      </section>
+      <section class="section_playback-buttons">
+        <button aria-label="Play"></button>
+        <button aria-label="Skip"></button>
+      </section>
+    </article>
+    <article>
+      <img src="firefox-logo.svg" alt="Firefox Logo" />
+      <section class="section_song-info">
+        <h2>Lone Swordsman</h2>
+        <p>Daniel Avery — Dusting For Smoke</p>
       </section>
       <section class="section_playback-buttons">
         <button aria-label="Play"></button>
