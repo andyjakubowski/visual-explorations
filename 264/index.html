@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>264 - text input with overlaid icon</title>
+    <style>
+      :root {
+        background-color: white;
+      }
+
+      body {
+        margin: 0;
+        block-size: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      input {
+        box-sizing: border-box;
+        inline-size: 268px;
+        block-size: 36px;
+        padding: 2px 12px 0 44px;
+        background: url('search.svg') 16px center no-repeat, #efefef;
+        border: none;
+        border-radius: 8px;
+        font: 16px sans-serif;
+        color: rgb(142, 142, 142);
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" name="Name" id="" placeholder="Search" />
+  </body>
+</html>
