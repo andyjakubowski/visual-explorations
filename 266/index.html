@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>266 - webOS TV horizontal scroll with anchor element “cards”</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      main {
+        padding: 24px;
+        background-color: tomato;
+        white-space: nowrap;
+        overflow-x: scroll;
+      }
+
+      a {
+        display: inline-block;
+        background-color: white;
+        flex: none;
+        width: 300px;
+        height: 100px;
+        margin: 50px;
+        font-size: 20px;
+      }
+
+      a::after {
+        content: ' (anchor (<a>) element)';
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      The white boxes are anchor elements. You can scroll horizontally with the
+      Magic Remote by clicking the red area and moving the remote sideways. But
+      you can click and drag the anchor element.
+    </p>
+    <p>
+      Ideally, I’d expect an experience similar to touch devices like iOS: you
+      can scroll horizontally by placing the finger anywhere—including anchor
+      elements—but you can also tap and hold (long press) on an anchor element
+      to copy it, drag and drop it, etc.
+    </p>
+    <main>
+      <a href="#">Ace</a>
+      <a href="#">Bubble</a>
+      <a href="#">Crimson</a>
+      <a href="#">Danish</a>
+      <a href="#">Euphoria</a>
+      <a href="#">Fraggle</a>
+      <a href="#">Gremlin</a>
+      <a href="#">Horace</a>
+      <a href="#">Ignatious</a>
+    </main>
+  </body>
+</html>

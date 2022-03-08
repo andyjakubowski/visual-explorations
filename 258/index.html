@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>258 - quirky grid of flex property cards</title>
+    <style>
+      :root {
+        background-color: #223;
+      }
+
+      body {
+        background-color: rgba(210, 210, 210, 0.9);
+        background-color: black;
+      }
+
+      ul {
+        display: flex;
+        flex-flow: row wrap;
+
+        margin: 0;
+        padding: 0;
+        padding-inline-start: 40px;
+      }
+
+      li {
+        display: contents;
+      }
+
+      article {
+        flex: 1 1 40ch;
+        margin-inline-start: -40px;
+        /* padding: 48px; */
+        border: 1px solid black;
+        /* height: 200px; */
+        clip-path: content-box
+          polygon(40px 0, 100% 0, calc(100% - 40px) 100%, 0 100%);
+      }
+
+      article::before {
+        content: '';
+        width: 40px;
+        height: 100%;
+        background-color: tomato;
+        float: left;
+        shape-outside: polygon(0 0, 100% 0, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+      }
+
+      .shape-outside {
+        width: 40px;
+        height: 100%;
+        float: right;
+        background-color: aquamarine;
+        shape-outside: polygon(100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 48px;
+      }
+
+      p {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      li:nth-of-type(1n) > article {
+        background-color: rgba(240, 240, 240, 0.9);
+      }
+
+      li:nth-of-type(2n) > article {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+
+      li:nth-of-type(4) > article {
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const properties = [
+        {
+          name: 'flex-direction',
+          description:
+            'The flex-direction CSS property sets how flex items are placed in the flex container defining the main axis and the direction (normal or reversed).',
+        },
+        {
+          name: 'flex-wrap',
+          description:
+            'The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.',
+        },
+        {
+          name: 'order',
+          description:
+            'The order CSS property sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending order value and then by their source code order.',
+        },
+        {
+          name: 'flex-basis',
+          description:
+            'The flex-basis CSS property sets the initial main size of a flex item. It sets the size of the content box unless otherwise set with box-sizing.',
+        },
+        {
+          name: 'flex-grow',
+          description:
+            "The flex-grow CSS property sets the flex grow factor of a flex item's main size.",
+        },
+        {
+          name: 'flex-shrink',
+          description:
+            'The flex-shrink CSS property sets the flex shrink factor of a flex item. If the size of all flex items is larger than the flex container, items shrink to fit according to flex-shrink.',
+        },
+        {
+          name: 'align-self',
+          description:
+            "The align-self CSS property overrides a grid or flex item's align-items value. In Grid, it aligns the item inside the grid area. In Flexbox, it aligns the item on the cross axis.",
+        },
+        {
+          name: 'align-items',
+          description:
+            'The CSS align-items property sets the align-self value on all direct children as a group. In Flexbox, it controls the alignment of items on the Cross Axis. In Grid Layout, it controls the alignment of items on the Block Axis within their grid area.',
+        },
+        {
+          name: 'justify-content',
+          description:
+            'The CSS justify-content property defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.',
+        },
+        {
+          name: 'align-content',
+          description:
+            "The CSS align-content property sets the distribution of space between and around content items along a flexbox's cross-axis or a grid's block axis.",
+        },
+      ];
+
+      const propertyListItemEls = properties.map((property) => {
+        const { name, description } = property;
+        const listItemEl = document.createElement('li');
+        listItemEl.innerHTML = `
+        <article>
+          <div class="shape-outside"></div>
+          <header>
+            <h2>${name}</h2>
+          </header>
+          <p>
+              ${description}
+            </p>
+        </article>`;
+        return listItemEl;
+      });
+      const unorderedListEl = document.createElement('ul');
+      unorderedListEl.append(...propertyListItemEls);
+      document.body.append(unorderedListEl);
+    </script>
+  </body>
+</html>

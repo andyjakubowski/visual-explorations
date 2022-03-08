@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>265 - webOS TV @media feature detection</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        margin: 0;
+        font-size: 48px;
+      }
+
+      main {
+        padding: 24px;
+        background-color: tomato;
+        white-space: nowrap;
+        overflow-x: scroll;
+      }
+
+      a {
+        display: inline-block;
+        background-color: white;
+        flex: none;
+        width: 300px;
+        height: 100px;
+        margin: 50px;
+      }
+
+      @media (pointer: none) {
+        html::after {
+          content: 'pointer: none';
+          font-size: 96px;
+          background-color: black;
+          color: white;
+        }
+      }
+
+      @media screen and (min-width: 200px) {
+        html::after {
+          content: '@media screen and (min-width: 200px)';
+          font-size: 96px;
+          background-color: black;
+          color: white;
+        }
+      }
+
+      @media (pointer: coarse) {
+        body::before {
+          content: 'pointer: coarse';
+          font-size: 96px;
+          background-color: black;
+          color: white;
+        }
+      }
+
+      @media (pointer: fine) {
+        body::before {
+          content: 'pointer: fine';
+          font-size: 96px;
+          background-color: black;
+          color: white;
+        }
+      }
+
+      @media (any-pointer: fine) {
+        body::after {
+          content: 'any-pointer: fine';
+          font-size: 96px;
+          background-color: black;
+          color: white;
+        }
+      }
+
+      @media (any-pointer: coarse) {
+        html::before {
+          content: 'any-pointer: coarse';
+          font-size: 96px;
+          background-color: black;
+          color: white;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    Trying to detect the following:
+    <pre>
+@media (pointer: none)
+@media screen and (min-width: 200px)
+@media (pointer: coarse)
+@media (pointer: fine)
+@media (any-pointer: fine)
+@media (any-pointer: coarse)
+    </pre>
+  </body>
+</html>

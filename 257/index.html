@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>257 - feDisplacementMap explosion</title>
+    <style>
+      :root {
+      }
+
+      body {
+        background-color: #50505f;
+        /* background-color: red; */
+        box-sizing: border-box;
+        height: 100vh;
+        margin: 0;
+        padding: 100px;
+        display: flex;
+        justify-content: center;
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 200px;
+      }
+
+      label {
+        display: contents;
+      }
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      svg {
+        width: 100px;
+        height: 100px;
+        background-color: tomato;
+        overflow: visible;
+        filter: url(#filter-1);
+      }
+
+      feFlood {
+        flood-color: white;
+        flood-opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="source">
+      <img
+        class="dropbox"
+        src="../images/displacement-test-source.png"
+        alt=""
+      />
+      Source image
+      <input type="file" accept="image/*" />
+    </section>
+    <section class="displacement-map">
+      <img class="dropbox" src="../images/identity-map-100.png" alt="Plus" />
+      Displacement map image
+      <input type="file" accept="image/*" />
+    </section>
+    <section>
+      <svg>
+        <defs>
+          <filter
+            id="filter-1"
+            color-interpolation-filters="sRGB"
+            filterUnits="objectBoundingBox"
+            primitiveUnits="objectBoundingBox"
+            x="0"
+            y="0"
+            width="1"
+            height="1"
+          >
+            <feImage
+              href="../images/displacement-test-source.png"
+              result="source"
+              color-interpolation-filters="sRGB"
+            />
+            <feImage
+              href="../images/identity-map-100.png"
+              result="displacementMap"
+              color-interpolation-filters="sRGB"
+            />
+            <!-- <feComposite operator="over" in="image" in2="turbulence" /> -->
+            <feDisplacementMap
+              in="source"
+              in2="displacementMap"
+              xChannelSelector="R"
+              yChannelSelector="B"
+              color-interpolation-filters="sRGB"
+            />
+          </filter>
+        </defs>
+      </svg>
+      <label
+        >scale (objectBoundingBox fraction)
+        <input
+          class="slider"
+          type="range"
+          name="scale"
+          min="0"
+          max="3"
+          step="0.01"
+          value="1.0"
+        />
+        <span class="label"></span>
+      </label>
+    </section>
+    <script>
+      function setUpImageFileInput() {
+        const classNames = ['source', 'displacement-map'];
+        classNames.forEach((className, index) => {
+          const imageDropEl = document.querySelector(`.${className} img`);
+          const imageInputEl = document.querySelector(`.${className} input`);
+          const feImageEl = document.querySelectorAll('feImage').item(index);
+          imageInputEl.addEventListener('change', (e) => {
+            const url = URL.createObjectURL(e.target.files.item(0));
+            feImageEl.setAttribute('href', url);
+            imageDropEl.setAttribute('src', url);
+          });
+          imageDropEl.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const file = e.dataTransfer.files.item(0);
+            const url = URL.createObjectURL(file);
+            feImageEl.setAttribute('href', url);
+            imageDropEl.setAttribute('src', url);
+          });
+          imageDropEl.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          });
+        });
+      }
+      function setUpScaleSlider() {
+        const maps = [...document.getElementsByTagName('feDisplacementMap')];
+        const rangeEls = [...document.querySelectorAll('input[type="range"]')];
+        const labels = [...document.getElementsByClassName('label')];
+        const label = document.getElementById('label-01');
+        rangeEls.forEach((rangeEl, index) => {
+          const map = maps[index];
+          const label = labels[index];
+          map.setAttribute('scale', rangeEl.getAttribute('value'));
+          label.textContent = `${rangeEl.getAttribute('value')}`;
+          rangeEl.addEventListener('input', () => {
+            label.textContent = rangeEl.value;
+            map.setAttribute('scale', rangeEl.value);
+          });
+        });
+      }
+      setUpImageFileInput();
+      setUpScaleSlider();
+    </script>
+  </body>
+</html>

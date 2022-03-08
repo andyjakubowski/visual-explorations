@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>256 - feDisplacementMap color interpolation test (Chrome)</title>
+    <style>
+      :root {
+      }
+
+      body {
+        background-color: #50505f;
+        /* background-color: red; */
+        box-sizing: border-box;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      img {
+        filter: url(#filter-1);
+      }
+
+      svg {
+        width: 100px;
+        height: 100px;
+        visibility: hidden;
+        background-color: tomato;
+        /* overflow: visible; */
+        /* filter: url(#filter-1); */
+      }
+    </style>
+  </head>
+  <body>
+    <img src="../images/circle.png" alt="" />
+    <svg>
+      <defs>
+        <filter
+          id="filter-1"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="objectBoundingBox"
+          x="0"
+          y="0"
+          width="1"
+          height="1"
+        >
+          <!-- <feImage href="../images/circle.png" result="source" /> -->
+          <feImage
+            href="map-from-screenshot-100.png"
+            result="displacementMap"
+            color-interpolation-filters="sRGB"
+          />
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="displacementMap"
+            color-interpolation-filters="sRGB"
+            scale="0.6"
+            xChannelSelector="R"
+            yChannelSelector="B"
+          />
+        </filter>
+      </defs>
+    </svg>
+    <script>
+      console.log('Hello Scratch');
+    </script>
+  </body>
+</html>

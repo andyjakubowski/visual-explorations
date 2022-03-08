@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>261 - Pierogi backdrop-filter: blur and mix-blend-mode</title>
+    <style>
+      :root {
+        background: linear-gradient(
+          to right,
+          yellow 20%,
+          fuchsia 20% 40%,
+          chartreuse 40% 60%,
+          red 60% 80%,
+          blue 80%
+        );
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: hsla(0, 0%, 50%, 0.9);
+      }
+
+      body {
+        -webkit-backdrop-filter: blur(160px) saturate(116%) brightness(135%);
+        backdrop-filter: blur(160px) saturate(116%) brightness(135%);
+
+        /* Makes Chrome work, but breaks Safari */
+        /* mix-blend-mode: multiply; */
+      }
+
+      span {
+        font: bold 256px sans-serif;
+        /* No-op backdrop filter makes Safari work */
+        -webkit-backdrop-filter: brightness(100%);
+        mix-blend-mode: multiply;
+      }
+    </style>
+  </head>
+  <body>
+    <span>Pierogi</span>
+  </body>
+</html>

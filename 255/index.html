@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>255 - File drop zone</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      svg {
+        width: 300px;
+        height: 300px;
+        background-color: tomato;
+        overflow: visible;
+        filter: url(#filter-1);
+      }
+
+      .dropbox {
+        display: flex;
+        width: 100px;
+        height: 100px;
+        background-color: burlywood;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dropbox">Drop an image here</div>
+    <label>
+      Choose a profile picture:
+      <input type="file" accept="image/*" />
+    </label>
+    <svg>
+      <defs>
+        <filter
+          id="filter-1"
+          filterUnits="objectBoundingBox"
+          x="0"
+          y="0"
+          width="1"
+          height="1"
+        >
+          <feImage result="image" />
+        </filter>
+      </defs>
+    </svg>
+    <script>
+      const dropboxEl = document.querySelector('.dropbox');
+      const feImageEl = document.querySelector('feImage');
+      const inputEl = document.querySelector('input');
+      inputEl.addEventListener('change', (e) => {
+        const url = URL.createObjectURL(e.target.files.item(0));
+        feImageEl.setAttribute('href', url);
+      });
+      dropboxEl.addEventListener('drop', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const file = e.dataTransfer.files.item(0);
+        const url = URL.createObjectURL(file);
+        feImageEl.setAttribute('href', url);
+      });
+      dropboxEl.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    </script>
+  </body>
+</html>

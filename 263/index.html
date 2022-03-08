@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>263 - Reproduction - Instagram Web Nav</title>
+    <style>
+      /* Reset */
+      body {
+        margin: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      /* Reggie styles */
+
+      :root {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+        padding: 48px;
+        justify-content: flex-end;
+        /* align-items: flex-start; */
+      }
+
+      :root::after {
+        content: '';
+        inline-size: 653px;
+        block-size: 248px;
+        background: url('reference.png') center / contain no-repeat;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        min-block-size: 48px;
+        gap: 18px;
+      }
+
+      a.logo {
+        flex: 1 0 0;
+      }
+
+      section {
+        flex: 1 0 0;
+        display: flex;
+        justify-content: flex-end;
+        align-self: stretch;
+      }
+
+      section a {
+        flex: none;
+        inline-size: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @media (pointer: fine) and (hover: hover) {
+        section {
+          gap: 4px;
+        }
+
+        section a {
+          inline-size: 40px;
+        }
+      }
+
+      a.logo img {
+        vertical-align: bottom;
+        margin-block-start: 7px;
+      }
+
+      img.avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 12px;
+      }
+
+      input {
+        display: none;
+        touch-action: manipulation;
+        box-sizing: border-box;
+        min-inline-size: 125px;
+        inline-size: 268px;
+        block-size: 48px;
+        padding: 2px 12px 0 44px;
+        background: url('search.svg') 16px center no-repeat, padding-box #efefef;
+        border: 6px solid transparent;
+        border-radius: 14px;
+        font: 16px sans-serif;
+        color: black;
+        transition: opacity 1s;
+      }
+
+      input::placeholder {
+        color: rgb(142, 142, 142);
+      }
+
+      @media screen and (min-width: 640px) {
+        input {
+          display: initial;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a class="logo" href="" alt="Instagram"
+        ><img
+          id="logo-img"
+          src="logo.png"
+          alt="Instagram Logo"
+          srcset="logo@2x.png 2x"
+      /></a>
+      <input type="text" name="Name" id="" placeholder="Search" />
+      <section>
+        <a href=""><img src="home.svg" alt="Home" /></a>
+        <a href=""><img src="dms.svg" alt="Direct Messages" /></a>
+        <a href=""><img src="newpost.svg" alt="New Post" /></a>
+        <a href=""><img src="explore.svg" alt="Explore" /></a>
+        <a href=""><img src="activity.svg" alt="Activity" /></a>
+        <a href=""
+          ><img class="avatar" src="avatar.jpg" alt="andy’s profile picture"
+        /></a>
+      </section>
+    </nav>
+  </body>
+</html>
