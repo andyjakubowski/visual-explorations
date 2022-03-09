@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>268 - Reproduction - Twitter Tweet</title>
+    <style>
+      /* Reset */
+      body {
+        margin: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      /* Reggie styles */
+
+      :root {
+        background-color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 48px;
+        align-items: flex-end;
+      }
+
+      :root::before {
+        content: '';
+        inline-size: 954px;
+        block-size: 160px;
+        background: url('reference.png') center / contain no-repeat;
+      }
+
+      body {
+        background: linear-gradient(to top, #3e3e3e 1px, transparent 1px)
+          no-repeat;
+        font: 14px sans-serif;
+        padding: 4px;
+        min-inline-size: auto;
+        max-inline-size: 600px;
+        display: flex;
+        flex-direction: row;
+      }
+
+      @media screen and (min-width: 500px) {
+        body {
+          font-size: 15px;
+        }
+      }
+
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="../images/avatar.jpg" alt="Andy’s Avatar" />
+    <section>
+      <header>Andy Jakubowski</header>
+      <p>
+        What Twitter app do you use? Installed the Twitter macOS app after a
+        long time and it feels pretty choppy.
+      </p>
+      <div>
+        <button>Reply</button>
+        <button>Retweet</button>
+        <button>Like</button>
+        <button>Share</button>
+      </div>
+    </section>
+  </body>
+</html>
