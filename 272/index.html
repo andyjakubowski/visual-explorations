@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>272 - image with padding and clip-path: circle</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      .hello,
+      img {
+        width: 200px;
+        height: 200px;
+
+        padding: 100px;
+        /* border: 100px lightcoral solid; */
+        background: linear-gradient(rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.3)),
+          content-box black;
+        clip-path: circle(50%);
+        color: white;
+        /* border-radius: 50%; */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="hello">Hello</div> -->
+    <img src="https://picsum.photos/id/237/200/200" alt="Doggy" />
+  </body>
+</html>
