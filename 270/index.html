@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>270 - icon-sized buttons with overflowing contents inside</title>
+    <style>
+      :root {
+        background-color: #e8e8eb;
+      }
+
+      body {
+        margin: 16px;
+        background-color: whitesmoke;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      button {
+        padding: 0;
+        border: none;
+        background-color: burlywood;
+        background-color: rgba(100, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        block-size: 24px;
+      }
+
+      img {
+        --img-size: 48px;
+        flex: 0 0 var(--img-size);
+        object-fit: none;
+        background-color: rgba(100, 0, 0, 0.1);
+        border-radius: 50%;
+      }
+
+      img:hover {
+        background-color: rgba(100, 0, 0, 0.2);
+      }
+
+      @media (pointer: fine) {
+        img {
+          --img-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button><img src="reply.svg" alt="Reply icon" /></button>
+    <button><img src="retweet.svg" alt="Retweet icon" /></button>
+    <button><img src="like.svg" alt="Like icon" /></button>
+    <button><img src="share.svg" alt="Share icon" /></button>
+    <script>
+      Array.from(document.getElementsByTagName('button')).forEach((el) =>
+        el.addEventListener('click', (e) => {
+          console.log('click');
+          console.log('e.target', e.target);
+          console.log('e.currentTarget', e.currentTarget);
+        })
+      );
+    </script>
+  </body>
+</html>
