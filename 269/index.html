@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>269 - SVG image without natural size behaves as size: 100%</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+        /* direction: rtl; */
+        white-space: nowrap;
+      }
+
+      main {
+        box-sizing: border-box;
+        padding: 20px;
+        background-color: white;
+      }
+
+      div {
+        display: inline-block;
+        border: 1px solid black;
+        inline-size: max-content;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <button><img src="reply.svg" alt="Reply icon" />Reply</button>
+      <button><img src="retweet.svg" alt="Retweet icon" />Retweet</button>
+      <div><img src="retweet.svg" alt="Retweet icon" /></div>
+      <button><img src="like.svg" alt="Like icon" />Like</button>
+      <button><img src="share.svg" alt="Share icon" />Share</button>
+    </main>
+  </body>
+</html>
