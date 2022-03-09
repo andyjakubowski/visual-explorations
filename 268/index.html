@@ -16,6 +16,16 @@
         list-style-type: none;
       }
 
+      p {
+        margin: 0;
+      }
+
+      button {
+        border: none;
+        padding: 0;
+        background-color: transparent;
+      }
+
       /* Reggie styles */
 
       :root {
@@ -24,7 +34,7 @@
         flex-direction: column;
         gap: 32px;
         padding: 48px;
-        align-items: flex-end;
+        /* align-items: flex-end; */
       }
 
       :root::before {
@@ -35,8 +45,9 @@
       }
 
       body {
-        background: linear-gradient(to top, #3e3e3e 1px, transparent 1px)
-          no-repeat;
+        background: linear-gradient(to top, #eff3f4 1px, transparent 1px)
+            no-repeat,
+          white;
         font: 14px sans-serif;
         padding: 4px;
         min-inline-size: auto;
@@ -51,26 +62,92 @@
         }
       }
 
-      span {
+      section {
+        min-inline-size: 0;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .name,
+      .username {
         overflow: hidden;
-        text-overflow: ellipsis;
         white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .username {
+        --largest-possible-integer: 134217727;
+        flex: 0 var(--largest-possible-integer) auto;
+      }
+
+      .date {
+        flex: none;
+      }
+
+      header button {
+        margin-inline-start: auto;
+      }
+
+      div.buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      button {
+        padding: 0;
+        border: none;
+        /* background-color: rgba(100, 0, 0, 0.2); */
+        border: 1px solid black;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        block-size: 24px;
+      }
+
+      button img {
+        --img-size: 48px;
+        flex: 0 0 var(--img-size);
+        object-fit: none;
+        background-color: rgba(100, 0, 0, 0.1);
+        border-radius: 50%;
+      }
+
+      button img:hover {
+        background-color: rgba(100, 0, 0, 0.2);
+      }
+
+      @media (pointer: fine) {
+        button img {
+          --img-size: 28px;
+        }
       }
     </style>
   </head>
   <body>
     <img src="../images/avatar.jpg" alt="Andy’s Avatar" />
     <section>
-      <header>Andy Jakubowski</header>
+      <header>
+        <name class="name">Andy Jakubowski</name>
+        <span class="username">@jakubowskiandy</span>
+        <span class="dot">·</span>
+        <span class="date">Jan 11</span>
+        <button><img src="more.svg" alt="More icon" /></button>
+      </header>
       <p>
         What Twitter app do you use? Installed the Twitter macOS app after a
         long time and it feels pretty choppy.
       </p>
-      <div>
-        <button>Reply</button>
-        <button>Retweet</button>
-        <button>Like</button>
-        <button>Share</button>
+      <div class="buttons">
+        <button><img src="reply.svg" alt="Reply icon" /></button>
+        <button><img src="retweet.svg" alt="Retweet icon" /></button>
+        <button><img src="like.svg" alt="Like icon" /></button>
+        <button><img src="share.svg" alt="Share icon" /></button>
       </div>
     </section>
   </body>
