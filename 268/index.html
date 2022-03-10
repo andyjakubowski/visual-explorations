@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>268 - Reproduction - Twitter Tweet</title>
+    <style>
+      /* Reset */
+      body {
+        margin: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      button {
+        border: none;
+        padding: 0;
+        background-color: transparent;
+      }
+
+      /* Reggie styles */
+
+      :root {
+        background-color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 48px;
+        /* align-items: flex-end; */
+      }
+
+      :root::before {
+        content: '';
+        inline-size: 954px;
+        block-size: 160px;
+        background: url('reference.png') center / contain no-repeat;
+      }
+
+      body {
+        background: linear-gradient(to top, #eff3f4 1px, transparent 1px)
+            no-repeat,
+          white;
+        font: 14px sans-serif;
+        padding: 12px 16px;
+        min-inline-size: auto;
+        max-inline-size: 600px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .avatar {
+        inline-size: 48px;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      section {
+        min-inline-size: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .name {
+        font-weight: bold;
+      }
+
+      .name,
+      .username {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .username {
+        --largest-possible-integer: 134217727;
+        flex: 0 var(--largest-possible-integer) auto;
+      }
+
+      .date {
+        flex: none;
+      }
+
+      header button {
+        margin-inline-start: auto;
+      }
+
+      p {
+        line-height: 1.33333333;
+      }
+
+      div.buttons {
+        margin-block-start: 8px;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      button {
+        --size-icon: 20px;
+        padding: 0;
+        border: none;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        inline-size: var(--size-icon);
+        block-size: var(--size-icon);
+      }
+
+      button img {
+        --size-interaction-area: 48px;
+        padding: calc((var(--size-interaction-area) - var(--size-icon)) / 2);
+        flex: none;
+        inline-size: var(--size-icon);
+        block-size: var(--size-icon);
+        clip-path: circle(50%);
+      }
+
+      button img:hover {
+        background-color: rgba(150, 150, 250, 0.12);
+      }
+
+      @media (pointer: fine) {
+        button img {
+          --size-interaction-area: 32px;
+        }
+      }
+
+      @media screen and (min-width: 500px) {
+        body {
+          font-size: 15px;
+        }
+
+        button {
+          --size-icon: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img class="avatar" src="../images/avatar.jpg" alt="Andy’s Avatar" />
+    <section>
+      <header>
+        <name class="name">Andy Jakubowski</name>
+        <span class="username">@jakubowskiandy</span>
+        <span class="dot">·</span>
+        <span class="date">Jan 11</span>
+        <button><img src="more.svg" alt="More icon" /></button>
+      </header>
+      <p>
+        What Twitter app do you use? Installed the Twitter macOS app after a
+        long time and it feels pretty choppy.
+      </p>
+      <div class="buttons">
+        <button><img src="reply.svg" alt="Reply icon" /></button>
+        <button><img src="retweet.svg" alt="Retweet icon" /></button>
+        <button><img src="like.svg" alt="Like icon" /></button>
+        <button><img src="share.svg" alt="Share icon" /></button>
+      </div>
+    </section>
+  </body>
+</html>
