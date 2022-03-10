@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>273 - Hide scroll bar with ::-webkit-scrollbar display: none</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+      }
+
+      section {
+        padding: 24px;
+        background-color: gray;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        block-size: 300px;
+        overflow-y: auto;
+      }
+
+      section.two {
+        flex-direction: row;
+        max-inline-size: 300px;
+      }
+
+      section.three {
+        background-color: white;
+      }
+
+      a {
+        padding: 16px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid white;
+        flex-basis: 280px;
+        color: white;
+        font-size: 24px;
+      }
+
+      section.three a {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: black;
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="one">
+      <a draggable="false" href="#">Ace</a>
+      <a draggable="false" href="#">Bubble</a>
+      <a draggable="false" href="#">Crimson</a>
+      <a draggable="false" href="#">Danish</a>
+      <a draggable="false" href="#">Euphoria</a>
+      <a draggable="false" href="#">Fraggle</a>
+      <a draggable="false" href="#">Gremlin</a>
+      <a draggable="false" href="#">Horace</a>
+      <a draggable="false" href="#">Ignatious</a>
+    </section>
+    <section class="two">
+      <a draggable="false" href="#">Ace</a>
+      <a draggable="false" href="#">Bubble</a>
+      <a draggable="false" href="#">Crimson</a>
+      <a draggable="false" href="#">Danish</a>
+      <a draggable="false" href="#">Euphoria</a>
+      <a draggable="false" href="#">Fraggle</a>
+      <a draggable="false" href="#">Gremlin</a>
+      <a draggable="false" href="#">Horace</a>
+      <a draggable="false" href="#">Ignatious</a>
+    </section>
+    <section class="three">
+      <a draggable="false" href="#">Ace</a>
+      <a draggable="false" href="#">Bubble</a>
+      <a draggable="false" href="#">Crimson</a>
+      <a draggable="false" href="#">Danish</a>
+      <a draggable="false" href="#">Euphoria</a>
+      <a draggable="false" href="#">Fraggle</a>
+      <a draggable="false" href="#">Gremlin</a>
+      <a draggable="false" href="#">Horace</a>
+      <a draggable="false" href="#">Ignatious</a>
+    </section>
+  </body>
+</html>
