@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>278 - Reproduction - Airbnb Online Experiences</title>
+    <style>
+      /* Reset */
+      body {
+        margin: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      p,
+      h3 {
+        margin: 0;
+      }
+
+      button {
+        border: none;
+        padding: 0;
+        background-color: transparent;
+      }
+
+      /* Background image URLs */
+
+      li:nth-of-type(1) {
+        --url: url('red-dress.webp');
+      }
+
+      li:nth-of-type(2) {
+        --url: url('camel.webp');
+      }
+
+      li:nth-of-type(3) {
+        --url: url('cooking.webp');
+      }
+
+      li:nth-of-type(4) {
+        --url: url('selfie.webp');
+      }
+
+      li:nth-of-type(5) {
+        --url: url('whisk.webp');
+      }
+
+      li:nth-of-type(6) {
+        --url: url('wall.webp');
+      }
+
+      /* Regular Style */
+
+      :root {
+        background-color: whitesmoke;
+      }
+
+      ul {
+        display: flex;
+      }
+
+      li {
+        inline-size: 300px;
+        aspect-ratio: 1;
+        background: var(--url) center / cover, white;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 32px;
+      }
+
+      li p,
+      li h3 {
+        color: white;
+      }
+
+      li button {
+        color: black;
+        background-color: white;
+        border-radius: 10px;
+        padding: 12px 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <p>Collection</p>
+        <h3>Plan a trip with tips from a local</h3>
+        <button>Show all</button>
+      </li>
+      <li>
+        <p>Collection</p>
+        <h3>Most popular around the world</h3>
+        <button>Show all</button>
+      </li>
+
+      <li>
+        <p>Collection</p>
+        <h3>Great for team building</h3>
+        <button>Show all</button>
+      </li>
+
+      <li>
+        <p>Collection</p>
+        <h3>Feed your wanderlust</h3>
+        <button>Show all</button>
+      </li>
+
+      <li>
+        <p>Collection</p>
+        <h3>Fun for the family</h3>
+        <button>Show all</button>
+      </li>
+
+      <li>
+        <p>Workshops</p>
+        <h3>Learn the secrets of successful hosting</h3>
+        <button>Show all</button>
+      </li>
+    </ul>
+  </body>
+</html>
