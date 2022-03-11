@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>277 - Multiple Horizontal Scroll Containers</title>
+    <style>
+      :root {
+        background-color: black;
+      }
+
+      img:nth-of-type(2) {
+        filter: hue-rotate(60deg) saturate(4);
+      }
+
+      img:nth-of-type(3) {
+        filter: hue-rotate(120deg) saturate(4);
+      }
+
+      img:nth-of-type(4) {
+        filter: hue-rotate(180deg) saturate(4);
+      }
+
+      img:nth-of-type(5) {
+        filter: hue-rotate(240deg) saturate(4);
+      }
+
+      body {
+        margin: 0;
+        background-color: whitesmoke;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      section {
+        box-sizing: border-box;
+        padding: 50px;
+        background: content-box white;
+        display: flex;
+        gap: 30px;
+        overflow-x: scroll;
+        scroll-snap-type: inline mandatory;
+        scroll-snap-stop: always;
+        scroll-padding-inline-start: 50px;
+      }
+
+      img {
+        flex: 0 0 min(400px, 70%);
+        block-size: 200px;
+        object-fit: cover;
+        scroll-snap-align: start;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    overflow-x: scroll may not trigger scroll bars depending on your device
+    settings. On macOS, go to System Preferences > General > Show scroll bars >
+    Always.
+    <section>
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+    </section>
+    <section>
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+    </section>
+    <section>
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+    </section>
+    <section>
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+    </section>
+    <section>
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+    </section>
+    <section>
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+    </section>
+    <script>
+      window.section = document.getElementsByTagName('section').item(0);
+      window.doggies = Array.from(document.getElementsByTagName('img'));
+    </script>
+  </body>
+</html>
