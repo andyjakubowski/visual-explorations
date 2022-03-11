@@ -29,50 +29,72 @@
 
       /* Background image URLs */
 
-      li:nth-of-type(1) {
+      li:nth-of-type(1n) {
         --url: url('red-dress.webp');
       }
 
-      li:nth-of-type(2) {
+      li:nth-of-type(2n) {
         --url: url('camel.webp');
       }
 
-      li:nth-of-type(3) {
+      li:nth-of-type(3n) {
         --url: url('cooking.webp');
       }
 
-      li:nth-of-type(4) {
+      li:nth-of-type(4n) {
         --url: url('selfie.webp');
       }
 
-      li:nth-of-type(5) {
+      li:nth-of-type(5n) {
         --url: url('whisk.webp');
       }
 
-      li:nth-of-type(6) {
+      li:nth-of-type(6n) {
         --url: url('wall.webp');
       }
 
       /* Regular Style */
 
       :root {
-        background-color: whitesmoke;
+        background-color: white;
+        font-family: sans-serif;
+        padding-block-end: 96px;
       }
 
       ul {
         display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding: 0 16px;
+        scroll-snap-type: inline mandatory;
+        scroll-snap-stop: always;
+        scroll-padding-inline-start: 16px;
+        scroll-padding-inline-end: 16px;
+        scrollbar-width: none;
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
       }
 
       li {
-        inline-size: 300px;
-        aspect-ratio: 1;
-        background: var(--url) center / cover, white;
+        box-sizing: border-box;
+        background: var(--url) 65% 50% / cover, white;
 
+        flex: none;
+        inline-size: 85%;
+        max-inline-size: 600px;
+        scroll-snap-align: start;
+
+        padding: 32px;
+        border-radius: 12px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-
-        padding: 32px;
+        min-block-size: 300px;
+        /* The narrower the viewport, the taller the box */
+        block-size: calc(1000px - 80vw);
+        max-block-size: min(500px, 70vh);
       }
 
       li p,
@@ -89,12 +111,14 @@
     </style>
   </head>
   <body>
+    <h1>New this week</h1>
     <ul>
       <li>
         <p>Collection</p>
         <h3>Plan a trip with tips from a local</h3>
         <button>Show all</button>
       </li>
+
       <li>
         <p>Collection</p>
         <h3>Most popular around the world</h3>
