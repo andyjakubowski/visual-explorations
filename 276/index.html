@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>276 - Scroll snap with padding</title>
+    <style>
+      :root {
+        background-color: black;
+        min-block-size: 100vh;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      img:nth-of-type(2) {
+        filter: hue-rotate(60deg) saturate(4);
+      }
+
+      img:nth-of-type(3) {
+        filter: hue-rotate(120deg) saturate(4);
+      }
+
+      img:nth-of-type(4) {
+        filter: hue-rotate(180deg) saturate(4);
+      }
+
+      img:nth-of-type(5) {
+        filter: hue-rotate(240deg) saturate(4);
+      }
+
+      body {
+        margin: 0;
+
+        background-color: whitesmoke;
+      }
+
+      section {
+        box-sizing: border-box;
+        padding: 100px;
+        background: content-box white;
+        inline-size: 400px;
+        min-inline-size: 280px;
+        block-size: 500px;
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        overflow-x: auto;
+        scroll-snap-type: inline mandatory;
+        scroll-snap-stop: always;
+        /* scroll-padding-inline-end: 40px; */
+      }
+
+      img {
+        flex: 0 0 200px;
+        min-inline-size: 100px;
+        block-size: 200px;
+        object-fit: cover;
+        /* scroll-margin-inline-end: 100px; */
+        scroll-snap-align: center;
+        opacity: 0.5;
+        /* scroll-margin: 20px; */
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+      <img src="../images/doggy.jpg" alt="Doggy" />
+    </section>
+    <script>
+      window.section = document.getElementsByTagName('section').item(0);
+      window.doggies = Array.from(document.getElementsByTagName('img'));
+    </script>
+  </body>
+</html>
