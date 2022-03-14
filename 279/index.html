@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>279 - Reproduction - Firefox Home screen</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <style>
+      :root {
+        background-color: rgb(249, 249, 251);
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      main {
+        box-sizing: border-box;
+        min-block-size: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+        gap: 24px;
+      }
+
+      input {
+        box-sizing: border-box;
+        align-self: flex-start;
+        inline-size: clamp(272px, 90%, 480px);
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+        block-size: 52px;
+        border: none;
+        border-radius: 8px;
+        padding: 0 12px 0 52px;
+        background: url('duck.svg') 16px center / 24px no-repeat,
+          padding-box white;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        font-size: clamp(12px, 4vw, 16px);
+        color: black;
+        transition: opacity 1s;
+        touch-action: manipulation;
+        text-overflow: ellipsis;
+      }
+
+      ul {
+        inline-size: 270px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: center;
+      }
+
+      @media screen and (min-width: 610px) {
+        ul {
+          inline-size: 510px;
+        }
+      }
+
+      @media screen and (min-width: 870px) and (max-width: 1120px) {
+        ul {
+          inline-size: 730px;
+        }
+
+        li:nth-of-type(6) ~ li {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 1120px) {
+        ul {
+          inline-size: auto;
+          align-self: stretch;
+        }
+      }
+
+      li {
+        padding: 4px 8px;
+        gap: 4px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      li button {
+        opacity: 0;
+        border-radius: 4px;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      li button:focus {
+        background-color: rgb(237, 237, 238);
+        color: blue;
+      }
+
+      button svg {
+        flex: none;
+        width: 16px;
+        padding: 16px 8px 16px 16px;
+        margin-inline-end: 8px;
+        z-index: 1;
+        border-radius: 50%;
+      }
+
+      button:focus {
+        opacity: 1;
+      }
+
+      @media (hover: hover) {
+        li:hover {
+          background-color: rgb(237, 237, 238);
+        }
+
+        li:hover button {
+          opacity: 1;
+        }
+
+        button:hover {
+          cursor: pointer;
+        }
+      }
+
+      li a {
+        padding: 0 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        text-decoration: none;
+        color: black;
+      }
+
+      li a img {
+        box-sizing: border-box;
+        padding: 16px;
+        inline-size: 80px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src="logo-firefox.svg" alt="Firefox Logo" />
+      <input type="search" placeholder="Search or enter a website name" />
+      <ul>
+        <li>
+          <button aria-label="Open context menu">
+            <svg viewBox="0 0 16 16">
+              <use href="more.svg#dots"></use>
+            </svg>
+          </button>
+          <a href="#">
+            <img src="amazon.jpg" alt="Amazon" />
+            <span>Amazon</span>
+            <span>Sponsored</span>
+          </a>
+        </li>
+        <li>
+          <button aria-label="Open context menu">
+            <svg viewBox="0 0 16 16">
+              <use href="more.svg#dots"></use>
+            </svg>
+          </button>
+          <a href="#">
+            <img src="trivago.jpg" alt="Trivago" />
+            <span>Trivago</span>
+            <span>Sponsored</span>
+          </a>
+        </li>
+        <li>
+          <button aria-label="Open context menu">
+            <svg viewBox="0 0 16 16">
+              <use href="more.svg#dots"></use>
+            </svg>
+          </button>
+          <a href="#">
+            <img src="google.png" alt="Google" />
+            <span>Google</span>
+          </a>
+        </li>
+        <li>
+          <button aria-label="Open context menu">
+            <svg viewBox="0 0 16 16">
+              <use href="more.svg#dots"></use>
+            </svg>
+          </button>
+          <a href="#">
+            <img src="flower.png" alt="Flower" />
+            <span>localhost</span>
+          </a>
+        </li>
+        <li>
+          <button aria-label="Open context menu">
+            <svg viewBox="0 0 16 16">
+              <use href="more.svg#dots"></use>
+            </svg>
+          </button>
+          <a href="#">
+            <img src="airbnb.png" alt="airbnb" />
+            <span>airbnb</span>
+          </a>
+        </li>
+        <li>
+          <button aria-label="Open context menu">
+            <svg viewBox="0 0 16 16">
+              <use href="more.svg#dots"></use>
+            </svg>
+          </button>
+          <a href="#">
+            <img src="instagram.png" alt="Instagram" />
+            <span>Instagram</span>
+          </a>
+        </li>
+        <li>
+          <button aria-label="Open context menu">
+            <svg viewBox="0 0 16 16">
+              <use href="more.svg#dots"></use>
+            </svg>
+          </button>
+          <a href="#">
+            <img src="andy.png" alt="Andy" />
+            <span>Andy</span>
+          </a>
+        </li>
+        <li>
+          <button aria-label="Open context menu">
+            <svg viewBox="0 0 16 16">
+              <use href="more.svg#dots"></use>
+            </svg>
+          </button>
+          <a href="#">
+            <img src="apple.png" alt="Apple" />
+            <span>apple</span>
+          </a>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
