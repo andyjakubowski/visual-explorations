@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>283 - Reproduction - iOS 15 Marketing Cards</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <style>
+      :root {
+        background-color: rgb(225, 230, 233);
+      }
+
+      body {
+        font-family: sans-serif;
+        color: rgb(29, 29, 31);
+        padding: 24px;
+      }
+
+      h2,
+      h3 {
+        color: rgb(246, 62, 84);
+      }
+
+      .tile-container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .tile {
+        background-color: white;
+        border-radius: 24px;
+
+        flex-grow: 1;
+        flex-basis: 200px;
+
+        min-inline-size: 0;
+        max-inline-size: max-content;
+        overflow-wrap: break-word;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tile .header {
+        padding: 30px 35px 0;
+      }
+
+      .tile .headline {
+        font-size: 19px;
+        line-height: 1.2105263158;
+        letter-spacing: 0.012em;
+      }
+
+      .tile .copy {
+        margin-block-start: 0.3em;
+        font-size: 17px;
+        line-height: 1.4705882353;
+        letter-spacing: -0.022em;
+        max-inline-size: 80ch;
+      }
+
+      .tile img {
+        inline-size: 600px;
+        max-inline-size: 100%;
+      }
+
+      #shareplay {
+      }
+
+      .tile:not(:first-of-type) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>New experiences.<br />True connections.</h1>
+      <article aria-labelledby="heading">
+        <h2 id="heading">FaceTime</h2>
+        <div class="tile-container">
+          <div class="tile" id="shareplay">
+            <div class="header">
+              <h3 class="headline">Introducing SharePlay</h3>
+              <p class="copy">
+                Keep FaceTime conversations going as you watch TV shows and
+                movies, listen to music, or share your screen. SharePlay is an
+                entirely new way to have experiences with family and friends, no
+                matter the distance.
+              </p>
+            </div>
+            <!-- <img src="purple.png" srcset="purple.png 2x" aria-hidden="true" /> -->
+            <img
+              src="shareplay-small.jpg"
+              srcset="shareplay-small-2x.jpg 2x"
+              aria-hidden="true"
+            />
+          </div>
+          <div class="tile" id="watch-together">
+            <h3>Watch together</h3>
+            <p>
+              Stream movies and TV shows while on a FaceTime call with friends.
+              With synced playback and controls, you’ll see everyone laugh,
+              jump, and react to the same moments at the same time. And the
+              volume automatically adjusts, so you can keep talking while you
+              watch.
+            </p>
+          </div>
+          <div class="tile" id="listen-together">
+            <h3>Listen together</h3>
+            <p>
+              Get together and listen to an album with friends. The whole group
+              can see what’s next and add songs to a shared queue with synced
+              playback and easy-to-use controls.
+            </p>
+          </div>
+          <div class="tile" id="share-screen">
+            <h3>Share your screen</h3>
+            <p>
+              Share your screen with everyone in your FaceTime call. Browse
+              apartment listings, swipe through a photo album, or teach someone
+              a new skill, all while seeing and talking to one another.
+            </p>
+          </div>
+          <div class="tile" id="spatial-audio">
+            <h3>Spatial audio</h3>
+            <p>
+              Individual voices sound like they’re coming from the direction in
+              which each person is positioned on your screen, helping
+              conversations flow more naturally.3
+            </p>
+          </div>
+          <div class="tile" id="grid-view">
+            <h3>Grid view</h3>
+            <p>
+              Grid view shows people on your FaceTime call in the same-size
+              tiles, so you can have better conversations with a large group.
+              The speaker is automatically highlighted so you always know who’s
+              talking.
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
