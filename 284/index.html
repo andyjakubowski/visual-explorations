@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      284 - inset box-shadow paint order background > shadow > content
+    </title>
+    <style>
+      /* Regular style declarations */
+
+      :root {
+        background-color: whitesmoke;
+      }
+
+      span,
+      img,
+      svg {
+        padding: 10px;
+        font-size: 96px;
+        display: inline-block;
+        background-color: yellow;
+        inline-size: 300px;
+        block-size: 300px;
+        box-shadow: inset 0 0 0 30px tomato;
+        vertical-align: bottom;
+      }
+    </style>
+  </head>
+  <body>
+    <p>The painting order seems to be background, box-shadow, then content</p>
+    <span>Hello</span>
+    <img src="../images/doggy.jpg" alt="Doggy" />
+    <svg>
+      <rect width="50" height="50"></rect>
+    </svg>
+  </body>
+</html>
