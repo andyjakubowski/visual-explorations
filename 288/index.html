@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>288 - Rudimentary expandable DOM node list</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      header[data-state='collapsed']::before {
+        content: '▶ ';
+      }
+
+      header[data-state='expanded']::before {
+        content: '▼ ';
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function getNodeInfoString(node, nestingLevel) {
+        return `${node.nodeName} ${node.nodeType} ${nestingLevel}`;
+      }
+
+      function createNodeElement(node, nestingLevel) {
+        function toggleState() {
+          if (currentState === 'collapsed') {
+            currentState = 'expanded';
+          } else if (currentState === 'expanded') {
+            currentState = 'collapsed';
+          }
+
+          updateNodeInfoElStateAttribute();
+        }
+
+        function setChildElsDisplay() {
+          childNodeElements.forEach((childNodeElement) => {
+            if (currentState === 'expanded') {
+              childNodeElement.style.setProperty('display', 'initial');
+            } else if (currentState === 'collapsed') {
+              childNodeElement.style.setProperty('display', 'none');
+            }
+          });
+        }
+
+        function updateNodeInfoElStateAttribute() {
+          nodeInfoElement.dataset.state = currentState;
+        }
+
+        const nodeElement = document.createElement('article');
+        let currentState = 'collapsed';
+        const nodeInfoElement = document.createElement('header');
+        const childNodeElements = node.hasChildNodes()
+          ? Array.from(node.childNodes).map((childNode) =>
+              createNodeElement(childNode, nestingLevel + 1)
+            )
+          : [];
+        nodeInfoElement.append(getNodeInfoString(node, nestingLevel));
+        nodeElement.append(nodeInfoElement, ...childNodeElements);
+        nodeInfoElement.style.setProperty(
+          'padding-inline-start',
+          `${nestingLevel * 16}px`
+        );
+        nodeInfoElement.addEventListener('click', () => {
+          toggleState();
+          setChildElsDisplay();
+        });
+        setChildElsDisplay();
+        updateNodeInfoElStateAttribute();
+        return nodeElement;
+      }
+
+      const nestingLevel = 0;
+      const documentNodeElement = createNodeElement(document, nestingLevel);
+      document.body.append(documentNodeElement);
+    </script>
+  </body>
+</html>
