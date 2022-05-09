@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>290 - Resize Observer</title>
+    <script src="index.js"></script>
+    <!--
+      Resize Observer
+      Monday, 9 May 2022
+      https://drafts.csswg.org/resize-observer/#api
+      https://html.spec.whatwg.org/#being-rendered
+
+      ResizeObserver’s notifications can be used to respond to changes in Element's size.
+      - Observation will fire when watched Element is inserted/removed from DOM.
+      - Observation will fire when watched Element display gets set to none.
+      - Observations do not fire for non-replaced inline Elements.
+      - Observations will not be triggered by CSS transforms.
+      - Observation will fire when observation starts if Element is being rendered, and Element’s size is not 0,0.
+    -->
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        padding-block-start: 30px;
+      }
+
+      #box {
+        background-color: white;
+        /* display: none; */
+      }
+    </style>
+  </head>
+  <body>
+    <main id="box">Box</main>
+  </body>
+</html>
