@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>292 - visually-hidden class</title>
+    <!--
+      https://css-tricks.com/comparing-various-ways-to-hide-things-in-css/
+    -->
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      .visually-hidden {
+        position: absolute !important;
+        clip-path: inset(50%) !important;
+        padding: 0 !important;
+        border: 0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden !important;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button">
+      <span aria-hidden="true">&#x25b6</span>
+      <span class="visually-hidden">play</span>
+    </button>
+  </body>
+</html>
