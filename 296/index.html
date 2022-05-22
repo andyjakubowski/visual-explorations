@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>296 - SVG rounded rect - horizontal and vertical</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      svg#horizontal {
+        width: 300px;
+        height: 100px;
+      }
+
+      svg#vertical {
+        width: 100px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="horizontal">
+      <rect id="rect" width="100%" height="100%" ry="50%" />
+    </svg>
+    <svg id="vertical">
+      <rect id="rect" width="100%" height="100%" rx="50%" />
+    </svg>
+  </body>
+</html>

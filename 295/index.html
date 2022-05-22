@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>295 - SVG rounded rect - centered with CSS custom properties</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      svg {
+        border: 1px solid black;
+        width: 400px;
+        height: 100px;
+        animation: resize 3s ease infinite alternate;
+      }
+
+      @keyframes resize {
+        from {
+          width: 400px;
+          height: 100px;
+        }
+
+        to {
+          width: 600px;
+          height: 300px;
+        }
+      }
+
+      /* The percentage doesn’t update in Chrome 100 and Firefox 100 when the svg element’s content box is resized */
+      rect {
+        --length: 64px;
+        --thickness: 4px;
+        x: calc(50% - var(--length) / 2);
+        y: calc(50% - var(--thickness) / 2);
+        width: var(--length);
+        height: var(--thickness);
+        rx: calc(var(--thickness) / 2);
+        ry: calc(var(--thickness) / 2);
+        fill: black;
+      }
+    </style>
+  </head>
+  <body>
+    <svg>
+      <rect id="rect" />
+    </svg>
+  </body>
+</html>
