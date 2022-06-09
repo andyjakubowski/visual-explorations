@@ -1,3 +1,5 @@
+let hoveredEl = null;
+
 const listEls = Object.entries(colors).map((outsideColor) => {
   const listEl = document.createElement('div');
 
@@ -6,7 +8,6 @@ const listEls = Object.entries(colors).map((outsideColor) => {
     const colorCouple = [outsideColor, insideColor];
 
     const colorEls = colorCouple.map(([key, value]) => {
-      console.log('key', key);
       const colorEl = document.createElement('div');
       const labelEl = document.createElement('div');
       const swatchEl = document.createElement('div');
@@ -22,6 +23,12 @@ const listEls = Object.entries(colors).map((outsideColor) => {
 
     comboEl.classList.add('combo');
     comboEl.append(...colorEls);
+    comboEl.addEventListener('click', (e) => e.currentTarget.remove());
+    // comboEl.addEventListener(
+    //   'pointerover',
+    //   (e) => (hoveredEl = e.currentTarget)
+    // );
+    // comboEl.addEventListener('pointerout', (e) => (hoveredEl = null));
     return comboEl;
   });
 
@@ -31,3 +38,10 @@ const listEls = Object.entries(colors).map((outsideColor) => {
 });
 
 document.body.append(...listEls);
+document.addEventListener('keydown', (e) => {
+  // console.log('keydown', e.key);
+  if (e.key === 'd') {
+    hoveredEl.remove();
+  }
+  // console.log('keydown, event object:', e);
+});
