@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>280 - Reproduction - Spotify Podcast Episode</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <style>
+      body {
+        background-color: #121212;
+        color: white;
+        font-family: sans-serif;
+      }
+
+      li {
+        display: flow-root;
+        padding: 16px;
+        overflow-wrap: break-word;
+      }
+
+      img.artwork {
+        inline-size: 64px;
+        float: left;
+        margin-inline-end: 16px;
+      }
+
+      :root[dir='rtl'] img.artwork {
+        float: right;
+      }
+
+      div.title-and-more {
+        display: flex;
+        min-block-size: 64px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      /* overflow-wrap: break-word doesn’t affect min-content auto min size, so reset it*/
+      .title-and-more a {
+        min-inline-size: 0;
+      }
+
+      p.description {
+        clear: both;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        margin-block-start: 16px;
+        margin-block-end: 16px;
+      }
+
+      svg {
+        fill: currentColor;
+        vertical-align: bottom;
+      }
+
+      button:not(.play) {
+        inline-size: 28px;
+        block-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      button:not(.play) > svg {
+        flex: none;
+        padding: 10px;
+      }
+
+      button.play {
+        color: black;
+        padding: 8px;
+        background-color: white;
+        border-radius: 50%;
+      }
+
+      div.action-bar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .action-bar .time-info {
+        display: flex;
+        gap: 4px;
+        align-items: inherit;
+      }
+
+      .share {
+        margin-inline-start: auto;
+      }
+
+      @media screen and (min-width: 873px) {
+        img.artwork {
+          inline-size: 112px;
+        }
+
+        div.title-and-more {
+          min-block-size: revert;
+        }
+
+        p.description {
+          clear: revert;
+        }
+
+        p.description,
+        .action-bar {
+          margin-inline-start: 128px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <img class="artwork" src="klein.jpg" alt="Ezra Klein" />
+        <div class="title-and-more">
+          <a href="#">
+            <h4>It's Not Your Fault You Can't Pay Attention. Here's Why.</h4>
+          </a>
+          <button class="more" type="button" aria-label="More options">
+            <svg
+              role="img"
+              aria-hidden="true"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M4.5 13.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm15 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm-7.5 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <p class="description">
+          “The sensation of being alive in the early 21st century consisted of
+          the sense that our ability to pay attention — to focus — was cracking
+          and breaking,” writes Johann Hari in his new book, “Stolen Focus.”
+          Later he says, “It felt like our civilization had been covered with
+          itching powder and we spent our time twitching and twerking our minds,
+          unable to simply give attention to things that matter.” Same.
+          Attention is the most precious resource we have — it’s the window
+          through which we experience our lives. And for many of us, that window
+          is fogging. The knee-jerk response is to blame ourselves. If our
+          attention is waning, it’s because we’re too distractible. But if
+          there’s a single thesis of “Stolen Focus,” it’s that we have a lot
+          less control over our attention than we like to believe — and not just
+          because the apps on our smartphones are cunningly designed.
+        </p>
+        <div class="action-bar">
+          <button class="play" type="button" aria-label="Play episode">
+            <svg
+              role="img"
+              aria-hidden="true"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3 1.713a.7.7 0 011.05-.607l10.89 6.288a.7.7 0 010 1.212L4.05 14.894A.7.7 0 013 14.288V1.713z"
+              ></path>
+            </svg>
+          </button>
+          <p class="time-info">
+            <time datetime="2022-02-11">Feb 11</time
+            ><span aria-hidden="true">·</span
+            ><time datetime="PT1H6M">1 hr 6 min</time>
+          </p>
+          <button class="share" type="button" aria-label="Share">
+            <svg
+              role="img"
+              aria-hidden="true"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 8a1 1 0 011-1h3.5v2H5v11h14V9h-2.5V7H20a1 1 0 011 1v13a1 1 0 01-1 1H4a1 1 0 01-1-1V8z"
+              ></path>
+              <path
+                d="M12 12.326a1 1 0 001-1V3.841l1.793 1.793a1 1 0 101.414-1.414L12 .012 7.793 4.22a1 1 0 101.414 1.414L11 3.84v7.485a1 1 0 001 1z"
+              ></path>
+            </svg>
+          </button>
+          <button type="button" aria-label="Add to Library">
+            <svg
+              role="img"
+              aria-hidden="true"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M11.999 3a9 9 0 100 18 9 9 0 000-18zm-11 9c0-6.075 4.925-11 11-11s11 4.925 11 11-4.925 11-11 11-11-4.925-11-11z"
+              ></path>
+              <path
+                d="M17.999 12a1 1 0 01-1 1h-4v4a1 1 0 11-2 0v-4h-4a1 1 0 110-2h4V7a1 1 0 112 0v4h4a1 1 0 011 1z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </body>
+</html>

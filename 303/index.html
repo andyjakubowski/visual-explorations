@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      303 - Align 3 unequal boxes left, center, right with Grid layout
+    </title>
+    <style>
+      :root {
+        background-color: thistle;
+      }
+
+      body {
+        background: whitesmoke;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 'spanek';
+      }
+
+      span {
+        padding: 20px;
+        border: 2px solid black;
+        border-radius: 5px;
+        background: white;
+      }
+
+      #left,
+      #center,
+      #right {
+        grid-area: spanek;
+      }
+
+      #left {
+        justify-self: start;
+        inline-size: 200px;
+      }
+
+      #center {
+        justify-self: center;
+        inline-size: 400px;
+      }
+
+      #right {
+        justify-self: end;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="left">Left</span>
+    <span id="center">Center</span>
+    <span id="right">Right</span>
+  </body>
+</html>

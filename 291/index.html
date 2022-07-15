@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>291 - number input key down events</title>
+    <script src="index.js"></script>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      input {
+      }
+
+      input:out-of-range {
+        /* outline: 1px solid red; */
+      }
+
+      input:invalid {
+        outline: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      id="input"
+      type="number"
+      min="50"
+      value="55"
+      placeholder="300"
+      required
+    />
+  </body>
+</html>

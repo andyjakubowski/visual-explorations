@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      286 - Reproduction - iOS 15 Marketing Cards - Nature Full-Bleed
+    </title>
+    <link rel="stylesheet" href="../reset.css" />
+    <style>
+      :root {
+        background-color: rgb(225, 230, 233);
+      }
+
+      body {
+        font-family: sans-serif;
+        color: rgb(29, 29, 31);
+        padding: 24px;
+      }
+
+      h2,
+      h3 {
+        color: rgb(246, 62, 84);
+      }
+
+      .tile-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .tile {
+        background-image: var(--background-url);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-block-end: 200px;
+
+        border-radius: 24px;
+        flex-grow: 1;
+        flex-basis: 30%;
+
+        min-inline-size: 0;
+        max-inline-size: max-content;
+        overflow-wrap: break-word;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .tile .header {
+        padding: 30px 35px;
+        background-color: rgba(255, 255, 255, 0.94);
+      }
+
+      @supports (backdrop-filter: blur(12px)) or
+        (-webkit-backdrop-filter: blur(12px)) {
+        .tile .header {
+          background-color: rgba(255, 255, 255, 0.4);
+          -webkit-backdrop-filter: blur(12px) brightness(1.1) saturate(1.2);
+          backdrop-filter: blur(12px);
+        }
+      }
+
+      .tile .headline {
+        font-size: 19px;
+        line-height: 1.2105263158;
+        letter-spacing: 0.012em;
+      }
+
+      .tile .copy {
+        margin-block-start: 0.3em;
+        font-size: 17px;
+        line-height: 1.4705882353;
+        letter-spacing: -0.022em;
+        max-inline-size: 80ch;
+      }
+
+      .tile img {
+        min-inline-size: 100%;
+        inline-size: 600px;
+        max-inline-size: 100%;
+        flex-grow: 1;
+        object-fit: cover;
+      }
+
+      #shareplay {
+        --background-url: url('hills.jpeg');
+        flex-basis: 600px;
+      }
+
+      #watch-together {
+        --background-url: url('husky.jpeg');
+      }
+
+      #listen-together {
+        --background-url: url('pier.jpeg');
+      }
+
+      #share-screen {
+        --background-url: url('canyon.jpeg');
+      }
+
+      #spatial-audio {
+        --background-url: url('snowy-peaks.jpeg');
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>New experiences.<br />True connections.</h1>
+      <article aria-labelledby="heading">
+        <h2 id="heading">FaceTime</h2>
+        <div class="tile-container">
+          <div class="tile" id="shareplay">
+            <div class="header">
+              <h3 class="headline">Introducing SharePlay</h3>
+              <p class="copy">
+                Keep FaceTime conversations going as you watch TV shows and
+                movies, listen to music, or share your screen. SharePlay is an
+                entirely new way to have experiences with family and friends, no
+                matter the distance.
+              </p>
+            </div>
+          </div>
+          <div class="tile" id="watch-together">
+            <div class="header">
+              <h3 class="headline">Watch together</h3>
+              <p class="copy">
+                Stream movies and TV shows while on a FaceTime call with
+                friends. With synced playback and controls, you’ll see everyone
+                laugh, jump, and react to the same moments at the same time. And
+                the volume automatically adjusts, so you can keep talking while
+                you watch.
+              </p>
+            </div>
+          </div>
+          <div class="tile" id="listen-together">
+            <div class="header">
+              <h3 class="headline">Listen together</h3>
+              <p class="copy">
+                Get together and listen to an album with friends. The whole
+                group can see what’s next and add songs to a shared queue with
+                synced playback and easy-to-use controls.
+              </p>
+            </div>
+          </div>
+          <div class="tile" id="share-screen">
+            <div class="header">
+              <h3 class="headline">Share your screen</h3>
+              <p class="copy">
+                Share your screen with everyone in your FaceTime call. Browse
+                apartment listings, swipe through a photo album, or teach
+                someone a new skill, all while seeing and talking to one
+                another.
+              </p>
+            </div>
+          </div>
+          <div class="tile" id="spatial-audio">
+            <div class="header">
+              <h3 class="headline">Spatial audio</h3>
+              <p class="copy">
+                Individual voices sound like they’re coming from the direction
+                in which each person is positioned on your screen, helping
+                conversations flow more naturally.3
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

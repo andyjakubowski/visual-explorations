@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <title>302 - Standalone SVG Filter Noise</title>
+
+  <filter
+    id="filter-1"
+    x="0"
+    y="0"
+    width="1"
+    height="1"
+  >
+    <!-- <feTurbulence baseFrequency="0.8" numOctaves="2" result="noise"/> -->
+    <!-- <feTurbulence
+      type='fractalNoise'
+      baseFrequency='0.29'
+      numOctaves='1'
+      stitchTiles='stitch'/> -->
+    <!-- <feTurbulence
+      type="fractalNoise"
+      baseFrequency="0.65"
+      numOctaves="5"
+      stitchTiles="stitch"
+    /> -->
+
+    <!-- <feComponentTransfer>
+          <feFuncR type="identity"></feFuncR>
+          <feFuncG type="identity"></feFuncG>
+          <feFuncB type="identity"></feFuncB>
+          <feFuncA type="discrete" tableValues="0 0 0 0 0 0 1 1 1 1 1"></feFuncA>
+        </feComponentTransfer> -->
+    <!-- <feColorMatrix values=" 0 0 0 0.2 0
+          0 0 0 0.2 0
+          0 0 0 0.2 0
+          0 0 0  0.4 0" /> -->
+    <!-- <feMerge>
+            <feMergeNode in="noise" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge> -->
+    <!-- <feComposite
+      in2="SourceGraphic"
+      operator="xor"
+    /> -->
+    <feFlood
+      flood-color="black"
+      width="100"
+    />
+  </filter>
+  <g transform="translate(50 50)">
+    <rect
+      fill="red"
+      width="200"
+      height="200"
+      filter="url(#filter-1)"
+    />
+    <rect
+      fill="green"
+      x="250"
+      width="200"
+      height="200"
+      filter="url(#filter-1)"
+    />
+    <rect
+      fill="blue"
+      x="500"
+      width="200"
+      height="200"
+      filter="url(#filter-1)"
+    />
+  </g>
+  <g transform="translate(50 300)">
+    <rect
+      fill="white"
+      stroke="black"
+      width="200"
+      height="200"
+      filter="url(#filter-1)"
+    />
+    <rect
+      fill="black"
+      x="250"
+      width="200"
+      height="200"
+      filter="url(#filter-1)"
+    />
+    <rect
+      fill="gray"
+      x="500"
+      width="200"
+      height="200"
+      filter="url(#filter-1)"
+    />
+  </g>
+</svg>

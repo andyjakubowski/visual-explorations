@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>287 - getElementInstances(constructor, startElement)</title>
+  </head>
+  <body>
+    <figure>
+      <figcaption>Listen to the T-Rex:</figcaption>
+      <audio controls src="/media/cc0-audio/t-rex-roar.mp3">
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
+    </figure>
+
+    <script>
+      function checkElement(constructor, element, callback) {
+        for (const childEl of element.children) {
+          checkElement(constructor, childEl, callback);
+        }
+
+        if (element instanceof constructor) {
+          callback(element);
+        }
+      }
+
+      function getElementInstances(
+        constructor,
+        startElement = document.documentElement
+      ) {
+        const elementInstances = [];
+        checkElement(constructor, startElement, (elInstance) =>
+          elementInstances.push(elInstance)
+        );
+        return elementInstances;
+      }
+
+      window.getElementInstances = getElementInstances;
+      console.log(
+        `Count of HTMLAudioElements in this document: ${
+          getElementInstances(HTMLAudioElement).length
+        }.`
+      );
+      console.log(
+        `Count of HTMLElements in this document: ${
+          getElementInstances(HTMLElement).length
+        }.`
+      );
+    </script>
+  </body>
+</html>

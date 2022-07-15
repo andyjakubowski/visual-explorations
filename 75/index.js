@@ -5,22 +5,24 @@ eventLog.push('JavaScript starts executing');
 function clearLog() {
   localStorage.clear();
   eventLog = [];
+  console.clear();
   console.log('localStorage and eventLog cleared.');
 }
 
-function logEventType(event) {
-  const lastEventType = eventLog[eventLog.length - 1];
-  if (event.type !== lastEventType) {
-    eventLog.push(event.type);
+function logEvent(event, target = 'document') {
+  const lastEvent = eventLog[eventLog.length - 1];
+  const newEvent = `${target}: ${event.type}`;
+  if (newEvent !== lastEvent) {
+    eventLog.push(newEvent);
   }
   localStorage.setItem('eventLog', JSON.stringify(eventLog));
   // clearInterval(timeoutId);
   // timeoutId = setTimeout(() => console.clear(), 5000);
-  console.log(event.type);
+  console.log(newEvent);
 }
 
 function logVisibilityChange(event) {
-  logEventType({
+  logEvent({
     type: `${event.type}: ${document.visibilityState}`,
   });
 }
@@ -30,20 +32,27 @@ function handleDOMContentLoaded() {
     'pointerover',
     'pointerenter',
     'pointerdown',
-    // 'pointermove',
-    // 'pointerup',
+    'pointermove',
+    'pointerup',
     'pointercancel',
     'pointerout',
     'gotpointercapture',
     'lostpointercapture',
   ];
   pointerEventNames.forEach((eventName) => {
-    document.body.addEventListener(eventName, logEventType);
+    document.addEventListener(eventName, (e) => logEvent(e, 'document'));
+    // window.addEventListener(eventName, (e) => logEvent(e, 'window'));
   });
-  document.addEventListener('pointermove', logEventType);
-  document.addEventListener('pointerup', logEventType);
   document.addEventListener('visibilitychange', logVisibilityChange);
-  window.addEventListener('pagehide', logEventType);
+  window.addEventListener('pagehide', (e) => logEvent(e, 'window'));
+  window.addEventListener('blur', (e) => {
+    logEvent(e, 'window');
+    console.log(e);
+  });
+  window.addEventListener('focus', (e) => {
+    logEvent(e, 'window');
+    console.log(e);
+  });
 }
 
 if (document.readyState === 'loading') {
