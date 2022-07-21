@@ -1,0 +1,56 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="400"
+  height="300"
+>
+  <title>304 - Filter primitive subregions</title>
+
+
+  <defs>
+    <filter
+      id="flood"
+      filterUnits="objectBoundingBox"
+      primitiveUnits="objectBoundingBox"
+      x="0%"
+      y="0%"
+      width="100%"
+      height="100%"
+    >
+      <feFlood
+        flood-color="#fd00ad"
+        flood-opacity="0.5"
+        result="pink"
+        x="0%"
+        y="0%"
+        width="70%"
+        height="70%"
+      />
+      <feFlood
+        flood-color="#efef03"
+        flood-opacity="0.5"
+        result="yellow"
+        x="30%"
+        y="30%"
+        width="70%"
+        height="70%"
+      />
+      <feMerge>
+        <feMergeNode in="pink" />
+        <feMergeNode in="yellow" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect
+    width="100%"
+    height="100%"
+    fill="whitesmoke"
+  />
+  <rect
+    x="100"
+    y="100"
+    width="200"
+    height="100"
+    fill="black"
+    style="filter: url(#flood)"
+  />
+</svg>
