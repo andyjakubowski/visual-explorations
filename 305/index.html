@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      305 - Center absolutely positioned element with transform and translate
+    </title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        margin: 0;
+        block-size: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .flex-item {
+        inline-size: 50px;
+        block-size: 50px;
+        background-color: thistle;
+        position: relative;
+      }
+
+      .absolutely-positioned-element {
+        position: absolute;
+        inline-size: 100px;
+        aspect-ratio: 1 / 3;
+        background-color: white;
+        opacity: 0.5;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    </style>
+  </head>
+  <body class="flex-container">
+    <main class="flex-item">
+      <div class="absolutely-positioned-element">I’m centered</div>
+    </main>
+  </body>
+</html>

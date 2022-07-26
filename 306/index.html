@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>306 - Center absolutely positioned element with auto margins</title>
+    <style>
+      :root {
+        background-color: whitesmoke;
+      }
+
+      body {
+        margin: 0;
+        block-size: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .flex-item {
+        inline-size: 300px;
+        block-size: 300px;
+        background-color: thistle;
+        position: relative;
+      }
+
+      /* This only works if the element’s box is smaller than its containing block */
+      .absolutely-positioned-element {
+        position: absolute;
+        inline-size: 100px;
+        aspect-ratio: 1 / 1;
+        background-color: white;
+        opacity: 0.5;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body class="flex-container">
+    <main class="flex-item">
+      <div class="absolutely-positioned-element">I’m centered</div>
+    </main>
+  </body>
+</html>
