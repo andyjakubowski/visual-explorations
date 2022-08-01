@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      309 - Set SVG transform reference box with transform-box: fill-box
+    </title>
+    <style>
+      :root {
+        block-size: 100vh;
+        background-color: whitesmoke;
+      }
+
+      body {
+        margin: 0;
+        inline-size: 100%;
+        block-size: 100%;
+      }
+
+      svg {
+        background-color: white;
+      }
+
+      rect {
+        rx: 7px;
+      }
+    </style>
+  </head>
+  <body>
+    <svg viewBox="0 0 100 100" width="400" height="400">
+      <rect
+        width="25"
+        height="25"
+        rx="1"
+        style="
+          transform: rotate(45deg);
+          transform-origin: 12.5px 12.5px;
+          transform-origin: 50% 50%;
+          transform-origin: center;
+          transform-box: fill-box;
+        "
+      ></rect>
+    </svg>
+  </body>
+</html>
